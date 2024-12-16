@@ -1,4 +1,4 @@
-# Visual Studio 2015 user specific files
+## Visual Studio 2015 user specific files
 .vs/
 
 # Compiled Object files
@@ -72,3 +72,10 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+#Content Ignore
+Content/StarterContent/
+<<<<<<< HEAD
+Content/00_Project/00_Asset/*
+=======
+
