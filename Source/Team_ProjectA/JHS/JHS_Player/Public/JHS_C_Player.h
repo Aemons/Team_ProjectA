@@ -10,6 +10,10 @@ class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USpringArmComponent* SpringArmComp;
+
+public:
 	AJHS_C_Player();
 
 protected:
