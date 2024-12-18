@@ -35,7 +35,9 @@ void JHS_Global::Print(const FString& InValue, int32 InKey, FColor InColor, floa
 
 void JHS_Global::PrintLineFunction(const FString& InFile, const FString& InFunc, int32 InLine, FColor InColor, int32 InKey, float InDuration)
 {
-	FString str = FString::Printf(TEXT("File : %s | Function : %s | Line : %d"), *InFile, *InFunc, InLine);
+	FString FileName = FPaths::GetCleanFilename(FString(InFile));
+
+	FString str = FString::Printf(TEXT("File : %s \nFunction : %s\nLine : %d"), *FileName, *InFunc, InLine);
 
 	
 	GEngine->AddOnScreenDebugMessage(InKey, InDuration, InColor, str);
