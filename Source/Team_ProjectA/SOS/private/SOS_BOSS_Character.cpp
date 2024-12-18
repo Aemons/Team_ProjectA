@@ -3,6 +3,8 @@
 
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
 
+#include "ClassViewerModule.h"
+
 // Sets default values
 ASOS_BOSS_Character::ASOS_BOSS_Character()
 {
@@ -10,7 +12,7 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// 스켈레탈 메쉬 초기화
-	ConstructorHelpers::FObjectFinder<USkeletalMesh> InitMesh(TEXT("/Script/Engine.SkeletalMesh'/Game/SOS/Hideoplast/Meshes/SK_Hideoplast.SK_Hideoplast'"));
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> InitMesh(TEXT("/Script/Engine.SkeletalMesh'/Game/00_Project/00_Asset/Hideoplast/Meshes/SK_Hideoplast.SK_Hideoplast'"));
 
 	if(InitMesh.Succeeded())
 	{
@@ -42,5 +44,10 @@ void ASOS_BOSS_Character::SetupPlayerInputComponent(UInputComponent* PlayerInput
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+UBehaviorTree* ASOS_BOSS_Character::GetBehaviorTree()
+{
+	return Tree;
 }
 
