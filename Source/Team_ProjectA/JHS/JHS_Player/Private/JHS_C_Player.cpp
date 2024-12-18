@@ -1,4 +1,5 @@
 #include "JHS_C_Player.h"
+#include "JHS_Global.h"
 
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -25,12 +26,13 @@ AJHS_C_Player::AJHS_C_Player()
 		CameraComp->SetupAttachment(SpringArmComp);
 	}
 
-
 	//Defatul Setting
 	{
 		GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 		GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 		bUseControllerRotationYaw = false;
+		bUseControllerRotationPitch = false;
+		bUseControllerRotationRoll = false;
 
 		SpringArmComp->SetRelativeLocation(FVector(0, 0, 170));
 		SpringArmComp->SetRelativeRotation(FRotator(0, 90, 0));
@@ -42,6 +44,10 @@ AJHS_C_Player::AJHS_C_Player()
 		CameraComp->bUsePawnControlRotation = false;
 
 		GetCharacterMovement()->bOrientRotationToMovement = true;
+		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
+		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
+		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
 	}
 
 	//Default Object Setting
@@ -121,8 +127,7 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 	LookInput = InValue.Get<FVector2D>();
 
 	AddControllerYawInput(LookInput.X);
-	AddControllerYawInput(LookInput.Y);
-
+	AddControllerPitchInput(LookInput.Y);
 }
 
 void AJHS_C_Player::Player_Run()
