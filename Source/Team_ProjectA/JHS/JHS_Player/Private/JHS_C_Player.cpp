@@ -5,9 +5,13 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 
+//Input
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
+
+//Custom Component
+#include "JHS_C_MoveComponent.h"
 
 
 AJHS_C_Player::AJHS_C_Player()
@@ -20,6 +24,11 @@ AJHS_C_Player::AJHS_C_Player()
 		CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	}
 	
+	//Create Actor Component
+	{
+		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
+	}
+
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
@@ -47,7 +56,9 @@ AJHS_C_Player::AJHS_C_Player()
 		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
-		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+
+		//MaxWalkSpeed Setting
+		MoveComp->SetWalk();
 	}
 
 	//Default Object Setting
@@ -85,7 +96,6 @@ void AJHS_C_Player::BeginPlay()
 void AJHS_C_Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -106,6 +116,9 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Move);
 		//Player Look BindAction
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
+
+		//Player Run BindAction
+		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_Run);
 	}
 }
 
@@ -132,6 +145,16 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 
 void AJHS_C_Player::Player_Run()
 {
+	//Toggle Input
+	bIsPlayerRun = !bIsPlayerRun;
 
-
+	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+	{
+		MoveComp->SetJog();
+	}
+	
+	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+	{
+		MoveComp->SetWalk();
+	}
 }

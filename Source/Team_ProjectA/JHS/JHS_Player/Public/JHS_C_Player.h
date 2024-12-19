@@ -34,6 +34,10 @@ public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class UCameraComponent* CameraComp;
 
+public://Actor Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UJHS_C_MoveComponent* MoveComp;
+
 public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputMappingContext* IMC_Player;
@@ -69,4 +73,6 @@ private:
 private:
 	FVector2D MovementInput = FVector2D::ZeroVector;
 	FVector2D LookInput = FVector2D::ZeroVector;
+
+	bool bIsPlayerRun = false;
 };

@@ -26,11 +26,13 @@ void JHS_Global::Print(int32 InValue, int32 InKey, FColor InColor, float InDurat
 void JHS_Global::Print(float InValue, int32 InKey, FColor InColor, float InDuration)
 {
 	GEngine->AddOnScreenDebugMessage(InKey, InDuration, InColor, FString::SanitizeFloat(InValue));
+	PRINT_LINE();
 }
 
 void JHS_Global::Print(const FString& InValue, int32 InKey, FColor InColor, float InDuration)
 {
 	GEngine->AddOnScreenDebugMessage(InKey, InDuration, InColor, InValue);
+
 }
 
 void JHS_Global::PrintLineFunction(const FString& InFile, const FString& InFunc, int32 InLine, FColor InColor, int32 InKey, float InDuration)
@@ -39,6 +41,5 @@ void JHS_Global::PrintLineFunction(const FString& InFile, const FString& InFunc,
 
 	FString str = FString::Printf(TEXT("File : %s \nFunction : %s\nLine : %d"), *FileName, *InFunc, InLine);
 
-	
 	GEngine->AddOnScreenDebugMessage(InKey, InDuration, InColor, str);
 }
