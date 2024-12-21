@@ -90,7 +90,6 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
-
 }
 
 void AJHS_C_Player::Tick(float DeltaTime)
@@ -114,11 +113,14 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	{
 		//Player Move BindAction
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Move);
+		//Player Move KeyUp BindAction
+		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
+
 		//Player Look BindAction
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
 
 		//Player Run BindAction
-		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_Run);
+		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
 	}
 }
 
@@ -143,7 +145,7 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 	AddControllerPitchInput(LookInput.Y);
 }
 
-void AJHS_C_Player::Player_Run()
+void AJHS_C_Player::Player_OnRun()
 {
 	//Toggle Input
 	bIsPlayerRun = !bIsPlayerRun;
@@ -156,5 +158,33 @@ void AJHS_C_Player::Player_Run()
 	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
 	{
 		MoveComp->SetWalk();
+	}
+}
+
+void AJHS_C_Player::Player_OffRun()
+{
+	PlayerBrakingWalkingValue();
+
+	MoveComp->SetWalk();
+
+	bIsPlayerRun = false;
+
+	GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
+}
+
+void AJHS_C_Player::PlayerBrakingWalkingValue()
+{
+	//Player Running
+	if (bIsPlayerRun == true)
+	{
+		GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
+		GetCharacterMovement()->GroundFriction = 1.0f;
+	}
+
+	//Player Walking
+	if (bIsPlayerRun == false)
+	{
+		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+		GetCharacterMovement()->GroundFriction = 8.0f;
 	}
 }

@@ -16,6 +16,8 @@ public:
 
 	FORCEINLINE FVector2D GetMovementInput() { return MovementInput; }
 
+	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
@@ -68,11 +70,16 @@ public:
 private:
 	void Player_Move(const FInputActionValue& InValue);
 	void Player_Look(const FInputActionValue& InValue);
-	void Player_Run();
+	void Player_OnRun();
+	void Player_OffRun();
+
+	void PlayerBrakingWalkingValue();
 
 private:
 	FVector2D MovementInput = FVector2D::ZeroVector;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
+
+	FTimerHandle BrakingWalkingHandle;
 };
