@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BehaviorTree.h"
+#include "Team_ProjectA/SOS/public/SOS_Hide_Collision_Comp.h"
 #include "GameFramework/Character.h"
 #include "SOS_BOSS_Character.generated.h"
 
@@ -34,6 +35,13 @@ public:
 	// Behavior Tree Function
 	UBehaviorTree* GetBehaviorTree();
 
+protected:
+	// RightHandCollision 선언
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_Collision_Comp* RightHandCollision;
 
+	// LeftHandCollision 선언
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_Collision_Comp* LeftHandCollision;
 };
 
