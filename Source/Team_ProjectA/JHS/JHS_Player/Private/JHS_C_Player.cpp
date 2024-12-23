@@ -5,10 +5,13 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 
+//Input
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
 
+//Custom Component
+#include "JHS_C_MoveComponent.h"
 
 AJHS_C_Player::AJHS_C_Player()
 {
@@ -20,6 +23,11 @@ AJHS_C_Player::AJHS_C_Player()
 		CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	}
 	
+	//Create Actor Component
+	{
+		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
+	}
+
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
@@ -28,12 +36,14 @@ AJHS_C_Player::AJHS_C_Player()
 
 	//Defatul Setting
 	{
+		//Mesh Setting
 		GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 		GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 		bUseControllerRotationYaw = false;
 		bUseControllerRotationPitch = false;
 		bUseControllerRotationRoll = false;
 
+		//SpringArmComp Setting
 		SpringArmComp->SetRelativeLocation(FVector(0, 0, 170));
 		SpringArmComp->SetRelativeRotation(FRotator(0, 90, 0));
 		SpringArmComp->TargetArmLength = 400.0f;
@@ -41,13 +51,17 @@ AJHS_C_Player::AJHS_C_Player()
 		SpringArmComp->bEnableCameraLag = false;
 		SpringArmComp->bDoCollisionTest = false;
 
+		//CameraComp Setting
 		CameraComp->bUsePawnControlRotation = false;
 
+		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
-		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+
+		//MaxWalkSpeed Setting
+		MoveComp->SetWalk();
 	}
 
 	//Default Object Setting
@@ -79,13 +93,11 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
-
 }
 
 void AJHS_C_Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -104,8 +116,14 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	{
 		//Player Move BindAction
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Move);
+		//Player Move KeyUp BindAction
+		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
+
 		//Player Look BindAction
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
+
+		//Player Run BindAction
+		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
 	}
 }
 
@@ -130,8 +148,46 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 	AddControllerPitchInput(LookInput.Y);
 }
 
-void AJHS_C_Player::Player_Run()
+void AJHS_C_Player::Player_OnRun()
 {
+	//Toggle Input
+	bIsPlayerRun = !bIsPlayerRun;
 
+	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+	{
+		MoveComp->SetJog();
+	}
+	
+	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+	{
+		MoveComp->SetWalk();
+	}
+}
 
+void AJHS_C_Player::Player_OffRun()
+{
+	PlayerBrakingWalkingValue();
+
+	MoveComp->SetWalk();
+
+	bIsPlayerRun = false;
+
+	GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
+}
+
+void AJHS_C_Player::PlayerBrakingWalkingValue()
+{
+	//Player Running
+	if (bIsPlayerRun == true)
+	{
+		GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
+		GetCharacterMovement()->GroundFriction = 1.0f;
+	}
+
+	//Player Walking
+	if (bIsPlayerRun == false)
+	{
+		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+		GetCharacterMovement()->GroundFriction = 8.0f;
+	}
 }

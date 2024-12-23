@@ -17,7 +17,7 @@ protected:
 	float Direction = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
-	FVector2D PlayerMovementInput = FVector2D::ZeroVector;
+	FVector2D PlayerMovementInput;
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
@@ -38,13 +38,17 @@ public:
 
 private:
 	void PlayerSpeed();
+	void PlayerRun();
 	void PlayerDirection();
+	void PlayerMovementInputVector();
 
 	void ShouldMove();
 	void Falling();
 
 private:
 	FRotator PrevRotation;
+	class UCharacterMovementComponent* MovementComp;
+	
 
 
 };

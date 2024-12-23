@@ -12,6 +12,8 @@ void UJHS_C_Anim::NativeBeginPlay()
 
 	OwnerCharacter = Cast<AJHS_C_Player>(TryGetPawnOwner());
 	CheckNull(OwnerCharacter);
+
+	MovementComp = OwnerCharacter->GetCharacterMovement();
 }
 
 void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
@@ -20,7 +22,9 @@ void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
 	CheckNull(OwnerCharacter);
 
 	PlayerSpeed();
+	PlayerRun();
 	PlayerDirection();
+	PlayerMovementInputVector();
 
 	ShouldMove();
 	Falling();
@@ -29,6 +33,11 @@ void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
 void UJHS_C_Anim::PlayerSpeed()
 {
 	Speed = OwnerCharacter->GetVelocity().Size2D();
+}
+
+void UJHS_C_Anim::PlayerRun()
+{
+	bPlayerRun = OwnerCharacter->GetPlayerRun();
 }
 
 void UJHS_C_Anim::PlayerDirection()
@@ -42,9 +51,14 @@ void UJHS_C_Anim::PlayerDirection()
 	Direction = PrevRotation.Yaw;
 }
 
+void UJHS_C_Anim::PlayerMovementInputVector()
+{
+	PlayerMovementInput = OwnerCharacter->GetMovementInput();
+}
+
 void UJHS_C_Anim::ShouldMove()
 {
-	FVector accel = OwnerCharacter->GetCharacterMovement()->GetCurrentAcceleration();
+	FVector accel = MovementComp->GetCurrentAcceleration();
 
 	if (Speed > 3.0f && accel != FVector::ZeroVector)
 		bShouldMove = true;
@@ -54,5 +68,5 @@ void UJHS_C_Anim::ShouldMove()
 
 void UJHS_C_Anim::Falling()
 {
-	bIsFalling = OwnerCharacter->GetCharacterMovement()->IsFalling();
+	bIsFalling = MovementComp->IsFalling();
 }
