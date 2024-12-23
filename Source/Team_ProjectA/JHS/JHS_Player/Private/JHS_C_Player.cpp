@@ -13,7 +13,6 @@
 //Custom Component
 #include "JHS_C_MoveComponent.h"
 
-
 AJHS_C_Player::AJHS_C_Player()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -37,12 +36,14 @@ AJHS_C_Player::AJHS_C_Player()
 
 	//Defatul Setting
 	{
+		//Mesh Setting
 		GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 		GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 		bUseControllerRotationYaw = false;
 		bUseControllerRotationPitch = false;
 		bUseControllerRotationRoll = false;
 
+		//SpringArmComp Setting
 		SpringArmComp->SetRelativeLocation(FVector(0, 0, 170));
 		SpringArmComp->SetRelativeRotation(FRotator(0, 90, 0));
 		SpringArmComp->TargetArmLength = 400.0f;
@@ -50,8 +51,10 @@ AJHS_C_Player::AJHS_C_Player()
 		SpringArmComp->bEnableCameraLag = false;
 		SpringArmComp->bDoCollisionTest = false;
 
+		//CameraComp Setting
 		CameraComp->bUsePawnControlRotation = false;
 
+		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
