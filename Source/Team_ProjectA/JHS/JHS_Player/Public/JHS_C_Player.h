@@ -3,7 +3,12 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
+
+#include "JHS_C_WeaponComponent.h"
+ 
 #include "JHS_C_Player.generated.h"
+
+DECLARE_MULTICAST_DELEGATE_OneParam(FInputBindDelegate, class UEnhancedInputComponent*);
 
 UCLASS()
 class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
@@ -13,14 +18,17 @@ class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
 public:
 	FORCEINLINE class USpringArmComponent* GetSpringArmComp() const { return SpringArmComp; }
 	FORCEINLINE class UCameraComponent* GetCameraComp() const { return CameraComp; }
-
 	FORCEINLINE FVector2D GetMovementInput() { return MovementInput; }
-
 	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
+	FORCEINLINE EWeaponType GetPlayerWeaponType() { return WeaponType; }
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
+	EWeaponType WeaponType = EWeaponType::Max;
 
 public: //Max/Current Health
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
@@ -39,6 +47,12 @@ public: //Component
 public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_MoveComponent* MoveComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UJHS_C_StateComponent* StateComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UJHS_C_WeaponComponent* WeaponComp;
 
 public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
@@ -74,6 +88,9 @@ private:
 	void Player_OffRun();
 
 	void PlayerBrakingWalkingValue();
+
+public:
+	FInputBindDelegate OnInputBindDelegate;
 
 private:
 	FVector2D MovementInput = FVector2D::ZeroVector;

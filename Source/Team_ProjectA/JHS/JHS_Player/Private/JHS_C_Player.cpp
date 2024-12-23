@@ -12,6 +12,8 @@
 
 //Custom Component
 #include "JHS_C_MoveComponent.h"
+#include "JHS_C_StateComponent.h"
+#include "JHS_C_WeaponComponent.h"
 
 AJHS_C_Player::AJHS_C_Player()
 {
@@ -26,6 +28,8 @@ AJHS_C_Player::AJHS_C_Player()
 	//Create Actor Component
 	{
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
+		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
+		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 	}
 
 	//Attach Component
@@ -56,7 +60,7 @@ AJHS_C_Player::AJHS_C_Player()
 
 		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
-		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
+		GetCharacterMovement()->RotationRate = FRotator(0.0, 400.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
@@ -124,6 +128,10 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 		//Player Run BindAction
 		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
+
+		//WeaponComponent InputAction Delegate Bind
+		if (OnInputBindDelegate.IsBound())
+			OnInputBindDelegate.Broadcast(EnhancedInputComp);
 	}
 }
 
