@@ -14,6 +14,11 @@ void UJHS_C_StateComponent::SetIdleMode()
 	ChangeType(EStateType::Idle);
 }
 
+void UJHS_C_StateComponent::SetEquipMode()
+{
+	ChangeType(EStateType::Equip);
+}
+
 void UJHS_C_StateComponent::SetHittedMode()
 {
 	ChangeType(EStateType::Hitted);

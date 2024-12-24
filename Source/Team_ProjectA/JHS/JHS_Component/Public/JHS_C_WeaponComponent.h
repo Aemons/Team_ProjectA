@@ -4,7 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "JHS_C_WeaponComponent.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EWeaponType : uint8
 {
 	Katana, Spear, Max//юс╫ц
@@ -24,6 +24,9 @@ public:
 	FORCEINLINE bool IsKatanaMode() { return Type == EWeaponType::Katana; }
 
 public://InputAction Value
+	UPROPERTY(EditAnywhere, Category = "Weapon Input")
+	class UInputAction* IA_Weapon_Equip;
+
 	UPROPERTY(EditAnywhere, Category = "Weapon Input")
 	class UInputAction* IA_Weapon_AttackAction;
 
@@ -49,10 +52,12 @@ private:
 
 public://Weapon Class
 	class AJHS_C_Attachment* GetAttachment();
-
+	class UJHS_C_Equipment* GetEquipment();
 
 public://SetMode Function
-	void SetUnamredMode();
+	void SetUnarmedMode();
+	
+	UFUNCTION(BlueprintCallable)
 	void SetKatanaMode();
 
 	void AttackAction();
@@ -60,7 +65,6 @@ public://SetMode Function
 private:
 	//Current State Check Function
 	bool IsIdleMode();
-
 	void SetMode(EWeaponType InType);
 	void ChangeType(EWeaponType InType);
 
@@ -72,6 +76,6 @@ public://Delegate Value
 private:
 	bool bHasWeapon = false;
 
-	class ACharacter* OwnerCharacter = nullptr;
+	class ACharacter* OwnerCharacter;
 	EWeaponType Type = EWeaponType::Max;
 };

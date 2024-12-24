@@ -9,7 +9,7 @@
 UENUM()
 enum class EStateType : uint8
 {
-	Idle = 0, Hitted, Dead, Action, Dodge, Max
+	Idle = 0, Equip, Hitted, Dead, Action, Dodge, Max
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FStateTypeChanged, EStateType, InPrevType, EStateType, InNewType);
@@ -21,6 +21,7 @@ class TEAM_PROJECTA_API UJHS_C_StateComponent : public UActorComponent
 
 public:
 	FORCEINLINE bool IsIdleMode() { return Type == EStateType::Idle; }
+	FORCEINLINE bool IsEquipMode() { return Type == EStateType::Equip; }
 	FORCEINLINE bool IsHittedMode() { return Type == EStateType::Hitted; }
 	FORCEINLINE bool IsDeadMode() { return Type == EStateType::Dead; }
 	FORCEINLINE bool IsActionMode() { return Type == EStateType::Action; }
@@ -37,6 +38,7 @@ protected:
 
 public://State Mode Function
 	void SetIdleMode();
+	void SetEquipMode();
 	void SetHittedMode();
 	void SetDeadMode();
 	void SetActionMode();

@@ -30,13 +30,12 @@ private://Weapon Class Default Data Setting
 	UPROPERTY(EditAnywhere)
 	TArray<FAttackActionData> AttackActionData;
 
-
 private:
 	UPROPERTY()
-	class UJHS_C_Equipment* Equipment;
+	class AJHS_C_Attachment* Attachment;
 
 	UPROPERTY()
-	class AJHS_C_Attachment* Attachment;
+	class UJHS_C_Equipment* Equipment;
 
 public:
 	UJHS_C_WeaponDataAsset();

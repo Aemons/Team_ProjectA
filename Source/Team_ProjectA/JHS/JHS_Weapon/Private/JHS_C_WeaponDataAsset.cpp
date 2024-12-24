@@ -7,6 +7,7 @@
 #include "JHS_C_Attachment.h"
 #include "JHS_C_Equipment.h"
 
+
 UJHS_C_WeaponDataAsset::UJHS_C_WeaponDataAsset()
 {
 	AttachmentClass = AJHS_C_Attachment::StaticClass();
@@ -27,6 +28,13 @@ void UJHS_C_WeaponDataAsset::BeginPlay(ACharacter* InOwner)
 	{
 		Equipment = NewObject<UJHS_C_Equipment>(this, EquipmentClass);
 		Equipment->BeginPlay(InOwner, EquipmentData);
+
+		if (!!Attachment)
+		{
+			Equipment->OnEquipmentBeginEquip.AddDynamic(Attachment, &AJHS_C_Attachment::OnBeginEquip);
+			Equipment->OnEquipmentEndEquip.AddDynamic(Attachment, &AJHS_C_Attachment::OnEndEquip);
+			Equipment->OnEquipmentUnequip.AddDynamic(Attachment, &AJHS_C_Attachment::OnUnequip);
+		}
 
 		
 	}

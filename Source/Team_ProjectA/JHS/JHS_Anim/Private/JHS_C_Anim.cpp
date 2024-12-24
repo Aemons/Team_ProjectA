@@ -4,6 +4,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 
+#include "JHS_C_MoveComponent.h"
+#include "JHS_C_WeaponComponent.h"
+
 #include "JHS_C_Player.h"
 
 void UJHS_C_Anim::NativeBeginPlay()
@@ -14,6 +17,10 @@ void UJHS_C_Anim::NativeBeginPlay()
 	CheckNull(OwnerCharacter);
 
 	MovementComp = OwnerCharacter->GetCharacterMovement();
+	WeaponComp = Cast<UJHS_C_WeaponComponent>(OwnerCharacter->GetComponentByClass(UJHS_C_WeaponComponent::StaticClass()));
+
+	if (!!WeaponComp)
+		WeaponComp->OnWeaponTypeChanged.AddDynamic(this, &UJHS_C_Anim::OnWeaponTypeChanged);
 }
 
 void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
@@ -21,13 +28,20 @@ void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
 	Super::NativeUpdateAnimation(DeltaSeconds);
 	CheckNull(OwnerCharacter);
 
+	//Player Data Function
 	PlayerSpeed();
-	PlayerRun();
 	PlayerDirection();
 	PlayerMovementInputVector();
 
+	//Player Move State Function
+	PlayerRun();
 	ShouldMove();
 	Falling();
+}
+
+void UJHS_C_Anim::OnWeaponTypeChanged(EWeaponType InPrevType, EWeaponType InNewType)
+{
+	WeaponType = InNewType;
 }
 
 void UJHS_C_Anim::PlayerSpeed()

@@ -6,7 +6,6 @@
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_MoveComponent.h"
 
-
 void UJHS_C_Equipment::BeginPlay(ACharacter* InOwner, FEquipmentData& InData)
 {
 	OwnerChaeacter = InOwner;
@@ -20,6 +19,8 @@ void UJHS_C_Equipment::BeginPlay(ACharacter* InOwner, FEquipmentData& InData)
 
 void UJHS_C_Equipment::Equip()
 {
+	StateComp->SetEquipMode();
+
 	if (OnEquipmentEquip.IsBound())
 		OnEquipmentEquip.Broadcast();
 	

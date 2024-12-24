@@ -2,6 +2,9 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+
+#include "JHS_C_WeaponComponent.h"
+
 #include "JHS_C_Anim.generated.h"
 
 UCLASS()
@@ -19,6 +22,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
 	FVector2D PlayerMovementInput;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
+	EWeaponType WeaponType = EWeaponType::Max;
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
 	bool bShouldMove;
@@ -32,9 +38,16 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
 	class AJHS_C_Player* OwnerCharacter;
 
+//Default Function
+//////////////////////////////////////////////////////////////////////
 public:
 	void NativeBeginPlay() override;
 	void NativeUpdateAnimation(float DeltaSeconds) override;
+//////////////////////////////////////////////////////////////////////
+
+private:
+	UFUNCTION()
+	void OnWeaponTypeChanged(EWeaponType InPrevType, EWeaponType InNewType);
 
 private:
 	void PlayerSpeed();
@@ -48,6 +61,7 @@ private:
 private:
 	FRotator PrevRotation;
 	class UCharacterMovementComponent* MovementComp;
+	class UJHS_C_WeaponComponent* WeaponComp;
 	
 
 

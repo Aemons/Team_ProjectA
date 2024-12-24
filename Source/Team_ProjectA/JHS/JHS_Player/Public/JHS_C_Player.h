@@ -67,6 +67,7 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Run;
 
+
 //Defult Function
 ////////////////////////////////////////////////////////////////////////////////////
 public:

@@ -18,7 +18,8 @@ public class Team_ProjectA : ModuleRules
             "Team_ProjectA/JHS/JHS_Anim/Public",
             "Team_ProjectA/JHS/JHS_Player/Public",
             "Team_ProjectA/JHS/JHS_Component/Public",
-            "Team_ProjectA/JHS/JHS_Weapon/Public"
+            "Team_ProjectA/JHS/JHS_Weapon/Public",
+            "Team_ProjectA/JHS/JHS_Notify/Public"
         });
  
         PrivateIncludePaths.AddRange(new string[] 
@@ -27,7 +28,8 @@ public class Team_ProjectA : ModuleRules
             "Team_ProjectA/JHS/JHS_Player/Private",
             "Team_ProjectA/JHS/JHS_Anim/Private",
             "Team_ProjectA/JHS/JHS_Component/Private",
-            "Team_ProjectA/JHS/JHS_Weapon/Private"
+            "Team_ProjectA/JHS/JHS_Weapon/Private",
+            "Team_ProjectA/JHS/JHS_Notify/Private"
         });
 		////////////////////////////////////////////////////////////////////////////////////////////
 

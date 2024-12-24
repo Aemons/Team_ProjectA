@@ -35,8 +35,13 @@ public:
 ///////////////////////////////////////////////////////////////////////
 
 public:
+	UFUNCTION(BlueprintCallable)
 	void SetWalk();
+
+	UFUNCTION(BlueprintCallable)
 	void SetJog();
+
+	UFUNCTION(BlueprintCallable)
 	void SetSprint();
 
 	void SetWalkSpeed(EWalkSpeedType InType);
@@ -46,6 +51,7 @@ public:
 	void DisableControlRotation();
 
 private:
-	class AJHS_C_Player* OwnerCharacter;
+	//class AJHS_C_Player* OwnerCharacter;
+	class ACharacter* OwnerCharacter;
 	EWalkSpeedType Type;
 };

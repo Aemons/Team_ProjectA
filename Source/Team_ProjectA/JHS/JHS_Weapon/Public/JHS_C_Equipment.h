@@ -35,7 +35,7 @@ public:
 	void Begin_Equip();
 	void End_Equip();
 
-public:
+public://Delegate Value
 	FEquipmentEquip OnEquipmentEquip;
 	FEquipmentBeginEquip OnEquipmentBeginEquip;
 	FEquipmentEndEquip OnEquipmentEndEquip;
