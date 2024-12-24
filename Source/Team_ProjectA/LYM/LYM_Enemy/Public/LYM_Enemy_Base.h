@@ -26,7 +26,9 @@ public:
 	UAnimMontage* RangeAttack_1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montage")
 	UAnimMontage* DashAttack;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Location")
+	FVector CLocation;
+	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
 	float InPlayRate = 0.5f;

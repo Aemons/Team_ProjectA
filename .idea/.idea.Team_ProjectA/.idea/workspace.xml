@@ -14,26 +14,23 @@
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BB_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BB_Enemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_AIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_AIController.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Enemy.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Context_AttackTarget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Context_AttackTarget.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_DistanceCheck.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_DistanceCheck.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_ComboAttack1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_ComboAttack1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_Launch.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_Launch.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_StartAnimCheck.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_StartAnimCheck.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_RangeAttack_0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_RangeAttack_0.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_UpdateEnemySpeed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_UpdateEnemySpeed.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_Interface/LYM_BP_Combat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_Interface/LYM_BP_Combat.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Enums/LYM_E_Montageaction.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Enums/LYM_E_Montageaction.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AnimNotify/LYM_ANS_RangeAttack_0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AnimNotify/LYM_ANS_RangeAttack_0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AnimNotify/LYM_ANS_RangeAttack_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AnimNotify/LYM_ANS_RangeAttack_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Ability_RipNToss_Toss_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Ability_RipNToss_Toss_Montage.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/QS/VHQF8JWOATZI5V3ZVY5YTM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/QS/VHQF8JWOATZI5V3ZVY5YTM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/HF/9H7TKAXH9DD8KI3TIXGI2I.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/HF/9H7TKAXH9DD8KI3TIXGI2I.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/9/MO/72II2GSLK9VS0ULW9SACWH.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/9/MO/72II2GSLK9VS0ULW9SACWH.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/WU/NB37RT5Q32Z8MJWD8BD2SO.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/K9/K7WOLF0T8VXF8KN0WZNHPT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/K9/K7WOLF0T8VXF8KN0WZNHPT.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/C/0I/VIQQWOEJKSKV1EK1XGX3EY.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/LYM/LYM_Enemy/Public/LYM_Enemy_Base.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/LYM/LYM_Enemy/Public/LYM_Enemy_Base.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -510,6 +507,7 @@
       <workItem from="1734571349254" duration="4868000" />
       <workItem from="1734657690055" duration="3416000" />
       <workItem from="1734920693043" duration="4678000" />
+      <workItem from="1735004211781" duration="1921000" />
     </task>
     <servers />
   </component>
