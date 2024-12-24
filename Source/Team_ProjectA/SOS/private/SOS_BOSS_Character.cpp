@@ -2,12 +2,9 @@
 
 
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
-#include "Team_ProjectA/SOS/public/SOS_Hide_Collision_Comp.h"
-
-#include "ClassViewerModule.h"
 #include "Components/SphereComponent.h"
+#include "ClassViewerModule.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "Team_ProjectA/SOS/public/SOS_Hide_Collision_Comp.h"
 
 // Sets default values
 ASOS_BOSS_Character::ASOS_BOSS_Character()
@@ -29,11 +26,13 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 
 	
 	
-	// 오른손 콜리전 컴포넌트 생성
-	RightHandCollision = CreateDefaultSubobject<USOS_Hide_Collision_Comp>(TEXT("RightHandCollision"));
+	// 오른손 구체 컴포넌트 생성
+	RightHandCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("RightHandCollision"));
+	RightHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 
-	// 왼손 콜리전 컴포넌트 생성
-	LeftHandCollision = CreateDefaultSubobject<USOS_Hide_Collision_Comp>(TEXT("LeftHandCollision"));
+	// 왼손 구체 컴포넌트 생성
+	LeftHandCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("LeftHandCollision"));
+	LeftHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 	
 	
 }
@@ -45,16 +44,15 @@ void ASOS_BOSS_Character::BeginPlay()
 
 	
 	
-	if (RightHandCollision && GetMesh())
+	if (GetMesh())
 	{
-		// RightHandCollision의 내부 콜리전 컴포넌트를 본에 부착
-		RightHandCollision->AttachToBone(GetMesh(), FName("Hideoplast_-R-Finger01"));
-	}
+		// 본에 구체 컴포넌트 부착
+		RightHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-R-Finger01"));
+		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01"));
 
-	if (LeftHandCollision && GetMesh())
-	{
-		// LeftHandCollision의 내부 콜리전 컴포넌트를 본에 부착
-		LeftHandCollision->AttachToBone(GetMesh(), FName("Hideoplast_-L-Finger01"));
+		// 충돌 활성화
+		RightHandCollision->EnableCollision();
+		LeftHandCollision->EnableCollision();
 	}
 	
 }

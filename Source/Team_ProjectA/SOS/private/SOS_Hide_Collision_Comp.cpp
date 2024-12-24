@@ -28,6 +28,9 @@ USOS_Hide_Collision_Comp::USOS_Hide_Collision_Comp()
 void USOS_Hide_Collision_Comp::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
+	
 }
 
 
@@ -44,8 +47,9 @@ void USOS_Hide_Collision_Comp::AttachToBone(USkeletalMeshComponent* Mesh, FName 
 	// 본에 부착
 	if (CollisionSphere && Mesh)
 	{
+		// SnapToTargetIncludingScale: 본의 위치, 회전, 스케일을 따라감
 		CollisionSphere->AttachToComponent(Mesh, FAttachmentTransformRules::SnapToTargetIncludingScale, BoneName);
-		UE_LOG(LogTemp, Warning, TEXT("Attach Bone " ));
+		UE_LOG(LogTemp, Warning, TEXT("Attached to Bone: %s"), *BoneName.ToString());
 	}
 	
 }
