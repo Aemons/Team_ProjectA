@@ -8,9 +8,20 @@ public class Team_ProjectA : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
-
-		//JHS Public/Private °æ·Î Ãß°¡
+		PublicDependencyModuleNames.AddRange(new string[]
+        	{
+        		"Core",
+        		"CoreUObject",
+        		"Engine",
+        		"InputCore",
+        		"EnhancedInput",
+        		"HeadMountedDisplay",
+        		"AIModule",
+        		"GameplayTasks",
+        		"NavigationSystem"
+        	});
+		
+		//JHS Public/Private ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		////////////////////////////////////////////////////////////////////////////////////////////
         PublicIncludePaths.AddRange(new string[] 
         {
