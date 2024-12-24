@@ -16,7 +16,7 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// 스켈레탈 메쉬 초기화
-	ConstructorHelpers::FObjectFinder<USkeletalMesh> InitMesh(TEXT("/Script/Engine.SkeletalMesh'/Game/00_Project/00_Asset/Hideoplast/Meshes/SK_Hideoplast.SK_Hideoplast'"));
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> InitMesh(TEXT("/Script/Engine.SkeletalMesh'/Game/00_Project/00_Asset/Enemy/Hideoplast/Meshes/SK_Hideoplast.SK_Hideoplast'"));
 
 	if(InitMesh.Succeeded())
 	{
