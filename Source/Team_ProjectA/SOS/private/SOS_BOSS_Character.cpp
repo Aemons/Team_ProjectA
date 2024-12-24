@@ -47,8 +47,8 @@ void ASOS_BOSS_Character::BeginPlay()
 	if (GetMesh())
 	{
 		// 본에 구체 컴포넌트 부착
-		RightHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-R-Finger01"));
-		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01"));
+		RightHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-R-Finger01Socket"));
+		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01Socket"));
 
 		// 충돌 활성화
 		RightHandCollision->EnableCollision();
