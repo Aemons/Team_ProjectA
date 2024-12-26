@@ -32,6 +32,8 @@ public:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
 	float InPlayRate = 0.5f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
+	float InPlayRate_3 = 0.3f;
 	
 	//////////////////////// Function //////////////////////////
 public:
