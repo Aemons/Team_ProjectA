@@ -17,7 +17,7 @@ USOS_Hide_SphereComp::USOS_Hide_SphereComp()
 	OnComponentBeginOverlap.AddDynamic(this, &USOS_Hide_SphereComp::OnOverlapBegin);
 
 	// 초기에는 충돌 비활성화 (필요 시 활성화)
-	SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	UPrimitiveComponent::SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 // 본(Bone)에 부착

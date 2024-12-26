@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include "ClassViewerModule.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Team_ProjectA/SOS/public/SOS_Hide_Box_Comp.h"
 
 // Sets default values
 ASOS_BOSS_Character::ASOS_BOSS_Character()
@@ -33,7 +34,7 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	// 왼손 구체 컴포넌트 생성
 	LeftHandCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("LeftHandCollision"));
 	LeftHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
-	
+
 	
 }
 
