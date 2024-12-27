@@ -13,12 +13,17 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_DistanceCheck.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTS_DistanceCheck.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C_Combo1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C_Combo1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/LYM/LYM_Enemy/Public/LYM_Enemy_Base.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/LYM/LYM_Enemy/Public/LYM_Enemy_Base.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_RangeAttack_0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_RangeAttack_0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_UpdateEnemySpeed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_UpdateEnemySpeed.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/HF/YFYBQ72OYLHJQS0TSSXGBV.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/HF/9H7TKAXH9DD8KI3TIXGI2I.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/HF/9H7TKAXH9DD8KI3TIXGI2I.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -496,7 +501,9 @@
       <workItem from="1734657690055" duration="3416000" />
       <workItem from="1734920693043" duration="4678000" />
       <workItem from="1735004211781" duration="1921000" />
-      <workItem from="1735185117102" duration="4380000" />
+      <workItem from="1735185117102" duration="5472000" />
+      <workItem from="1735262170326" duration="1681000" />
+      <workItem from="1735275058664" duration="801000" />
     </task>
     <servers />
   </component>
