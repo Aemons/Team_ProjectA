@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SOS_Hide_SphereComp.h"
+#include "Components/SphereComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
-#include "Team_ProjectA/SOS/public/SOS_Hide_Collision_Comp.h"
 #include "GameFramework/Character.h"
 #include "SOS_BOSS_Character.generated.h"
 
@@ -38,10 +39,10 @@ public:
 protected:
 	// RightHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
-	USOS_Hide_Collision_Comp* RightHandCollision;
+	USOS_Hide_SphereComp* RightHandCollision;
 
 	// LeftHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
-	USOS_Hide_Collision_Comp* LeftHandCollision;
+	USOS_Hide_SphereComp* LeftHandCollision;
 };
 

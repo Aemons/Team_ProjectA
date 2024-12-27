@@ -3,32 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "Components/SphereComponent.h"
-#include "SOS_Hide_Collision_Comp.generated.h"
+#include "SOS_Hide_SphereComp.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class TEAM_PROJECTA_API USOS_Hide_Collision_Comp : public UActorComponent
+/**
+ * 
+ */
+UCLASS()
+class TEAM_PROJECTA_API USOS_Hide_SphereComp : public USphereComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	USOS_Hide_Collision_Comp();
+	USOS_Hide_SphereComp();
 
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	// 콜리전 컴포넌트
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Collision")
-	USphereComponent* CollisionSphere;
-
+public:
+	
 	// 본에 부착
 	UFUNCTION(BlueprintCallable, Category="Collision")
 	void AttachToBone(USkeletalMeshComponent* Mesh, FName BoneName);
@@ -44,7 +33,5 @@ public:
 	// 콜리전 이벤트
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-
 
 };
