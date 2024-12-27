@@ -56,16 +56,15 @@ public://Weapon Class
 
 public://SetMode Function
 	void SetUnarmedMode();
-	
-	UFUNCTION(BlueprintCallable)
 	void SetKatanaMode();
 
 	void AttackAction();
 
+	UFUNCTION(BlueprintCallable)
+	void SetMode(EWeaponType InType);
 private:
 	//Current State Check Function
 	bool IsIdleMode();
-	void SetMode(EWeaponType InType);
 	void ChangeType(EWeaponType InType);
 
 	void PlayerWeaponType();

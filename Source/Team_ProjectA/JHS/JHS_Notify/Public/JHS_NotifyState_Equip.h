@@ -2,10 +2,11 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotifyState.h"
-#include "JHS_C_NotifyState_Equip.generated.h"
- 
+
+#include "JHS_NotifyState_Equip.generated.h"
+
 UCLASS()
-class TEAM_PROJECTA_API UJHS_C_NotifyState_Equip : public UAnimNotifyState
+class TEAM_PROJECTA_API UJHS_NotifyState_Equip : public UAnimNotifyState
 {
 	GENERATED_BODY()
 	

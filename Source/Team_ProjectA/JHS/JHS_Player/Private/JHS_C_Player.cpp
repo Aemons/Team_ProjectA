@@ -120,14 +120,14 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	{
 		//Player Move BindAction
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Move);
-		//Player Move KeyUp BindAction
-		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
 
 		//Player Look BindAction
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
 
 		//Player Run BindAction
 		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
+		//Player Move KeyUp BindAction
+		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
 
 		//WeaponComponent InputAction Delegate Bind
 		if (OnInputBindDelegate.IsBound())
@@ -161,14 +161,29 @@ void AJHS_C_Player::Player_OnRun()
 	//Toggle Input
 	bIsPlayerRun = !bIsPlayerRun;
 
-	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+	if (WeaponComp->GetHasWeapon() == false)
 	{
-		MoveComp->SetJog();
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+		{
+			MoveComp->SetJog();
+		}
+
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+		{
+			MoveComp->SetWalk();
+		}
 	}
-	
-	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+	else if (WeaponComp->GetHasWeapon() == true)
 	{
-		MoveComp->SetWalk();
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+		{
+			MoveComp->SetSprint();
+		}
+
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+		{
+			MoveComp->SetJog();
+		}
 	}
 }
 
@@ -176,7 +191,11 @@ void AJHS_C_Player::Player_OffRun()
 {
 	PlayerBrakingWalkingValue();
 
-	MoveComp->SetWalk();
+	if (WeaponComp->GetHasWeapon() == false)
+		MoveComp->SetWalk();
+	
+	if (WeaponComp->GetHasWeapon() == true)
+		MoveComp->SetJog();
 
 	bIsPlayerRun = false;
 
