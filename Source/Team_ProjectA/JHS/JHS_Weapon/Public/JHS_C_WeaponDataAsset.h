@@ -15,6 +15,7 @@ class TEAM_PROJECTA_API UJHS_C_WeaponDataAsset : public UDataAsset
 public:
 	FORCEINLINE class AJHS_C_Attachment* GetAttachment() { return Attachment; }
 	FORCEINLINE class UJHS_C_Equipment* GetEquipment() { return Equipment; }
+	FORCEINLINE class UJHS_C_MainAction* GetMainAction() { return MainAction; }
 
 private://Weapon Class
 	UPROPERTY(EditAnywhere)
@@ -23,12 +24,15 @@ private://Weapon Class
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UJHS_C_Equipment> EquipmentClass;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UJHS_C_MainAction> MainActionClass;
+
 private://Weapon Class Default Data Setting
 	UPROPERTY(EditAnywhere)
 	FEquipmentData EquipmentData;
 
 	UPROPERTY(EditAnywhere)
-	TArray<FAttackActionData> AttackActionData;
+	TArray<FMainActionData> MainActionData;
 
 private:
 	UPROPERTY()
@@ -36,6 +40,9 @@ private:
 
 	UPROPERTY()
 	class UJHS_C_Equipment* Equipment;
+
+	UPROPERTY()
+	class UJHS_C_MainAction* MainAction;
 
 public:
 	UJHS_C_WeaponDataAsset();

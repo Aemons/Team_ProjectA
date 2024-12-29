@@ -8,6 +8,7 @@
 #include "JHS_C_WeaponDataAsset.h"
 #include "JHS_C_Equipment.h"
 #include "JHS_C_Attachment.h"
+#include "JHS_C_MainAction.h"
 
 #include "JHS_C_Player.h"
 
@@ -60,6 +61,7 @@ void UJHS_C_WeaponComponent::SetupInputBinding(UEnhancedInputComponent* Input)
 		//Weapon Attack Input
 		Input->BindAction(IA_Weapon_AttackAction, ETriggerEvent::Started, this, &UJHS_C_WeaponComponent::AttackAction);
 
+		//Weapon Equip Test Input
 		Input->BindAction(IA_Weapon_Equip, ETriggerEvent::Started, this, &UJHS_C_WeaponComponent::SetKatanaMode);
 	}
 }
@@ -80,6 +82,14 @@ UJHS_C_Equipment* UJHS_C_WeaponComponent::GetEquipment()
 	return DataAssets[(int32)Type]->GetEquipment();
 }
 
+UJHS_C_MainAction* UJHS_C_WeaponComponent::GetMainAction()
+{
+	CheckTrueResult(IsUnarmedMode(), nullptr);
+	CheckFalseResult(!!DataAssets[(int32)Type], nullptr);
+
+	return DataAssets[(int32)Type]->GetMainAction();
+}
+
 void UJHS_C_WeaponComponent::SetUnarmedMode()
 {
 	CheckFalse(IsIdleMode());
@@ -98,7 +108,8 @@ void UJHS_C_WeaponComponent::SetKatanaMode()
 
 void UJHS_C_WeaponComponent::AttackAction()
 {
-
+	if (!!GetMainAction())
+		GetMainAction()->MainAction();
 }
 
 bool UJHS_C_WeaponComponent::IsIdleMode()

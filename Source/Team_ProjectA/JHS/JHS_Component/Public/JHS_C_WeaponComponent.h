@@ -53,6 +53,7 @@ private:
 public://Weapon Class
 	class AJHS_C_Attachment* GetAttachment();
 	class UJHS_C_Equipment* GetEquipment();
+	class UJHS_C_MainAction* GetMainAction();
 
 public://SetMode Function
 	void SetUnarmedMode();

@@ -22,7 +22,7 @@ public:
 
 
 USTRUCT()
-struct FAttackActionData
+struct FMainActionData
 {
 	GENERATED_BODY()
 

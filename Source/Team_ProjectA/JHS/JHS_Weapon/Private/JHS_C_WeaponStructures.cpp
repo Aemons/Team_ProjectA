@@ -3,8 +3,8 @@
 #include "GameFramework/Character.h"
 #include "Animation/AnimMontage.h"
 
-//FAttackActionData
-void FAttackActionData::AttackAction(ACharacter* InOwner)
+//FMainActionData
+void FMainActionData::AttackAction(ACharacter* InOwner)
 {
 	if (!!Montage)
 		InOwner->PlayAnimMontage(Montage, PlayRate);
