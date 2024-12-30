@@ -19,8 +19,10 @@ public:
 	FORCEINLINE class USpringArmComponent* GetSpringArmComp() const { return SpringArmComp; }
 	FORCEINLINE class UCameraComponent* GetCameraComp() const { return CameraComp; }
 	FORCEINLINE FVector2D GetMovementInput() { return MovementInput; }
-	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
 	FORCEINLINE EWeaponType GetPlayerWeaponType() { return WeaponType; }
+
+	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
+	FORCEINLINE bool GetPlayerDodge() { return bIsPlayerDodge; }
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
@@ -36,6 +38,10 @@ public: //Max/Current Health
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 	float CurrentHealth = 0.0f;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
+	float DodgeDelay = 0.8f;
 
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
@@ -67,6 +73,8 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Run;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
+	class UInputAction* IA_Player_Dodge;
 
 //Defult Function
 ////////////////////////////////////////////////////////////////////////////////////
@@ -87,17 +95,21 @@ private:
 	void Player_Look(const FInputActionValue& InValue);
 	void Player_OnRun();
 	void Player_OffRun();
+	void Player_OnDodge();
+	void Player_OffDodge();
 
 	void PlayerBrakingWalkingValue();
 
 public:
 	FInputBindDelegate OnInputBindDelegate;
 
-private:
+protected:
 	FVector2D MovementInput = FVector2D::ZeroVector;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
+	bool bIsPlayerDodge = false;
 
 	FTimerHandle BrakingWalkingHandle;
+	FTimerHandle OffDodgeHandle;
 };

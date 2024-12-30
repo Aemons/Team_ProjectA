@@ -20,7 +20,10 @@ protected:
 	float Direction = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
-	FVector2D PlayerMovementInput;
+	float ForwardInput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
+	float RightInput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
 	EWeaponType WeaponType = EWeaponType::Max;
@@ -31,6 +34,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
 	bool bPlayerRun;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
+	bool bPlayerDodge;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Check Value")
 	bool bIsFalling;
@@ -52,6 +58,7 @@ private:
 private:
 	void PlayerSpeed();
 	void PlayerRun();
+	void PlayerDodge();
 	void PlayerDirection();
 	void PlayerMovementInputVector();
 

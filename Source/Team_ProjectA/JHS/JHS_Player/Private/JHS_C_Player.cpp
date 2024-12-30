@@ -3,6 +3,7 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Camera/CameraComponent.h"
 
 //Input
@@ -129,6 +130,9 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		//Player Move KeyUp BindAction
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
 
+		//Player Dodge BindAction
+		EnhancedInputComp->BindAction(IA_Player_Dodge, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnDodge);
+
 		//WeaponComponent InputAction Delegate Bind
 		if (OnInputBindDelegate.IsBound())
 			OnInputBindDelegate.Broadcast(EnhancedInputComp);
@@ -137,12 +141,15 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 {
+	CheckTrue(bIsPlayerDodge);
+
 	MovementInput = InValue.Get<FVector2D>();
 
 	const FRotator Rotator = FRotator(0.0, GetControlRotation().Yaw, 0.0);
 
 	const FVector ForwardDirection = FQuat(Rotator).GetForwardVector();
 	const FVector RightDirection = FQuat(Rotator).GetRightVector();
+
 
 	AddMovementInput(ForwardDirection, MovementInput.Y);
 	AddMovementInput(RightDirection, MovementInput.X);
@@ -200,6 +207,30 @@ void AJHS_C_Player::Player_OffRun()
 	bIsPlayerRun = false;
 
 	GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
+}
+
+void AJHS_C_Player::Player_OnDodge()
+{
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f)
+	{
+		bIsPlayerDodge = true;
+		
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+		
+		GetWorld()->GetTimerManager().SetTimer(OffDodgeHandle, this, &AJHS_C_Player::Player_OffDodge, DodgeDelay, false);
+	}
+}
+
+void AJHS_C_Player::Player_OffDodge()
+{
+	if (WeaponComp->GetHasWeapon() == true)
+	{
+		bIsPlayerDodge = false;
+
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(true);
+	}
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

@@ -35,6 +35,7 @@ void UJHS_C_Anim::NativeUpdateAnimation(float DeltaSeconds)
 
 	//Player Move State Function
 	PlayerRun();
+	PlayerDodge();
 	ShouldMove();
 	Falling();
 }
@@ -54,6 +55,11 @@ void UJHS_C_Anim::PlayerRun()
 	bPlayerRun = OwnerCharacter->GetPlayerRun();
 }
 
+void UJHS_C_Anim::PlayerDodge()
+{
+	bPlayerDodge = OwnerCharacter->GetPlayerDodge();
+}
+
 void UJHS_C_Anim::PlayerDirection()
 {
 	FRotator rotator = OwnerCharacter->GetVelocity().ToOrientationRotator();
@@ -67,7 +73,8 @@ void UJHS_C_Anim::PlayerDirection()
 
 void UJHS_C_Anim::PlayerMovementInputVector()
 {
-	PlayerMovementInput = OwnerCharacter->GetMovementInput();
+	ForwardInput = OwnerCharacter->GetMovementInput().Y;
+	RightInput = OwnerCharacter->GetMovementInput().X;
 }
 
 void UJHS_C_Anim::ShouldMove()
