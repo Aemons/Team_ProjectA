@@ -57,6 +57,6 @@ void ASOS_AIController::Tick(float DeltaTime)
 		Blackboard->SetValueAsFloat(DistanceKey, Distance);
 
 		// 디버그 로그 출력
-		UE_LOG(LogTemp, Warning, TEXT("Distance between Target and Self: %f"), Distance);
+		//UE_LOG(LogTemp, Warning, TEXT("Distance between Target and Self: %f"), Distance);
 	}
 }
