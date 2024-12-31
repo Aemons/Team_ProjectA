@@ -30,5 +30,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
 	FBlackboardKeySelector TargetLocationKey;
 
+	/** 목표 위치를 저장할 Blackboard Key */
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	FBlackboardKeySelector ResultKey;
+	
+	
 	
 };

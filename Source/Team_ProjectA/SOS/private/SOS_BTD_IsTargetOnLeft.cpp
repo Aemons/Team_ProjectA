@@ -14,6 +14,7 @@ USOS_BTD_IsTargetOnLeft::USOS_BTD_IsTargetOnLeft()
 	//AIActorLocationKey.AddObjectFilter(this, GET_MEMBER_NAME_CHECKED(USOS_BTD_IsTargetOnLeft, AIActorLocationKey), AActor::StaticClass());
 	AIActorLocationKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(USOS_BTD_IsTargetOnLeft, AIActorLocationKey));
 	TargetLocationKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(USOS_BTD_IsTargetOnLeft, TargetLocationKey));
+	ResultKey.AddBoolFilter(this, GET_MEMBER_NAME_CHECKED(USOS_BTD_IsTargetOnLeft, ResultKey)); // 결과 저장용
 }
 
 bool USOS_BTD_IsTargetOnLeft::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
@@ -36,18 +37,18 @@ bool USOS_BTD_IsTargetOnLeft::CalculateRawConditionValue(UBehaviorTreeComponent&
 		return false;
 	}
 
-	APawn* AIPawn = AIController->GetPawn();
-	FVector ForwardVector = AIPawn->GetActorForwardVector();
-
-	// 목표의 방향 계산
+	FVector ForwardVector = AIController->GetPawn()->GetActorForwardVector();
 	FVector DirectionToTarget = (TargetLocation - AIActorLocation).GetSafeNormal();
-
-	// Cross Product의 Z 축 확인 (왼쪽/오른쪽 판별)
 	float CrossZ = FVector::CrossProduct(ForwardVector, DirectionToTarget).Z;
-	
+
+	// CrossProduct 결과로 왼쪽/오른쪽 판별
+	bool bIsOnLeft = CrossZ > 0.0f;
 	UE_LOG(LogTemp, Warning, TEXT("CrossZ: %f, IsLeft: %s"), CrossZ, (CrossZ > 0.0f ? TEXT("True") : TEXT("False")));
-	
+
+	// 결과를 Blackboard에 저장
+	BlackboardComp->SetValueAsBool(ResultKey.SelectedKeyName, bIsOnLeft);
+
 	// Z 축이 양수이면 왼쪽, 음수이면 오른쪽
-	return CrossZ > 0.0f;  // 왼쪽이면 true 반환
+	return CrossZ > 0.0f; // 왼쪽이면 true 반환
 	
 }
