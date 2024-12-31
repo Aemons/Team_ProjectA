@@ -12,22 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_AIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_AIController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_BackStep.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_BackStep.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Chase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Chase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_NormalAttack_0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_NormalAttack_0.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_NormalAttack_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_NormalAttack_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Context_AttackTarget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Context_AttackTarget.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/PA/M8RCSXD2CPXS58B6E113RM.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/K9/K7WOLF0T8VXF8KN0WZNHPT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/K9/K7WOLF0T8VXF8KN0WZNHPT.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/JT/36DOCXTBI3G9M5FYFWVMEG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/SY/Z4CTQ4LG3YV10EKPD0UE8Q.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_ComboAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_ComboAttack.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -509,6 +495,7 @@
       <workItem from="1735262170326" duration="1681000" />
       <workItem from="1735275058664" duration="1397000" />
       <workItem from="1735523219988" duration="1941000" />
+      <workItem from="1735621365334" duration="1134000" />
     </task>
     <servers />
   </component>
