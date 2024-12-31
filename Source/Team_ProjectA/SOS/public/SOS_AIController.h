@@ -19,5 +19,12 @@ public:
 
 protected:
 	virtual void OnPossess(APawn* InPawn) override;
-	
+
+	// 주기적으로 거리를 계산
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	// Blackboard에 저장할 거리의 키 이름
+	UPROPERTY(EditDefaultsOnly, Category = "Blackboard")
+	FName DistanceKey = TEXT("SOS_TargetDistance");
 };

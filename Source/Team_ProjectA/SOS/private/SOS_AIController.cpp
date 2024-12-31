@@ -2,8 +2,9 @@
 
 
 #include "Team_ProjectA/SOS/public/SOS_AIController.h"
-
+#include "BehaviorTree/BlackboardComponent.h"
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
+#include "GameFramework/Pawn.h"
 
 // 생성자
 ASOS_AIController::ASOS_AIController(FObjectInitializer const& ObjectInitializer)
@@ -37,4 +38,25 @@ void ASOS_AIController::OnPossess(APawn* InPawn)
 		
 	}
 	
+}
+
+void ASOS_AIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (Blackboard)
+	{
+		// TargetLocation과 SelfLocation 가져오기
+		FVector TargetLocation = Blackboard->GetValueAsVector(TEXT("SOS_TargetLocation"));
+		FVector SelfLocation = Blackboard->GetValueAsVector(TEXT("SOS_SelfLocation"));
+
+		// 거리 계산
+		float Distance = FVector::Dist(TargetLocation, SelfLocation);
+
+		// Blackboard에 거리 값 저장
+		Blackboard->SetValueAsFloat(DistanceKey, Distance);
+
+		// 디버그 로그 출력
+		UE_LOG(LogTemp, Warning, TEXT("Distance between Target and Self: %f"), Distance);
+	}
 }
