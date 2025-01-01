@@ -3,6 +3,7 @@
 
 #include "GameFramework/Character.h"
 #include "JHS_C_StateComponent.h"
+#include "JHS_C_MoveComponent.h"
 
 void UJHS_C_MainAction_Sword::MainAction()
 {
@@ -19,6 +20,7 @@ void UJHS_C_MainAction_Sword::MainAction()
 	CheckFalse(StateComp->IsIdleMode());
 	
 	Super::MainAction();
+	
 	MainActionDatas[Index].AttackAction(OwnerCharacter);
 }
 
@@ -56,6 +58,5 @@ void UJHS_C_MainAction_Sword::OnAttachmentEndCollision()
 	Super::OnAttachmentEndCollision();
 
 	//HitData에 대한 후처리 로직설정 가능 (있으면)
-
 	Hitted.Empty();
 }

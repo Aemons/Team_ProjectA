@@ -29,6 +29,10 @@ public:
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement Input")
+	FVector2D MovementInput;
+
+public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
 	EWeaponType WeaponType = EWeaponType::Max;
 
@@ -42,6 +46,12 @@ public: //Max/Current Health
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	float DodgeDelay = 0.8f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
+	float DodgeDistance = 2000.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
+	bool bIsPlayerDodge = false;
 
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
@@ -76,6 +86,8 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Dodge;
 
+	
+
 //Defult Function
 ////////////////////////////////////////////////////////////////////////////////////
 public:
@@ -104,11 +116,10 @@ public:
 	FInputBindDelegate OnInputBindDelegate;
 
 protected:
-	FVector2D MovementInput = FVector2D::ZeroVector;
+	
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
-	bool bIsPlayerDodge = false;
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;

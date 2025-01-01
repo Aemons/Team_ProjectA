@@ -24,7 +24,6 @@ void UJHS_C_Equipment::Equip()
 	if (OnEquipmentEquip.IsBound())
 		OnEquipmentEquip.Broadcast();
 	
-	
 	//Data에 몽타주가 있고, 현재 공격중이 아닐떄
 	if (!!Data.Montage && StateComp->IsActionMode() == false)
 		OwnerChaeacter->PlayAnimMontage(Data.Montage, Data.PlayRate);
@@ -34,6 +33,8 @@ void UJHS_C_Equipment::Equip()
 		End_Equip();
 	}
 
+	MoveComp->SetJog();
+
 	if (Data.bUseControllerRotation)
 		MoveComp->EnableControlRotation();
 }
@@ -42,6 +43,8 @@ void UJHS_C_Equipment::Unequip()
 {
 	bEquipped = false;
 	MoveComp->DisableControlRotation();
+
+	MoveComp->SetWalk();
 
 	if (OnEquipmentUnequip.IsBound())
 		OnEquipmentUnequip.Broadcast();

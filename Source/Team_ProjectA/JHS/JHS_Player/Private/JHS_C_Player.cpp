@@ -141,7 +141,7 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 {
-	CheckTrue(bIsPlayerDodge);
+	//CheckTrue(bIsPlayerDodge);
 
 	MovementInput = InValue.Get<FVector2D>();
 
@@ -211,20 +211,22 @@ void AJHS_C_Player::Player_OffRun()
 
 void AJHS_C_Player::Player_OnDodge()
 {
-	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f)
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false)
 	{
 		bIsPlayerDodge = true;
 		
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
 		
+		//LaunchCharacter(GetLastMovementInputVector() * DodgeDistance, false, false);
+
 		GetWorld()->GetTimerManager().SetTimer(OffDodgeHandle, this, &AJHS_C_Player::Player_OffDodge, DodgeDelay, false);
 	}
 }
 
 void AJHS_C_Player::Player_OffDodge()
 {
-	if (WeaponComp->GetHasWeapon() == true)
+	if (WeaponComp->GetHasWeapon() == true && StateComp->IsActionMode() == false)
 	{
 		bIsPlayerDodge = false;
 

@@ -35,10 +35,6 @@ void UJHS_C_WeaponComponent::BeginPlay()
 void UJHS_C_WeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	PRINT_LINE();
-	JHS_Global::Print(bHasWeapon, 0);
-
 }
 
 void UJHS_C_WeaponComponent::InitializeComponent()
@@ -120,9 +116,7 @@ bool UJHS_C_WeaponComponent::IsIdleMode()
 void UJHS_C_WeaponComponent::SetMode(EWeaponType InType)
 {
 	if (Type == InType)
-	{
 		SetUnarmedMode();
-	}
 
 	PlayerWeaponType();
 
