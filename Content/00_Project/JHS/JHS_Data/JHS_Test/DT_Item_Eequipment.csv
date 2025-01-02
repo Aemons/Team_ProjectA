@@ -1,1 +1,3 @@
-﻿
+﻿,ItemID,Name,MeshPath,Damage,Category,SubCategory,Rarity
+1,0x001,Normal Sowrd,/Script/Engine.SkeletalMesh'/Game/00_Project/00_Asset/Weapon_Mesh/SwordsPack/Models/AAA_Swords/Sword11/SK_Sword11.SK_Sword11',10.0f,Weapon,Sword,Normal
+2,0x002,Rare Sowrd,/Script/Engine.SkeletalMesh'/Game/00_Project/00_Asset/Weapon_Mesh/SwordsPack/Models/AAA_Swords/Sword2/SK_Sword2.SK_Sword2',10.0f,Weapon,Sword,Rare
