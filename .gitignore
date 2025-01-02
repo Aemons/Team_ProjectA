@@ -75,7 +75,19 @@ DerivedDataCache/*
 
 #Content Ignore
 Content/StarterContent/
-<<<<<<< HEAD
 Content/00_Project/00_Asset/*
 
-=======
+# Rider
+Plugins/Developer/RiderLink/
+
+# Assets
+Content/Animation/*
+Content/Armor_Mesh/*
+Content/Effect/*
+Content/Enemy/*
+Content/Weapon_Mesh/*
+Content/UIMaterialLab/*
+Content/Mediterranean_Coast/*
+
+
+
