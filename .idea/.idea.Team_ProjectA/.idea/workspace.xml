@@ -12,8 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Chase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Chase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_ComboAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_ComboAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sound/Makai_Symphony_-_Endless_Storm_Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sound/Makai_Symphony_-_Endless_Storm_Cue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team_ProjectA.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -495,7 +497,8 @@
       <workItem from="1735262170326" duration="1681000" />
       <workItem from="1735275058664" duration="1397000" />
       <workItem from="1735523219988" duration="1941000" />
-      <workItem from="1735621365334" duration="1134000" />
+      <workItem from="1735621365334" duration="1732000" />
+      <workItem from="1735780407068" duration="2515000" />
     </task>
     <servers />
   </component>
