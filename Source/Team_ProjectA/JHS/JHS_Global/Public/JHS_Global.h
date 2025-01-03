@@ -12,13 +12,13 @@
 #define CheckTrue(x) {if(x == true) return;}
 
 //x가 true면 y를 return
-#define CheckTrueResult(x) {if(x == true) return y;}
+#define CheckTrueResult(x, y) {if(x == true) return y;}
 
 //x가 false면 return
 #define CheckFalse(x) {if(x == false) return;}
 
 //x가 false면 y를 return
-#define CheckFalseResult(x) {if(x == false) return y;}
+#define CheckFalseResult(x, y) {if(x == false) return y;}
 
 //PRINT함수에서 가변인자 사용시 InValue에 적용해서 사용
 #define VALUE_STRING(x, y) {FString::Printf(TEXT(x), y)}

@@ -1,6 +1,7 @@
 #include "JHS_C_MoveComponent.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/Character.h"
 
 #include "JHS_C_Player.h"
 
@@ -8,8 +9,7 @@ UJHS_C_MoveComponent::UJHS_C_MoveComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	OwnerCharacter = Cast<AJHS_C_Player>(GetOwner());
-
+	OwnerCharacter = Cast<ACharacter>(GetOwner());
 }
 
 void UJHS_C_MoveComponent::BeginPlay()
