@@ -81,29 +81,12 @@ Content/00_Project/00_Asset/*
 Plugins/Developer/RiderLink/
 
 # Assets
-Content/Animation/*
-Content/Armor_Mesh/*
-Content/Effect/*
-Content/Enemy/*
-Content/Weapon_Mesh/*
 Content/UIMaterialLab/*
 Content/Mediterranean_Coast/*
 
-Content/Maps/*
-Content/Audio/*
-
+Content/00_Project/00_Asset/*
 Content/00_Project/01_Map/*
-Content/paragonRampage/*
-Content/Decals/*
-
-# Loading
-Content/AsyncLoadingScreen/*
-Content/Battle_01.mp4
-Content/Knight_01.mp4
-Content/Knight_02.mp4
-Content/Tile_01.mp4
-Content/UE5_V.mp4
-
+Content/Movies/*
 
 
 
