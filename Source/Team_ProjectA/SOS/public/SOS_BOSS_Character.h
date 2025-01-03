@@ -36,7 +36,7 @@ public:
 	// Behavior Tree Function
 	UBehaviorTree* GetBehaviorTree();
 
-protected:
+public:
 	// RightHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* RightHandCollision;

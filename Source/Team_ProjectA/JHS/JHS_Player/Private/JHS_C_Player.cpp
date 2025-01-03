@@ -3,6 +3,7 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Camera/CameraComponent.h"
 
 //Input
@@ -12,6 +13,8 @@
 
 //Custom Component
 #include "JHS_C_MoveComponent.h"
+#include "JHS_C_StateComponent.h"
+#include "JHS_C_WeaponComponent.h"
 
 AJHS_C_Player::AJHS_C_Player()
 {
@@ -26,6 +29,8 @@ AJHS_C_Player::AJHS_C_Player()
 	//Create Actor Component
 	{
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
+		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
+		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 	}
 
 	//Attach Component
@@ -56,7 +61,7 @@ AJHS_C_Player::AJHS_C_Player()
 
 		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
-		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
+		GetCharacterMovement()->RotationRate = FRotator(0.0, 400.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
@@ -116,25 +121,35 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	{
 		//Player Move BindAction
 		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Move);
-		//Player Move KeyUp BindAction
-		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
 
 		//Player Look BindAction
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
 
 		//Player Run BindAction
 		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
+		//Player Move KeyUp BindAction
+		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
+
+		//Player Dodge BindAction
+		EnhancedInputComp->BindAction(IA_Player_Dodge, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnDodge);
+
+		//WeaponComponent InputAction Delegate Bind
+		if (OnInputBindDelegate.IsBound())
+			OnInputBindDelegate.Broadcast(EnhancedInputComp);
 	}
 }
 
 void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 {
+	//CheckTrue(bIsPlayerDodge);
+
 	MovementInput = InValue.Get<FVector2D>();
 
 	const FRotator Rotator = FRotator(0.0, GetControlRotation().Yaw, 0.0);
 
 	const FVector ForwardDirection = FQuat(Rotator).GetForwardVector();
 	const FVector RightDirection = FQuat(Rotator).GetRightVector();
+
 
 	AddMovementInput(ForwardDirection, MovementInput.Y);
 	AddMovementInput(RightDirection, MovementInput.X);
@@ -153,14 +168,29 @@ void AJHS_C_Player::Player_OnRun()
 	//Toggle Input
 	bIsPlayerRun = !bIsPlayerRun;
 
-	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+	if (WeaponComp->GetHasWeapon() == false)
 	{
-		MoveComp->SetJog();
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+		{
+			MoveComp->SetJog();
+		}
+
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+		{
+			MoveComp->SetWalk();
+		}
 	}
-	
-	if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+	else if (WeaponComp->GetHasWeapon() == true)
 	{
-		MoveComp->SetWalk();
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == true)
+		{
+			MoveComp->SetSprint();
+		}
+
+		if (GetVelocity().Size2D() > 100.0f && bIsPlayerRun == false)
+		{
+			MoveComp->SetJog();
+		}
 	}
 }
 
@@ -168,11 +198,41 @@ void AJHS_C_Player::Player_OffRun()
 {
 	PlayerBrakingWalkingValue();
 
-	MoveComp->SetWalk();
+	if (WeaponComp->GetHasWeapon() == false)
+		MoveComp->SetWalk();
+	
+	if (WeaponComp->GetHasWeapon() == true)
+		MoveComp->SetJog();
 
 	bIsPlayerRun = false;
 
 	GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
+}
+
+void AJHS_C_Player::Player_OnDodge()
+{
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false)
+	{
+		bIsPlayerDodge = true;
+		
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+		
+		//LaunchCharacter(GetLastMovementInputVector() * DodgeDistance, false, false);
+
+		GetWorld()->GetTimerManager().SetTimer(OffDodgeHandle, this, &AJHS_C_Player::Player_OffDodge, DodgeDelay, false);
+	}
+}
+
+void AJHS_C_Player::Player_OffDodge()
+{
+	if (WeaponComp->GetHasWeapon() == true && StateComp->IsActionMode() == false)
+	{
+		bIsPlayerDodge = false;
+
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(true);
+	}
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

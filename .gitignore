@@ -76,18 +76,11 @@ DerivedDataCache/*
 #Content Ignore
 Content/StarterContent/
 Content/00_Project/00_Asset/*
-
-# Rider
-Plugins/Developer/RiderLink/
-
-# Assets
-Content/UIMaterialLab/*
-Content/Mediterranean_Coast/*
-
-Content/00_Project/00_Asset/*
 Content/00_Project/01_Map/*
 Content/Movies/*
 
 
+# Rider
+Plugins/Developer/RiderLink/
 
 
