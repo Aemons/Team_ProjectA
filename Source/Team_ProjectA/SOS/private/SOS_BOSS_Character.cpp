@@ -3,6 +3,8 @@
 
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
 #include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "ClassViewerModule.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Team_ProjectA/SOS/public/SOS_Hide_Box_Comp.h"
@@ -36,6 +38,7 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	LeftHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 
 	
+	
 }
 
 // Called when the game starts or when spawned
@@ -52,9 +55,15 @@ void ASOS_BOSS_Character::BeginPlay()
 		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01Socket"));
 
 		// 충돌 활성화
+		/*
 		RightHandCollision->EnableCollision();
 		LeftHandCollision->EnableCollision();
+		*/
 	}
+
+	
+
+	
 	
 }
 
