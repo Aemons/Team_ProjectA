@@ -18,7 +18,8 @@ public class Team_ProjectA : ModuleRules
         		"HeadMountedDisplay",
         		"AIModule",
         		"GameplayTasks",
-        		"NavigationSystem"
+        		"NavigationSystem",
+		        "UMG"
         	});
 		
 		//JHS Public/Private ��� �߰�
