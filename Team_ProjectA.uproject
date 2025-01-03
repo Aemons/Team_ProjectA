@@ -9,7 +9,9 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
-				"Engine"
+				"Engine",
+				"CoreUObject",
+				"AIModule"
 			]
 		}
 	],
@@ -20,10 +22,6 @@
 			"TargetAllowList": [
 				"Editor"
 			]
-		},
-		{
-			"Name": "NiagaraFluids",
-			"Enabled": true
 		},
 		{
 			"Name": "AsyncLoadingScreen",
