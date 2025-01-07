@@ -32,26 +32,28 @@ class TEAM_PROJECTA_API UHHR_StartMenu : public UUserWidget
 	
 //*Componentns
 protected:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UBorder* Background;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UBorder* MenuBorder;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UVerticalBox* Menu;
 	// menu 구성 요소
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	USpacer* Spacer1;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UTextBlock* GameTitle;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	USpacer* Spacer2;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UHHR_ButtonBase* BtnComp_GameStart;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UHHR_ButtonBase* BtnComp_Setting;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UHHR_ButtonBase* BtnComp_GameEnd;
 
+
+	
 	// 기본 생성 함수
 
 	// UFUNCTION 함수
