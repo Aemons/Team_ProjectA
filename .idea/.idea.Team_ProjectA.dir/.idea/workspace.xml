@@ -8,14 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6bbba29-1998-4c52-803a-855fe1c7f3f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Private/HHR_UIManager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Private/TestActor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/HHR_UIManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/TestActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_ButtonBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_ButtonBase.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/BP_HHR_TestGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/BP_HHR_TestGameMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_ButtonBase.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_Map.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_Map.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Private/HHR_ButtonBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Private/HHR_ButtonBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/HHR_ButtonBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/HHR_ButtonBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/HHR_StartMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/Public/HHR_StartMenu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +37,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/GameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/Border.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/BorderSlot.h" root0="FORCE_HIGHLIGHTING" />
@@ -142,6 +150,7 @@
       <workItem from="1735881645091" duration="586000" />
       <workItem from="1736128043742" duration="7725000" />
       <workItem from="1736226850808" duration="3153000" />
+      <workItem from="1736318572752" duration="1131000" />
     </task>
     <servers />
   </component>

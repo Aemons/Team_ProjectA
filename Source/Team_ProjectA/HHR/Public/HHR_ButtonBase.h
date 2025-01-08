@@ -6,9 +6,6 @@
 #include "Blueprint/UserWidget.h"
 #include "HHR_ButtonBase.generated.h"
 
-/**
- * 
- */
 
 class UOverlay;
 class UImage;
@@ -58,7 +55,8 @@ protected:
 	// Blueprint와 연동 작업 전에 실행, 디자인 스타일 관련 초기화 작업 수행 
 	virtual void NativePreConstruct() override;
 	// 위젯 완성된 후에 호출 (위젯이 화면에 표시되기 전에 실행)
-	// 위젯 component에 이벤트 바인딩 
+	// 위젯 component에 이벤트 바인딩
+	// Viewport에 add 될때 호출..?
 	virtual void NativeConstruct() override;
 
 

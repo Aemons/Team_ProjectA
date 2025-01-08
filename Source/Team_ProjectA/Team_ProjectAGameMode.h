@@ -13,6 +13,18 @@ class ATeam_ProjectAGameMode : public AGameModeBase
 
 public:
 	ATeam_ProjectAGameMode();
+
+protected:
+	virtual void BeginPlay() override;
+
+
+
+// UI Widget class 들
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "UI Widgets")
+	TSubclassOf<UUserWidget> StartMenuClass;
+	
+	
 };
 
 

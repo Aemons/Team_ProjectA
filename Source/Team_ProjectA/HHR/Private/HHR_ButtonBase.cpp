@@ -11,6 +11,8 @@ void UHHR_ButtonBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
+	// !언리얼에서 위젯 초기화와 bp 이벤트 시스템때문에 항상 부모 생성자가 먼저 호출되지 않음...
+
 	// 상위 wbp에서 수정한 값 할당
 	BtnText->SetText(Text);
 	// Font는 구조체이고 size 변수가 const여서 Font를 다시 생성해줘야 함 ->  Font도 따로 가져와줘야 해서 -> BP에서 처리
@@ -28,10 +30,8 @@ void UHHR_ButtonBase::NativeConstruct()
 	// 처음 버튼 모양으로 초기화
 	if(Hover)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%f"), Hover->GetEndTime());
 		PlayAnimation(Hover, Hover->GetEndTime(), 1, EUMGSequencePlayMode::Reverse, 1, false);
 	}
-	
 
 }
 
