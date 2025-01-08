@@ -15,11 +15,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_2ComboAttack_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_2ComboAttack_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_ANIM_SpitAcid_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_ANIM_SpitAcid_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackLeft_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackLeft_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackRight_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackRight_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_JumpBiteAttack_RM_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_JumpBiteAttack_RM_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_RoarSpreadAcid_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_RoarSpreadAcid_Montage.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_CrazyTurn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_CrazyTurn.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_Death_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_Death_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_One_SpitAcid_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_One_SpitAcid_Montage.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTD_DistanceCheck.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTD_DistanceCheck.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -513,6 +517,9 @@
       <workItem from="1736137367950" duration="4762000" />
       <workItem from="1736150333859" duration="3623000" />
       <workItem from="1736213354445" duration="2932000" />
+      <workItem from="1736222321256" duration="3996000" />
+      <workItem from="1736310912203" duration="1262000" />
+      <workItem from="1736317210843" duration="1248000" />
     </task>
     <servers />
   </component>
