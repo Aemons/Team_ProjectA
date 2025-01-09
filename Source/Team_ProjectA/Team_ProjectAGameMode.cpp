@@ -20,9 +20,9 @@ void ATeam_ProjectAGameMode::BeginPlay()
 	Super::BeginPlay();
 
 	// UIManager 생성
-	UHHR_UIManager* UIManager = NewObject<UHHR_UIManager>();
-	UIManager->Init(GetWorld());
-	UIManager->CreateUI(StartMenuClass);
+	//UHHR_UIManager* UIManager = NewObject<UHHR_UIManager>();
+	//UIManager->Init(GetWorld());
+	//UIManager->CreateUI(StartMenuClass);
 	// 마우스
 	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
 }
