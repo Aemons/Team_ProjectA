@@ -13,7 +13,7 @@ class TEAM_PROJECTA_API UJHS_C_Anim : public UAnimInstance
 	GENERATED_BODY()
 	
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data")
 	float Speed = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
