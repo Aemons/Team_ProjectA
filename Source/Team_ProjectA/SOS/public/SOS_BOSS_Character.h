@@ -36,7 +36,6 @@ public:
 	// Behavior Tree Function
 	UBehaviorTree* GetBehaviorTree();
 
-public:
 	// RightHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* RightHandCollision;
@@ -44,5 +43,9 @@ public:
 	// LeftHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* LeftHandCollision;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HP")
+	int32 Hide_HP = 1000;
+	
 };
 

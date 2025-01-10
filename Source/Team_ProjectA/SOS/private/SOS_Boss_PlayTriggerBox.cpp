@@ -70,26 +70,6 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
                                               UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
     if (!OtherActor) return;
-
-    
-    
-    /*
-       // 시퀀스 재생
-       if (SequenceToPlay)
-       {
-           ALevelSequenceActor* SequenceActor = Cast<ALevelSequenceActor>(UGameplayStatics::GetActorOfClass(this, ALevelSequenceActor::StaticClass()));
-           if (SequenceActor)
-           {
-               ULevelSequencePlayer* SequencePlayer = SequenceActor->SequencePlayer;
-               if (SequencePlayer)
-               {
-                   SequencePlayer->Play();
-                   UE_LOG(LogTemp, Warning, TEXT("Sequence Played."));
-               }
-           }
-       }
-    */
-
     
     // 시퀀스 재생 및 완료 후 동작 설정
     if (SequenceToPlay)
