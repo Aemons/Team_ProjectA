@@ -8,6 +8,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "ClassViewerModule.h"
+#include "Animation/AnimInstance.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -130,6 +131,8 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 	TakeDamage(10.0f);
 }
 
+
+
 void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 {
 	// 추가 행동 (예: 보스 사망 처리)
@@ -156,3 +159,39 @@ void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
             
 	}
 }
+
+
+void ASOS_BOSS_Character::SetMontagePlayRate(float NewPlayRate)
+{
+	// 유효한 PlayRate인지 확인
+	if (NewPlayRate <= 0.0f)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Invalid PlayRate: %f. PlayRate must be greater than 0."), NewPlayRate);
+		return;
+	}
+
+	// 캐릭터의 AnimInstance 가져오기
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	if (!AnimInstance)
+	{
+		UE_LOG(LogTemp, Error, TEXT("AnimInstance is nullptr for character %s"), *GetName());
+		return;
+	}
+
+	// 현재 재생 중인 모든 몽타주에 대해 재생 속도 변경
+	for (FAnimMontageInstance* MontageInstance : AnimInstance->MontageInstances)
+	{
+		if (MontageInstance)
+		{
+			MontageInstance->SetPlayRate(NewPlayRate);
+		}
+	}
+
+	// 현재 재생 속도를 저장
+	CurrentMontagePlayRate = NewPlayRate;
+
+	UE_LOG(LogTemp, Warning, TEXT("Montage PlayRate set to %f for character %s"), NewPlayRate, *GetName());
+}
+	
+
+

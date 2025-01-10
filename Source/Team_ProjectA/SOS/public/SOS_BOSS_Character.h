@@ -76,5 +76,13 @@ private:
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	bool Brust = true;
+
+public:
+	// 몽타주 재생 속도를 변경하는 함수
+	void SetMontagePlayRate(float NewPlayRate);
+
+private:
+	// 현재 재생 속도
+	float CurrentMontagePlayRate = 1.0f; // 기본값 1.0
 };
 
