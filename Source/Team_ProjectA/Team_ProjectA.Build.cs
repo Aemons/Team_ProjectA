@@ -6,6 +6,7 @@ public class Team_ProjectA : ModuleRules
 {
 	public Team_ProjectA(ReadOnlyTargetRules Target) : base(Target)
 	{
+		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence" });
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[]
@@ -18,7 +19,9 @@ public class Team_ProjectA : ModuleRules
         		"HeadMountedDisplay",
         		"AIModule",
         		"GameplayTasks",
-        		"NavigationSystem"
+        		"NavigationSystem",
+		        "LevelSequence",
+		        "MovieScene"
         	});
 		
 		//JHS Public/Private ��� �߰�
