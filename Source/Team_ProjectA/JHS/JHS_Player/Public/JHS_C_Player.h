@@ -46,12 +46,16 @@ public: //Max/Current Health
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	float DodgeDelay = 0.8f;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
-	float DodgeDistance = 2000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	bool bIsPlayerDodge = false;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Montage")
+	TArray<class UAnimMontage*> DodgeMontages;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Dodge Montage")
+	float DodgeMontage_PlayRate = 1.0f;
 
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")

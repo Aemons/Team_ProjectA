@@ -20,7 +20,7 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere, Category = "WalkSpeed")
-	float PlayerSpeed[(int32)EWalkSpeedType::Max] = {200, 500, 800};
+	float PlayerSpeed[(int32)EWalkSpeedType::Max] = {200, 600, 800};
 
 //Default Function
 ///////////////////////////////////////////////////////////////////////
