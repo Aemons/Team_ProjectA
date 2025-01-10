@@ -21,7 +21,8 @@ public class Team_ProjectA : ModuleRules
         		"GameplayTasks",
         		"NavigationSystem",
 		        "LevelSequence",
-		        "MovieScene"
+		        "MovieScene",
+		        "UMG"
         	});
 		
 		//JHS Public/Private ��� �߰�
