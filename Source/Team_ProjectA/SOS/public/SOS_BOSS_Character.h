@@ -44,8 +44,37 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* LeftHandCollision;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HP")
-	int32 Hide_HP = 1000;
 	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
+	float MaxHP = 100.0f;
+
+	// HP 변수
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
+	float CurrentHP=MaxHP;
+	
+	// 데미지 처리 함수
+	UFUNCTION(BlueprintCallable, Category = "Boss Stats")
+	void TakeDamage(float DamageAmount);
+
+
+	// Name of the Blackboard Key to modify
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	FName BlackboardKeyName = "SOS_State";
+	
+	
+	// Example: Enum value for "Attack"
+	// 0 Attack , 1 Death, 2 Burst, 3 stun, 4 Wait
+	UFUNCTION()
+	void SetBBEnumState(int32 EnumNumber);
+	
+	
+private:
+	// Mesh Overlap 처리 함수
+	UFUNCTION()
+	void OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	bool Brust = true;
 };
 

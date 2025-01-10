@@ -6,9 +6,7 @@ public class Team_ProjectA : ModuleRules
 {
 	public Team_ProjectA(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence" });
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-
+		
 		PublicDependencyModuleNames.AddRange(new string[]
         	{
         		"Core",
@@ -24,6 +22,15 @@ public class Team_ProjectA : ModuleRules
 		        "MovieScene",
 		        "UMG"
         	});
+		
+		// SOS Using LevelSequnce
+		////////////////////////////////////////////////////////////////////////////////////////////
+
+		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence" });
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 		
 		//JHS Public/Private ��� �߰�
 		////////////////////////////////////////////////////////////////////////////////////////////
