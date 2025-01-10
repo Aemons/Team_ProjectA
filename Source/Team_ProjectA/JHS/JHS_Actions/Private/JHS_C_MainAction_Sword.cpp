@@ -21,6 +21,7 @@ void UJHS_C_MainAction_Sword::MainAction()
 	
 	Super::MainAction();
 	
+	MoveComp->EnableControlRotation();
 	MainActionDatas[Index].AttackAction(OwnerCharacter);
 }
 
@@ -28,6 +29,7 @@ void UJHS_C_MainAction_Sword::Begin_MainAction()
 {
 	Super::Begin_MainAction();
 	CheckFalse(bExist);
+
 
 	bExist = false;
 	MainActionDatas[++Index].AttackAction(OwnerCharacter);
@@ -37,6 +39,7 @@ void UJHS_C_MainAction_Sword::End_MainAction()
 {
 	Super::End_MainAction();
 
+	MoveComp->DisableControlRotation();
 	Index = 0;
 }
 
@@ -49,6 +52,7 @@ void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, A
 		CheckTrue(hitted == InOther);
 
 	Hitted.AddUnique(InOther);
+
 
 	//일반몬스터가 있을경우 HitMontage에 대한 로직설정
 }
