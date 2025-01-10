@@ -3,6 +3,7 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+//#include "GameFramework/PlayerController.h"
 #include "Components/CapsuleComponent.h"
 #include "Camera/CameraComponent.h"
 
@@ -260,10 +261,9 @@ void AJHS_C_Player::Player_OnDodge()
 		}
 
 		if (DodgeMontage)
-		{
 			PlayAnimMontage(DodgeMontage, DodgeMontage_PlayRate);
-		}
 
+		DisableInput(Cast<APlayerController>(GetController()));
 		///////////////////////////////////////////////////////////////
 
 		GetWorld()->GetTimerManager().SetTimer(OffDodgeHandle, this, &AJHS_C_Player::Player_OffDodge, DodgeDelay, false);
@@ -278,6 +278,8 @@ void AJHS_C_Player::Player_OffDodge()
 
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 		GetCapsuleComponent()->SetGenerateOverlapEvents(true);
+
+		EnableInput(Cast<APlayerController>(GetController()));
 	}
 
 	JHS_Global::Print("Dodge OFF");
