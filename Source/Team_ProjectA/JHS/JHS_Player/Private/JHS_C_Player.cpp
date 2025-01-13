@@ -281,8 +281,6 @@ void AJHS_C_Player::Player_OffDodge()
 
 		EnableInput(Cast<APlayerController>(GetController()));
 	}
-
-	JHS_Global::Print("Dodge OFF");
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

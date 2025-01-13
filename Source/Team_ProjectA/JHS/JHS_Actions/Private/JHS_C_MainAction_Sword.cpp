@@ -30,7 +30,6 @@ void UJHS_C_MainAction_Sword::Begin_MainAction()
 	Super::Begin_MainAction();
 	CheckFalse(bExist);
 
-
 	bExist = false;
 	MainActionDatas[++Index].AttackAction(OwnerCharacter);
 }
@@ -52,9 +51,9 @@ void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, A
 		CheckTrue(hitted == InOther);
 
 	Hitted.AddUnique(InOther);
-
-
-	//일반몬스터가 있을경우 HitMontage에 대한 로직설정
+		
+	//InOther에게 Damge를 주는 로직
+	MainActionDatas[Index].SendDamage(InAttacker, InAttackCuser, InOther);
 }
 
 void UJHS_C_MainAction_Sword::OnAttachmentEndCollision()

@@ -22,6 +22,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "WalkSpeed")
 	float PlayerSpeed[(int32)EWalkSpeedType::Max] = {200, 600, 800};
 
+	UPROPERTY(EditAnywhere, Category = "Search")
+	float SearchDistance = 1000.0f;
+
 //Default Function
 ///////////////////////////////////////////////////////////////////////
 public:	
@@ -46,12 +49,15 @@ public:
 
 	void SetWalkSpeed(EWalkSpeedType InType);
 
+	void SearchEnemyTarget();
+
 public:
 	void EnableControlRotation();
 	void DisableControlRotation();
 
 private:
-	//class AJHS_C_Player* OwnerCharacter;
 	class ACharacter* OwnerCharacter;
 	EWalkSpeedType Type;
+
+	bool bIsControlRotation;
 };

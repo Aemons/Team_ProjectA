@@ -29,10 +29,6 @@ public:
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement Input")
-	FVector2D MovementInput;
-
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
 	EWeaponType WeaponType = EWeaponType::Max;
 
@@ -93,7 +89,7 @@ public: //InputMapping & Action
 	
 
 //Defult Function
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 public:
 	AJHS_C_Player();
 
@@ -104,7 +100,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 private:
 	void Player_Move(const FInputActionValue& InValue);
@@ -120,11 +116,13 @@ public:
 	FInputBindDelegate OnInputBindDelegate;
 
 protected:
-	
+	FVector2D MovementInput;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;
+
+
 };
