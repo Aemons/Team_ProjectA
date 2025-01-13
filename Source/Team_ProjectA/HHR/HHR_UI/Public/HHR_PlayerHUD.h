@@ -23,9 +23,9 @@ class TEAM_PROJECTA_API UHHR_PlayerHUD : public UUserWidget
 	GENERATED_BODY()
 
 // PlayerHUD는 PlayerController에서 생성 (PlayerController가 생성될때 생성해주면 될듯) 
-// TODO : HP, Statmina 연결, 아이템 슬롯 연결
-// - +추가) HP 다는 anim 적용
-	
+// TODO : 아이템 슬롯 연결
+
+/////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 protected:	// *Widgets*
 	// Statmina
@@ -53,7 +53,7 @@ protected:	// *Widgets*
 	UHHR_ItemSlotBase* ItemSlotComp_Slot2;
 	// Interact widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHHR_Interact* InteractComp;
+	UHHR_Interact* InteractUIComp;
 	
 private:	// *Timeline Curve*
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess), Category = "Timeline")
@@ -61,13 +61,13 @@ private:	// *Timeline Curve*
 
 	
 
-	
+/////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수
 protected:
 	virtual void NativeConstruct() override;
 	virtual void NativeTick(const FGeometry & MyGeometry, float DeltaTime) override;
 
-	
+/////////////////////////////////////////////////////////////////////////
 // ** UFUNCTION 함수 **
 public:
 	// 델리게이트에 바인딩할 함수 (데미지를 받을 경우 호출)
@@ -85,10 +85,11 @@ private:	// *Timeline 바인딩 함수*
 	void OnTimelineUpdate(float Value);
 	UFUNCTION()
 	void OnTimelineFinish();
-	
+
+/////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **
 	
-
+/////////////////////////////////////////////////////////////////////////
 // ** 클래스 내에서만 사용하는 멤버 변수 **
 private:
 	// Health 변수

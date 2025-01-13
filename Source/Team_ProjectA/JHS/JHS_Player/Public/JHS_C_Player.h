@@ -9,6 +9,11 @@
 #include "JHS_C_Player.generated.h"
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FInputBindDelegate, class UEnhancedInputComponent*);
+// HHR
+// ----------------------------------------------------------------------------
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDecreaseHealthBar, float, CurrentHealth);
+// ----------------------------------------------------------------------------
+
 
 UCLASS()
 class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
@@ -23,6 +28,11 @@ public:
 
 	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
 	FORCEINLINE bool GetPlayerDodge() { return bIsPlayerDodge; }
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
+	// ----------------------------------------------------------------------------
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
@@ -123,4 +133,19 @@ protected:
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	// *Delegate to apply health ui*
+	// - call When you damaged 
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category = "Delegate")
+	FOnDecreaseHealthBar OnDecreaseHealthBar;
+private:
+	// *Statmina*
+	float CurrentStatmina = 100.0f;
+	float MaxStatmina = 100.f;
+	
+// ----------------------------------------------------------------------------
+	
 };
