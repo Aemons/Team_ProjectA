@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NiagaraSystem.h"
 #include "GameFramework/Actor.h"
 #include "SOS_Hide_baby.generated.h"
 
@@ -39,6 +40,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rotate")
 	FRotator Hide_Baby_Rotate = FRotator(0.0f, 0.0f, 0.0f);
 
+	// 나이아가라 효과
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
+	UNiagaraSystem* NiagaraEffect;
+
+	// 데미지 값
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float Damage = 10.0f;
+
 private:
 	// 루트 컴포넌트
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -50,4 +59,8 @@ private:
 
 	// 현재 속도
 	FVector Velocity;
+
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 };

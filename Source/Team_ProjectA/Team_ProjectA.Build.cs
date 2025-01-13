@@ -26,7 +26,7 @@ public class Team_ProjectA : ModuleRules
 		// SOS Using LevelSequnce
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence", "Niagara" });
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		////////////////////////////////////////////////////////////////////////////////////////////

@@ -13,10 +13,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_baby.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_baby.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_baby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_baby.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Hide_baby.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Hide_baby.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectA.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectA.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -528,6 +530,7 @@
       <workItem from="1736507145055" duration="1815000" />
       <workItem from="1736509659428" duration="3430000" />
       <workItem from="1736513128553" duration="289000" />
+      <workItem from="1736742996201" duration="6384000" />
     </task>
     <servers />
   </component>
