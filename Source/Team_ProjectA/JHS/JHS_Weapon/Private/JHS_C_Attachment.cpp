@@ -17,30 +17,46 @@ void AJHS_C_Attachment::BeginPlay()
 
 	TArray<USceneComponent*> children;
 	Root->GetChildrenComponents(true, children);
-
-	for (USceneComponent* Child : children)
+	for (USceneComponent* child : children)
 	{
-		UShapeComponent* Shape = Cast<UShapeComponent>(Child);
+		UShapeComponent* shape = Cast<UShapeComponent>(child);
 
-		if (!!Shape)
+		if (!!shape)
 		{
-			Shape->OnComponentBeginOverlap.AddDynamic(this, &AJHS_C_Attachment::OnComponentBeginOverlap);
-			Shape->OnComponentEndOverlap.AddDynamic(this, &AJHS_C_Attachment::OnComponentEndOverlap);
+			shape->OnComponentBeginOverlap.AddDynamic(this, &AJHS_C_Attachment::OnComponentBeginOverlap);
+			shape->OnComponentEndOverlap.AddDynamic(this, &AJHS_C_Attachment::OnComponentEndOverlap);
 
-			Collisions.Add(Shape);
+			Collisions.Add(shape);
 		}
 	}
-
 	OffCollision();
 
 	Super::BeginPlay();
 }
 
+//Attach Function
+//////////////////////////////////////////////////////////////////////////////
 void AJHS_C_Attachment::AttachTo(FName InSocketName)
 {
 	AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), InSocketName);
 }
 
+void AJHS_C_Attachment::AttachToCollision(FName InCollisionName)
+{
+	for (UShapeComponent* collision : Collisions)
+	{
+		if (collision->GetName() == InCollisionName.ToString())
+		{
+			collision->AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), InCollisionName);
+
+			return;
+		}
+	}
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//ComponentOverlap
+//////////////////////////////////////////////////////////////////////////////
 void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	CheckTrue(OwnerCharacter == OtherActor);
@@ -58,6 +74,7 @@ void AJHS_C_Attachment::OnComponentEndOverlap(UPrimitiveComponent* OverlappedCom
 	if (OnAttachmentEndOverlap.IsBound())
 		OnAttachmentEndOverlap.Broadcast(OwnerCharacter, Cast<ACharacter>(OtherActor));
 }
+//////////////////////////////////////////////////////////////////////////////
 
 void AJHS_C_Attachment::OnCollision()
 {
@@ -65,7 +82,10 @@ void AJHS_C_Attachment::OnCollision()
 		OnAttachmentBeginCollision.Broadcast();
 	
 	for (UShapeComponent* Shape : Collisions)
+	{
 		Shape->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		Shape->SetCollisionProfileName(TEXT("OverlapAll"));
+	}
 }
 
 void AJHS_C_Attachment::OffCollision()
@@ -74,5 +94,9 @@ void AJHS_C_Attachment::OffCollision()
 		OnAttachmentEndCollision.Broadcast();
 
 	for (UShapeComponent* Shape : Collisions)
+	{
 		Shape->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		Shape->SetCollisionProfileName(TEXT("NoCollision"));
+	}
 }
+

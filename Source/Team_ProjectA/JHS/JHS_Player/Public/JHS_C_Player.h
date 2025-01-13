@@ -39,10 +39,6 @@ public:
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement Input")
-	FVector2D MovementInput;
-
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
 	EWeaponType WeaponType = EWeaponType::Max;
 
@@ -56,12 +52,16 @@ public: //Max/Current Health
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	float DodgeDelay = 0.8f;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
-	float DodgeDistance = 2000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	bool bIsPlayerDodge = false;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Montage")
+	TArray<class UAnimMontage*> DodgeMontages;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Dodge Montage")
+	float DodgeMontage_PlayRate = 1.0f;
 
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
@@ -99,7 +99,7 @@ public: //InputMapping & Action
 	
 
 //Defult Function
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 public:
 	AJHS_C_Player();
 
@@ -110,7 +110,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 private:
 	void Player_Move(const FInputActionValue& InValue);
@@ -126,13 +126,14 @@ public:
 	FInputBindDelegate OnInputBindDelegate;
 
 protected:
-	
+	FVector2D MovementInput;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;
+
 
 // HHR
 // ----------------------------------------------------------------------------
@@ -148,4 +149,5 @@ private:
 	
 // ----------------------------------------------------------------------------
 	
+
 };
