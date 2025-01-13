@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Team_ProjectA/HHR/Public/HHR_UIManager.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
 
 #include "Blueprint/UserWidget.h"
 

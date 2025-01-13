@@ -70,12 +70,13 @@ protected:
 	
 // ** UFUNCTION 함수 **
 public:
-	// 델리게이트에 바인딩할 함수 (데미지를 받을 경우 호출) 
+	// 델리게이트에 바인딩할 함수 (데미지를 받을 경우 호출)
+	// TODO : 아이템을 먹고 hp가 올라가는 것도 구현 필요 
 	UFUNCTION(BlueprintCallable)
-	void ApplyHealth(float CurrentHealth);
+	void DecreaseHPBar(float CurrentHealth);
 	
 protected:
-	// Statmina 적용 함수 (PlayerCharacter의 Statmina 변수와 바인딩
+	// Statmina 적용 함수 (PlayerCharacter의 Statmina 변수와 바인딩)
 	UFUNCTION(BlueprintCallable)
 	float GetStatminPercent() const;
 

@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Team_ProjectA/HHR/Public/HHR_PlayerHUD.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_PlayerHUD.h"
 
 #include "JHS_C_Player.h"
 #include "Components/ProgressBar.h"
@@ -18,7 +18,7 @@ void UHHR_PlayerHUD::NativeConstruct()
 	if(HealthCurveFloat)
 	{
 		DelayHealthTimeline = new FTimeline();
-		
+
 		FOnTimelineFloat TimelineUpdate;
 		TimelineUpdate.BindUFunction(this, FName("OnTimelineUpdate"));
 		DelayHealthTimeline->AddInterpFloat(HealthCurveFloat, TimelineUpdate);
@@ -29,7 +29,6 @@ void UHHR_PlayerHUD::NativeConstruct()
 		
 		//  초기화
 		DelayHealthTimeline->SetLooping(false);
-
 	}
 }
 
@@ -46,7 +45,7 @@ void UHHR_PlayerHUD::NativeTick(const FGeometry& MyGeometry, float DeltaTime)
 	}
 }
 
-void UHHR_PlayerHUD::ApplyHealth(float CurrentHealth)
+void UHHR_PlayerHUD::DecreaseHPBar(float CurrentHealth)
 {
 
 	UE_LOG(LogTemp, Warning, TEXT("UHHR_PlayerHUD::ApplyHealth"));
