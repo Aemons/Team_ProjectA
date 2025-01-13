@@ -96,6 +96,14 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Dodge;
 
+
+// HHR
+// ----------------------------------------------------------------------------
+// * Temporary 
+private:
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = "Widget")
+	TSubclassOf<class UUserWidget> PlayerHUDClass;
+// ----------------------------------------------------------------------------
 	
 
 //Defult Function

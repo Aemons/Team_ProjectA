@@ -17,6 +17,12 @@
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_WeaponComponent.h"
 
+// HHR
+// ----------------------------------------------------------------------------
+#include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
+// ----------------------------------------------------------------------------
+
 AJHS_C_Player::AJHS_C_Player()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -99,6 +105,19 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	// *PlayerHUD spawn
+	// - UIManager temporary spawn (it will be spawned by GameInstance)
+	//UHHR_UIManager* UIManager = NewObject<UHHR_UIManager>();
+	//UIManager->Init(GetWorld());
+	//UIManager->CreatePlayerHUD();
+	// *Temporary
+	UUserWidget* playerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
+	playerHUD->AddToViewport();
+	// ----------------------------------------------------------------------------
+	
 }
 
 void AJHS_C_Player::Tick(float DeltaTime)
@@ -225,7 +244,7 @@ void AJHS_C_Player::Player_OnDodge()
 		///////////////////////////////////////////////////////////////
 		FVector InputVector = GetLastMovementInputVector();
 
-		//ÀÔ·ÂÀÌ ¾øÀ»°æ¿ì ±âº» Dodge ¹æÇâÀ» µÚ ¹æÇâÀ¸·Î 
+		//ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» Dodge ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		if (InputVector.IsNearlyZero())
 			InputVector = GetActorForwardVector() * -1.0f;
 		

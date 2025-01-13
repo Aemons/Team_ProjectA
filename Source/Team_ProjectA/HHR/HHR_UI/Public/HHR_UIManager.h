@@ -28,13 +28,19 @@ class TEAM_PROJECTA_API UHHR_UIManager : public UObject
 // 클래스 내부에서 사용하는 일반 멤버 변수
 
 
+// ** UPROPERTY 변수 **
+//////////////////////////////////////////////////////////////////////////////
 private:
-	UPROPERTY()
-	TObjectPtr<UWorld> WorldContext = nullptr;
+	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
+	TSubclassOf<class UUserWidget> PlayerHUDWidget;
 
-	//UPROPERTY(EditDefaultsOnly, Category = "UI Widget")
-	//TSubclassOf<class UHHR_StartMenu> StartMenuClass; 
+// ** 기본 생성 함수 **
+//////////////////////////////////////////////////////////////////////////////
+public:
+	UHHR_UIManager();
 
+// ** 일반 함수 **
+//////////////////////////////////////////////////////////////////////////////
 public:
 	// 어디서든 접근 가능
 	static UHHR_UIManager* GetUIManager();
@@ -44,10 +50,24 @@ public:
 	// UI 생성 widget
 	void CreateUI(TSubclassOf<UUserWidget> WidgetClass);
 
+	// TODO : 임시 PlayerHUD 생성
+	void CreatePlayerHUD();
 
-// ** 내부에서만 사용하는 멤버 변수
+
+// ** 내부에서만 사용하는 멤버 변수 **
+//////////////////////////////////////////////////////////////////////////////
 private:
+	// 인스턴스
 	static UHHR_UIManager* Instance;
-	
+
+	// World
+	UPROPERTY()
+	TObjectPtr<UWorld> WorldContext = nullptr;
+
+	//UPROPERTY(EditDefaultsOnly, Category = "UI Widget")
+	//TSubclassOf<class UHHR_StartMenu> StartMenuClass; 
+
+
+//////////////////////////////////////////////////////////////////////////////
 	
 };

@@ -7,6 +7,17 @@
 
 UHHR_UIManager* UHHR_UIManager::Instance = nullptr;
 
+UHHR_UIManager::UHHR_UIManager()
+{
+	// PlayerHUD 할당
+	static ConstructorHelpers::FObjectFinder<UUserWidget> widgetBPAsset(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/00_Project/HHR/HHR_UI/WBP/WBP_HHR_PlayerHUD.WBP_HHR_PlayerHUD'"));
+	if(widgetBPAsset.Succeeded())
+	{
+		PlayerHUDWidget = widgetBPAsset.Object->StaticClass();
+	}
+	
+}
+
 UHHR_UIManager* UHHR_UIManager::GetUIManager()
 {
 	if(!Instance)
@@ -20,6 +31,8 @@ UHHR_UIManager* UHHR_UIManager::GetUIManager()
 void UHHR_UIManager::Init(UWorld* World)
 {
 	WorldContext = World;
+
+	// 임시 
 }
 
 void UHHR_UIManager::CreateUI(TSubclassOf<UUserWidget> WidgetClass)
@@ -28,6 +41,18 @@ void UHHR_UIManager::CreateUI(TSubclassOf<UUserWidget> WidgetClass)
 	if(Widget)
 	{
 		Widget->AddToViewport();
+	}
+}
+
+void UHHR_UIManager::CreatePlayerHUD()
+{
+	if(PlayerHUDWidget)
+	{
+		UUserWidget* playerHUD = CreateWidget<UUserWidget>(WorldContext, PlayerHUDWidget);
+		if(playerHUD)
+		{
+			playerHUD->AddToViewport();
+		}
 	}
 }
  
