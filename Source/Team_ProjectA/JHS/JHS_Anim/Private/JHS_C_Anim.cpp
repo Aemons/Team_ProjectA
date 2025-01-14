@@ -50,7 +50,11 @@ void UJHS_C_Anim::PlayerSpeed()
 {
 	float temp = OwnerCharacter->GetVelocity().Size2D();
 	
-	Speed = FMath::FInterpTo(Speed, MoveComp->GetPlayerSpeed(), GetWorld()->GetDeltaSeconds(), PlayerWalkInterSpeed);
+	if (!!WeaponComp->GetHasWeapon())
+		Speed = FMath::FInterpTo(Speed, MoveComp->GetPlayerSpeed(), GetWorld()->GetDeltaSeconds(), PlayerWalkInterpSpeed);
+	else
+		Speed = OwnerCharacter->GetVelocity().Size2D();
+	
 }
 
 void UJHS_C_Anim::PlayerRun()

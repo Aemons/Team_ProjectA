@@ -27,6 +27,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	TArray<class UShapeComponent*> Collisions;
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Effect")
+	class UFXSystemAsset* ImpactEffect;
+
 //Default Function
 /////////////////////////////////////////////////////////////////////////////
 public:	

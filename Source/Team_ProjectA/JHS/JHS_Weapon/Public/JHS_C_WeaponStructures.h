@@ -37,10 +37,15 @@ public:
 	UPROPERTY(EditAnywhere)
 	float Power = 0.0f;
 
+	UPROPERTY(EditAnywhere)
+	class UFXSystemAsset* ImpactEffect;
+
+	UPROPERTY(EditAnywhere)
+	class USoundWave* ImpactSound;
+
 public:
 	void AttackAction(class ACharacter* InOwner);
 	void SendDamage(class ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther);
-
 };
 
 USTRUCT()

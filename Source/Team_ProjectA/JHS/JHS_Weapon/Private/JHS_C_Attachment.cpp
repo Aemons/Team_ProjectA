@@ -5,6 +5,9 @@
 #include "Components/SceneComponent.h"
 #include "Components/ShapeComponent.h"
 
+#include "Particles/ParticleSystem.h"
+#include "Kismet/GameplayStatics.h"
+
 AJHS_C_Attachment::AJHS_C_Attachment()
 {
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("RootComp"));
@@ -64,6 +67,13 @@ void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedC
 
 	if (OnAttachmentBeginOverlap.IsBound())
 		OnAttachmentBeginOverlap.Broadcast(OwnerCharacter, this, Cast<ACharacter>(OtherActor));
+
+	if (!!ImpactEffect)
+	{
+		UParticleSystem* Particle = Cast<UParticleSystem>(ImpactEffect);
+
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Particle, OtherActor->GetActorLocation());
+	}
 }
 
 void AJHS_C_Attachment::OnComponentEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)

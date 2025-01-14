@@ -24,8 +24,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = "WalkSpeed")
 	float PlayerSpeed[(int32)EWalkSpeedType::Max] = {200, 600, 800};
 
-
-
 public:
 	UPROPERTY(EditAnywhere, Category = "Search")
 	float SearchDistance = 1000.0f;
