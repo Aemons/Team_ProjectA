@@ -35,14 +35,14 @@ void UJHS_C_Equipment::Equip()
 
 	MoveComp->SetJog();
 
-	if (Data.bUseControllerRotation)
-		MoveComp->EnableControlRotation();
+	//if (Data.bUseControllerRotation)
+		//MoveComp->EnableControlRotation();
 }
 
 void UJHS_C_Equipment::Unequip()
 {
 	bEquipped = false;
-	MoveComp->DisableControlRotation();
+	//MoveComp->DisableControlRotation();
 
 	MoveComp->SetWalk();
 

@@ -3,6 +3,8 @@
 
 #include "GameFramework/Character.h"
 
+#include "JHS_C_WeaponStructures.h"
+
 //Weapon Class
 #include "JHS_C_Attachment.h"
 #include "JHS_C_Equipment.h"
@@ -33,7 +35,7 @@ void UJHS_C_WeaponDataAsset::BeginPlay(ACharacter* InOwner)
 		if (!!Attachment)
 		{
 			Equipment->OnEquipmentBeginEquip.AddDynamic(Attachment, &AJHS_C_Attachment::OnBeginEquip);
-			Equipment->OnEquipmentEndEquip.AddDynamic(Attachment, &AJHS_C_Attachment::OnEndEquip);
+			//Equipment->OnEquipmentEndEquip.AddDynamic(Attachment, &AJHS_C_Attachment::OnEndEquip);
 			Equipment->OnEquipmentUnequip.AddDynamic(Attachment, &AJHS_C_Attachment::OnUnequip);
 		}
 	}

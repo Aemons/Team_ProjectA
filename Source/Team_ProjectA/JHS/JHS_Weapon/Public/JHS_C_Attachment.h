@@ -8,7 +8,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentBeginCollision);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentEndCollision);
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuser, class ACharacter*, InOther);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuaser, class ACharacter*, InOther);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttachmentEndOverlap, class ACharacter*, InAttacker, class ACharacter*, InOther);
 
 UCLASS()
@@ -52,6 +52,9 @@ public:
 protected:
 	UFUNCTION(BlueprintCallable, Category = "Attach")
 	void AttachTo(FName InSocketName);
+
+	UFUNCTION(BlueprintCallable, Category = "Attach")
+	void AttachToCollision(FName InCollisionName);
 
 private:
 	UFUNCTION()

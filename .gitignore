@@ -76,11 +76,13 @@ DerivedDataCache/*
 #Content Ignore
 Content/StarterContent/
 Content/00_Project/00_Asset/*
-<<<<<<< HEAD
 Content/00_Project/01_Map/*
 Content/Movies/*
 
-=======
-Content/Movies/
->>>>>>> JHS
-=======
+
+# Rider
+Plugins/Developer/RiderLink/
+
+# HHR
+Content/UIMaterialLab/*
+Content/_rainstoryRPGUI/*

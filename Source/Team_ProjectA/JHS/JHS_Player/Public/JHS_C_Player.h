@@ -9,6 +9,11 @@
 #include "JHS_C_Player.generated.h"
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FInputBindDelegate, class UEnhancedInputComponent*);
+// HHR
+// ----------------------------------------------------------------------------
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDecreaseHealthBar, float, CurrentHealth);
+// ----------------------------------------------------------------------------
+
 
 UCLASS()
 class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
@@ -24,13 +29,14 @@ public:
 	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
 	FORCEINLINE bool GetPlayerDodge() { return bIsPlayerDodge; }
 
+	// HHR
+	// ----------------------------------------------------------------------------
+	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
+	// ----------------------------------------------------------------------------
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
-
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement Input")
-	FVector2D MovementInput;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
@@ -46,12 +52,16 @@ public: //Max/Current Health
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	float DodgeDelay = 0.8f;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
-	float DodgeDistance = 2000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Value")
 	bool bIsPlayerDodge = false;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dodge Montage")
+	TArray<class UAnimMontage*> DodgeMontages;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Dodge Montage")
+	float DodgeMontage_PlayRate = 1.0f;
 
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
@@ -86,10 +96,18 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Dodge;
 
+
+// HHR
+// ----------------------------------------------------------------------------
+// * Temporary 
+private:
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = "Widget")
+	TSubclassOf<class UUserWidget> PlayerHUDClass;
+// ----------------------------------------------------------------------------
 	
 
 //Defult Function
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 public:
 	AJHS_C_Player();
 
@@ -100,7 +118,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 private:
 	void Player_Move(const FInputActionValue& InValue);
@@ -116,11 +134,28 @@ public:
 	FInputBindDelegate OnInputBindDelegate;
 
 protected:
-	
+	FVector2D MovementInput;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;
+
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	// *Delegate to apply health ui*
+	// - call When you damaged 
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category = "Delegate")
+	FOnDecreaseHealthBar OnDecreaseHealthBar;
+private:
+	// *Statmina*
+	float CurrentStatmina = 100.0f;
+	float MaxStatmina = 100.f;
+	
+// ----------------------------------------------------------------------------
+	
+
 };

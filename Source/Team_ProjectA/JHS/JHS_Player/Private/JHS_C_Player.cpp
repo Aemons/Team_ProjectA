@@ -3,6 +3,7 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+//#include "GameFramework/PlayerController.h"
 #include "Components/CapsuleComponent.h"
 #include "Camera/CameraComponent.h"
 
@@ -15,6 +16,12 @@
 #include "JHS_C_MoveComponent.h"
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_WeaponComponent.h"
+
+// HHR
+// ----------------------------------------------------------------------------
+#include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
+// ----------------------------------------------------------------------------
 
 AJHS_C_Player::AJHS_C_Player()
 {
@@ -98,6 +105,19 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	// *PlayerHUD spawn
+	// - UIManager temporary spawn (it will be spawned by GameInstance)
+	//UHHR_UIManager* UIManager = NewObject<UHHR_UIManager>();
+	//UIManager->Init(GetWorld());
+	//UIManager->CreatePlayerHUD();
+	// *Temporary
+	UUserWidget* playerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
+	playerHUD->AddToViewport();
+	// ----------------------------------------------------------------------------
+	
 }
 
 void AJHS_C_Player::Tick(float DeltaTime)
@@ -210,15 +230,60 @@ void AJHS_C_Player::Player_OffRun()
 }
 
 void AJHS_C_Player::Player_OnDodge()
-{
-	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false)
+{ 
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false && bIsPlayerDodge == false)
 	{
-		bIsPlayerDodge = true;
+		StopAnimMontage();
 		
+		bIsPlayerDodge = true;
+	
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
 		
-		//LaunchCharacter(GetLastMovementInputVector() * DodgeDistance, false, false);
+		//Dodge Direction
+		///////////////////////////////////////////////////////////////
+		FVector InputVector = GetLastMovementInputVector();
+
+		//�Է��� ������� �⺻ Dodge ������ �� �������� 
+		if (InputVector.IsNearlyZero())
+			InputVector = GetActorForwardVector() * -1.0f;
+		
+		FVector DodgeDirection = InputVector.GetSafeNormal();
+
+		if (DodgeDirection.IsNearlyZero())
+			return;
+
+		UAnimMontage* DodgeMontage = nullptr;
+
+		float ForwardDot = FVector::DotProduct(GetActorForwardVector(), DodgeDirection);
+		float RightDot = FVector::DotProduct(GetActorRightVector(), DodgeDirection);
+
+		if (ForwardDot > 0.7f)
+		{
+			//Forward Dodge
+			DodgeMontage = DodgeMontages[0];
+		}
+		else if (ForwardDot < -0.7f)
+		{
+			//Backward Dodge
+			DodgeMontage = DodgeMontages[1];
+		}
+		else if (RightDot > 0.7f)
+		{
+			//Right Dodge
+			DodgeMontage = DodgeMontages[2];
+		}
+		else if (RightDot < -0.7f)
+		{
+			//Left Dodge
+			DodgeMontage = DodgeMontages[3];
+		}
+
+		if (DodgeMontage)
+			PlayAnimMontage(DodgeMontage, DodgeMontage_PlayRate);
+
+		DisableInput(Cast<APlayerController>(GetController()));
+		///////////////////////////////////////////////////////////////
 
 		GetWorld()->GetTimerManager().SetTimer(OffDodgeHandle, this, &AJHS_C_Player::Player_OffDodge, DodgeDelay, false);
 	}
@@ -232,6 +297,8 @@ void AJHS_C_Player::Player_OffDodge()
 
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 		GetCapsuleComponent()->SetGenerateOverlapEvents(true);
+
+		EnableInput(Cast<APlayerController>(GetController()));
 	}
 }
 
@@ -241,7 +308,7 @@ void AJHS_C_Player::PlayerBrakingWalkingValue()
 	if (bIsPlayerRun == true)
 	{
 		GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
-		GetCharacterMovement()->GroundFriction = 1.0f;
+		GetCharacterMovement()->GroundFriction = 2.0f;
 	}
 
 	//Player Walking
