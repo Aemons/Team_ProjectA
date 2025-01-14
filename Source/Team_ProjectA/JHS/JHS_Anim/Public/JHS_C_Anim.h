@@ -20,7 +20,7 @@ protected:
 	float Direction = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
-	float PlayerWalkInterSpeed = 100.0f;
+	float PlayerWalkInterpSpeed = 100.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
 	float ForwardInput;

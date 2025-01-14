@@ -19,7 +19,8 @@ public class Team_ProjectA : ModuleRules
         		"AIModule",
         		"GameplayTasks",
         		"NavigationSystem",
-		        "UMG"
+		        "UMG",
+                "Niagara"
         	});
 		
 		//JHS Public/Private

@@ -27,6 +27,23 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	TArray<class UShapeComponent*> Collisions;
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	class UFXSystemAsset* ImpactEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FRotator ImpactEffectRotation = FRotator::ZeroRotator;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FVector ImpactEffectScale = FVector(1.0, 1.0, 1.0);
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactEffectSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactWeaponSound;
+
 //Default Function
 /////////////////////////////////////////////////////////////////////////////
 public:	

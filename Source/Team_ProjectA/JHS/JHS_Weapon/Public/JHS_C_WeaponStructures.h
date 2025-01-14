@@ -40,7 +40,6 @@ public:
 public:
 	void AttackAction(class ACharacter* InOwner);
 	void SendDamage(class ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther);
-
 };
 
 USTRUCT()

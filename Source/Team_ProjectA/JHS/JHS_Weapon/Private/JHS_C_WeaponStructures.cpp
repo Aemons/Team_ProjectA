@@ -9,6 +9,7 @@ void FMainActionData::AttackAction(ACharacter* InOwner)
 	if (!!Montage)
 		InOwner->PlayAnimMontage(Montage, PlayRate);
 }
+
 void FMainActionData::SendDamage(ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther)
 {
 	FActionDamageEvent DamageEvent;
