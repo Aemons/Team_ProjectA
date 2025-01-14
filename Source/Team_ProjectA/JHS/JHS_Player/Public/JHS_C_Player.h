@@ -32,6 +32,8 @@ public:
 	// HHR
 	// ----------------------------------------------------------------------------
 	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
+	// - Temporary
+	FORCEINLINE class UHHR_InteractComponent* GetInteractComp() const {return InteractComp;};
 	// ----------------------------------------------------------------------------
 
 public:

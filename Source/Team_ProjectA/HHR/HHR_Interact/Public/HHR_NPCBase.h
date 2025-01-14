@@ -49,8 +49,12 @@ private:
 
 /////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **
-public:
-	virtual void Interact() override;;
+public:		// *InteractInterface
+	virtual void Interact() override;
+
+private:	// *내부에서 사용하는 함수
+	bool DoesFaceToCh(AActor* OtherActor);
+	
 	
 	
 	

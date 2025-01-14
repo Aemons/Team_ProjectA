@@ -62,7 +62,8 @@ void UHHR_InteractComponent::SetUpInputBinding(UEnhancedInputComponent* Input)
 void UHHR_InteractComponent::Interact()
 {
 	// F 키 누르면 실행
-	// TODO : LineTrace로 Interact 구현 
+	// TODO : LineTrace로 Interact 구현
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Interacting");
 }
 
 
