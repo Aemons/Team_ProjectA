@@ -23,5 +23,4 @@ public:
 
 	void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation);
 	
-	
 };

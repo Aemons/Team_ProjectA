@@ -13,7 +13,7 @@ void UAM_Notify_NiagaraCount::Notify(USkeletalMeshComponent* MeshComp, UAnimSequ
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Custom Notify: UAM_Notify_NiagaraCount triggered."));
+	// UE_LOG(LogTemp, Warning, TEXT("Custom Notify: UAM_Notify_NiagaraCount triggered."));
 
 	// 나이아가라 효과 생성
 	UFXSystemComponent* NiagaraComp = SpawnEffect(MeshComp, Animation);
@@ -33,7 +33,7 @@ void UAM_Notify_NiagaraCount::Notify(USkeletalMeshComponent* MeshComp, UAnimSequ
 						NiagaraComp->Deactivate();  // 먼저 비활성화
 						NiagaraComp->DestroyComponent();  // 이후 삭제
 
-						UE_LOG(LogTemp, Warning, TEXT("Niagara effect Destroyed."));
+						// UE_LOG(LogTemp, Warning, TEXT("Niagara effect Destroyed."));
 					}
 				},
 				DestroyDelay,
