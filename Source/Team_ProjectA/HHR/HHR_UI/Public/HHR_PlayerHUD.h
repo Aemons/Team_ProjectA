@@ -14,7 +14,7 @@ class UProgressBar;
 class UImage;
 class UHorizontalBox;
 class UHHR_ItemSlotBase;
-class UHHR_Interact;
+class UHHR_InteractDialog;
 class UOverlay;
 
 UCLASS()
@@ -53,7 +53,7 @@ protected:	// *Widgets*
 	UHHR_ItemSlotBase* ItemSlotComp_Slot2;
 	// Interact widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHHR_Interact* InteractUIComp;
+	UHHR_InteractDialog* InteractUIComp;
 	
 private:	// *Timeline Curve*
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess), Category = "Timeline")

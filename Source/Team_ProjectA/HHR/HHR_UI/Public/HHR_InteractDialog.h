@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "HHR_Interact.generated.h"
+#include "HHR_InteractDialog.generated.h"
 
 /**
  * 
@@ -16,7 +16,7 @@ class UTextBlock;
 class USpacer;
 
 UCLASS()
-class TEAM_PROJECTA_API UHHR_Interact : public UUserWidget
+class TEAM_PROJECTA_API UHHR_InteractDialog : public UUserWidget
 {
 	GENERATED_BODY()
 

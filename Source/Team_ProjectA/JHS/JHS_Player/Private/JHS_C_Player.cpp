@@ -20,6 +20,7 @@
 // HHR
 // ----------------------------------------------------------------------------
 #include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
 // ----------------------------------------------------------------------------
 
@@ -38,6 +39,10 @@ AJHS_C_Player::AJHS_C_Player()
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
 		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
 		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
+		// HHR
+		// ----------------------------------------------------------------------------
+		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
+		// ----------------------------------------------------------------------------
 	}
 
 	//Attach Component

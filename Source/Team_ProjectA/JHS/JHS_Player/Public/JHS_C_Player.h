@@ -80,6 +80,14 @@ public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_WeaponComponent* WeaponComp;
 
+	// HHR
+	// ----------------------------------------------------------------------------
+	// * Interact Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UHHR_InteractComponent* InteractComp;
+	// ----------------------------------------------------------------------------
+	
+
 public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputMappingContext* IMC_Player;

@@ -25,7 +25,6 @@ void UHHR_InteractComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	UE_LOG(LogTemp, Warning, TEXT("시벌 뭐야"));
 }
 
 
@@ -43,9 +42,8 @@ void UHHR_InteractComponent::InitializeComponent()
 {
 	Super::InitializeComponent();
 
+	// TODO : 실제 IMC와 Playercharacter에 할당해줘야함 (playerCharacter에서 interactcomp생성)
 	// Player Character의 InputBinde Delegate에 바인딩
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Init");
-	UE_LOG(LogTemp, Warning, TEXT("HHR_InteractComponent initialized"));
 	OwnerCharacter = Cast<AJHS_C_Player>(GetOwner());
 	if(OwnerCharacter)
 	{
@@ -64,7 +62,6 @@ void UHHR_InteractComponent::SetUpInputBinding(UEnhancedInputComponent* Input)
 void UHHR_InteractComponent::Interact()
 {
 	// F 키 누르면 실행
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "F");
 	// TODO : LineTrace로 Interact 구현 
 }
 
