@@ -68,7 +68,7 @@ AJHS_C_Player::AJHS_C_Player()
 
 		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
-		GetCharacterMovement()->RotationRate = FRotator(0.0, 400.0, 0.0);
+		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 

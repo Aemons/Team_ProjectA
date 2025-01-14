@@ -20,6 +20,9 @@ protected:
 	float Direction = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
+	float PlayerWalkInterSpeed = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
 	float ForwardInput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Data")
@@ -69,6 +72,7 @@ private:
 	FRotator PrevRotation;
 	class UCharacterMovementComponent* MovementComp;
 	class UJHS_C_WeaponComponent* WeaponComp;
+	class UJHS_C_MoveComponent* MoveComp;
 	
 
 
