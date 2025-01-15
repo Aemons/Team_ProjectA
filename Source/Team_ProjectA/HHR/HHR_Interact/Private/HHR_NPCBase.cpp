@@ -4,7 +4,10 @@
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_NPCBase.h"
 
 #include "JHS_C_Player.h"
+#include "Camera/CameraComponent.h"
 #include "Components/SphereComponent.h"
+#include "Components/WidgetComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
 
 
@@ -28,6 +31,14 @@ AHHR_NPCBase::AHHR_NPCBase()
 	}
 	SkeletalMeshComp->SetRelativeLocation(FVector(0, 0, -100.f));
 	SkeletalMeshComp->SetRelativeRotation(FRotator(0, -90, 0));
+	// TODO : UI 세팅
+	InteractWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget Comp"));
+	InteractWidgetComp->SetupAttachment(SphereCollision);
+	//
+	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SprintArm Comp"));
+	SpringArmComp->SetupAttachment(SphereCollision);
+	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Comp"));
+	CameraComp->SetupAttachment(SpringArmComp);
 	
 }
 
@@ -39,12 +50,16 @@ void AHHR_NPCBase::BeginPlay()
 	// Overlap 바인딩 
 	SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AHHR_NPCBase::OnComponentBeginOverlap);
 	SphereCollision->OnComponentEndOverlap.AddDynamic(this, &AHHR_NPCBase::OnComponentEndOverlap);
+
+	// Setting
+	InteractWidgetComp->SetVisibility(false);
 }
 
 // Called every frame
 void AHHR_NPCBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 }
 
 void AHHR_NPCBase::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -52,18 +67,14 @@ void AHHR_NPCBase::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedCompon
 {
 	// PlayerCharacter의 forward vector를 이용해서 UI 여부 결정 & flag 설정 
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Overlap"));
+	
 	AJHS_C_Player* playerCharacter = Cast<AJHS_C_Player>(OtherActor);
-	if(playerCharacter && DoesFaceToCh(OtherActor))
+	if(playerCharacter)
 	{
-		// TODO : UI 띄우기
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("UI띄움"));
-		playerCharacter->GetInteractComp()->SetDoesIntearct(true);
-	}
-	else
-	{
-		// TODO : UI 꺼주기
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("UI꺼줌"));
-		playerCharacter->GetInteractComp()->SetDoesIntearct(false);
+		playerCharacter->InteractOnMessage(this);
+		// UI 표시
+		InteractWidgetComp->SetVisibility(true);
+		bIsWidgetOn = true;
 	}
 	
 }
@@ -71,32 +82,34 @@ void AHHR_NPCBase::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedCompon
 void AHHR_NPCBase::OnComponentEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	// TODO : UI 꺼주고 CantInteract() 실행
 	AJHS_C_Player* playerCharacter = Cast<AJHS_C_Player>(OtherActor);
 	if(playerCharacter)
 	{
-		// TODO : UI 꺼주기
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("UI꺼줌"));
-		playerCharacter->GetInteractComp()->SetDoesIntearct(false);
+		playerCharacter->InteractOffMessage(this);
+		// UI 표시
+		InteractWidgetComp->SetVisibility(false);
+		bIsWidgetOn = false;
 	}
 }
 
 void AHHR_NPCBase::Interact()
 {
-	// 부모 구현 아직 필요 없음  
+	// TODO : 자식에서 구현해줘야 함
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("NPC 상호작용!"));
+	//GetWorld()->GetFirstPlayerController()->SetViewTargetWithBlend(this);
 }
 
+// 일단 안씀...
 bool AHHR_NPCBase::DoesFaceToCh(AActor* OtherActor)
 {
-	// TODO : 충돌한 actor의 Forward vector를 이요해서 방향 판단하여 UI 띄울 수 있는지 판별
-	// 캐릭터의 반대 방향이여야 함 
+	// 충돌한 actor의 Forward vector를 이요해서 방향 판단하여 UI 띄울 수 있는지 판별
 	FVector npcForward = GetActorForwardVector() * -1;
 	FVector chForward = OtherActor->GetActorForwardVector();
 
 	float dotProduct = FVector::DotProduct(npcForward, chForward);
 
 	float degree = FMath::RadiansToDegrees(FMath::Acos(dotProduct));
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, (TEXT("%f"), degree));
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, FString::Printf(TEXT("%.2f"), degree));
 	
 	return false;
 }

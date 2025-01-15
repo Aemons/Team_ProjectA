@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "HHR_NPCBase.h"
-#include "HHR_StoreNPC.generated.h"
+#include "HHR_MapNPC.generated.h"
 
 UCLASS()
-class TEAM_PROJECTA_API AHHR_StoreNPC : public AHHR_NPCBase
+class TEAM_PROJECTA_API AHHR_MapNPC : public AHHR_NPCBase
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AHHR_StoreNPC();
+	AHHR_MapNPC();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,6 +27,6 @@ public:
 // ** 일반 함수 **
 public:
 	virtual void Interact() override;
-	
 
+	
 };

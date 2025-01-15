@@ -27,7 +27,10 @@ void AHHR_StoreNPC::Tick(float DeltaTime)
 void AHHR_StoreNPC::Interact()
 {
 	// TODO : 상점 UI 띄우기 + 관련 로직 처리
-	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, TEXT("StoreNPC Interact"));
+	if(!bIsWidgetOn)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("StoreNPC Interact"));
+	}
 	
 }
 

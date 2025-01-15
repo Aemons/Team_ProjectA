@@ -21,6 +21,7 @@
 // ----------------------------------------------------------------------------
 #include "Blueprint/UserWidget.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
+#include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
 // ----------------------------------------------------------------------------
 
@@ -163,6 +164,24 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 			OnInputBindDelegate.Broadcast(EnhancedInputComp);
 	}
 }
+// HHR
+// ----------------------------------------------------------------------------
+void AJHS_C_Player::InteractOnMessage(AActor* OtherActor)
+{
+	if(InteractComp)
+	{
+		InteractComp->InteractOn(OtherActor);
+	}
+}
+
+void AJHS_C_Player::InteractOffMessage(AActor* OtherActor)
+{
+	if(InteractComp)
+	{
+		InteractComp->InteractOff(OtherActor);
+	}
+}
+// ----------------------------------------------------------------------------
 
 void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 {

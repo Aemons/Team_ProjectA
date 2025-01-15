@@ -130,6 +130,14 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 //////////////////////////////////////////////////////////////////////////////
 
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	void InteractOnMessage(AActor* OtherActor);
+	void InteractOffMessage(AActor* OtherActor);
+// ----------------------------------------------------------------------------
+
+	
 private:
 	void Player_Move(const FInputActionValue& InValue);
 	void Player_Look(const FInputActionValue& InValue);
@@ -164,7 +172,7 @@ private:
 	// *Statmina*
 	float CurrentStatmina = 100.0f;
 	float MaxStatmina = 100.f;
-	
+
 // ----------------------------------------------------------------------------
 	
 

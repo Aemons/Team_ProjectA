@@ -10,7 +10,7 @@
  * 
  */
 
-class UHorizontalBox;
+class UVerticalBox;
 class UBorder;
 class UTextBlock;
 class USpacer;
@@ -23,7 +23,7 @@ class TEAM_PROJECTA_API UHHR_InteractDialog : public UUserWidget
 // ** UPROPERTY **
 protected:
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHorizontalBox* HorizontalBox;
+	UVerticalBox* VerticalBox;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UBorder* KeyBorder;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")

@@ -17,9 +17,15 @@ class TEAM_PROJECTA_API AHHR_NPCBase : public AActor, public IHHR_InteractInterf
 // ** UPROPERTY 변수 **
 protected:	// *Components*
 	UPROPERTY(EditDefaultsOnly, Category = "Components")
-	class USkeletalMeshComponent* SkeletalMeshComp;
+	USkeletalMeshComponent* SkeletalMeshComp;
 	UPROPERTY(EditDefaultsOnly, Category = "Components")
 	class USphereComponent* SphereCollision;
+	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	class UWidgetComponent* InteractWidgetComp;
+	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	class USpringArmComponent* SpringArmComp;
+	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	class UCameraComponent* CameraComp;
 	
 	
 /////////////////////////////////////////////////////////////////////////
@@ -50,12 +56,17 @@ private:
 /////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **
 public:		// *InteractInterface
+	//void Interact_Implementation();
 	virtual void Interact() override;
 
 private:	// *내부에서 사용하는 함수
 	bool DoesFaceToCh(AActor* OtherActor);
-	
-	
+
+
+/////////////////////////////////////////////////////////////////////////
+// ** 내부 멤버 변수 **
+protected:
+	bool bIsWidgetOn = false;
 	
 	
 };

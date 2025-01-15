@@ -62,6 +62,10 @@ public:
 	// IA에 바인딩할 함수
 	void Interact();
 
+	// *Interact*
+	void InteractOn(AActor* OtherActor);
+	void InteractOff(AActor* OtherActor);
+
 
 /////////////////////////////////////////////////////////////////////////
 // ** 내부 멤버 변수 **
@@ -69,5 +73,8 @@ private:
 	TObjectPtr<class AJHS_C_Player> OwnerCharacter;
 	// Interact 할 수 있는지 체크해주는 변수 
 	bool bDoesInteract = false;
+
+	// *Interact Actor*
+	TObjectPtr<class AActor> InteractActor = nullptr;
 
 };
