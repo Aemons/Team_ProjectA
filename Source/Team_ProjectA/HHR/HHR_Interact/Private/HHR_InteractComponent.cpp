@@ -69,8 +69,8 @@ void UHHR_InteractComponent::Interact()
 		IHHR_InteractInterface* interface = Cast<IHHR_InteractInterface>(InteractActor);
 		interface->Interact();
 		// view 조정... npc에서 해줘야 하나, comp에서 해줘야 하나 
-		APlayerController* pc = Cast<APlayerController>(OwnerCharacter->GetController());
-		pc->SetViewTarget(InteractActor);
+		//APlayerController* pc = Cast<APlayerController>(OwnerCharacter->GetController());
+		//pc->SetViewTarget(InteractActor);
 	}
 }
 

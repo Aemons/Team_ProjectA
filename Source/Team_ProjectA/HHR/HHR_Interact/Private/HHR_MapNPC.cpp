@@ -3,6 +3,9 @@
 
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_MapNPC.h"
 
+// Test
+#include "Blueprint/UserWidget.h"
+
 
 // Sets default values
 AHHR_MapNPC::AHHR_MapNPC()
@@ -26,6 +29,15 @@ void AHHR_MapNPC::Tick(float DeltaTime)
 
 void AHHR_MapNPC::Interact()
 {
-	// 맵띄우기 
+	
+	// Create Map Widget
+	// TODO : UIManger에서 처리해줘야 함 
+	UUserWidget* widget = CreateWidget<UUserWidget>(GetWorld(), MapSelectWidgetClass);
+	if(widget)
+	{
+		widget->AddToViewport();
+	}
+	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
+	
 }
 

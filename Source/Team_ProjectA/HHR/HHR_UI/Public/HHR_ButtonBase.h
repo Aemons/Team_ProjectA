@@ -38,6 +38,7 @@ protected:
 	UBorder* TextBorder;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UTextBlock* BtnText;
+	// TODO : Btn 의 click event 동적으로 바인딩 해줘야 함 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UButton* HitBox;
 	// Animation

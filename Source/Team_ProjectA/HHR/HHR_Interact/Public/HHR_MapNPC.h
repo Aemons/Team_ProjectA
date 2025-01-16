@@ -11,6 +11,13 @@ class TEAM_PROJECTA_API AHHR_MapNPC : public AHHR_NPCBase
 {
 	GENERATED_BODY()
 
+/////////////////////////////////////////////////////////////////////////
+// ** UPROPERTY 변수 **
+
+
+/////////////////////////////////////////////////////////////////////////
+// ** 기본 생성 함수 **
+
 public:
 	// Sets default values for this actor's properties
 	AHHR_MapNPC();
@@ -27,6 +34,12 @@ public:
 // ** 일반 함수 **
 public:
 	virtual void Interact() override;
+
+
+// Test
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Widgets")
+	TSubclassOf<UUserWidget> MapSelectWidgetClass;
 
 	
 };

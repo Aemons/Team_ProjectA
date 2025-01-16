@@ -31,7 +31,7 @@ AHHR_NPCBase::AHHR_NPCBase()
 	}
 	SkeletalMeshComp->SetRelativeLocation(FVector(0, 0, -100.f));
 	SkeletalMeshComp->SetRelativeRotation(FRotator(0, -90, 0));
-	// TODO : UI 세팅
+	// TODO : UI 세팅 & 위치 세팅
 	InteractWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget Comp"));
 	InteractWidgetComp->SetupAttachment(SphereCollision);
 	//
