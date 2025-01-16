@@ -12,62 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/$movedMarker" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Boss_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_E_AIState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_E_AIState.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_2ComboAttack_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_ANIM_SpitAcid_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackLeft_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_ClawsAttackRight_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_Run_1_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_Run_2_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_Run_3_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Hide_Run_4_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_HitTime_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_IdleBreathe_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_JumpBiteAttack_RM_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_LookAtWait_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_RoarSpreadAcid_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Scream_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Sprint_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AM_Sprint_Ready_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_AN_Hide_JumpMandibulesAttack_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_CrazyTurn.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_Death_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_JumpMandibulesAttack_RM_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/SOS_Hide_One_SpitAcid_Montage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Boss_PlayTriggerBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Boss_PlayTriggerBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/SOS_ABP_Hideoplast_Skeleton_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/SOS_ABP_Hideoplast_Skeleton_AnimBlueprint.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/0/5M/TM4JA1GGPTLUMLDG97KVC8.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/0/PC/PLO7OV0ZG0BEFOLOWLUZRA.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/0/RM/2Q2B9RDHZH6TS409ITJP7C.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/2/7W/7RFHZPOPF3G2CRTVTW7GAG.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/3/ZV/NJIPIDNPR1Z2VLKB052RE9.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/5/MW/37TCUGEZ7B1TZ1F5A6OEKU.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/6/6A/R80EHBITB8N9B5ULOTXGCQ.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/6/KB/L3Y345U4SI1TCPVWL66W05.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/6/Y0/D5MSWBWU6LDFJ1BLGZCJHK.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/7/CL/MYAMMLGE8JLY3DZMGBRLU9.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/8/9A/GH4AEJWEI3YKGAJGOZFO8D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/8/FN/HG1OJ195XPWR8VBHRIQWH6.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/8/JF/URD9JAVI1MTK2ICPKU4K48.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/8/SG/7N4HZB7U858A7W561OHYDL.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/8/X5/LTY4J4ORZ0RHQFUN6PNBBT.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/9/93/HEE1TCZOUVQEHBO87PQMC3.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/B/SJ/R9W33DDHC3G8VS010MOB3P.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/B/ZP/L6QU5H1KTVIK2BXWJOGG72.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/C/ZH/1S9VL93Q53N2IOALA6AF2L.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/E/9T/SKK3ERVZQ6P99VZNXA06OV.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/E/XN/V174DEOHD9VJQ55D8FC9IA.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/0/RT/BWFU2HK03KRKZDB9MQ0FIO.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/1/LC/1YNJMCIZOEG1392HIMSZKN.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/1/RC/CIQZSFMD0GQFV5PEA32IQK.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/5/RC/9OXRNWOH8W0GN5TIQG1S4V.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/9/E4/RM8ST88NWAFRHUYIXGLN5R.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalObjects__/00_Project/SOS/SOS_TestMap/SOS_ThirdPersonTestMap/D/AX/4D6DZ395RMM855OP4U7U27.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/SOS_ABP_Dragon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/SOS_ABP_Dragon.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -586,6 +532,7 @@
       <workItem from="1736853565324" duration="1749000" />
       <workItem from="1736930467922" duration="1528000" />
       <workItem from="1736989506994" duration="5584000" />
+      <workItem from="1737010697380" duration="1383000" />
     </task>
     <servers />
   </component>
