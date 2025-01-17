@@ -84,6 +84,10 @@ public://Collision On/Off
 	void OnCollision();
 	void OffCollision();
 
+private:
+	void PlayEffect(FTransform& InTransform);
+	void PlaySound(FTransform& InTransform);
+
 public://Delegate Value
 	//Collision Delegate Value
 	FAttachmentBeginCollision OnAttachmentBeginCollision;
@@ -93,5 +97,6 @@ public://Delegate Value
 	FAttachmentBeginOverlap OnAttachmentBeginOverlap;
 	FAttachmentEndOverlap OnAttachmentEndOverlap;
 
-
+private:
+	FTransform transform;
 };

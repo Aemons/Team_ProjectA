@@ -1,6 +1,7 @@
 #include "JHS_C_WeaponStructures.h"
 
 #include "GameFramework/Character.h"
+#include "Kismet/GameplayStatics.h"
 #include "Animation/AnimMontage.h"
 
 //FMainActionData
@@ -16,5 +17,15 @@ void FMainActionData::SendDamage(ACharacter* InAttacker, AActor* InAttackCuser, 
 	DamageEvent.ActionDamageEvent = this;
 
 	InOther->TakeDamage(Power, DamageEvent, InAttacker->GetController(), InAttackCuser);
+}
+void FMainActionData::PlayerCameraShake(UObject* InObject)
+{
+	if (CameraShakeClass)
+	{
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(InObject, 0))
+		{
+			PC->ClientStartCameraShake(CameraShakeClass);
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////

@@ -2,6 +2,7 @@
 #include "JHS_Global.h"
 
 #include "GameFramework/Character.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_MoveComponent.h"
@@ -33,6 +34,7 @@ void UJHS_C_MainAction_Sword::Begin_MainAction()
 
 	bExist = false;
 	MainActionDatas[++Index].AttackAction(OwnerCharacter);
+	MainActionDatas[Index].PlayerCameraShake(OwnerCharacter);
 }
 
 void UJHS_C_MainAction_Sword::End_MainAction()

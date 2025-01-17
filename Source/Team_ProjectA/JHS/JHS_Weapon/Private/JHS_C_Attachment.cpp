@@ -83,8 +83,6 @@ void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedC
 			FVector ImpactLocation = OverlappedComponent->GetComponentLocation();
 			//가까운 본의 위치
 			FVector ClosestBoneLocation;
-			//가까운 본의 이름
-			FName ClosestBoneName;
 			//최소거리
 			float MinDistance = FLT_MAX;
 
@@ -103,67 +101,21 @@ void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedC
 				{
 					MinDistance = Distance;
 					ClosestBoneLocation = BoneLocation;
-					ClosestBoneName = BoneName;
 				} 
 			}
 
 			//Impact Effect, Sound Transform 할당 및 설정
-			////////////////////////////////////////////////////////////////
-			FTransform transform;
 			transform.SetLocation(ClosestBoneLocation);
 			transform.SetRotation(FQuat(ImpactEffectRotation));
 			transform.SetScale3D(ImpactEffectScale);
 			////////////////////////////////////////////////////////////////
 
-			//ImpactEffect 있을 경우
-			////////////////////////////////////////////////////////////////
-			if (!!ImpactEffect)
-			{
-				if (UParticleSystem* Particle = Cast<UParticleSystem>(ImpactEffect))
-				{
-					UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Particle, transform);
-				}
-
-				if (UNiagaraSystem* Niagara = Cast<UNiagaraSystem>(ImpactEffect))
-				{
-					UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), Niagara, transform.GetLocation(), (FRotator)transform.GetRotation(), transform.GetScale3D());
-				}
-			}
-			////////////////////////////////////////////////////////////////
-
-			//ImpactSound
-			////////////////////////////////////////////////////////////////
-			if (!!ImpactEffectSound)
-			{
-				if (USoundWave* SoundWave = Cast<USoundWave>(ImpactEffectSound))
-				{
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, transform.GetLocation());
-				}
-
-				if (USoundCue* SoundCue = Cast<USoundCue>(ImpactEffectSound))
-				{
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, transform.GetLocation());
-				}
-			}
-			////////////////////////////////////////////////////////////////
-
-			//ImpactWeaponSound
-			////////////////////////////////////////////////////////////////
-			if (!!ImpactWeaponSound)
-			{
-				if (USoundWave* SoundWave = Cast<USoundWave>(ImpactWeaponSound))
-				{
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, transform.GetLocation());
-				}
-
-				if (USoundCue* SoundCue = Cast<USoundCue>(ImpactWeaponSound))
-				{
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, transform.GetLocation());
-				}
-			}
-			////////////////////////////////////////////////////////////////
 
 		}//if(OtherMesh)
+
+		PlayEffect(transform);
+		PlaySound(transform);
+
 	}//if(Cast OtherCharacter)
 }
 
@@ -198,6 +150,54 @@ void AJHS_C_Attachment::OffCollision()
 	{
 		Shape->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		Shape->SetCollisionProfileName(TEXT("NoCollision"));
+	}
+}
+
+void AJHS_C_Attachment::PlayEffect(FTransform& InTransform)
+{
+	//ImpactEffect 있을 경우
+	if (!!ImpactEffect)
+	{
+		if (UParticleSystem* Particle = Cast<UParticleSystem>(ImpactEffect))
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Particle, InTransform);
+		}
+
+		if (UNiagaraSystem* Niagara = Cast<UNiagaraSystem>(ImpactEffect))
+		{
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), Niagara, InTransform.GetLocation(), (FRotator)InTransform.GetRotation(), InTransform.GetScale3D());
+		}
+	}
+}
+
+void AJHS_C_Attachment::PlaySound(FTransform& InTransform)
+{
+	//ImpactSound
+	if (!!ImpactEffectSound)
+	{
+		if (USoundWave* SoundWave = Cast<USoundWave>(ImpactEffectSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, InTransform.GetLocation());
+		}
+
+		if (USoundCue* SoundCue = Cast<USoundCue>(ImpactEffectSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, InTransform.GetLocation());
+		}
+	}
+
+	//ImpactWeaponSound
+	if (!!ImpactWeaponSound)
+	{
+		if (USoundWave* SoundWave = Cast<USoundWave>(ImpactWeaponSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, InTransform.GetLocation());
+		}
+
+		if (USoundCue* SoundCue = Cast<USoundCue>(ImpactWeaponSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, InTransform.GetLocation());
+		}
 	}
 }
 
