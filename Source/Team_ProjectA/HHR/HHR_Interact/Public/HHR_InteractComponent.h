@@ -71,10 +71,12 @@ public:
 // ** 내부 멤버 변수 **
 private:
 	TObjectPtr<class AJHS_C_Player> OwnerCharacter;
+
+
+private: //*Interact*
 	// Interact 할 수 있는지 체크해주는 변수 
 	bool bDoesInteract = false;
-
-	// *Interact Actor*
+	// Interact Actor
 	TObjectPtr<class AActor> InteractActor = nullptr;
 
 };

@@ -19,7 +19,7 @@ class TEAM_PROJECTA_API UHHR_MapSlotBase : public UUserWidget
 
 //////////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
-public:
+public:	// *동적 변수* (상위 위젯에서 할당해줘야 하는 값들)
 	// Button의 텍스트 크기
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	float TextSize;
