@@ -24,6 +24,13 @@ class TEAM_PROJECTA_API UHHR_InteractComponent : public UActorComponent
 	GENERATED_BODY()
 
 /////////////////////////////////////////////////////////////////////////
+// ** FORCEINLINE 함수 **
+public:
+	FORCEINLINE bool GetDoesIntearct() const {return bDoesInteract;}
+	FORCEINLINE void SetDoesIntearct(bool b) {bDoesInteract = b;}
+	
+
+/////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 private:
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Interact Input")
@@ -50,10 +57,14 @@ private:
 /////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **
 public:
-	// 델리게이트에 바인딩할 함수
+	// Player의 델리게이트에 바인딩할 함수
 	void SetUpInputBinding(class UEnhancedInputComponent* Input);
 	// IA에 바인딩할 함수
 	void Interact();
+
+	// *Interact*
+	void InteractOn(AActor* OtherActor);
+	void InteractOff(AActor* OtherActor);
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -61,5 +72,11 @@ public:
 private:
 	TObjectPtr<class AJHS_C_Player> OwnerCharacter;
 
+
+private: //*Interact*
+	// Interact 할 수 있는지 체크해주는 변수 
+	bool bDoesInteract = false;
+	// Interact Actor
+	TObjectPtr<class AActor> InteractActor = nullptr;
 
 };

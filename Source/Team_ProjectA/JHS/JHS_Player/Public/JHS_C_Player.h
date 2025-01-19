@@ -32,6 +32,8 @@ public:
 	// HHR
 	// ----------------------------------------------------------------------------
 	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
+	// - Temporary
+	FORCEINLINE class UHHR_InteractComponent* GetInteractComp() const {return InteractComp;};
 	// ----------------------------------------------------------------------------
 
 public:
@@ -80,6 +82,14 @@ public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_WeaponComponent* WeaponComp;
 
+	// HHR
+	// ----------------------------------------------------------------------------
+	// * Interact Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UHHR_InteractComponent* InteractComp;
+	// ----------------------------------------------------------------------------
+	
+
 public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputMappingContext* IMC_Player;
@@ -120,6 +130,14 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 //////////////////////////////////////////////////////////////////////////////
 
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	void InteractOnMessage(AActor* OtherActor);
+	void InteractOffMessage(AActor* OtherActor);
+// ----------------------------------------------------------------------------
+
+	
 private:
 	void Player_Move(const FInputActionValue& InValue);
 	void Player_Look(const FInputActionValue& InValue);
@@ -154,7 +172,7 @@ private:
 	// *Statmina*
 	float CurrentStatmina = 100.0f;
 	float MaxStatmina = 100.f;
-	
+
 // ----------------------------------------------------------------------------
 	
 

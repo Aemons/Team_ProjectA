@@ -14,7 +14,7 @@ class UProgressBar;
 class UImage;
 class UHorizontalBox;
 class UHHR_ItemSlotBase;
-class UHHR_Interact;
+class UHHR_InteractDialog;
 class UOverlay;
 
 UCLASS()
@@ -24,6 +24,8 @@ class TEAM_PROJECTA_API UHHR_PlayerHUD : public UUserWidget
 
 // PlayerHUD는 PlayerController에서 생성 (PlayerController가 생성될때 생성해주면 될듯) 
 // TODO : 아이템 슬롯 연결
+
+	
 
 /////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
@@ -53,7 +55,7 @@ protected:	// *Widgets*
 	UHHR_ItemSlotBase* ItemSlotComp_Slot2;
 	// Interact widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHHR_Interact* InteractUIComp;
+	UHHR_InteractDialog* InteractUIComp;
 	
 private:	// *Timeline Curve*
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess), Category = "Timeline")

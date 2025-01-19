@@ -15,7 +15,7 @@ void UHHR_ButtonBase::NativePreConstruct()
 
 	// 상위 wbp에서 수정한 값 할당
 	BtnText->SetText(Text);
-	// Font는 구조체이고 size 변수가 const여서 Font를 다시 생성해줘야 함 ->  Font도 따로 가져와줘야 해서 -> BP에서 처리
+	// Font는 구조체이고 size 변수가 const여서 Font를 다시 생성해줘야 함 ->  Font도 따로 가져와줘야 해서 귀찮 -> BP에서 처리
 }
 
 void UHHR_ButtonBase::NativeConstruct()

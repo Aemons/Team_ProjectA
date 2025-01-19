@@ -4,26 +4,26 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "HHR_Interact.generated.h"
+#include "HHR_InteractDialog.generated.h"
 
 /**
  * 
  */
 
-class UHorizontalBox;
+class UVerticalBox;
 class UBorder;
 class UTextBlock;
 class USpacer;
 
 UCLASS()
-class TEAM_PROJECTA_API UHHR_Interact : public UUserWidget
+class TEAM_PROJECTA_API UHHR_InteractDialog : public UUserWidget
 {
 	GENERATED_BODY()
 
 // ** UPROPERTY **
 protected:
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHorizontalBox* HorizontalBox;
+	UVerticalBox* VerticalBox;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UBorder* KeyBorder;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")

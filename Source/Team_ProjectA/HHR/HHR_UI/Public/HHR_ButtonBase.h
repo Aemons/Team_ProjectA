@@ -19,17 +19,25 @@ class TEAM_PROJECTA_API UHHR_ButtonBase : public UUserWidget
 {
 	GENERATED_BODY()
 
-// ** UPROPERTY 변수 **
-//*다른 widget에서 편집할 수 있는 변수*
+
+/////////////////////////////////////////////////////////////////////////
+// ** FORCEINLINE 함수 **
 public:
+	// 이벤트 동적바인딩을 위함 
+	FORCEINLINE UButton* GetButton() const {return HitBox;}
+	
+
+//////////////////////////////////////////////////////////////////////////////
+// ** UPROPERTY 변수 **
+public:		//*다른 widget에서 편집할 수 있는 변수*
 	// Button의 텍스트 크기
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	float TextSize;
 	// Button의 텍스트 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	FText Text;
-//*Widget Component*
-protected:
+
+protected:	//*Widget Component*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UOverlay* Overlay;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
@@ -38,6 +46,7 @@ protected:
 	UBorder* TextBorder;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UTextBlock* BtnText;
+	// TODO : Btn 의 click event 동적으로 바인딩 해줘야 함 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UButton* HitBox;
 	// Animation

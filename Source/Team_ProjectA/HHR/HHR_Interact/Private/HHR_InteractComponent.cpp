@@ -5,6 +5,7 @@
 
 #include "EnhancedInputComponent.h"
 #include "JHS_C_Player.h"
+#include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
 
 
 // Sets default values for this component's properties
@@ -25,7 +26,6 @@ void UHHR_InteractComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	UE_LOG(LogTemp, Warning, TEXT("시벌 뭐야"));
 }
 
 
@@ -43,9 +43,8 @@ void UHHR_InteractComponent::InitializeComponent()
 {
 	Super::InitializeComponent();
 
+	// TODO : 실제 IMC와 Playercharacter에 할당해줘야함 (playerCharacter에서 interactcomp생성)
 	// Player Character의 InputBinde Delegate에 바인딩
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Init");
-	UE_LOG(LogTemp, Warning, TEXT("HHR_InteractComponent initialized"));
 	OwnerCharacter = Cast<AJHS_C_Player>(GetOwner());
 	if(OwnerCharacter)
 	{
@@ -64,8 +63,31 @@ void UHHR_InteractComponent::SetUpInputBinding(UEnhancedInputComponent* Input)
 void UHHR_InteractComponent::Interact()
 {
 	// F 키 누르면 실행
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "F");
-	// TODO : LineTrace로 Interact 구현 
+	if(InteractActor)
+	{
+		// Interact 함수 호출
+		IHHR_InteractInterface* interface = Cast<IHHR_InteractInterface>(InteractActor);
+		interface->Interact();
+		// view 조정... npc에서 해줘야 하나, comp에서 해줘야 하나 
+		//APlayerController* pc = Cast<APlayerController>(OwnerCharacter->GetController());
+		//pc->SetViewTarget(InteractActor);
+	}
+}
+
+void UHHR_InteractComponent::InteractOn(AActor* OtherActor)
+{
+	if(OtherActor->Implements<UHHR_InteractInterface>())
+	{
+		InteractActor = OtherActor;
+	}
+}
+
+void UHHR_InteractComponent::InteractOff(AActor* OtherActor)
+{
+	if(OtherActor->Implements<UHHR_InteractInterface>())
+	{
+		InteractActor = nullptr;
+	}
 }
 
 

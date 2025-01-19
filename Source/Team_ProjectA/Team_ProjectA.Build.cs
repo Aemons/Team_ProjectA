@@ -19,7 +19,9 @@ public class Team_ProjectA : ModuleRules
         		"AIModule",
         		"GameplayTasks",
         		"NavigationSystem",
-		        "UMG"
+		        "UMG",
+		        "Slate",
+		        "SlateCore",
         	});
 		
 		//JHS Public/Private ��� �߰�
