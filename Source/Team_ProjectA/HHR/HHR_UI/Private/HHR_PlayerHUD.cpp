@@ -64,7 +64,6 @@ void UHHR_PlayerHUD::DecreaseHPBar(float CurrentHealth)
 	
 }
 
-// TO DO : 수정 필요 
 float UHHR_PlayerHUD::GetStatminPercent() const
 {
 	// player character의 스테미나에 바인딩

@@ -66,7 +66,7 @@ void AHHR_NPCBase::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedCompon
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	// PlayerCharacter의 forward vector를 이용해서 UI 여부 결정 & flag 설정 
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Overlap"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Overlap"));
 	
 	AJHS_C_Player* playerCharacter = Cast<AJHS_C_Player>(OtherActor);
 	if(playerCharacter)

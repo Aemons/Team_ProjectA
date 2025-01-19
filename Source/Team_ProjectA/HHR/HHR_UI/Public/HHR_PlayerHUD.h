@@ -25,6 +25,8 @@ class TEAM_PROJECTA_API UHHR_PlayerHUD : public UUserWidget
 // PlayerHUD는 PlayerController에서 생성 (PlayerController가 생성될때 생성해주면 될듯) 
 // TODO : 아이템 슬롯 연결
 
+	
+
 /////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 protected:	// *Widgets*
