@@ -22,9 +22,10 @@ public class Team_ProjectA : ModuleRules
 		        "UMG",
 		        "Slate",
 		        "SlateCore",
+                "Niagara"
         	});
 		
-		//JHS Public/Private ��� �߰�
+		//JHS Public/Private
 		////////////////////////////////////////////////////////////////////////////////////////////
         PublicIncludePaths.AddRange(new string[] 
         {

@@ -33,6 +33,7 @@ void UJHS_C_MainAction_Sword::Begin_MainAction()
 	CheckFalse(bExist);
 
 	bExist = false;
+
 	MainActionDatas[++Index].AttackAction(OwnerCharacter);
 	MainActionDatas[Index].PlayerCameraShake(OwnerCharacter);
 }
