@@ -8,7 +8,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentBeginCollision);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentEndCollision);
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuser, class ACharacter*, InOther);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuaser, class ACharacter*, InOther);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttachmentEndOverlap, class ACharacter*, InAttacker, class ACharacter*, InOther);
 
 UCLASS()
@@ -26,6 +26,23 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	TArray<class UShapeComponent*> Collisions;
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	class UFXSystemAsset* ImpactEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FRotator ImpactEffectRotation = FRotator::ZeroRotator;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FVector ImpactEffectScale = FVector(1.0, 1.0, 1.0);
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactEffectSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactWeaponSound;
 
 //Default Function
 /////////////////////////////////////////////////////////////////////////////
@@ -53,6 +70,9 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Attach")
 	void AttachTo(FName InSocketName);
 
+	UFUNCTION(BlueprintCallable, Category = "Attach")
+	void AttachToCollision(FName InCollisionName);
+
 private:
 	UFUNCTION()
 	void OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -64,6 +84,10 @@ public://Collision On/Off
 	void OnCollision();
 	void OffCollision();
 
+private:
+	void PlayEffect(FTransform& InTransform);
+	void PlaySound(FTransform& InTransform);
+
 public://Delegate Value
 	//Collision Delegate Value
 	FAttachmentBeginCollision OnAttachmentBeginCollision;
@@ -73,5 +97,6 @@ public://Delegate Value
 	FAttachmentBeginOverlap OnAttachmentBeginOverlap;
 	FAttachmentEndOverlap OnAttachmentEndOverlap;
 
-
+private:
+	FTransform transform;
 };

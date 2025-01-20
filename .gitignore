@@ -83,4 +83,8 @@ Content/Movies/*
 # Rider
 Plugins/Developer/RiderLink/
 
-
+# HHR
+Content/UIMaterialLab/*
+Content/_rainstoryRPGUI/*
+Content/UIMaterialLab/*
+Content/MenuBuilderCarousel/*

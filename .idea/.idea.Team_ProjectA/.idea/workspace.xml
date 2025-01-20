@@ -4,6 +4,9 @@
     <projectFile>$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
     <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
     <projectFile>$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
+    <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/Team_ProjectA.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
@@ -13,8 +16,20 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Materials/OverlayMaterial/MI_UI_ItemBorder.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Materials/OverlayMaterial/MI_UI_ItemBorder.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_MapSlotBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_MapSlotBase.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_NPCBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_NPCBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSelect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSelect.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSlotBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSlotBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_PlayerHUD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_PlayerHUD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ButtonBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ButtonBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSelect.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSelect.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSlotBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSlotBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_PlayerHUD.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_PlayerHUD.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectA.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectA.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,17 +43,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/AIModule/Classes/Tasks/AITask_MoveTo.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/AIModule/Private/Tasks/AITask_MoveTo.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/KismetSystemLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_IncreaseSpeed.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Notify_PhysicsSimul.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/AM_Notify_NiagaraCount.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/AM_Notify_NiagaraCount.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BTT_IncreaseSpeed.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Boss_PlayTriggerBox.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Notify_PhysicsSimul.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Pawn.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/ImageCore/Public/ImageCore.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/RenderCore/Public/RenderResource.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/Border.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/Widget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_InteractComponent.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_InteractInterface.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_MapNPC.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_NPCBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Public/HHR_MapNPC.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Public/HHR_NPCBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_ButtonBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSlotBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ButtonBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSlotBase.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -54,12 +75,13 @@
   &quot;keyToString&quot;: {
     &quot;C++ Project.Team_ProjectA.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SOS&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;6-player-npc-interact&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -446,7 +468,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -464,7 +486,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -475,7 +497,7 @@
       </method>
     </configuration>
     <configuration name="EpicGames.AspNet" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="EpicGames.AspNet" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -512,30 +534,29 @@
       <workItem from="1735621365334" duration="1732000" />
       <workItem from="1735780407068" duration="2515000" />
       <workItem from="1735869542122" duration="1154000" />
-      <workItem from="1735891069972" duration="281000" />
-      <workItem from="1735894440708" duration="2633000" />
-      <workItem from="1736137367950" duration="4762000" />
-      <workItem from="1736150333859" duration="3623000" />
-      <workItem from="1736213354445" duration="2932000" />
-      <workItem from="1736222321256" duration="3996000" />
-      <workItem from="1736310912203" duration="1262000" />
-      <workItem from="1736317210843" duration="1248000" />
-      <workItem from="1736396991850" duration="9292000" />
-      <workItem from="1736484556653" duration="5923000" />
-      <workItem from="1736492798470" duration="8000" />
-      <workItem from="1736492848601" duration="9955000" />
-      <workItem from="1736504572131" duration="2001000" />
-      <workItem from="1736507145055" duration="1815000" />
-      <workItem from="1736509659428" duration="3430000" />
-      <workItem from="1736513128553" duration="289000" />
-      <workItem from="1736742996201" duration="6384000" />
-      <workItem from="1736828815593" duration="8623000" />
-      <workItem from="1736853565324" duration="1749000" />
-      <workItem from="1736930467922" duration="1528000" />
-      <workItem from="1736989506994" duration="5584000" />
-      <workItem from="1737010697380" duration="1979000" />
-      <workItem from="1737347278116" duration="1057000" />
-      <workItem from="1737348417467" duration="805000" />
+      <workItem from="1736084060318" duration="5074000" />
+      <workItem from="1736126580110" duration="2066000" />
+      <workItem from="1736216046432" duration="8983000" />
+      <workItem from="1736234325607" duration="5876000" />
+      <workItem from="1736299053076" duration="20378000" />
+      <workItem from="1736395558745" duration="13507000" />
+      <workItem from="1736472408144" duration="10158000" />
+      <workItem from="1736491283577" duration="7710000" />
+      <workItem from="1736731264067" duration="15558000" />
+      <workItem from="1736755737115" duration="2602000" />
+      <workItem from="1736818661845" duration="1727000" />
+      <workItem from="1736820526166" duration="16910000" />
+      <workItem from="1736905606011" duration="18172000" />
+      <workItem from="1737002060973" duration="12870000" />
+      <workItem from="1737203708264" duration="207000" />
+      <workItem from="1737204559865" duration="3557000" />
+      <workItem from="1737263345244" duration="425000" />
+      <workItem from="1737263790322" duration="160000" />
+      <workItem from="1737263996165" duration="527000" />
+      <workItem from="1737264597891" duration="7200000" />
+      <workItem from="1737281272451" duration="190000" />
+      <workItem from="1737281526807" duration="82000" />
+      <workItem from="1737281811757" duration="11095000" />
     </task>
     <servers />
   </component>
@@ -547,5 +568,9 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

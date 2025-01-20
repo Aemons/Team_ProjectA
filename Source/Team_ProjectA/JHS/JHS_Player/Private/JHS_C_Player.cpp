@@ -17,6 +17,14 @@
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_WeaponComponent.h"
 
+// HHR
+// ----------------------------------------------------------------------------
+#include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
+#include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
+// ----------------------------------------------------------------------------
+
 AJHS_C_Player::AJHS_C_Player()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -32,6 +40,10 @@ AJHS_C_Player::AJHS_C_Player()
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
 		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
 		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
+		// HHR
+		// ----------------------------------------------------------------------------
+		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
+		// ----------------------------------------------------------------------------
 	}
 
 	//Attach Component
@@ -62,7 +74,7 @@ AJHS_C_Player::AJHS_C_Player()
 
 		//CharacterMovement Setting
 		GetCharacterMovement()->bOrientRotationToMovement = true;
-		GetCharacterMovement()->RotationRate = FRotator(0.0, 400.0, 0.0);
+		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
@@ -99,6 +111,19 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	// *PlayerHUD spawn
+	// - UIManager temporary spawn (it will be spawned by GameInstance)
+	//UHHR_UIManager* UIManager = NewObject<UHHR_UIManager>();
+	//UIManager->Init(GetWorld());
+	//UIManager->CreatePlayerHUD();
+	// *Temporary
+	UUserWidget* playerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
+	playerHUD->AddToViewport();
+	// ----------------------------------------------------------------------------
+	
 }
 
 void AJHS_C_Player::Tick(float DeltaTime)
@@ -139,6 +164,24 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 			OnInputBindDelegate.Broadcast(EnhancedInputComp);
 	}
 }
+// HHR
+// ----------------------------------------------------------------------------
+void AJHS_C_Player::InteractOnMessage(AActor* OtherActor)
+{
+	if(InteractComp)
+	{
+		InteractComp->InteractOn(OtherActor);
+	}
+}
+
+void AJHS_C_Player::InteractOffMessage(AActor* OtherActor)
+{
+	if(InteractComp)
+	{
+		InteractComp->InteractOff(OtherActor);
+	}
+}
+// ----------------------------------------------------------------------------
 
 void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 {
@@ -225,7 +268,7 @@ void AJHS_C_Player::Player_OnDodge()
 		///////////////////////////////////////////////////////////////
 		FVector InputVector = GetLastMovementInputVector();
 
-		//ÀÔ·ÂÀÌ ¾øÀ»°æ¿ì ±âº» Dodge ¹æÇâÀ» µÚ ¹æÇâÀ¸·Î 
+		//ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» Dodge ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		if (InputVector.IsNearlyZero())
 			InputVector = GetActorForwardVector() * -1.0f;
 		
@@ -281,8 +324,6 @@ void AJHS_C_Player::Player_OffDodge()
 
 		EnableInput(Cast<APlayerController>(GetController()));
 	}
-
-	JHS_Global::Print("Dodge OFF");
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

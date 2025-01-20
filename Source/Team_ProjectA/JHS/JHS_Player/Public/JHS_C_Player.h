@@ -9,6 +9,11 @@
 #include "JHS_C_Player.generated.h"
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FInputBindDelegate, class UEnhancedInputComponent*);
+// HHR
+// ----------------------------------------------------------------------------
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDecreaseHealthBar, float, CurrentHealth);
+// ----------------------------------------------------------------------------
+
 
 UCLASS()
 class TEAM_PROJECTA_API AJHS_C_Player : public ACharacter
@@ -24,13 +29,16 @@ public:
 	FORCEINLINE bool GetPlayerRun() { return bIsPlayerRun; }
 	FORCEINLINE bool GetPlayerDodge() { return bIsPlayerDodge; }
 
+	// HHR
+	// ----------------------------------------------------------------------------
+	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
+	// - Temporary
+	FORCEINLINE class UHHR_InteractComponent* GetInteractComp() const {return InteractComp;};
+	// ----------------------------------------------------------------------------
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "View Limit")
 	FVector2D PitchViewLimit = FVector2D(-50, +50);
-
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement Input")
-	FVector2D MovementInput;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Type")
@@ -74,6 +82,14 @@ public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_WeaponComponent* WeaponComp;
 
+	// HHR
+	// ----------------------------------------------------------------------------
+	// * Interact Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UHHR_InteractComponent* InteractComp;
+	// ----------------------------------------------------------------------------
+	
+
 public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputMappingContext* IMC_Player;
@@ -90,10 +106,18 @@ public: //InputMapping & Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InputAction")
 	class UInputAction* IA_Player_Dodge;
 
+
+// HHR
+// ----------------------------------------------------------------------------
+// * Temporary 
+private:
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = "Widget")
+	TSubclassOf<class UUserWidget> PlayerHUDClass;
+// ----------------------------------------------------------------------------
 	
 
 //Defult Function
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 public:
 	AJHS_C_Player();
 
@@ -104,8 +128,16 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	void InteractOnMessage(AActor* OtherActor);
+	void InteractOffMessage(AActor* OtherActor);
+// ----------------------------------------------------------------------------
+
+	
 private:
 	void Player_Move(const FInputActionValue& InValue);
 	void Player_Look(const FInputActionValue& InValue);
@@ -120,11 +152,28 @@ public:
 	FInputBindDelegate OnInputBindDelegate;
 
 protected:
-	
+	FVector2D MovementInput;
 	FVector2D LookInput = FVector2D::ZeroVector;
 
 	bool bIsPlayerRun = false;
 
 	FTimerHandle BrakingWalkingHandle;
 	FTimerHandle OffDodgeHandle;
+
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	// *Delegate to apply health ui*
+	// - call When you damaged 
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category = "Delegate")
+	FOnDecreaseHealthBar OnDecreaseHealthBar;
+private:
+	// *Statmina*
+	float CurrentStatmina = 100.0f;
+	float MaxStatmina = 100.f;
+
+// ----------------------------------------------------------------------------
+	
+
 };

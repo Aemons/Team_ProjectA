@@ -17,10 +17,16 @@ class TEAM_PROJECTA_API UJHS_C_MoveComponent : public UActorComponent
 
 public:
 	FORCEINLINE EWalkSpeedType GetWalkType() {return Type;}
+	//현재 Player적용 Speed 값 반환
+	FORCEINLINE float GetPlayerSpeed() { return CurrentPlayerSpeed; }
 
 public:
 	UPROPERTY(EditAnywhere, Category = "WalkSpeed")
 	float PlayerSpeed[(int32)EWalkSpeedType::Max] = {200, 600, 800};
+
+public:
+	UPROPERTY(EditAnywhere, Category = "Search")
+	float SearchDistance = 1000.0f;
 
 //Default Function
 ///////////////////////////////////////////////////////////////////////
@@ -46,12 +52,16 @@ public:
 
 	void SetWalkSpeed(EWalkSpeedType InType);
 
+	void SearchEnemyTarget();
+
 public:
 	void EnableControlRotation();
 	void DisableControlRotation();
 
 private:
-	//class AJHS_C_Player* OwnerCharacter;
 	class ACharacter* OwnerCharacter;
 	EWalkSpeedType Type;
+
+	bool bIsControlRotation;
+	float CurrentPlayerSpeed = PlayerSpeed[(int32)EWalkSpeedType::Max];
 };

@@ -33,6 +33,13 @@ public class Team_ProjectA : ModuleRules
 
 		
 		//JHS Public/Private ��� �߰�
+		        "UMG",
+		        "Slate",
+		        "SlateCore",
+                "Niagara"
+        	});
+		
+		//JHS Public/Private
 		////////////////////////////////////////////////////////////////////////////////////////////
         PublicIncludePaths.AddRange(new string[] 
         {

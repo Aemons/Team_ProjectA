@@ -20,6 +20,7 @@ public:
 
 public:
 	void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuser, class ACharacter* InOther) override;
+
 	void OnAttachmentEndCollision() override;
 
 private:
