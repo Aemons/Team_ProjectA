@@ -20,24 +20,21 @@ public class Team_ProjectA : ModuleRules
         		"NavigationSystem",
 		        "LevelSequence",
 		        "MovieScene",
-		        "UMG"
+		        "UMG",
+		        "Slate",
+		        "SlateCore",
+		        "Niagara"
         	});
 		
 		// SOS Using LevelSequnce
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "LevelSequence", "Niagara", "NiagaraAnimNotifies" });
+		PrivateDependencyModuleNames.AddRange(new string[] {"NiagaraAnimNotifies" });
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		
-		//JHS Public/Private ��� �߰�
-		        "UMG",
-		        "Slate",
-		        "SlateCore",
-                "Niagara"
-        	});
+		       
 		
 		//JHS Public/Private
 		////////////////////////////////////////////////////////////////////////////////////////////
