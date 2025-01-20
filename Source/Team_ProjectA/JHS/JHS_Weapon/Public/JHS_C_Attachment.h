@@ -27,6 +27,23 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	TArray<class UShapeComponent*> Collisions;
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	class UFXSystemAsset* ImpactEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FRotator ImpactEffectRotation = FRotator::ZeroRotator;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
+	FVector ImpactEffectScale = FVector(1.0, 1.0, 1.0);
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactEffectSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
+	class USoundBase* ImpactWeaponSound;
+
 //Default Function
 /////////////////////////////////////////////////////////////////////////////
 public:	
@@ -67,6 +84,10 @@ public://Collision On/Off
 	void OnCollision();
 	void OffCollision();
 
+private:
+	void PlayEffect(FTransform& InTransform);
+	void PlaySound(FTransform& InTransform);
+
 public://Delegate Value
 	//Collision Delegate Value
 	FAttachmentBeginCollision OnAttachmentBeginCollision;
@@ -76,5 +97,6 @@ public://Delegate Value
 	FAttachmentBeginOverlap OnAttachmentBeginOverlap;
 	FAttachmentEndOverlap OnAttachmentEndOverlap;
 
-
+private:
+	FTransform transform;
 };

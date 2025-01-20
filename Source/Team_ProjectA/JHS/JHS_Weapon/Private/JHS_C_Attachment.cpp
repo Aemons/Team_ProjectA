@@ -1,9 +1,17 @@
 #include "JHS_C_Attachment.h"
 #include "JHS_Global.h"
 
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
 #include "Components/SceneComponent.h"
 #include "Components/ShapeComponent.h"
+
+#include "Particles/ParticleSystem.h"
+#include "NiagaraSystem.h"
+#include "NiagaraFunctionLibrary.h"
+
+#include "Sound/SoundBase.h"
+#include "Sound/SoundCue.h"
 
 AJHS_C_Attachment::AJHS_C_Attachment()
 {
@@ -64,6 +72,51 @@ void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedC
 
 	if (OnAttachmentBeginOverlap.IsBound())
 		OnAttachmentBeginOverlap.Broadcast(OwnerCharacter, this, Cast<ACharacter>(OtherActor));
+
+	if (ACharacter* OtherCharacter = Cast<ACharacter>(OtherActor))
+	{
+		USkeletalMeshComponent* OtherMesh = OtherCharacter->GetMesh();
+
+		if (!!OtherMesh)
+		{
+			//충돌이 발생한 OverlappedComponent의 위치를 저장
+			FVector ImpactLocation = OverlappedComponent->GetComponentLocation();
+			//가까운 본의 위치
+			FVector ClosestBoneLocation;
+			//최소거리
+			float MinDistance = FLT_MAX;
+
+			//대상 캐릭터의 모든 본의 이름을 가져옴 (소켓 포함)
+			const TArray<FName>& BoneNames = OtherMesh->GetAllSocketNames();
+
+			for (const FName& BoneName : BoneNames)
+			{
+				FVector BoneLocation = OtherMesh->GetBoneLocation(BoneName);
+
+				//본의 위치와 충돌위치의 거리를 계산
+				float Distance = FVector::Dist(ImpactLocation, BoneLocation);
+
+				//가장 가까운 본의 위치를 찾으면 위치, 이름 저장
+				if (Distance < MinDistance)
+				{
+					MinDistance = Distance;
+					ClosestBoneLocation = BoneLocation;
+				} 
+			}
+
+			//Impact Effect, Sound Transform 할당 및 설정
+			transform.SetLocation(ClosestBoneLocation);
+			transform.SetRotation(FQuat(ImpactEffectRotation));
+			transform.SetScale3D(ImpactEffectScale);
+			////////////////////////////////////////////////////////////////
+
+
+		}//if(OtherMesh)
+
+		PlayEffect(transform);
+		PlaySound(transform);
+
+	}//if(Cast OtherCharacter)
 }
 
 void AJHS_C_Attachment::OnComponentEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -97,6 +150,54 @@ void AJHS_C_Attachment::OffCollision()
 	{
 		Shape->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		Shape->SetCollisionProfileName(TEXT("NoCollision"));
+	}
+}
+
+void AJHS_C_Attachment::PlayEffect(FTransform& InTransform)
+{
+	//ImpactEffect 있을 경우
+	if (!!ImpactEffect)
+	{
+		if (UParticleSystem* Particle = Cast<UParticleSystem>(ImpactEffect))
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Particle, InTransform);
+		}
+
+		if (UNiagaraSystem* Niagara = Cast<UNiagaraSystem>(ImpactEffect))
+		{
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), Niagara, InTransform.GetLocation(), (FRotator)InTransform.GetRotation(), InTransform.GetScale3D());
+		}
+	}
+}
+
+void AJHS_C_Attachment::PlaySound(FTransform& InTransform)
+{
+	//ImpactSound
+	if (!!ImpactEffectSound)
+	{
+		if (USoundWave* SoundWave = Cast<USoundWave>(ImpactEffectSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, InTransform.GetLocation());
+		}
+
+		if (USoundCue* SoundCue = Cast<USoundCue>(ImpactEffectSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, InTransform.GetLocation());
+		}
+	}
+
+	//ImpactWeaponSound
+	if (!!ImpactWeaponSound)
+	{
+		if (USoundWave* SoundWave = Cast<USoundWave>(ImpactWeaponSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundWave, InTransform.GetLocation());
+		}
+
+		if (USoundCue* SoundCue = Cast<USoundCue>(ImpactWeaponSound))
+		{
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, InTransform.GetLocation());
+		}
 	}
 }
 

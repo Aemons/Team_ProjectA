@@ -2,6 +2,8 @@
 #include "JHS_Global.h"
 
 #include "GameFramework/Character.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "JHS_C_StateComponent.h"
 #include "JHS_C_MoveComponent.h"
 
@@ -32,6 +34,7 @@ void UJHS_C_MainAction_Sword::Begin_MainAction()
 
 	bExist = false;
 	MainActionDatas[++Index].AttackAction(OwnerCharacter);
+	MainActionDatas[Index].PlayerCameraShake(OwnerCharacter);
 }
 
 void UJHS_C_MainAction_Sword::End_MainAction()
@@ -51,7 +54,7 @@ void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, A
 		CheckTrue(hitted == InOther);
 
 	Hitted.AddUnique(InOther);
-		
+
 	//InOther에게 Damge를 주는 로직
 	MainActionDatas[Index].SendDamage(InAttacker, InAttackCuser, InOther);
 }
@@ -63,3 +66,4 @@ void UJHS_C_MainAction_Sword::OnAttachmentEndCollision()
 	//HitData에 대한 후처리 로직설정 가능 (있으면)
 	Hitted.Empty();
 }
+

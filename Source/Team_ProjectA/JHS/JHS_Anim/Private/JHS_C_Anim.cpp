@@ -18,6 +18,7 @@ void UJHS_C_Anim::NativeBeginPlay()
 
 	MovementComp = OwnerCharacter->GetCharacterMovement();
 	WeaponComp = Cast<UJHS_C_WeaponComponent>(OwnerCharacter->GetComponentByClass(UJHS_C_WeaponComponent::StaticClass()));
+	MoveComp = Cast<UJHS_C_MoveComponent>(OwnerCharacter->GetComponentByClass(UJHS_C_MoveComponent::StaticClass()));
 
 	if (!!WeaponComp)
 		WeaponComp->OnWeaponTypeChanged.AddDynamic(this, &UJHS_C_Anim::OnWeaponTypeChanged);
@@ -47,7 +48,13 @@ void UJHS_C_Anim::OnWeaponTypeChanged(EWeaponType InPrevType, EWeaponType InNewT
 
 void UJHS_C_Anim::PlayerSpeed()
 {
-	Speed = OwnerCharacter->GetVelocity().Size2D();
+	float temp = OwnerCharacter->GetVelocity().Size2D();
+	
+	if (!!WeaponComp->GetHasWeapon())
+		Speed = FMath::FInterpTo(Speed, MoveComp->GetPlayerSpeed(), GetWorld()->GetDeltaSeconds(), PlayerWalkInterpSpeed);
+	else
+		Speed = OwnerCharacter->GetVelocity().Size2D();
+	
 }
 
 void UJHS_C_Anim::PlayerRun()

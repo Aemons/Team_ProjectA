@@ -45,6 +45,8 @@ void UJHS_C_MoveComponent::SetSprint()
 void UJHS_C_MoveComponent::SetWalkSpeed(EWalkSpeedType InType)
 {
 	OwnerCharacter->GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed[(int32)InType];
+
+	CurrentPlayerSpeed = PlayerSpeed[(int32)InType];
 }
 
 void UJHS_C_MoveComponent::SearchEnemyTarget()

@@ -37,10 +37,13 @@ public:
 	UPROPERTY(EditAnywhere)
 	float Power = 0.0f;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UCameraShakeBase> CameraShakeClass;
+
 public:
 	void AttackAction(class ACharacter* InOwner);
 	void SendDamage(class ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther);
-
+	void PlayerCameraShake(UObject* InObject);
 };
 
 USTRUCT()
