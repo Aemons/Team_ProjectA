@@ -76,7 +76,7 @@ void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
         if (AudioComponent)
         {
             AudioComponent->SetVolumeMultiplier(SoundVolume); // 볼륨 설정
-            UE_LOG(LogTemp, Warning, TEXT("Sound Cue played with custom volume at TriggerBox location."));
+            // UE_LOG(LogTemp, Warning, TEXT("Sound Cue played with custom volume at TriggerBox location."));
         }
     }
 
