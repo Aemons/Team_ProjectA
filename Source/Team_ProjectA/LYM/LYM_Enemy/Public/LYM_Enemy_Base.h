@@ -11,7 +11,7 @@ class TEAM_PROJECTA_API ALYM_Enemy_Base : public ACharacter
 {
 	GENERATED_BODY()
 	//////////////////////// Variables //////////////////////////
-public:
+public: // Attack Montage
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montage")
 	TArray<UAnimMontage*> Normal_R_Attack;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montage")
@@ -29,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Location")
 	FVector CLocation;
 	
-public:
+public: // Init Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
 	float InPlayRate = 0.5f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
