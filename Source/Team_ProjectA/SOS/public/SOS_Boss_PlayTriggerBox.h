@@ -50,5 +50,12 @@ public:
 	// 재생할 Level Sequence
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sequence")
 	ULevelSequence* SequenceToPlay;
-	
+
+	// 사운드 큐 변수
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	USoundBase* SoundCue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	float SoundVolume = 0.3f;
+
 };

@@ -5,9 +5,12 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "LevelSequenceActor.h"
 #include "LevelSequencePlayer.h"
+#include "Components/AudioComponent.h"
 #include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
+#include "Kismet/GameplayStatics.h"
+#include "Components/AudioComponent.h"
 
 // Sets default values
 ASOS_Boss_PlayTriggerBox::ASOS_Boss_PlayTriggerBox()
@@ -50,7 +53,7 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
                 // OnFinished 델리게이트에 함수 바인딩
                 SequencePlayer->OnFinished.AddDynamic(this, &ASOS_Boss_PlayTriggerBox::OnSequenceFinished);
 
-                UE_LOG(LogTemp, Warning, TEXT("Sequence Played and waiting for finish."));
+                // UE_LOG(LogTemp, Warning, TEXT("Sequence Played and waiting for finish."));
             }
         }
     }
@@ -64,8 +67,20 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
 // BlackBoardKey의 EnumState Attack으로 변경
 void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
 {
-    UE_LOG(LogTemp, Warning, TEXT("Sequence finished! Performing post-sequence actions."));
+    // UE_LOG(LogTemp, Warning, TEXT("Sequence finished! Performing post-sequence actions."));
 
+    // 사운드 큐 재생
+    if (SoundCue) // SoundCue는 선언된 USoundBase* 변수라고 가정
+    {
+        UAudioComponent* AudioComponent = UGameplayStatics::SpawnSoundAtLocation(this, SoundCue, GetActorLocation());
+        if (AudioComponent)
+        {
+            AudioComponent->SetVolumeMultiplier(SoundVolume); // 볼륨 설정
+            UE_LOG(LogTemp, Warning, TEXT("Sound Cue played with custom volume at TriggerBox location."));
+        }
+    }
+
+    
     // Find Boss Character in the level
     ACharacter* BossCharacter = Cast<ACharacter>(UGameplayStatics::GetActorOfClass(this, ASOS_BOSS_Character::StaticClass()));
     
@@ -77,25 +92,25 @@ void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
         {
             // Set Blackboard Key Value
             BossAIController->GetBlackboardComponent()->SetValueAsEnum(BlackboardKeyName, EnumValueToSet);
-            UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumValueToSet);
+            // UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumValueToSet);
 
             // 현재 실행중인 Task를 실패로 판단
             UBehaviorTreeComponent* BehaviorTreeComponent = Cast<UBehaviorTreeComponent>(BossAIController->GetBrainComponent());
             if (BehaviorTreeComponent)
             {
                 BehaviorTreeComponent->RequestExecution(EBTNodeResult::Failed);
-                UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
+                // UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
             }
             
         }
         else
         {
-            UE_LOG(LogTemp, Error, TEXT("Failed to access AI Controller or Blackboard Component."));
+            // UE_LOG(LogTemp, Error, TEXT("Failed to access AI Controller or Blackboard Component."));
         }
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("Boss Character not found in the level."));
+       // UE_LOG(LogTemp, Error, TEXT("Boss Character not found in the level."));
     }
     
     // 원하는 행동 수행 (예: TriggerBox 삭제)
