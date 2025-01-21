@@ -67,52 +67,37 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
 // BlackBoardKey의 EnumState Attack으로 변경
 void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
 {
-    // UE_LOG(LogTemp, Warning, TEXT("Sequence finished! Performing post-sequence actions."));
-
-    // 사운드 큐 재생
-    if (SoundCue) // SoundCue는 선언된 USoundBase* 변수라고 가정
+    // 사운드 큐 재생 (월드에 독립적으로 생성)
+    if (SoundCue)
     {
-        UAudioComponent* AudioComponent = UGameplayStatics::SpawnSoundAtLocation(this, SoundCue, GetActorLocation());
+        UAudioComponent* AudioComponent = UGameplayStatics::CreateSound2D(GetWorld(), SoundCue, SoundVolume);
         if (AudioComponent)
         {
-            AudioComponent->SetVolumeMultiplier(SoundVolume); // 볼륨 설정
-            // UE_LOG(LogTemp, Warning, TEXT("Sound Cue played with custom volume at TriggerBox location."));
+            AudioComponent->Play();  // 재생
         }
     }
 
-    
-    // Find Boss Character in the level
+    // BossCharacter와 관련된 코드
     ACharacter* BossCharacter = Cast<ACharacter>(UGameplayStatics::GetActorOfClass(this, ASOS_BOSS_Character::StaticClass()));
-    
     if (BossCharacter)
     {
-        // Get AI Controller of Boss Character
         AAIController* BossAIController = Cast<AAIController>(BossCharacter->GetController());
         if (BossAIController && BossAIController->GetBlackboardComponent())
         {
-            // Set Blackboard Key Value
             BossAIController->GetBlackboardComponent()->SetValueAsEnum(BlackboardKeyName, EnumValueToSet);
-            // UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumValueToSet);
 
-            // 현재 실행중인 Task를 실패로 판단
             UBehaviorTreeComponent* BehaviorTreeComponent = Cast<UBehaviorTreeComponent>(BossAIController->GetBrainComponent());
             if (BehaviorTreeComponent)
             {
                 BehaviorTreeComponent->RequestExecution(EBTNodeResult::Failed);
-                // UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
             }
-            
-        }
-        else
-        {
-            // UE_LOG(LogTemp, Error, TEXT("Failed to access AI Controller or Blackboard Component."));
         }
     }
-    else
-    {
-       // UE_LOG(LogTemp, Error, TEXT("Boss Character not found in the level."));
-    }
-    
-    // 원하는 행동 수행 (예: TriggerBox 삭제)
-    Destroy(); // TriggerBox 삭제
+
+    // TriggerBox 파괴
+    Destroy();
 }
+
+
+
+

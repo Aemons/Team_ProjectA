@@ -92,7 +92,8 @@ void USOS_BTT_DistanceMove::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* N
 		FNavPathSharedPtr NavPath;                       // 경로 정보 저장 (선택 사항)
 		EPathFollowingRequestResult::Type MoveResult = AIController->MoveTo(MoveRequest, &NavPath);
 
-		// 로그 출력
+		/*
+		// 디버깅 로그 출력
 		switch (MoveResult)
 		{
 		case EPathFollowingRequestResult::AlreadyAtGoal:
@@ -105,7 +106,7 @@ void USOS_BTT_DistanceMove::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* N
 			UE_LOG(LogTemp, Error, TEXT("MoveTo request failed!"));
 			break;
 		}
-
+		
 		// 경로 디버깅 (선택 사항)
 		if (NavPath && NavPath->GetPathPoints().Num() > 0)
 		{
@@ -114,10 +115,11 @@ void USOS_BTT_DistanceMove::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* N
 				UE_LOG(LogTemp, Display, TEXT("Path Point: %s"), *Point.Location.ToString());
 			}
 		}
+		*/
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("AIController or TargetActor is null!"));
+		// UE_LOG(LogTemp, Error, TEXT("AIController or TargetActor is null!"));
 	}
 	
 	// 조건: Distance가 NearDistance 보다 크면 몽타주 재생, 아니면 멈춤

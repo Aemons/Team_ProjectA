@@ -16,13 +16,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Enemy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Griffon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Griffon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Hide_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Hide_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_Death.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_Death.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Boss_PlayTriggerBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Boss_PlayTriggerBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Griffon_Testmap/0/AC/WFG72FM90RWZJ7Z9Q6S5ZV.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Dragon_PlayTriggerBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Dragon_PlayTriggerBox.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/AI_Hide_BGM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/AI_Hide_BGM.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/Cue_AI_Hide_BGM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/Cue_AI_Hide_BGM.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_DistanceMove.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_DistanceMove.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -552,6 +551,7 @@
       <workItem from="1737360051949" duration="2518000" />
       <workItem from="1737373927220" duration="85000" />
       <workItem from="1737374031953" duration="3069000" />
+      <workItem from="1737445015446" duration="3133000" />
     </task>
     <servers />
   </component>
