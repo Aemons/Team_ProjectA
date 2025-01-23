@@ -27,7 +27,7 @@ void UHHR_MapSelect::NativeConstruct()
 	{
 		slot->OnMapSlotClicked.BindUObject(this, &UHHR_MapSelect::MapClick);
 	}
-	
+
 }
 
 void UHHR_MapSelect::OnClickCloseBtn()
