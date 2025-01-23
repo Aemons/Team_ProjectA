@@ -16,13 +16,41 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Dragon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/AIC_SOS_AIController_Boss.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Griffon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Griffon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Dragon_PlayTriggerBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Dragon_PlayTriggerBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/AI_Hide_BGM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/AI_Hide_BGM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/Cue_AI_Hide_BGM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sound/BGM/Cue_AI_Hide_BGM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_DistanceMove.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_DistanceMove.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Hide_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_AI/SOS_BT_Hide_Boss.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Dragon/Anim_Dragon12_Attack_Base2_Montage.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_BiteAttack_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_BiteAttack_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_FlyNormal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_FlyNormal.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_JumpToFly.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_JumpToFly.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_LeftClawsAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_LeftClawsAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_RightClawsAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Griffon/SOS_AM_Griffon_RightClawsAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_2ComboAttack_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_2ComboAttack_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Hide_ClawsAttackLeft_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Hide_ClawsAttackLeft_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Hide_ClawsAttackRight_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Hide_ClawsAttackRight_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_JumpBiteAttack_RM_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_JumpBiteAttack_RM_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_RoarSpreadAcid_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_RoarSpreadAcid_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Sprint_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Sprint_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Sprint_Ready_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AM_Sprint_Ready_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AN_Hide_JumpMandibulesAttack_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_AN_Hide_JumpMandibulesAttack_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_Hide_JumpMandibulesAttack_RM_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_Hide_JumpMandibulesAttack_RM_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_Hide_One_SpitAcid_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Animation/Hideoplast/SOS_Hide_One_SpitAcid_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Griffon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Griffon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_baby.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_baby.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sequencer/SOS_SQ_Dragon_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Sequencer/SOS_SQ_Dragon_Boss.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Griffon_Testmap/3/FQ/VM4NAI4YFAWJA83SSX3YQD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Griffon_Testmap/3/FQ/VM4NAI4YFAWJA83SSX3YQD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Hide_Boss_TestMap/1/52/E8PD25IT79E9RXOASQYQCT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Hide_Boss_TestMap/1/52/E8PD25IT79E9RXOASQYQCT.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Hide_Boss_TestMap/5/1R/PJSFWC5GJ4HI59LA5FR26V.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Hide_Boss_TestMap/F/5K/CNST3B03TJK4TJB0JMW8ZZ.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/00_Project/SOS/SOS_TestMap/SOS_Hide_Boss_TestMap/F/5K/CNST3B03TJK4TJB0JMW8ZZ.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AN_Collision_Hide_Enable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AN_Collision_Hide_Enable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AN_Collision_hide_Disable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AN_Collision_hide_Disable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_Box_Comp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_Box_Comp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_baby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Hide_baby.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_AN_Collision_Hide_Enable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_AN_Collision_Hide_Enable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Hide_baby.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Hide_baby.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +75,12 @@
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_MapSlotBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ButtonBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_MapSlotBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AM_Niagara_Collision.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_AM_SpawnNiagaraNotify.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BTT_DistanceMove.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_NiagaraActor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_AM_Niagara_Collision.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_NiagaraActor.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -552,6 +585,9 @@
       <workItem from="1737373927220" duration="85000" />
       <workItem from="1737374031953" duration="3069000" />
       <workItem from="1737445015446" duration="3133000" />
+      <workItem from="1737595627260" duration="3923000" />
+      <workItem from="1737599598992" duration="19348000" />
+      <workItem from="1737629981661" duration="4397000" />
     </task>
     <servers />
   </component>

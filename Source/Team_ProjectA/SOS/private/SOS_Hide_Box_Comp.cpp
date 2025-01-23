@@ -8,14 +8,14 @@ USOS_Hide_Box_Comp::USOS_Hide_Box_Comp()
 	// BoxComponent의 크기를 매개변수로 설정
 	InitBoxExtent(FVector(50.0f, 50.0f, 50.0f));
 
-	// 기본 충돌 설정
-	SetCollisionProfileName(TEXT("OverlapAllDynamic"));
-
+	
 	// Overlap 이벤트 활성화
 	OnComponentBeginOverlap.AddDynamic(this, &USOS_Hide_Box_Comp::OnOverlapBegin);
 
-	// 초기에는 충돌 비활성화
-	SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	// 초기에는 충돌 비활성화 (필요 시 활성화)
+	UPrimitiveComponent::SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	
 }
 
 void USOS_Hide_Box_Comp::AttachToBone(USkeletalMeshComponent* Mesh, FName BoneName)

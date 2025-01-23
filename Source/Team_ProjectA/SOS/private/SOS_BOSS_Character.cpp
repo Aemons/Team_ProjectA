@@ -46,6 +46,8 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	LeftHandCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("LeftHandCollision"));
 	LeftHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 
+	BodyCollision = CreateDefaultSubobject<USOS_Hide_Box_Comp>(TEXT("BodyCollision"));
+	BodyCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 	
 	
 }
@@ -59,14 +61,22 @@ void ASOS_BOSS_Character::BeginPlay()
 	if (GetMesh())
 	{
 		// 본에 구체 컴포넌트 부착
-		RightHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-R-Finger01Socket"));
-		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01Socket"));
+		RightHandCollision->AttachToBone(GetMesh(), RightHandSoketName);
+		LeftHandCollision->AttachToBone(GetMesh(), LeftHandSoketName);
+		BodyCollision->AttachToBone(GetMesh(), BodySoketName);
+		
+		// 비충돌 활성화
+		RightHandCollision->DisableCollision();
+		LeftHandCollision->DisableCollision();
+		BodyCollision->DisableCollision();
 
-		// 충돌 활성화
 		/*
+		// 충돌 활성화
 		RightHandCollision->EnableCollision();
 		LeftHandCollision->EnableCollision();
+		BodyCollision->EnableCollision();
 		*/
+		
 	}
 	
 }
@@ -90,6 +100,7 @@ UBehaviorTree* ASOS_BOSS_Character::GetBehaviorTree()
 	return Tree;
 }
 
+
 void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
 {
 	CurrentHP -= DamageAmount;
@@ -111,10 +122,11 @@ void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
         
 		SetBBEnumState(1);
 		
-		
 	}
 
 }
+
+
 
 void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -128,7 +140,7 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 	}
 
 	// 데미지 처리 (예: 10의 고정 데미지)
-	TakeDamage(10.0f);
+	// TakeDamage(10.0f);
 }
 
 

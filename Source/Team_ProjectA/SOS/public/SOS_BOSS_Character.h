@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SOS_Hide_Box_Comp.h"
 #include "SOS_Hide_SphereComp.h"
 #include "Components/SphereComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
@@ -44,6 +45,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* LeftHandCollision;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_Box_Comp* BodyCollision;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName RightHandSoketName = FName("Hideoplast_-R-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName LeftHandSoketName = FName("Hideoplast_-L-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName BodySoketName = FName("Hideoplast_-L-Finger01Socket");
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
@@ -54,9 +67,10 @@ public:
 	float CurrentHP=MaxHP;
 	
 	// 데미지 처리 함수
+	
 	UFUNCTION(BlueprintCallable, Category = "Boss Stats")
 	void TakeDamage(float DamageAmount);
-
+	
 
 	// Name of the Blackboard Key to modify
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
