@@ -35,6 +35,17 @@ AJHS_C_Player::AJHS_C_Player()
 		CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	}
 
+	//Create Actor Component
+	{
+		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
+		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
+		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
+		// HHR
+		// ----------------------------------------------------------------------------
+		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
+		// ----------------------------------------------------------------------------
+	}
+
 	//Create MeshComponent
 	{
 		EQ_HelmsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Helms"));
@@ -44,16 +55,6 @@ AJHS_C_Player::AJHS_C_Player()
 		EQ_BootsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Boots"));
 	}
 
-	//Create Actor Component
-	{
-		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
-		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
-		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
-		// HHR
-		// ----------------------------------------------------------------------------
-		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
-		// ----------------------------------------------------------------------------
-	}
 
 	//Attach Component
 	{
