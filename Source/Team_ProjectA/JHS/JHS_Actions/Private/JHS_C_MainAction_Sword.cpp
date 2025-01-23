@@ -46,9 +46,9 @@ void UJHS_C_MainAction_Sword::End_MainAction()
 	Index = 0;
 }
 
-void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther)
+void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther, float Damage)
 {
-	Super::OnAttachmentBeginOverlap(InAttacker, InAttackCuser, InOther);
+	Super::OnAttachmentBeginOverlap(InAttacker, InAttackCuser, InOther, Damage);
 	CheckNull(InOther);
 
 	for (ACharacter* hitted : Hitted)
@@ -57,7 +57,7 @@ void UJHS_C_MainAction_Sword::OnAttachmentBeginOverlap(ACharacter* InAttacker, A
 	Hitted.AddUnique(InOther);
 
 	//InOther에게 Damge를 주는 로직
-	MainActionDatas[Index].SendDamage(InAttacker, InAttackCuser, InOther);
+	MainActionDatas[Index].SendDamage(Damage, InAttacker, InAttackCuser, InOther);
 }
 
 void UJHS_C_MainAction_Sword::OnAttachmentEndCollision()

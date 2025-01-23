@@ -11,13 +11,15 @@ void FMainActionData::AttackAction(ACharacter* InOwner)
 		InOwner->PlayAnimMontage(Montage, PlayRate);
 }
 
-void FMainActionData::SendDamage(ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther)
+void FMainActionData::SendDamage(float Damage, ACharacter* InAttacker, AActor* InAttackCuser, ACharacter* InOther)
 {
 	FActionDamageEvent DamageEvent;
 	DamageEvent.ActionDamageEvent = this;
 
-	InOther->TakeDamage(Power, DamageEvent, InAttacker->GetController(), InAttackCuser);
+
+	InOther->TakeDamage((Damage * Damagemultiplier), DamageEvent, InAttacker->GetController(), InAttackCuser);
 }
+
 void FMainActionData::PlayerCameraShake(UObject* InObject)
 {
 	if (CameraShakeClass)
