@@ -29,6 +29,7 @@ public: // Attack Montage
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Location")
 	FVector CLocation;
 	
+	
 public: // Init Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Rate")
 	float InPlayRate = 0.5f;
