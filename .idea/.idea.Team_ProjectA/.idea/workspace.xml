@@ -17,28 +17,7 @@
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Data/JHS_DataAsset/DA_Player_Sword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Data/JHS_DataAsset/DA_Player_Sword.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_Child.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_Child.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BT_AI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_DashAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_DashAttack.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Behavior/LYM_BT_Strafe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_EQS/LYM_EQS_Strafe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_DashAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_Tasks/LYM_BTT_DashAttack.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_A.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_A.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_B.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Biped_Melee_C.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Dash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Animation/LYM_Attack_Dash.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_Rock.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_RockCrush.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_RockCrush.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Ability_RMB_Smash_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Ability_RMB_Smash_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_A_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_A_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_B_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_B_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_C_Combo1_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_C_Combo1_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_C_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Biped_Melee_C_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Dash_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Dash_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_A_Combo0_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_A_Combo0_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_A_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_A_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_C_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Montage/LYM_Attack_Melee_C_Montage.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -569,6 +548,7 @@
       <workItem from="1737348273599" duration="2281000" />
       <workItem from="1737521978063" duration="1464000" />
       <workItem from="1737604997780" duration="3070000" />
+      <workItem from="1737613770047" duration="2853000" />
     </task>
     <servers />
   </component>
