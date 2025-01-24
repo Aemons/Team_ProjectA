@@ -36,10 +36,10 @@ void USOS_AM_SpawnNiagaraNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimS
 	// 스폰 성공 여부 확인
 	if (SpawnedActor)
 	{
-		UE_LOG(LogTemp, Log, TEXT("USOS_AM_SpawnNiagaraNotify: Niagara Actor spawned at %s."), *SpawnLocation.ToString());
+		// UE_LOG(LogTemp, Log, TEXT("USOS_AM_SpawnNiagaraNotify: Niagara Actor spawned at %s."), *SpawnLocation.ToString());
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("USOS_AM_SpawnNiagaraNotify: Failed to spawn Niagara Actor."));
+		// UE_LOG(LogTemp, Warning, TEXT("USOS_AM_SpawnNiagaraNotify: Failed to spawn Niagara Actor."));
 	}
 }

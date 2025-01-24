@@ -1,27 +1,32 @@
 #include "Team_ProjectA/SOS/public/SOS_NiagaraActor.h"
-#include "NiagaraFunctionLibrary.h"
-#include "GameFramework/Actor.h"
-#include "Components/PrimitiveComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "NiagaraFunctionLibrary.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 ASOS_NiagaraActor::ASOS_NiagaraActor()
 {
-	// Actor Tick 설정
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Root Component 생성
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
+	// Box Collision 생성
+	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
+	BoxCollision->SetupAttachment(RootComponent);
+	BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	BoxCollision->SetGenerateOverlapEvents(true);
+	BoxCollision->SetCollisionObjectType(ECC_Pawn); // 충돌 채널 설정
+	BoxCollision->SetCollisionResponseToAllChannels(ECR_Ignore);
+	BoxCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); // Pawn에 대해 Overlap 처리
+	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &ASOS_NiagaraActor::OnBoxComponentBeginOverlap);
+
 	// Niagara Component 생성
 	NiagaraComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
-	NiagaraComponent->SetupAttachment(RootComponent); // 루트 컴포넌트에 부착
-	NiagaraComponent->SetRelativeLocation(FVector::ZeroVector); // 기본 위치 설정
-	
-	// Overlap 이벤트 바인딩
-	NiagaraComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-	NiagaraComponent->SetGenerateOverlapEvents(true);
-	NiagaraComponent->OnComponentBeginOverlap.AddDynamic(this, &ASOS_NiagaraActor::OnNiagaraActorBeginOverlap);
+	NiagaraComponent->SetupAttachment(RootComponent);
+
+	// Niagara 시스템 종료 이벤트
+	NiagaraComponent->OnSystemFinished.AddDynamic(this, &ASOS_NiagaraActor::OnNiagaraSystemFinished);
 }
 
 // Called when the game starts or when spawned
@@ -29,11 +34,11 @@ void ASOS_NiagaraActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// 나이아가라 시스템 설정 및 활성화
+	// Niagara System 설정 및 활성화
 	if (NiagaraSystem)
 	{
-		NiagaraComponent->SetAsset(NiagaraSystem); // 시스템 설정
-		NiagaraComponent->Activate();             // 나이아가라 활성화
+		NiagaraComponent->SetAsset(NiagaraSystem);
+		NiagaraComponent->Activate();
 	}
 }
 
@@ -41,30 +46,35 @@ void ASOS_NiagaraActor::BeginPlay()
 void ASOS_NiagaraActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 }
 
-// Overlap 이벤트 처리
-void ASOS_NiagaraActor::OnNiagaraActorBeginOverlap(
-	UPrimitiveComponent* OverlappedComponent, 
-	AActor* OtherActor, 
-	UPrimitiveComponent* OtherComp, 
-	int32 OtherBodyIndex, 
-	bool bFromSweep, 
-	const FHitResult& SweepResult
-)
+// Box Collision Overlap 이벤트 처리
+void ASOS_NiagaraActor::OnBoxComponentBeginOverlap(
+	UPrimitiveComponent* OverlappedComponent,
+	AActor* OtherActor,
+	UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex,
+	bool bFromSweep,
+	const FHitResult& SweepResult)
+
 {
-	// 유효성 검사: Overlapped Actor가 존재하고 자신이 아닌 경우에만 처리
 	if (OtherActor && OtherActor != this)
 	{
-		// 데미지를 적용
 		UGameplayStatics::ApplyDamage(
-			OtherActor,          // 피해를 받는 액터
-			DamageValue,         // 데미지 값
-			GetInstigatorController(), // 데미지를 준 컨트롤러
-			this,                // 데미지를 준 액터
-			UDamageType::StaticClass() // 데미지 타입
+			OtherActor,
+			DamageValue,
+			GetInstigatorController(),
+			this,
+			UDamageType::StaticClass()
 		);
 
 		UE_LOG(LogTemp, Log, TEXT("ASOS_NiagaraActor: Applied %f damage to %s"), DamageValue, *OtherActor->GetName());
 	}
+}
+
+// Niagara System 종료 시 호출
+void ASOS_NiagaraActor::OnNiagaraSystemFinished(UNiagaraComponent* PSystem)
+{
+	Destroy(); // Actor 삭제
 }
