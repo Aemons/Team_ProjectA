@@ -1,4 +1,6 @@
 #include "Team_ProjectA/SOS/public/SOS_BoxCollContinuous.h"
+
+#include "JHS_C_Player.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 
@@ -65,24 +67,32 @@ void ASOS_BoxCollContinuous::Tick(float DeltaTime)
 // 데미지 적용 함수
 void ASOS_BoxCollContinuous::ApplyDamage()
 {
-	
 	for (AActor* OverlappingActor : OverlappingActors)
 	{
 		// 유효한 액터인지 확인 (삭제된 액터는 아닐 경우)
 		if (IsValid(OverlappingActor))
 		{
-			UGameplayStatics::ApplyDamage(
-				OverlappingActor,       // 피해를 받는 액터
-				DamageValue,            // 데미지 값
-				GetInstigatorController(), // 데미지를 준 컨트롤러
-				this,                   // 데미지를 준 액터
-				UDamageType::StaticClass() // 데미지 타입
-			);
+			// 플레이어 캐릭터인지 확인
+			if (OverlappingActor->IsA(AJHS_C_Player::StaticClass()))
+			{
+				UGameplayStatics::ApplyDamage(
+					OverlappingActor,       // 피해를 받는 액터
+					DamageValue,            // 데미지 값
+					GetInstigatorController(), // 데미지를 준 컨트롤러
+					this,                   // 데미지를 준 액터
+					UDamageType::StaticClass() // 데미지 타입
+				);
 
-			UE_LOG(LogTemp, Log, TEXT("ASOS_BoxCollContinuous: Applied %f damage to %s"), DamageValue, *OverlappingActor->GetName());
+				UE_LOG(LogTemp, Log, TEXT("ASOS_BoxCollContinuous: Applied %f damage to %s"), DamageValue, *OverlappingActor->GetName());
+			}
+			else
+			{
+				// UE_LOG(LogTemp, Warning, TEXT("ASOS_BoxCollContinuous: Skipped damage to non-player character %s"), *OverlappingActor->GetName());
+			}
 		}
 	}
 }
+
 
 
 // BeginOverlap 이벤트 처리

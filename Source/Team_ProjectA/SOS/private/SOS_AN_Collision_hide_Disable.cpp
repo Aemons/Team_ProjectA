@@ -22,17 +22,17 @@ void USOS_AN_Collision_hide_Disable::Notify(USkeletalMeshComponent* MeshComp, UA
 		if (CollisionName == FName("LeftHandCollision") && BossCharacter->LeftHandCollision)
 		{
 			BossCharacter->LeftHandCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			UE_LOG(LogTemp, Log, TEXT("Left hand collision disabled."));
+			//UE_LOG(LogTemp, Log, TEXT("Left hand collision disabled."));
 		}
 		else if (CollisionName == FName("RightHandCollision") && BossCharacter->RightHandCollision)
 		{
 			BossCharacter->RightHandCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			UE_LOG(LogTemp, Log, TEXT("Right hand collision disabled."));
+			//UE_LOG(LogTemp, Log, TEXT("Right hand collision disabled."));
 		}
 		else if(CollisionName == FName("BodyCollision") && BossCharacter->BodyCollision)
 		{
 			BossCharacter->BodyCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			UE_LOG(LogTemp, Log, TEXT("Body collision disabled."));
+			//UE_LOG(LogTemp, Log, TEXT("Body collision disabled."));
 		}
 		/*
 			else

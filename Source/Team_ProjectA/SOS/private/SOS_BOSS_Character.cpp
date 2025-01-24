@@ -140,7 +140,7 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 	}
 
 	// 데미지 처리 (예: 10의 고정 데미지)
-	// TakeDamage(10.0f);
+	//TakeDamage(10.0f);
 }
 
 
