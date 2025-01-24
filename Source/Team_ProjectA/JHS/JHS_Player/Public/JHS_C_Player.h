@@ -87,6 +87,9 @@ public://Actor Component
 	// * Interact Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UHHR_InteractComponent* InteractComp;
+	// * Inventory Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UHHR_InventoryComponent* InventoryComp;
 	// ----------------------------------------------------------------------------
 	
 

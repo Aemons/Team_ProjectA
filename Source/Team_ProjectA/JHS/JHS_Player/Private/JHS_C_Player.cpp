@@ -21,6 +21,7 @@
 // ----------------------------------------------------------------------------
 #include "Blueprint/UserWidget.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
+#include "Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
 // ----------------------------------------------------------------------------
@@ -43,6 +44,7 @@ AJHS_C_Player::AJHS_C_Player()
 		// HHR
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
+		InventoryComp = CreateDefaultSubobject<UHHR_InventoryComponent>(TEXT("InventoryComp"));
 		// ----------------------------------------------------------------------------
 	}
 

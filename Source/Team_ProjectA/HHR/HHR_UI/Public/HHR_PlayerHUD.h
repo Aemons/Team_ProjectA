@@ -13,7 +13,7 @@ class UBorder;
 class UProgressBar;
 class UImage;
 class UHorizontalBox;
-class UHHR_ItemSlotBase;
+class UHHR_QuickSlotBase;
 class UHHR_InteractDialog;
 class UOverlay;
 
@@ -50,9 +50,9 @@ protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UHorizontalBox* ItemSlot;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHHR_ItemSlotBase* ItemSlotComp_Slot1;
+	UHHR_QuickSlotBase* ItemSlotComp_Slot1;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
-	UHHR_ItemSlotBase* ItemSlotComp_Slot2;
+	UHHR_QuickSlotBase* ItemSlotComp_Slot2;
 	// Interact widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UHHR_InteractDialog* InteractUIComp;
