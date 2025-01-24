@@ -19,7 +19,7 @@ public:
 	void End_MainAction() override;
 
 public:
-	void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuser, class ACharacter* InOther) override;
+	void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuser, class ACharacter* InOther, float Damage) override;
 
 	void OnAttachmentEndCollision() override;
 

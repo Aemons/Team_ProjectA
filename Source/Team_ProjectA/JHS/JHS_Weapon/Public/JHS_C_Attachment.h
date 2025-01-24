@@ -8,7 +8,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentBeginCollision);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentEndCollision);
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuaser, class ACharacter*, InOther);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCuaser, class ACharacter*, InOther, float, Damage);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttachmentEndOverlap, class ACharacter*, InAttacker, class ACharacter*, InOther);
 
 UCLASS()
@@ -16,16 +16,31 @@ class TEAM_PROJECTA_API AJHS_C_Attachment : public AActor
 {
 	GENERATED_BODY()
 	
+public:
+	FORCEINLINE bool GetCriticalHit() { return bIsCriticalHit; }
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USceneComponent* Root;
+	
+protected: 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float BaseDamage = 100.0f;
 
-protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner")
-	class ACharacter* OwnerCharacter;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float Max_DamageChance = 1.2;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
-	TArray<class UShapeComponent*> Collisions;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float Min_DamageChance = 0.8;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float CriticalChance = 0.5;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float CriticalDamage = 1.2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	bool bIsCriticalHit = false;
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Effect")
@@ -43,6 +58,13 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Impact Sound")
 	class USoundBase* ImpactWeaponSound;
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner")
+	class ACharacter* OwnerCharacter;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	TArray<class UShapeComponent*> Collisions;
 
 //Default Function
 /////////////////////////////////////////////////////////////////////////////
@@ -87,6 +109,8 @@ public://Collision On/Off
 private:
 	void PlayEffect(FTransform& InTransform);
 	void PlaySound(FTransform& InTransform);
+
+	float DamageCalculation(float InDamage);
 
 public://Delegate Value
 	//Collision Delegate Value

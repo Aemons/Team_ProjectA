@@ -34,22 +34,41 @@ AJHS_C_Player::AJHS_C_Player()
 		SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComp"));
 		CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	}
-	
+
 	//Create Actor Component
 	{
+		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
 		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
-		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 		// HHR
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
 		// ----------------------------------------------------------------------------
 	}
 
+	//Create MeshComponent
+	{
+		EQ_HelmsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Helms"));
+		EQ_ChestComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Chest"));
+		EQ_HandsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Hands"));
+		EQ_PantsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Pants"));
+		EQ_BootsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Boots"));
+	}
+
+
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
 		CameraComp->SetupAttachment(SpringArmComp);
+	}
+
+	//Attach MeshComponent
+	{
+		EQ_HelmsComp->SetupAttachment(GetMesh());
+		EQ_ChestComp->SetupAttachment(GetMesh());
+		EQ_HandsComp->SetupAttachment(GetMesh());
+		EQ_PantsComp->SetupAttachment(GetMesh());
+		EQ_BootsComp->SetupAttachment(GetMesh());
 	}
 
 	//Defatul Setting

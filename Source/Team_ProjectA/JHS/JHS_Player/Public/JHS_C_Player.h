@@ -72,6 +72,22 @@ public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class UCameraComponent* CameraComp;
 
+public://Mesh Component
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_HelmsComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_ChestComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_HandsComp;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_PantsComp;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_BootsComp;
+
 public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_MoveComponent* MoveComp;
