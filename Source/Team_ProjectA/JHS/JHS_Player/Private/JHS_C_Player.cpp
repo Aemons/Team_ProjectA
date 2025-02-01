@@ -97,6 +97,9 @@ AJHS_C_Player::AJHS_C_Player()
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
+		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+		GetCharacterMovement()->GroundFriction = 8.0f;
+
 		//MaxWalkSpeed Setting
 		MoveComp->SetWalk();
 	}
@@ -130,6 +133,8 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
+
+	CurrentHealth = MaxHealth;
 
 	// HHR
 	// ----------------------------------------------------------------------------
@@ -345,19 +350,64 @@ void AJHS_C_Player::Player_OffDodge()
 	}
 }
 
+void AJHS_C_Player::Player_Dead()
+{
+	JHS_Global::Print("Dead!!!");
+}
+
 void AJHS_C_Player::PlayerBrakingWalkingValue()
 {
 	//Player Running
-	if (bIsPlayerRun == true)
+	if (WeaponComp->GetHasWeapon() == false)
 	{
-		GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
-		GetCharacterMovement()->GroundFriction = 2.0f;
+		if (bIsPlayerRun == true)
+		{
+			GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
+			GetCharacterMovement()->GroundFriction = 2.0f;
+		}
+
+		//Player Walking
+		if (bIsPlayerRun == false)
+		{
+			GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+			GetCharacterMovement()->GroundFriction = 8.0f;
+		}
+	}
+}
+
+float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	StopAnimMontage();
+	//CheckNull(DamageCauser) -> 반환값이 정해져 있는 함수여서 Check매크로 사용하면 오류발생함 (리턴값이 있는 매크로가 아니라서)
+
+	//피격시 DamageCauser방향으로 회전
+	if (!!DamageCauser)
+	{
+		FVector Direction = (DamageCauser->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+		FRotator TargetRot = FRotationMatrix::MakeFromX(Direction).Rotator();
+		SetActorRotation(TargetRot);
 	}
 
-	//Player Walking
-	if (bIsPlayerRun == false)
+	//HitMontager 출력
+	if (HittedMontages.Num() > 0)
 	{
-		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
-		GetCharacterMovement()->GroundFriction = 8.0f;
+		int32 temp = FMath::RandRange(0, HittedMontages.Num() - 1);
+		UAnimMontage* HitMontage = HittedMontages[temp];
+	
+		if (!!HitMontage)
+			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
 	}
+
+	LaunchCharacter((GetActorForwardVector() * HitLaunchDistance), false, false);
+	
+	//HHR PlayerHP Delegate 연결
+	//--------------------------------------------------------
+	if (OnDecreaseHealthBar.IsBound())
+		OnDecreaseHealthBar.Broadcast(CurrentHealth -= DamageAmount);
+	//--------------------------------------------------------
+
+	if (CurrentHealth <= 0)
+		Player_Dead();
+	
+	return CurrentHealth -= DamageAmount;
 }
