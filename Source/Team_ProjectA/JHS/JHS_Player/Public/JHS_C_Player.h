@@ -75,6 +75,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hitted Montage")
 	float HitLaunchDistance = -10000.0f;
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead Montage")
+	UAnimMontage* DeadMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead Montage")
+	float DeadMontage_PlayRate = 1.0f;
+
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USpringArmComponent* SpringArmComp;

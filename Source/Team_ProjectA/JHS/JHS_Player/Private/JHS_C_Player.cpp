@@ -352,7 +352,15 @@ void AJHS_C_Player::Player_OffDodge()
 
 void AJHS_C_Player::Player_Dead()
 {
-	JHS_Global::Print("Dead!!!");
+	StopAnimMontage();
+
+	if (!!DeadMontage)
+	{
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+
+		PlayAnimMontage(DeadMontage, DeadMontage_PlayRate);
+	}
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()
@@ -406,8 +414,10 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 		OnDecreaseHealthBar.Broadcast(CurrentHealth -= DamageAmount);
 	//--------------------------------------------------------
 
+	//HP 계산후 Dead출력
+	//HitMontage가 Damage계산 전에 출력되기 때문에 함수 내부에서 StopMontage 해줘야 함
 	if (CurrentHealth <= 0)
 		Player_Dead();
-	
+
 	return CurrentHealth -= DamageAmount;
 }
