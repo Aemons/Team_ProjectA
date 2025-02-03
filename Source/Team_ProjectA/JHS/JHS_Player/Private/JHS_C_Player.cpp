@@ -403,11 +403,13 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 		UAnimMontage* HitMontage = HittedMontages[temp];
 	
 		if (!!HitMontage)
+		{
+			LaunchCharacter((GetActorForwardVector() * HitLaunchDistance), false, true);
+
 			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
+		}
 	}
 
-	LaunchCharacter((GetActorForwardVector() * HitLaunchDistance), false, false);
-	
 	//HHR PlayerHP Delegate 연결
 	//--------------------------------------------------------
 	if (OnDecreaseHealthBar.IsBound())
@@ -417,7 +419,13 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 	//HP 계산후 Dead출력
 	//HitMontage가 Damage계산 전에 출력되기 때문에 함수 내부에서 StopMontage 해줘야 함
 	if (CurrentHealth <= 0)
+	{
+		//Dead 이후에 Player 입력 비활성화
+		//OpenLevel후에 다시 입력 활성화 (Dead UI 가 있으면 입력 UI Only로 하던가)
+		DisableInput(Cast<APlayerController>(GetController()));
+
 		Player_Dead();
+	}
 
 	return CurrentHealth -= DamageAmount;
 }
