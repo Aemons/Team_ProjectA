@@ -25,8 +25,18 @@ private:
 	TSubclassOf<UUserWidget> InventoryWidgetClass;
 
 	// 임시
-	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Inventory")
-	TSubclassOf<AActor> WardrobeTestClass;
+	//UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Inventory")
+	//TSubclassOf<AActor> WardrobeTestClass;
+
+	// *Render Target으로 보여주기 위한 Scenen Component*
+	UPROPERTY(EditAnywhere, Category = "Inventory Scene Component")
+	class USpringArmComponent* SpringArmComp;
+	UPROPERTY(EditAnywhere, Category = "Inventory Scene Component")
+	class USceneCaptureComponent2D* CaptureComp;
+
+	// *Render Target*
+	UPROPERTY(EditDefaultsOnly, Category = "Render Target")
+	class UTextureRenderTarget2D* Wardrobe;
 	
 /////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수 ** 
@@ -44,6 +54,8 @@ public:
 
 private:	// *player Character에 바인딩 
 	virtual void InitializeComponent() override;
+
+	
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -64,6 +76,9 @@ private:
 	// Wardrobe 변수, widget
 	TObjectPtr<class UHHR_Inventory> InventoryWidget;
 	TObjectPtr<AActor> WardrobeActor;
+
+	// 오픈되어 있는지 체크
+	bool bIsOpen = false;
 	
 		
 };

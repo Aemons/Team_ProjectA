@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_HeaderBase.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_TextHeaderBase.h"
 
 #include "Components/TextBlock.h"
-
-void UHHR_HeaderBase::NativePreConstruct()
+ 
+void UHHR_TextHeaderBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
