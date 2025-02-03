@@ -16,7 +16,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Data/JHS_DataAsset/DA_Player_Sword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Data/JHS_DataAsset/DA_Player_Sword.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -549,6 +548,9 @@
       <workItem from="1737521978063" duration="1464000" />
       <workItem from="1737604997780" duration="3070000" />
       <workItem from="1737613770047" duration="2853000" />
+      <workItem from="1737697867472" duration="1732000" />
+      <workItem from="1738548292355" duration="1209000" />
+      <workItem from="1738549685050" duration="450000" />
     </task>
     <servers />
   </component>
