@@ -3,7 +3,26 @@
 
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_ItemEquipedSlotBase.h"
 
+#include "Components/Border.h"
 #include "Components/Button.h"
+
+void UHHR_ItemEquipedSlotBase::NativePreConstruct()
+{
+	Super::NativePreConstruct();
+
+	if(ItemImage)
+	{
+		FSlateBrush newBrush;
+		newBrush.SetResourceObject(ItemImage);
+
+		ItemIcon->SetBrush(newBrush);
+	}
+
+	if(bIsSelected)
+	{
+		Selected();
+	}
+}
 
 void UHHR_ItemEquipedSlotBase::NativeConstruct()
 {
@@ -12,7 +31,9 @@ void UHHR_ItemEquipedSlotBase::NativeConstruct()
 	// Button에 바인딩
 	ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemEquipedSlotBase::OnHovered);
 	ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemEquipedSlotBase::OnUnHovered);
+	ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemEquipedSlotBase::OnClicked);
 }
+
 
 void UHHR_ItemEquipedSlotBase::OnHovered()
 {
@@ -28,4 +49,23 @@ void UHHR_ItemEquipedSlotBase::OnUnHovered()
 	{
 		PlayAnimationReverse(HoverEffect);
 	}
+}
+
+void UHHR_ItemEquipedSlotBase::OnClicked()
+{
+	// Message 전송
+	OnBtnClickMessage.Broadcast(ItemMenuIdx);
+	
+}
+
+void UHHR_ItemEquipedSlotBase::Selected()
+{
+	bIsSelected = true;
+	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UHHR_ItemEquipedSlotBase::Unselected()
+{
+	bIsSelected = false;
+	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
 }
