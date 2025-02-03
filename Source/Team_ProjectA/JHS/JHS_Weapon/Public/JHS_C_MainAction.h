@@ -42,7 +42,7 @@ public:
 	virtual void OnAttachmentEndCollision() {}
 
 	UFUNCTION()
-	virtual void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuser, class ACharacter* InOther) {}
+	virtual void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuser, class ACharacter* InOther, float Damage) {}
 
 	UFUNCTION()
 	virtual void OnAttachmentEndOverlap(class ACharacter* InAttacker, class ACharacter* InOther) {}

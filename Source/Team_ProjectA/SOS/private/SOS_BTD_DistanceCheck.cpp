@@ -26,8 +26,8 @@ bool USOS_BTD_DistanceCheck::CalculateRawConditionValue(UBehaviorTreeComponent& 
 	bool bConditionMet = bLessThanOrEqual ? (TargetDistance <= DistanceThreshold) : (TargetDistance > DistanceThreshold);
 
 	// 디버그 로그
-	UE_LOG(LogTemp, Warning, TEXT("Distance: %f, Threshold: %f, Result: %s"),
-		TargetDistance, DistanceThreshold, bConditionMet ? TEXT("True") : TEXT("False"));
+	//UE_LOG(LogTemp, Warning, TEXT("Distance: %f, Threshold: %f, Result: %s"),
+	//	TargetDistance, DistanceThreshold, bConditionMet ? TEXT("True") : TEXT("False"));
 
 	// 조건 반환
 	return bConditionMet;

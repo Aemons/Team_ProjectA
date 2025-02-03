@@ -34,22 +34,41 @@ AJHS_C_Player::AJHS_C_Player()
 		SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComp"));
 		CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	}
-	
+
 	//Create Actor Component
 	{
+		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 		MoveComp = CreateDefaultSubobject<UJHS_C_MoveComponent>(TEXT("MoveComp"));
 		StateComp = CreateDefaultSubobject<UJHS_C_StateComponent>(TEXT("StateComp"));
-		WeaponComp = CreateDefaultSubobject<UJHS_C_WeaponComponent>(TEXT("WeaponComp"));
 		// HHR
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
 		// ----------------------------------------------------------------------------
 	}
 
+	//Create MeshComponent
+	{
+		EQ_HelmsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Helms"));
+		EQ_ChestComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Chest"));
+		EQ_HandsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Hands"));
+		EQ_PantsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Pants"));
+		EQ_BootsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Boots"));
+	}
+
+
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
 		CameraComp->SetupAttachment(SpringArmComp);
+	}
+
+	//Attach MeshComponent
+	{
+		EQ_HelmsComp->SetupAttachment(GetMesh());
+		EQ_ChestComp->SetupAttachment(GetMesh());
+		EQ_HandsComp->SetupAttachment(GetMesh());
+		EQ_PantsComp->SetupAttachment(GetMesh());
+		EQ_BootsComp->SetupAttachment(GetMesh());
 	}
 
 	//Defatul Setting
@@ -77,6 +96,9 @@ AJHS_C_Player::AJHS_C_Player()
 		GetCharacterMovement()->RotationRate = FRotator(0.0, 500.0, 0.0);
 		GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 		GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+
+		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+		GetCharacterMovement()->GroundFriction = 8.0f;
 
 		//MaxWalkSpeed Setting
 		MoveComp->SetWalk();
@@ -111,6 +133,8 @@ void AJHS_C_Player::BeginPlay()
 	//Player Camera Pitch Degree Limit
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMin = PitchViewLimit.X;
 	GetController<APlayerController>()->PlayerCameraManager->ViewPitchMax = PitchViewLimit.Y;
+
+	CurrentHealth = MaxHealth;
 
 	// HHR
 	// ----------------------------------------------------------------------------
@@ -326,19 +350,82 @@ void AJHS_C_Player::Player_OffDodge()
 	}
 }
 
+void AJHS_C_Player::Player_Dead()
+{
+	StopAnimMontage();
+
+	if (!!DeadMontage)
+	{
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+
+		PlayAnimMontage(DeadMontage, DeadMontage_PlayRate);
+	}
+}
+
 void AJHS_C_Player::PlayerBrakingWalkingValue()
 {
 	//Player Running
-	if (bIsPlayerRun == true)
+	if (WeaponComp->GetHasWeapon() == false)
 	{
-		GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
-		GetCharacterMovement()->GroundFriction = 2.0f;
+		if (bIsPlayerRun == true)
+		{
+			GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
+			GetCharacterMovement()->GroundFriction = 2.0f;
+		}
+
+		//Player Walking
+		if (bIsPlayerRun == false)
+		{
+			GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+			GetCharacterMovement()->GroundFriction = 8.0f;
+		}
+	}
+}
+
+float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	StopAnimMontage();
+	//CheckNull(DamageCauser) -> 반환값이 정해져 있는 함수여서 Check매크로 사용하면 오류발생함 (리턴값이 있는 매크로가 아니라서)
+
+	//피격시 DamageCauser방향으로 회전
+	if (!!DamageCauser)
+	{
+		FVector Direction = (DamageCauser->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+		FRotator TargetRot = FRotationMatrix::MakeFromX(Direction).Rotator();
+		SetActorRotation(TargetRot);
 	}
 
-	//Player Walking
-	if (bIsPlayerRun == false)
+	//HitMontager 출력
+	if (HittedMontages.Num() > 0)
 	{
-		GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
-		GetCharacterMovement()->GroundFriction = 8.0f;
+		int32 temp = FMath::RandRange(0, HittedMontages.Num() - 1);
+		UAnimMontage* HitMontage = HittedMontages[temp];
+	
+		if (!!HitMontage)
+		{
+			LaunchCharacter((GetActorForwardVector() * HitLaunchDistance), false, true);
+
+			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
+		}
 	}
+
+	//HHR PlayerHP Delegate 연결
+	//--------------------------------------------------------
+	if (OnDecreaseHealthBar.IsBound())
+		OnDecreaseHealthBar.Broadcast(CurrentHealth -= DamageAmount);
+	//--------------------------------------------------------
+
+	//HP 계산후 Dead출력
+	//HitMontage가 Damage계산 전에 출력되기 때문에 함수 내부에서 StopMontage 해줘야 함
+	if (CurrentHealth <= 0)
+	{
+		//Dead 이후에 Player 입력 비활성화
+		//OpenLevel후에 다시 입력 활성화 (Dead UI 가 있으면 입력 UI Only로 하던가)
+		DisableInput(Cast<APlayerController>(GetController()));
+
+		Player_Dead();
+	}
+
+	return CurrentHealth -= DamageAmount;
 }

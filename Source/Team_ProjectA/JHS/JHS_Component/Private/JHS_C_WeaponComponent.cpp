@@ -105,7 +105,10 @@ void UJHS_C_WeaponComponent::SetKatanaMode()
 void UJHS_C_WeaponComponent::AttackAction()
 {
 	if (!!GetMainAction())
+	{
 		GetMainAction()->MainAction();
+		bIsCriticalHit = GetAttachment()->GetCriticalHit();
+	}
 }
 
 bool UJHS_C_WeaponComponent::IsIdleMode()

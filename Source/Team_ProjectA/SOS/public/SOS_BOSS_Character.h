@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SOS_Hide_Box_Comp.h"
 #include "SOS_Hide_SphereComp.h"
 #include "Components/SphereComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
@@ -36,7 +37,6 @@ public:
 	// Behavior Tree Function
 	UBehaviorTree* GetBehaviorTree();
 
-public:
 	// RightHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* RightHandCollision;
@@ -44,5 +44,59 @@ public:
 	// LeftHandCollision 선언
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* LeftHandCollision;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_Box_Comp* BodyCollision;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName RightHandSoketName = FName("Hideoplast_-R-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName LeftHandSoketName = FName("Hideoplast_-L-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName BodySoketName = FName("Hideoplast_-L-Finger01Socket");
+	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
+	float MaxHP = 100.0f;
+
+	// HP 변수
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
+	float CurrentHP = MaxHP;
+	
+	// 데미지 처리 함수
+	
+	UFUNCTION(BlueprintCallable, Category = "Boss Stats")
+	void TakeDamage(float DamageAmount);
+	
+
+	// Name of the Blackboard Key to modify
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	FName BlackboardKeyName = "SOS_State";
+	
+	
+	// Example: Enum value for "Attack"
+	// 0 Attack , 1 Death, 2 Burst, 3 stun, 4 Wait
+	UFUNCTION()
+	void SetBBEnumState(int32 EnumNumber);
+	
+	
+private:
+	// Mesh Overlap 처리 함수
+	UFUNCTION()
+	void OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	bool Brust = true;
+
+public:
+	// 몽타주 재생 속도를 변경하는 함수
+	void SetMontagePlayRate(float NewPlayRate);
+
+private:
+	// 현재 재생 속도
+	float CurrentMontagePlayRate = 1.0f; // 기본값 1.0
 };
 

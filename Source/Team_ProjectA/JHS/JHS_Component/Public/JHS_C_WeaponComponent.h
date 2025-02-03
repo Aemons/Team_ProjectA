@@ -30,6 +30,10 @@ public://InputAction Value
 	UPROPERTY(EditAnywhere, Category = "Weapon Input")
 	class UInputAction* IA_Weapon_AttackAction;
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Input")
+	bool bIsCriticalHit = false;
+
 private:
 	UPROPERTY(EditAnywhere, Category = "DataAsset")
 	class UJHS_C_WeaponDataAsset* DataAssets[(int32)EWeaponType::Max];
@@ -75,6 +79,7 @@ public://Delegate Value
 
 private:
 	bool bHasWeapon = false;
+
 
 	class ACharacter* OwnerCharacter;
 	EWeaponType Type = EWeaponType::Max;

@@ -6,8 +6,7 @@ public class Team_ProjectA : ModuleRules
 {
 	public Team_ProjectA(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-
+		
 		PublicDependencyModuleNames.AddRange(new string[]
         	{
         		"Core",
@@ -19,11 +18,23 @@ public class Team_ProjectA : ModuleRules
         		"AIModule",
         		"GameplayTasks",
         		"NavigationSystem",
+		        "LevelSequence",
+		        "MovieScene",
 		        "UMG",
 		        "Slate",
 		        "SlateCore",
-                "Niagara"
+		        "Niagara"
         	});
+		
+		// SOS Using LevelSequnce
+		////////////////////////////////////////////////////////////////////////////////////////////
+
+		PrivateDependencyModuleNames.AddRange(new string[] {"NiagaraAnimNotifies" });
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		////////////////////////////////////////////////////////////////////////////////////////////
+
+		       
 		
 		//JHS Public/Private
 		////////////////////////////////////////////////////////////////////////////////////////////

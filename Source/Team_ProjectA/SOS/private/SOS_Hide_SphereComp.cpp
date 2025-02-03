@@ -2,9 +2,12 @@
 
 
 #include "Team_ProjectA/SOS/public/SOS_Hide_SphereComp.h"
+
+#include "JHS_C_Player.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 
 // 생성자
 USOS_Hide_SphereComp::USOS_Hide_SphereComp()
@@ -57,7 +60,25 @@ void USOS_Hide_SphereComp::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 {
 	if (OtherActor && OtherActor != GetOwner())
 	{
-		// 다른 액터와의 상호작용 로직을 여기서 구현
-		UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_SphereComp: Overlapped with %s"), *OtherActor->GetName());
+		// AJHS_C_Player 클래스의 액터인지 확인
+		if (OtherActor->IsA(AJHS_C_Player::StaticClass()))
+		{
+			// 데미지 적용
+			UGameplayStatics::ApplyDamage(
+				OtherActor,          // 피해를 받는 액터
+				SphereDamage,         // 데미지 값 (멤버 변수로 설정)
+				GetOwner()->GetInstigatorController(), // 데미지를 준 컨트롤러
+				GetOwner(),          // 데미지를 준 액터
+				UDamageType::StaticClass() // 데미지 타입
+			);
+
+			// 로그 출력
+			UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), SphereDamage, *OtherActor->GetName());
+		}
+		else
+		{
+			// 예외 처리: 플레이어가 아닌 액터에 대해 로그 출력
+			UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
+		}
 	}
 }

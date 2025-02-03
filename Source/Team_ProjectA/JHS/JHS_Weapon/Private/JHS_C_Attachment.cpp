@@ -71,7 +71,7 @@ void AJHS_C_Attachment::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedC
 	CheckTrue(OwnerCharacter->GetClass() == OtherActor->GetClass());
 
 	if (OnAttachmentBeginOverlap.IsBound())
-		OnAttachmentBeginOverlap.Broadcast(OwnerCharacter, this, Cast<ACharacter>(OtherActor));
+		OnAttachmentBeginOverlap.Broadcast(OwnerCharacter, this, Cast<ACharacter>(OtherActor), DamageCalculation(BaseDamage));
 
 	if (ACharacter* OtherCharacter = Cast<ACharacter>(OtherActor))
 	{
@@ -199,5 +199,25 @@ void AJHS_C_Attachment::PlaySound(FTransform& InTransform)
 			UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundCue, InTransform.GetLocation());
 		}
 	}
+}
+
+float AJHS_C_Attachment::DamageCalculation(float InDamage)
+{
+	bIsCriticalHit = false;
+
+	float Max_Damage = BaseDamage * Max_DamageChance;
+	float Min_Damage = BaseDamage * Min_DamageChance;
+
+	float FinalDamage = FMath::RandRange(Min_Damage, Max_Damage);
+
+	float Critical = FMath::RandRange(0.0, 1.0);
+
+	if (Critical <= CriticalChance)
+	{
+		FinalDamage *= CriticalDamage;
+		bIsCriticalHit = true;
+	}
+	
+	return FinalDamage;
 }
 

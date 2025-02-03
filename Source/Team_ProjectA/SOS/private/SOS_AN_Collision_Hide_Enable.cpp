@@ -18,22 +18,36 @@ void USOS_AN_Collision_Hide_Enable::Notify(USkeletalMeshComponent* MeshComp, UAn
 
 	if (BossCharacter)
 	{
-		
-		// LeftHandCollision과 RightHandCollision 활성화
-		if (BossCharacter->LeftHandCollision)
+		// 설정된 CollisionName에 따라 특정 충돌 컴포넌트를 비활성화
+		if (CollisionName == FName("LeftHandCollision") && BossCharacter->LeftHandCollision)
 		{
 			BossCharacter->LeftHandCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			//UE_LOG(LogTemp, Log, TEXT("Left hand collision enabled."));
 		}
-
-		if (BossCharacter->RightHandCollision)
+		else if (CollisionName == FName("RightHandCollision") && BossCharacter->RightHandCollision)
 		{
 			BossCharacter->RightHandCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			//UE_LOG(LogTemp, Log, TEXT("Right hand collision enabled."));
 		}
+		else if(CollisionName == FName("BodyCollision") && BossCharacter->BodyCollision)
+		{
+			BossCharacter->BodyCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+			//UE_LOG(LogTemp, Log, TEXT("Body collision enabled."));
+		}
+		/*
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("SOS_AN_Collision_Hide_Disable: CollisionName '%s' is invalid or component not found."),
+				*CollisionName.ToString());
+		}
+		
 	}
+	
 	else
+		
 	{
 		UE_LOG(LogTemp, Warning, TEXT("SOS_AN_Collision_Hide_Enable: Owner is not a SOS_HIDE_BOSS_Char."));
+	}
+	*/
 	}
 }

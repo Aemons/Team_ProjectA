@@ -17,6 +17,8 @@ class TEAM_PROJECTA_API ASOS_AIController : public AAIController
 public:
 	explicit ASOS_AIController(FObjectInitializer const& ObjectInitializer);
 
+	
+	
 protected:
 	virtual void OnPossess(APawn* InPawn) override;
 
@@ -27,4 +29,7 @@ private:
 	// Blackboard에 저장할 거리의 키 이름
 	UPROPERTY(EditDefaultsOnly, Category = "Blackboard")
 	FName DistanceKey = TEXT("SOS_TargetDistance");
+
+	
+	
 };

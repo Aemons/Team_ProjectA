@@ -29,7 +29,7 @@ void USOS_SpitProjectileNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSe
 
 	// 플레이어가 없을 경우 기본 방향 설정 (방어 코드)
 	FVector TargetLocation = PlayerCharacter ? PlayerCharacter->GetActorLocation() 
-											 : (SpawnLocation + AIActor->GetActorForwardVector() * 3000);
+											 : (SpawnLocation + AIActor->GetActorForwardVector() * 5000);
 
 	// 스폰 회전 계산
 	FRotator SpawnRotation = (TargetLocation - SpawnLocation).Rotation();
