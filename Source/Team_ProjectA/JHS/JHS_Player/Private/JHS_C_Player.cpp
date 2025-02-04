@@ -219,8 +219,11 @@ void AJHS_C_Player::Player_Move(const FInputActionValue& InValue)
 	const FVector RightDirection = FQuat(Rotator).GetRightVector();
 
 
-	AddMovementInput(ForwardDirection, MovementInput.Y);
-	AddMovementInput(RightDirection, MovementInput.X);
+	if (StateComp->IsHittedMode() == false)
+	{
+		AddMovementInput(ForwardDirection, MovementInput.Y);
+		AddMovementInput(RightDirection, MovementInput.X);
+	}
 }
 
 void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
@@ -386,6 +389,8 @@ void AJHS_C_Player::PlayerBrakingWalkingValue()
 float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	StopAnimMontage();
+	StateComp->SetHittedMode();
+
 	//CheckNull(DamageCauser) -> 반환값이 정해져 있는 함수여서 Check매크로 사용하면 오류발생함 (리턴값이 있는 매크로가 아니라서)
 
 	//피격시 DamageCauser방향으로 회전
@@ -404,11 +409,12 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 	
 		if (!!HitMontage)
 		{
-			LaunchCharacter((GetActorForwardVector() * HitLaunchDistance), false, true);
+			LaunchCharacter((FVector(GetActorForwardVector().X, GetActorForwardVector().Y, 0) * HitLaunchDistance), true, true);
 
 			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
 		}
 	}
+	
 
 	//HHR PlayerHP Delegate 연결
 	//--------------------------------------------------------
