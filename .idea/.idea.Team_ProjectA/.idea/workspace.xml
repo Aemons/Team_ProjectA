@@ -14,23 +14,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_ItemSlotTEst.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_InventoryDrawer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_InventoryDrawer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Map/Test_MainTownMap_01.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Map/Test_MainTownMap_01.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_StartMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_StartMenu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
-    </list>
+    <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -864,7 +848,7 @@
       <workItem from="1738634705608" duration="4261000" />
       <workItem from="1738644547733" duration="8162000" />
       <workItem from="1738652826268" duration="458000" />
-      <workItem from="1738653378493" duration="634000" />
+      <workItem from="1738653378493" duration="953000" />
     </task>
     <servers />
   </component>
