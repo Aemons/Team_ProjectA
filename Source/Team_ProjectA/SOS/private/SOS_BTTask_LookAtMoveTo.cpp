@@ -4,6 +4,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "NavigationSystem.h"
+#include "Kismet/GameplayStatics.h"
+#include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
 
 USOS_BTTask_LookAtMoveTo::USOS_BTTask_LookAtMoveTo()
 {
@@ -13,12 +15,35 @@ USOS_BTTask_LookAtMoveTo::USOS_BTTask_LookAtMoveTo()
 
 EBTNodeResult::Type USOS_BTTask_LookAtMoveTo::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
+    
+    
     // AIController와 Blackboard 가져오기
-    AAIController* AIController = OwnerComp.GetAIOwner();
+    //AAIController* AIController = OwnerComp.GetAIOwner();
+
+    ASOS_BOSS_Character* BossCharacter = Cast<ASOS_BOSS_Character>(
+    UGameplayStatics::GetActorOfClass(this, ASOS_BOSS_Character::StaticClass()));
+
+    if (BossCharacter)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Found Boss Character: %s"), *BossCharacter->GetName());
+
+        // 해당 캐릭터의 AIController 가져오기
+        AAIController* AIController = Cast<AAIController>(BossCharacter->GetController());
+        if (AIController)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Boss AIController: %s"), *AIController->GetName());
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Boss Character not found!"));
+    }
+
+    /*
     if (!AIController)
     {
         return EBTNodeResult::Failed;
-    }
+    }*/
 
     UBlackboardComponent* Blackboard = OwnerComp.GetBlackboardComponent();
     if (!Blackboard)
@@ -37,8 +62,9 @@ EBTNodeResult::Type USOS_BTTask_LookAtMoveTo::ExecuteTask(UBehaviorTreeComponent
 void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
     AAIController* AIController = OwnerComp.GetAIOwner();
+    
     ACharacter* Character = Cast<ACharacter>(AIController->GetPawn());
-
+    
     if (!AIController || !Character)
     {
         FinishLatentTask(OwnerComp, EBTNodeResult::Failed);
@@ -56,6 +82,8 @@ void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8
     FVector CurrentLocation = Character->GetActorLocation();
     float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
 
+    
+    
     // 목표를 바라보도록 회전 조정 (천천히 회전)
     FVector DirectionToTarget = (TargetLocation - CurrentLocation).GetSafeNormal();
     FRotator CurrentRotation = Character->GetActorRotation();
@@ -80,6 +108,8 @@ void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8
         if (bIsMoving)
         {
             AIController->MoveToLocation(TargetLocation);
+            //UE_LOG(LogTemp, Warning, TEXT("%s"), *TargetLocation.ToString());
+            
         }
     }
 
@@ -89,5 +119,7 @@ void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8
         bIsMoving = false;
         AIController->StopMovement();
         FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+        UE_LOG(LogTemp, Warning, TEXT("EBTNodeResult::Succeeded"));
     }
 }
+

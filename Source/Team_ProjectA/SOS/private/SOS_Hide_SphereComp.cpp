@@ -44,14 +44,14 @@ void USOS_Hide_SphereComp::AttachToBone(USkeletalMeshComponent* Mesh, FName Bone
 void USOS_Hide_SphereComp::EnableCollision()
 {
 	SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);  // 충돌 활성화
-	UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_SphereComp: Collision Enabled"));
+	//UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_SphereComp: Collision Enabled"));
 }
 
 // 충돌 비활성화
 void USOS_Hide_SphereComp::DisableCollision()
 {
 	SetCollisionEnabled(ECollisionEnabled::NoCollision);  // 충돌 비활성화
-	UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_SphereComp: Collision Disabled"));
+	//UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_SphereComp: Collision Disabled"));
 }
 
 // Overlap 이벤트 처리 (다른 액터와 충돌했을 때 호출)
@@ -72,13 +72,17 @@ void USOS_Hide_SphereComp::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 				UDamageType::StaticClass() // 데미지 타입
 			);
 
+			DisableCollision();
+
 			// 로그 출력
-			UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), SphereDamage, *OtherActor->GetName());
+			//UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), SphereDamage, *OtherActor->GetName());
 		}
 		else
 		{
 			// 예외 처리: 플레이어가 아닌 액터에 대해 로그 출력
-			UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
 		}
 	}
+
+	
 }

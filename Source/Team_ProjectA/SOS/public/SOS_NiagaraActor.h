@@ -34,6 +34,9 @@ protected:
 	UFUNCTION()
 	void OnNiagaraSystemFinished(UNiagaraComponent* PSystem);
 
+	// 일정 시간 후 BoxCollision을 활성화하는 함수
+	void EnableCollision();
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -46,8 +49,16 @@ protected:
 	UNiagaraComponent* NiagaraComponent; // Niagara Component
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
-	float DamageValue = 50.f; // 기본 데미지 값
+	float DamageValue = 10.f; // 기본 데미지 값
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara")
 	UNiagaraSystem* NiagaraSystem; // Niagara 시스템
+
+	/**  일정 시간 후 콜리전 활성화 딜레이 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	float CollisionActivationDelay = 0.5f; // 기본값 1.5초
+
+private:
+	/**  콜리전 활성화 타이머 핸들 */
+	FTimerHandle CollisionTimerHandle;
 };

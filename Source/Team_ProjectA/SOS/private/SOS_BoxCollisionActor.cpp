@@ -39,7 +39,6 @@ void ASOS_BoxCollisionActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
 // Overlap 이벤트 처리
 void ASOS_BoxCollisionActor::OnBoxBeginOverlap(
 	UPrimitiveComponent* OverlappedComp,
@@ -50,11 +49,17 @@ void ASOS_BoxCollisionActor::OnBoxBeginOverlap(
 	const FHitResult& SweepResult
 )
 {
+	// 이미 비활성화된 경우 중복 처리 방지
+	if (!BoxCollision || BoxCollision->GetCollisionEnabled() == ECollisionEnabled::NoCollision)
+	{
+		return;
+	}
+
 	// 유효성 검사: Overlapped Actor가 존재하고 자신이 아닌 경우에만 처리
-	if (OtherActor && OtherActor != this)
+	if (OtherActor && OtherActor != this )
 	{
 		// AJHS_C_Player 클래스의 액터인지 확인
-		if (OtherActor->IsA(AJHS_C_Player::StaticClass()))
+		if (OtherActor->IsA(AJHS_C_Player::StaticClass() ) )
 		{
 			// 데미지를 적용
 			UGameplayStatics::ApplyDamage(
@@ -67,7 +72,12 @@ void ASOS_BoxCollisionActor::OnBoxBeginOverlap(
 
 			// 로그 출력
 			UE_LOG(LogTemp, Log, TEXT("Spread Attack ASOS_BoxCollisionActor: Applied %f damage to %s"), DamageValue, *OtherActor->GetName());
+
+			// ⚡ 개별적으로 콜리전 비활성화 후 삭제
+			BoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Destroy(); // 해당 박스만 삭제
 		}
+		
 		else
 		{
 			// 플레이어가 아닌 액터에 대한 로그
@@ -75,3 +85,4 @@ void ASOS_BoxCollisionActor::OnBoxBeginOverlap(
 		}
 	}
 }
+

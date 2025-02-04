@@ -14,18 +14,16 @@ ASOS_NiagaraActor::ASOS_NiagaraActor()
 	// Box Collision 생성
 	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
 	BoxCollision->SetupAttachment(RootComponent);
-	BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	BoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision); // 초기에 비활성화
 	BoxCollision->SetGenerateOverlapEvents(true);
-	BoxCollision->SetCollisionObjectType(ECC_Pawn); // 충돌 채널 설정
+	BoxCollision->SetCollisionObjectType(ECC_Pawn);
 	BoxCollision->SetCollisionResponseToAllChannels(ECR_Ignore);
-	BoxCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); // Pawn에 대해 Overlap 처리
+	BoxCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &ASOS_NiagaraActor::OnBoxComponentBeginOverlap);
 
 	// Niagara Component 생성
 	NiagaraComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
 	NiagaraComponent->SetupAttachment(RootComponent);
-
-	// Niagara 시스템 종료 이벤트
 	NiagaraComponent->OnSystemFinished.AddDynamic(this, &ASOS_NiagaraActor::OnNiagaraSystemFinished);
 }
 
@@ -40,13 +38,25 @@ void ASOS_NiagaraActor::BeginPlay()
 		NiagaraComponent->SetAsset(NiagaraSystem);
 		NiagaraComponent->Activate();
 	}
+
+	// 일정 시간이 지난 후 콜리전 활성화
+	GetWorldTimerManager().SetTimer(CollisionTimerHandle, this, &ASOS_NiagaraActor::EnableCollision, CollisionActivationDelay, false);
+}
+
+// 일정 시간 후 콜리전 활성화
+void ASOS_NiagaraActor::EnableCollision()
+{
+	if (BoxCollision)
+	{
+		BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		//UE_LOG(LogTemp, Warning, TEXT("ASOS_NiagaraActor: Collision Enabled!"));
+	}
 }
 
 // Called every frame
 void ASOS_NiagaraActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Box Collision Overlap 이벤트 처리
@@ -57,10 +67,11 @@ void ASOS_NiagaraActor::OnBoxComponentBeginOverlap(
 	int32 OtherBodyIndex,
 	bool bFromSweep,
 	const FHitResult& SweepResult)
-
 {
-	if (OtherActor && OtherActor != this)
+	// 유효한 액터인지 확인 & 자기 자신과 동일한 클래스인지 확인 (같은 나이아가라 액터끼리 충돌 방지)
+	if (OtherActor && OtherActor != this && !OtherActor->IsA(ASOS_NiagaraActor::StaticClass()))
 	{
+		// Apply Damage 실행
 		UGameplayStatics::ApplyDamage(
 			OtherActor,
 			DamageValue,
@@ -69,7 +80,12 @@ void ASOS_NiagaraActor::OnBoxComponentBeginOverlap(
 			UDamageType::StaticClass()
 		);
 
-		UE_LOG(LogTemp, Log, TEXT("ASOS_NiagaraActor: Applied %f damage to %s"), DamageValue, *OtherActor->GetName());
+		// 캐릭터 또는 적에게 피격된 경우 콜리전 비활성화
+		BoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+	else
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("ASOS_NiagaraActor: Ignored collision with another NiagaraActor."));
 	}
 }
 

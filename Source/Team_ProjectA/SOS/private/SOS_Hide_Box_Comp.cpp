@@ -66,6 +66,8 @@ void USOS_Hide_Box_Comp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent
 				UDamageType::StaticClass() // 데미지 타입
 			);
 
+			DisableCollision();
+			
 			// 로그 출력
 			UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), BoxDamage, *OtherActor->GetName());
 		}
@@ -75,4 +77,6 @@ void USOS_Hide_Box_Comp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent
 			UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
 		}
 	}
+
+	
 }
