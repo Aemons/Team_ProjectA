@@ -8,20 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6bbba29-1998-4c52-803a-855fe1c7f3f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotTest.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/Chests/T_Chest1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/Chests/T_Chest1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/Chests/T_Chest3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/Chests/T_Chest3.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/T_Boots1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/Texture/ArmorImage/T_Boots1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_ItemSlotTEst.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_InventoryDrawer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_InventoryDrawer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_StartMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_StartMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_StartMenu.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Public/JHS_C_Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Public/JHS_C_Player.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team_ProjectA.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/Border.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/BorderSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Components/Button.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_QuickSlotBase.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -156,6 +162,11 @@
       <workItem from="1737621541411" duration="1000" />
       <workItem from="1738571135259" duration="8000" />
       <workItem from="1738632784724" duration="596000" />
+      <workItem from="1738655534945" duration="72000" />
+      <workItem from="1738655943746" duration="20000" />
+      <workItem from="1738656540817" duration="13000" />
+      <workItem from="1738663100701" duration="1000" />
+      <workItem from="1738664653887" duration="1000" />
     </task>
     <servers />
   </component>

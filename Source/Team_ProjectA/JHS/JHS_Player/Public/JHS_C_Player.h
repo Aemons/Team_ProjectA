@@ -90,6 +90,17 @@ public://Actor Component
 	// * Inventory Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UHHR_InventoryComponent* InventoryComp;
+	// * SkeletalMesh
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
+	class USkeletalMeshComponent* SM_Chest;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
+	class USkeletalMeshComponent* SM_Boots;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
+	class USkeletalMeshComponent* SM_Hands;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
+	class USkeletalMeshComponent* SM_Pants;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
+	class USkeletalMeshComponent* SM_Helmet;
 	// ----------------------------------------------------------------------------
 	
 

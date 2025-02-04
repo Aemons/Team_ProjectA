@@ -7,20 +7,22 @@
 #include "Components/UniformGridPanel.h"
 #include "Components/UniformGridSlot.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h"
 
 
 void UHHR_InventoryPageBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
+
 	// ItemSlot들 생성
-	for(int32 i = 0; i < RowNum ; ++i)
+	/*for(int32 i = 0; i < RowNum ; ++i)
 	{
 		for(int32 j = 0; j < ColumNum; ++j)
 		{
 			if(!ItemSlotClass) continue;
 
-			UHHR_ItemSlotBase* itemSlot = NewObject<UHHR_ItemSlotBase>(this, ItemSlotClass);
+			UHHR_ItemSlotTest* itemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
 			GridPanel->AddChild(itemSlot);
 			itemSlot->SetVisibility(ESlateVisibility::Hidden);
 
@@ -47,7 +49,8 @@ void UHHR_InventoryPageBase::NativePreConstruct()
 				HaveItemSlotList[i]->UpdateItemData(&ItemDataList[i]);
 			}
 		}
-	}
+	}*/
+
 
 
 	
@@ -58,4 +61,5 @@ void UHHR_InventoryPageBase::NativeConstruct()
 	Super::NativeConstruct();
 
 
+	
 }

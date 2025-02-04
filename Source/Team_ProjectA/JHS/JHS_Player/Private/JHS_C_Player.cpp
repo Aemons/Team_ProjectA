@@ -45,6 +45,30 @@ AJHS_C_Player::AJHS_C_Player()
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
 		InventoryComp = CreateDefaultSubobject<UHHR_InventoryComponent>(TEXT("InventoryComp"));
+		// * SkeletalMesh Comp generated*
+
+		SM_Chest = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMChest"));
+		SM_Chest->SetupAttachment(GetMesh());
+		
+		SM_Boots = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMBoots"));
+		SM_Boots->SetupAttachment(GetMesh());
+		
+		SM_Hands = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMHands"));
+		SM_Hands->SetupAttachment(GetMesh());
+		
+		SM_Pants = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMPants"));
+		SM_Pants->SetupAttachment(GetMesh());
+		
+		SM_Helmet = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMHelmet"));
+		SM_Helmet->SetupAttachment(GetMesh());
+
+		
+		SM_Chest->SetLeaderPoseComponent(GetMesh());
+		SM_Boots->SetLeaderPoseComponent(GetMesh());
+		SM_Hands->SetLeaderPoseComponent(GetMesh());
+		SM_Pants->SetLeaderPoseComponent(GetMesh());
+		SM_Helmet->SetLeaderPoseComponent(GetMesh());
+
 		// ----------------------------------------------------------------------------
 	}
 

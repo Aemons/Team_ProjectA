@@ -13,6 +13,7 @@
 
 class UUniformGridPanel;
 class UHHR_ItemSlotBase;
+class UHHR_ItemSlotTest;
 
 UCLASS()
 class TEAM_PROJECTA_API UHHR_InventoryPageBase : public UUserWidget
@@ -23,7 +24,7 @@ class TEAM_PROJECTA_API UHHR_InventoryPageBase : public UUserWidget
 // ** UPROPERTY 변수 **
 public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값들)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
-	TArray<UHHR_ItemSlotBase*> HaveItemSlotList;
+	TArray<UHHR_ItemSlotTest*> HaveItemSlotList;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	TArray<FItemData> ItemDataList;
 	
@@ -34,7 +35,7 @@ protected:	// *Widgets*
 private:
 	// 동적으로 itemslot을 생성해주기 위한 Class
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess), Category="ItemSlot Class")
-	TSubclassOf<UHHR_ItemSlotBase> ItemSlotClass;
+	TSubclassOf<UHHR_ItemSlotTest> ItemSlotClass;
 
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수
@@ -50,7 +51,7 @@ private:
 	int32 ColumNum = 5;
 
 	// 전체 ItemSlot
-	TArray<UHHR_ItemSlotBase*> ItemSlotList;
+	TArray<UHHR_ItemSlotTest*> ItemSlotList;
 	
 
 };

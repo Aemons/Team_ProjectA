@@ -24,10 +24,6 @@ private:
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Inventory Widget")
 	TSubclassOf<UUserWidget> InventoryWidgetClass;
 
-	// 임시
-	//UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Inventory")
-	//TSubclassOf<AActor> WardrobeTestClass;
-
 	// *Render Target으로 보여주기 위한 Scenen Component*
 	UPROPERTY(EditAnywhere, Category = "Inventory Scene Component")
 	class USpringArmComponent* SpringArmComp;
