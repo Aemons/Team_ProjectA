@@ -8,7 +8,9 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/SceneCaptureComponent2D.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h"
 
 // Sets default values for this component's properties
 UHHR_InventoryComponent::UHHR_InventoryComponent()
@@ -101,6 +103,33 @@ void UHHR_InventoryComponent::InitializeComponent()
 		CaptureComp->FOVAngle = 65.f;
 	}
 
+	
+}
+
+void UHHR_InventoryComponent::ChangeArmor(UHHR_ItemSlotTest* Armor)
+{
+	
+	switch (Armor->ItemData.ArmorType)
+	{
+	case EArmorType::Helmet:
+		OwnerCharacter->GetHelmetSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
+		InventoryWidget->ChangeHelemtSlot(&Armor->ItemData);
+		break;
+	case EArmorType::Chest:
+		OwnerCharacter->GetChestSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
+		InventoryWidget->ChangeChestSlot(&Armor->ItemData);
+		break;
+	case EArmorType::Pants:
+		OwnerCharacter->GetPantsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
+		InventoryWidget->ChangePantsSlot(&Armor->ItemData);
+		break;
+	case EArmorType::Boots:
+		OwnerCharacter->GetBootsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
+		InventoryWidget->ChangeBootsSlot(&Armor->ItemData);
+		break;
+	default:
+		break;
+	}
 	
 }
 

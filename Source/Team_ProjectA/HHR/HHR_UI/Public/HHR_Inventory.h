@@ -11,6 +11,7 @@
  */
 
 
+struct FItemData;
 class UHHR_ItemEquipedSlotBase;
 class UHHR_InventoryDrawer;
 
@@ -64,7 +65,14 @@ private:
 	// ItemSlot에서 호출할 함수
 	UFUNCTION()
 	void OnUpdateEquipedSlot(int32 ItemMenuIdx);
-	
+
+//////////////////////////////////////////////////////////////////////////////
+// ** 일반 함수 **
+public:
+	void ChangeHelemtSlot(FItemData* Data);
+	void ChangeChestSlot(FItemData* Data);
+	void ChangePantsSlot(FItemData* Data);
+	void ChangeBootsSlot(FItemData* Data);
 
 
 //////////////////////////////////////////////////////////////////////////////

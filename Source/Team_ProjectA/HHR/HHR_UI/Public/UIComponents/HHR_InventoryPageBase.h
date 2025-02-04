@@ -32,16 +32,44 @@ protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
 	UUniformGridPanel* GridPanel;
 
+	// 임시 노가다
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot1;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot2;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot3;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot4;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot5;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot6;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot7;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot8;
+	
+
 private:
 	// 동적으로 itemslot을 생성해주기 위한 Class
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess), Category="ItemSlot Class")
 	TSubclassOf<UHHR_ItemSlotTest> ItemSlotClass;
+
 
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수
 protected:
 	virtual void NativePreConstruct() override;
 	virtual void NativeConstruct() override;
+
+
+/////////////////////////////////////////////////////////////////////////
+// ** UFUNCTION 함수 **
+private:
+	// Inventory
+	UFUNCTION()
+	void UpdateSlotClick(UHHR_ItemSlotTest* ClickItem);
 
 
 //////////////////////////////////////////////////////////////////////////////

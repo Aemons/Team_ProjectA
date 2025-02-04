@@ -60,6 +60,48 @@ void UHHR_InventoryPageBase::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-
+	// 임시
+	ItemSlotList.Add(ItemSlot1);
+	ItemSlotList.Add(ItemSlot2);
+	ItemSlotList.Add(ItemSlot3);
+	ItemSlotList.Add(ItemSlot4);
+	ItemSlotList.Add(ItemSlot5);
+	ItemSlotList.Add(ItemSlot6);
+	ItemSlotList.Add(ItemSlot7);
+	ItemSlotList.Add(ItemSlot8);
+	// 바인딩
+	for(UHHR_ItemSlotTest* itemSlot : ItemSlotList)
+	{
+		itemSlot->OnItemChanged.AddDynamic(this, &UHHR_InventoryPageBase::UpdateSlotClick);
+	}
 	
 }
+
+void UHHR_InventoryPageBase::UpdateSlotClick(UHHR_ItemSlotTest* ClickItem)
+{
+	// itemslot 전체 탐색해서 selected 되어 있는거 탐색후 찾으면 selected 해제 + click된거 selected
+
+	for(UHHR_ItemSlotTest* slot : ItemSlotList)
+	{
+		if(slot->ItemData.ArmorType == ClickItem->ItemData.ArmorType)
+		{
+			if(slot->bIsSelected)
+			{
+				slot->UnSelected();
+			}
+		}
+	}
+
+	ClickItem->Selected();
+	
+}
+
+
+
+
+
+
+
+
+
+

@@ -3,15 +3,20 @@
 
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h"
 
+#include "JHS_C_Player.h"
 #include "Components/Border.h"
 #include "Components/Button.h"
+#include "Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h"
 
 void UHHR_ItemSlotTest::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
-	// hidden이면 업뎃 안함
 	UpdateItemData(&ItemData);
+	if(bIsSelected)
+	{
+		Selected();
+	}
 
 }
 
@@ -23,6 +28,18 @@ void UHHR_ItemSlotTest::NativeConstruct()
 	ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemSlotTest::OnClicked);
 	ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemSlotTest::OnHovered);
 	ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemSlotTest::OnUnHovered);
+
+	// 
+	AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+	if(player)
+	{
+		UHHR_InventoryComponent* invenComp =  player->GetInventoryComp();
+		if(invenComp)
+		{
+			OnItemChanged.AddDynamic(invenComp, &UHHR_InventoryComponent::ChangeArmor);
+		}
+	}
+
 }
 
 void UHHR_ItemSlotTest::OnHovered()
@@ -43,9 +60,13 @@ void UHHR_ItemSlotTest::OnUnHovered()
 
 void UHHR_ItemSlotTest::OnClicked()
 {
-	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+	//Selected();
 
-	// TODO: click시 옷 교환
+	// TODO: click시 옷 교환 + click 내용 반영
+	if(OnItemChanged.IsBound())
+	{
+		OnItemChanged.Broadcast(this);
+	}
 	
 
 }
@@ -62,4 +83,16 @@ void UHHR_ItemSlotTest::UpdateItemData(FItemData* Data)
 			ItemImage->SetBrush(newBrush);
 		}
 	}
+}
+
+void UHHR_ItemSlotTest::Selected()
+{
+	bIsSelected = true;
+	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UHHR_ItemSlotTest::UnSelected()
+{
+	bIsSelected = false;
+	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
 }

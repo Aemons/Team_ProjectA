@@ -32,8 +32,13 @@ public:
 	// HHR
 	// ----------------------------------------------------------------------------
 	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
-	// - Temporary
-	FORCEINLINE class UHHR_InteractComponent* GetInteractComp() const {return InteractComp;};
+	
+	// * Inventory
+	FORCEINLINE class UHHR_InventoryComponent* GetInventoryComp() const {return InventoryComp;}
+	FORCEINLINE USkeletalMeshComponent* GetHelmetSMComp() const {return SM_Helmet;}
+	FORCEINLINE USkeletalMeshComponent* GetChestSMComp() const {return SM_Chest;}
+	FORCEINLINE USkeletalMeshComponent* GetBootsSMComp() const {return SM_Boots;}
+	FORCEINLINE USkeletalMeshComponent* GetPantsSMComp() const {return SM_Pants;}
 	// ----------------------------------------------------------------------------
 
 public:

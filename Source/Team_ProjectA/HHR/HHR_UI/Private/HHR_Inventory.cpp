@@ -52,4 +52,28 @@ void UHHR_Inventory::OnUpdateEquipedSlot(int32 ItemMenuIdx)
 	InventoryDrawer->UpdateDrawer(ItemMenuIdx);
 }
 
+void UHHR_Inventory::ChangeHelemtSlot(FItemData* Data)
+{
+	HelmetSlot->ItemData = *Data;
+	HelmetSlot->UpdateData();
+}
+
+void UHHR_Inventory::ChangeChestSlot(FItemData* Data)
+{
+	ChestSlot->ItemData = *Data;
+	ChestSlot->UpdateData();
+}
+
+void UHHR_Inventory::ChangePantsSlot(FItemData* Data)
+{
+	PantsSlot->ItemData = *Data;
+	PantsSlot->UpdateData();
+}
+
+void UHHR_Inventory::ChangeBootsSlot(FItemData* Data)
+{
+	BootsSlot->ItemData = *Data;
+	BootsSlot->UpdateData();
+}
+
 

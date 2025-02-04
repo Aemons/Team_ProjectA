@@ -62,7 +62,6 @@ AJHS_C_Player::AJHS_C_Player()
 		SM_Helmet = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMHelmet"));
 		SM_Helmet->SetupAttachment(GetMesh());
 
-		
 		SM_Chest->SetLeaderPoseComponent(GetMesh());
 		SM_Boots->SetLeaderPoseComponent(GetMesh());
 		SM_Hands->SetLeaderPoseComponent(GetMesh());

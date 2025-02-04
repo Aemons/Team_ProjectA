@@ -7,6 +7,7 @@
 #include "HHR_InventoryComponent.generated.h"
 
 
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TEAM_PROJECTA_API UHHR_InventoryComponent : public UActorComponent
 {
@@ -51,7 +52,12 @@ public:
 private:	// *player Character에 바인딩 
 	virtual void InitializeComponent() override;
 
-	
+/////////////////////////////////////////////////////////////////////////
+// ** UFUNCTION 함수 **
+public:
+	// Inventory
+	UFUNCTION()
+	void ChangeArmor(class UHHR_ItemSlotTest* Armor);
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -61,6 +67,7 @@ public:
 	void SetUpInputBinding(class UEnhancedInputComponent* Input);
 	// IA에 바인딩할 함수
 	void OpenInventory();
+
 
 
 /////////////////////////////////////////////////////////////////////////

@@ -10,18 +10,12 @@ void UHHR_ItemEquipedSlotBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
-	if(ItemImage)
-	{
-		FSlateBrush newBrush;
-		newBrush.SetResourceObject(ItemImage);
-
-		ItemIcon->SetBrush(newBrush);
-	}
-
+	UpdateData();
 	if(bIsSelected)
 	{
 		Selected();
 	}
+
 }
 
 void UHHR_ItemEquipedSlotBase::NativeConstruct()
@@ -68,4 +62,16 @@ void UHHR_ItemEquipedSlotBase::Unselected()
 {
 	bIsSelected = false;
 	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void UHHR_ItemEquipedSlotBase::UpdateData()
+{
+	if(ItemData.ItemImage)
+	{
+		FSlateBrush newBrush;
+		newBrush.SetResourceObject(ItemData.ItemImage);
+
+		ItemIcon->SetBrush(newBrush);
+	}
+
 }

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h"
 #include "HHR_ItemEquipedSlotBase.generated.h"
 
 /**
@@ -38,6 +39,8 @@ public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값�
 	UTexture2D* ItemImage;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	int32 ItemMenuIdx;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
+	FItemData ItemData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	bool bIsSelected = false;
@@ -77,6 +80,8 @@ public:
 	// *비주얼 업뎃*
 	void Selected();
 	void Unselected();
+	// *Data 업뎃*
+	void UpdateData();
 	
 
 //////////////////////////////////////////////////////////////////////////////
