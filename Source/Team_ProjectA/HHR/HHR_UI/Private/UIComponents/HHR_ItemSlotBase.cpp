@@ -5,6 +5,17 @@
 
 #include "Components/Border.h"
 #include "Components/Button.h"
+#include "Components/UniformGridPanel.h"
+
+void UHHR_ItemSlotBase::NativePreConstruct()
+{
+	Super::NativePreConstruct();
+
+	// Data 업뎃
+	// 이미지 업뎃
+	UpdateItemData(&ItemData);
+	
+}
 
 void UHHR_ItemSlotBase::NativeConstruct()
 {
@@ -37,4 +48,19 @@ void UHHR_ItemSlotBase::OnClicked()
 	// TODO : InventoryDialog visible 보이게 하기 + Data 업뎃
 	
 	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UHHR_ItemSlotBase::UpdateItemData(FItemData* Data)
+{
+	if(Data->ItemImage)
+	{
+		FSlateBrush newBrush;
+		newBrush.SetResourceObject(Data->ItemImage);
+
+		if(ItemImage)
+		{
+			ItemImage->SetBrush(newBrush);
+		}
+	}
+
 }

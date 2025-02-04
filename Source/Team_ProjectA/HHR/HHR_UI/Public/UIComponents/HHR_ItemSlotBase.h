@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h"
 #include "HHR_ItemSlotBase.generated.h"
 
 /**
@@ -21,12 +22,17 @@ class TEAM_PROJECTA_API UHHR_ItemSlotBase : public UUserWidget
 
 //////////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
+public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값들)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
+	FItemData ItemData;
+	
 protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
 	UButton* ItemButton;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
 	UBorder* SelectedBorder;
-
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UBorder* ItemImage;
 
 protected:	// *Animations*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidgetAnim), Transient, Category="Animations")
@@ -35,6 +41,7 @@ protected:	// *Animations*
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수
 protected:
+	virtual void NativePreConstruct() override;
 	virtual void NativeConstruct() override;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -46,5 +53,10 @@ private:	//*Button 이벤트에 바인딩 될 함수들*
 	void OnUnHovered();
 	UFUNCTION()
 	void OnClicked();
+
+//////////////////////////////////////////////////////////////////////////////
+// **일반 함수**
+public:
+	void UpdateItemData(FItemData* Data);
 	
 };
