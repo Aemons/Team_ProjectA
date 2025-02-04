@@ -67,10 +67,23 @@ public:
 	float CurrentHP=MaxHP;
 	
 	// 데미지 처리 함수
-	
+	/*
 	UFUNCTION(BlueprintCallable, Category = "Boss Stats")
 	void TakeDamage(float DamageAmount);
+	*/
 	
+	// ApplyDamage로 호출될 함수
+	UFUNCTION()
+	void TakeDamage(float DamageAmount);
+
+	// 데미지를 받을 때 호출되는 함수 (ApplyDamage 사용)
+	virtual float TakeDamage(
+		float DamageAmount,
+		struct FDamageEvent const& DamageEvent,
+		class AController* EventInstigator,
+		AActor* DamageCauser
+	) override;
+
 
 	// Name of the Blackboard Key to modify
 	UPROPERTY(EditAnywhere, Category = "Blackboard")

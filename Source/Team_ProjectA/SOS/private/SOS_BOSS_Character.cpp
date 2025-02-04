@@ -101,6 +101,9 @@ UBehaviorTree* ASOS_BOSS_Character::GetBehaviorTree()
 }
 
 
+
+
+/*
 void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
 {
 	CurrentHP -= DamageAmount;
@@ -125,6 +128,7 @@ void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
 	}
 
 }
+*/
 
 
 
@@ -135,7 +139,7 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 		return;
 	if(OtherComp)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Boss overlapped with %s"), *OtherActor->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("Boss overlapped with %s"), *OtherActor->GetName());
 		
 	}
 
@@ -144,6 +148,43 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 }
 
 
+void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
+{
+	// 체력 감소
+	CurrentHP -= DamageAmount;
+
+	//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f"), CurrentHP);
+
+	if( CurrentHP <= (MaxHP*0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
+	{ // 더 작으면 최대 HP에서
+		//UE_LOG(LogTemp, Warning, TEXT("Boss is Burst!"));
+		//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f , MaxHP %f"), CurrentHP, MaxHP);
+		
+		SetBBEnumState(2);
+		// 중복 처리
+		Brust = false;
+		
+	} // 체력이 0 이하라면 사망 처리
+	else if(CurrentHP <= 0.0f)
+	{
+		CurrentHP = 0.0f;
+		SetBBEnumState(1);
+		//UE_LOG(LogTemp, Warning, TEXT("Boss is Dead!"));
+		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
+	}
+}
+
+// ApplyDamage 시스템이 호출될 때 실행
+float ASOS_BOSS_Character::TakeDamage(
+	float DamageAmount,
+	struct FDamageEvent const& DamageEvent,
+	class AController* EventInstigator,
+	AActor* DamageCauser
+)
+{
+	TakeDamage(DamageAmount);
+	return DamageAmount;
+}
 
 void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 {
