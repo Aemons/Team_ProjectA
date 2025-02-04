@@ -64,7 +64,7 @@ public:
 
 	// HP 변수
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
-	float CurrentHP=MaxHP;
+	float CurrentHP = MaxHP;
 	
 	// 데미지 처리 함수
 	/*
