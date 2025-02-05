@@ -59,6 +59,10 @@ public:
 	UFUNCTION()
 	void ChangeArmor(class UHHR_ItemSlotTest* Armor);
 
+private:
+	UFUNCTION()
+	void CloseInventory();
+
 
 /////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **

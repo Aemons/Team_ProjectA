@@ -49,7 +49,8 @@ void UHHR_InventoryComponent::BeginPlay()
 		CaptureComp->TextureTarget = Wardrobe;
 		CaptureComp->CaptureScene();
 	}
-	
+
+
 }
 
 
@@ -144,6 +145,21 @@ void UHHR_InventoryComponent::ChangeArmor(UHHR_ItemSlotTest* Armor)
 	
 }
 
+void UHHR_InventoryComponent::CloseInventory()
+{
+	// 닫기
+	bIsOpen = false;
+	InventoryWidget->RemoveFromParent();
+
+	APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	PC->bShowMouseCursor = false;
+	PC->SetIgnoreLookInput(false);
+	PC->SetIgnoreMoveInput(false);
+
+	FInputModeGameOnly InputMode;
+	PC->SetInputMode(InputMode);
+}
+
 void UHHR_InventoryComponent::SetUpInputBinding(UEnhancedInputComponent* Input)
 {
 	if(Input)
@@ -160,14 +176,19 @@ void UHHR_InventoryComponent::OpenInventory()
 		// TODO: widget 생성 나중에 ui mananger로 옮겨야 함
 		InventoryWidget = CreateWidget<UHHR_Inventory>(GetWorld(), InventoryWidgetClass);
 		InventoryWidget->AddToViewport();
+		// Delegate 바인드
+		if(InventoryWidget)
+		{
+			InventoryWidget->OnInventoryClose.BindUObject(this, &UHHR_InventoryComponent::CloseInventory);
+		}
 		
 		APlayerController* PC = GetWorld()->GetFirstPlayerController();
 		PC->bShowMouseCursor = true;
 		PC->SetIgnoreLookInput(true);
 		PC->SetIgnoreMoveInput(true);
 
-		//FInputModeUIOnly InputMode;
-		//PC->SetInputMode(InputMode);
+		FInputModeUIOnly InputMode;
+		PC->SetInputMode(InputMode);
 	}
 	else
 	{
@@ -180,8 +201,8 @@ void UHHR_InventoryComponent::OpenInventory()
 		PC->SetIgnoreLookInput(false);
 		PC->SetIgnoreMoveInput(false);
 
-		/*FInputModeGameOnly InputMode;
-		PC->SetInputMode(InputMode);*/
+		FInputModeGameOnly InputMode;
+		PC->SetInputMode(InputMode);
 
 	}
 }
