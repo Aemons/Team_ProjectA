@@ -58,4 +58,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
 	float SoundVolume = 0.3f;
 
+protected:
+	UFUNCTION()
+	void DisablePlayerControl();
+	UFUNCTION()
+	void EnablePlayerControl();
 };

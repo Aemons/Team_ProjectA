@@ -25,7 +25,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara")
 	FRotator RotationOffset;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara")
 	FName SocketName = NAME_None;
 	
 	// Notify 함수 오버라이드

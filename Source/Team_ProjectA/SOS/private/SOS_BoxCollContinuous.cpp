@@ -48,11 +48,11 @@ void ASOS_BoxCollContinuous::BeginPlay()
 			this->AttachToComponent(SkeletalMeshComp, FAttachmentTransformRules::SnapToTargetIncludingScale, SocketName);
 
 			// 로그 출력
-			UE_LOG(LogTemp, Log, TEXT("Successfully attached to socket: %s"), *SocketName.ToString());
+			//UE_LOG(LogTemp, Log, TEXT("Successfully attached to socket: %s"), *SocketName.ToString());
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Failed to find a valid SkeletalMeshComponent to attach to."));
+			//UE_LOG(LogTemp, Warning, TEXT("Failed to find a valid SkeletalMeshComponent to attach to."));
 		}
 	}
 }

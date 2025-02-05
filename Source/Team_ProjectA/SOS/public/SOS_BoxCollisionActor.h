@@ -28,7 +28,7 @@ public:
 
 	// Damage Value to apply on overlap
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
-	float DamageValue = 20.0f;
+	float DamageValue = 10.0f;
 
 	
 private:

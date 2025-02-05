@@ -18,6 +18,9 @@ protected:
 	// 충돌 컴포넌트의 이름 (에디터에서 설정 가능)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	FName CollisionName = NAME_None;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
+	float setDamage = 10.0f;
 	
 	// 애니메이션 Notify 실행
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;

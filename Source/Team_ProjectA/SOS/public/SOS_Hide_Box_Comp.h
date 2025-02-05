@@ -33,6 +33,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Damage")
 	float BoxDamage = 10.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	TArray<USoundBase*> ImpactSounds;
+    
 
 	// 콜리전 이벤트
 	UFUNCTION()

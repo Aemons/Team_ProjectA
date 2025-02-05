@@ -74,7 +74,7 @@ void USOS_BTT_DistanceMove::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* N
 
 	// BlackboardKey 값 확인
 	float TargetDistance = BlackboardComp->GetValueAsFloat(TEXT("SOS_TargetDistance"));
-	//UE_LOG(LogTemp, Display, TEXT("Distance is %f"), TargetDistance);
+	UE_LOG(LogTemp, Display, TEXT("Distance is %f"), TargetDistance);
 
 	// MoveTo를 구현
 	

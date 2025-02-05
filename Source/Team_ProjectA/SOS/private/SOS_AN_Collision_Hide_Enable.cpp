@@ -21,16 +21,19 @@ void USOS_AN_Collision_Hide_Enable::Notify(USkeletalMeshComponent* MeshComp, UAn
 		// 설정된 CollisionName에 따라 특정 충돌 컴포넌트를 비활성화
 		if (CollisionName == FName("LeftHandCollision") && BossCharacter->LeftHandCollision)
 		{
+			BossCharacter->LeftHandCollision->SphereDamage= setDamage;
 			BossCharacter->LeftHandCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			//UE_LOG(LogTemp, Log, TEXT("Left hand collision enabled."));
 		}
 		else if (CollisionName == FName("RightHandCollision") && BossCharacter->RightHandCollision)
 		{
+			BossCharacter->RightHandCollision->SphereDamage= setDamage;
 			BossCharacter->RightHandCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			//UE_LOG(LogTemp, Log, TEXT("Right hand collision enabled."));
 		}
 		else if(CollisionName == FName("BodyCollision") && BossCharacter->BodyCollision)
 		{
+			BossCharacter->BodyCollision->BoxDamage= setDamage;
 			BossCharacter->BodyCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			//UE_LOG(LogTemp, Log, TEXT("Body collision enabled."));
 		}
