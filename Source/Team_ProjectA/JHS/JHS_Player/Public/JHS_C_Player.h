@@ -35,10 +35,10 @@ public:
 	
 	// * Inventory
 	FORCEINLINE class UHHR_InventoryComponent* GetInventoryComp() const {return InventoryComp;}
-	FORCEINLINE USkeletalMeshComponent* GetHelmetSMComp() const {return SM_Helmet;}
-	FORCEINLINE USkeletalMeshComponent* GetChestSMComp() const {return SM_Chest;}
-	FORCEINLINE USkeletalMeshComponent* GetBootsSMComp() const {return SM_Boots;}
-	FORCEINLINE USkeletalMeshComponent* GetPantsSMComp() const {return SM_Pants;}
+	FORCEINLINE USkeletalMeshComponent* GetHelmetSMComp() const {return EQ_HelmsComp;}
+	FORCEINLINE USkeletalMeshComponent* GetChestSMComp() const {return EQ_ChestComp;}
+	FORCEINLINE USkeletalMeshComponent* GetBootsSMComp() const {return EQ_BootsComp;}
+	FORCEINLINE USkeletalMeshComponent* GetPantsSMComp() const {return EQ_PantsComp;}
 	// ----------------------------------------------------------------------------
 
 public:
@@ -77,6 +77,22 @@ public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class UCameraComponent* CameraComp;
 
+public://Mesh Component
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_HelmsComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_ChestComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_HandsComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_PantsComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class USkeletalMeshComponent* EQ_BootsComp;
+
 public://Actor Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UJHS_C_MoveComponent* MoveComp;
@@ -95,17 +111,6 @@ public://Actor Component
 	// * Inventory Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UHHR_InventoryComponent* InventoryComp;
-	// * SkeletalMesh
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
-	class USkeletalMeshComponent* SM_Chest;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
-	class USkeletalMeshComponent* SM_Boots;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
-	class USkeletalMeshComponent* SM_Hands;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
-	class USkeletalMeshComponent* SM_Pants;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkeletalMesh Comp")
-	class USkeletalMeshComponent* SM_Helmet;
 	// ----------------------------------------------------------------------------
 	
 

@@ -49,6 +49,14 @@ protected:	// *Widgets*
 	UHHR_ItemSlotTest* ItemSlot7;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
 	UHHR_ItemSlotTest* ItemSlot8;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot9;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot10;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot11;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
+	UHHR_ItemSlotTest* ItemSlot12;
 	
 
 private:

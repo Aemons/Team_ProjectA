@@ -16,21 +16,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_ItemSlotBase.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_ItemEquipedSlotBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_ItemEquipedSlotBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotTest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ItemEquipedSlotBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_ItemEquipedSlotBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Public/JHS_C_Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Public/JHS_C_Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Private/HHR/HHR_UI/Public/UIComponents/HHR_Test.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Public/HHR/HHR_UI/Public/UIComponents/HHR_Test.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,20 +86,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Team_ProjectA.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "8-inventory-system",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Team_ProjectA.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;8-inventory-system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.Team_ProjectA">
     <configuration name="Team_ProjectA" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -602,6 +597,7 @@
       <workItem from="1738659817334" duration="5093000" />
       <workItem from="1738681287719" duration="569000" />
       <workItem from="1738681872765" duration="5148000" />
+      <workItem from="1738719857985" duration="1244000" />
     </task>
     <servers />
   </component>
@@ -624,12 +620,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp</url>
-          <line>114</line>
+          <line>143</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp</url>
-          <line>115</line>
+          <line>144</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>

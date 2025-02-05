@@ -45,36 +45,31 @@ AJHS_C_Player::AJHS_C_Player()
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
 		InventoryComp = CreateDefaultSubobject<UHHR_InventoryComponent>(TEXT("InventoryComp"));
-		// * SkeletalMesh Comp generated*
-
-		SM_Chest = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMChest"));
-		SM_Chest->SetupAttachment(GetMesh());
-		
-		SM_Boots = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMBoots"));
-		SM_Boots->SetupAttachment(GetMesh());
-		
-		SM_Hands = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMHands"));
-		SM_Hands->SetupAttachment(GetMesh());
-		
-		SM_Pants = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMPants"));
-		SM_Pants->SetupAttachment(GetMesh());
-		
-		SM_Helmet = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SMHelmet"));
-		SM_Helmet->SetupAttachment(GetMesh());
-
-		SM_Chest->SetLeaderPoseComponent(GetMesh());
-		SM_Boots->SetLeaderPoseComponent(GetMesh());
-		SM_Hands->SetLeaderPoseComponent(GetMesh());
-		SM_Pants->SetLeaderPoseComponent(GetMesh());
-		SM_Helmet->SetLeaderPoseComponent(GetMesh());
-
 		// ----------------------------------------------------------------------------
+	}
+
+	//Create MeshComponent
+	{
+		EQ_HelmsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Helms"));
+		EQ_ChestComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Chest"));
+		EQ_HandsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Hands"));
+		EQ_PantsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Pants"));
+		EQ_BootsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Boots"));
 	}
 
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
 		CameraComp->SetupAttachment(SpringArmComp);
+	}
+
+	//Attach MeshComponent
+	{
+		EQ_HelmsComp->SetupAttachment(GetMesh());
+		EQ_ChestComp->SetupAttachment(GetMesh());
+		EQ_HandsComp->SetupAttachment(GetMesh());
+		EQ_PantsComp->SetupAttachment(GetMesh());
+		EQ_BootsComp->SetupAttachment(GetMesh());
 	}
 
 	//Defatul Setting

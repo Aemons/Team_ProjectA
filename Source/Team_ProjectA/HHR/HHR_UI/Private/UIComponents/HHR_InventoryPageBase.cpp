@@ -69,6 +69,10 @@ void UHHR_InventoryPageBase::NativeConstruct()
 	ItemSlotList.Add(ItemSlot6);
 	ItemSlotList.Add(ItemSlot7);
 	ItemSlotList.Add(ItemSlot8);
+	ItemSlotList.Add(ItemSlot9);
+	ItemSlotList.Add(ItemSlot10);
+	ItemSlotList.Add(ItemSlot11);
+	ItemSlotList.Add(ItemSlot12);
 	// 바인딩
 	for(UHHR_ItemSlotTest* itemSlot : ItemSlotList)
 	{
