@@ -283,7 +283,7 @@ void AJHS_C_Player::Player_OffRun()
 
 void AJHS_C_Player::Player_OnDodge()
 { 
-	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false && bIsPlayerDodge == false)
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsIdleMode() == true && bIsPlayerDodge == false)
 	{
 		StopAnimMontage();
 		bIsPlayerDodge = true;
