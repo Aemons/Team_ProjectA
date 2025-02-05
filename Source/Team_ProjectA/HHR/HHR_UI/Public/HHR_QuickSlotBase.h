@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "HHR_ItemSlotBase.generated.h"
+#include "HHR_QuickSlotBase.generated.h"
 
 /**
  * 
@@ -15,7 +15,7 @@ class UOverlay;
 class UImage;
 
 UCLASS()
-class TEAM_PROJECTA_API UHHR_ItemSlotBase : public UUserWidget
+class TEAM_PROJECTA_API UHHR_QuickSlotBase : public UUserWidget
 {
 	GENERATED_BODY()
 

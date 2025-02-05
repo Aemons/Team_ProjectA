@@ -21,6 +21,7 @@
 // ----------------------------------------------------------------------------
 #include "Blueprint/UserWidget.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
+#include "Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
 // ----------------------------------------------------------------------------
@@ -43,6 +44,7 @@ AJHS_C_Player::AJHS_C_Player()
 		// HHR
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
+		InventoryComp = CreateDefaultSubobject<UHHR_InventoryComponent>(TEXT("InventoryComp"));
 		// ----------------------------------------------------------------------------
 	}
 
@@ -143,8 +145,8 @@ void AJHS_C_Player::BeginPlay()
 	//UIManager->Init(GetWorld());
 	//UIManager->CreatePlayerHUD();
 	// *Temporary
-	UUserWidget* playerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
-	playerHUD->AddToViewport();
+	PlayerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
+	PlayerHUD->AddToViewport();
 	// ----------------------------------------------------------------------------
 	
 }
@@ -236,6 +238,7 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 
 void AJHS_C_Player::Player_OnRun()
 {
+	//Toggle Input
 	bIsPlayerRun = true;
 
 	if (WeaponComp->GetHasWeapon() == false)
@@ -283,19 +286,20 @@ void AJHS_C_Player::Player_OffRun()
 
 void AJHS_C_Player::Player_OnDodge()
 { 
-	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsIdleMode() == true && bIsPlayerDodge == false)
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false && bIsPlayerDodge == false)
 	{
 		StopAnimMontage();
+		
 		bIsPlayerDodge = true;
 	
-		//Collision
-		//------------------------------------------------------------------------
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
-		//------------------------------------------------------------------------
-
+		
+		//Dodge Direction
+		///////////////////////////////////////////////////////////////
 		FVector InputVector = GetLastMovementInputVector();
 
+		// Է             ⺻ Dodge                    
 		if (InputVector.IsNearlyZero())
 			InputVector = GetActorForwardVector() * -1.0f;
 		
@@ -309,14 +313,26 @@ void AJHS_C_Player::Player_OnDodge()
 		float ForwardDot = FVector::DotProduct(GetActorForwardVector(), DodgeDirection);
 		float RightDot = FVector::DotProduct(GetActorRightVector(), DodgeDirection);
 
-		if (ForwardDot > 0.7f) //Forward Dodge
+		if (ForwardDot > 0.7f)
+		{
+			//Forward Dodge
 			DodgeMontage = DodgeMontages[0];
-		else if (ForwardDot < -0.7f) //Backward Dodge
+		}
+		else if (ForwardDot < -0.7f)
+		{
+			//Backward Dodge
 			DodgeMontage = DodgeMontages[1];
-		else if (RightDot > 0.7f) //Right Dodge
+		}
+		else if (RightDot > 0.7f)
+		{
+			//Right Dodge
 			DodgeMontage = DodgeMontages[2];
-		else if (RightDot < -0.7f) //Left Dodge
+		}
+		else if (RightDot < -0.7f)
+		{
+			//Left Dodge
 			DodgeMontage = DodgeMontages[3];
+		}
 
 		if (DodgeMontage)
 			PlayAnimMontage(DodgeMontage, DodgeMontage_PlayRate);
@@ -374,12 +390,26 @@ void AJHS_C_Player::PlayerBrakingWalkingValue()
 	}
 }
 
+// HHR
+// ----------------------------------------------------------------------------
+void AJHS_C_Player::HideHUD()
+{
+	PlayerHUD->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void AJHS_C_Player::ShowHUD()
+{
+	PlayerHUD->SetVisibility(ESlateVisibility::Visible);
+}
+// ----------------------------------------------------------------------------
+	
+
 float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-
 	StopAnimMontage();
 	StateComp->SetHittedMode();
+
+	//CheckNull(DamageCauser) -> 반환값이 정해져 있는 함수여서 Check매크로 사용하면 오류발생함 (리턴값이 있는 매크로가 아니라서)
 
 	//피격시 DamageCauser방향으로 회전
 	if (!!DamageCauser)
@@ -398,10 +428,12 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 		if (!!HitMontage)
 		{
 			LaunchCharacter((FVector(GetActorForwardVector().X, GetActorForwardVector().Y, 0) * HitLaunchDistance), true, true);
+
 			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
 		}
 	}
 	
+
 	//HHR PlayerHP Delegate 연결
 	//--------------------------------------------------------
 	if (OnDecreaseHealthBar.IsBound())
@@ -421,3 +453,4 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 
 	return CurrentHealth -= DamageAmount;
 }
+
