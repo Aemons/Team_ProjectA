@@ -46,6 +46,8 @@ ASOS_BOSS_Character::ASOS_BOSS_Character()
 	LeftHandCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("LeftHandCollision"));
 	LeftHandCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 
+	BodyCollision = CreateDefaultSubobject<USOS_Hide_Box_Comp>(TEXT("BodyCollision"));
+	BodyCollision->SetupAttachment(GetMesh());  // Mesh에 부착
 	
 	
 }
@@ -59,14 +61,22 @@ void ASOS_BOSS_Character::BeginPlay()
 	if (GetMesh())
 	{
 		// 본에 구체 컴포넌트 부착
-		RightHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-R-Finger01Socket"));
-		LeftHandCollision->AttachToBone(GetMesh(), TEXT("Hideoplast_-L-Finger01Socket"));
+		RightHandCollision->AttachToBone(GetMesh(), RightHandSoketName);
+		LeftHandCollision->AttachToBone(GetMesh(), LeftHandSoketName);
+		BodyCollision->AttachToBone(GetMesh(), BodySoketName);
+		
+		// 비충돌 활성화
+		RightHandCollision->DisableCollision();
+		LeftHandCollision->DisableCollision();
+		BodyCollision->DisableCollision();
 
-		// 충돌 활성화
 		/*
+		// 충돌 활성화
 		RightHandCollision->EnableCollision();
 		LeftHandCollision->EnableCollision();
+		BodyCollision->EnableCollision();
 		*/
+		
 	}
 	
 }
@@ -90,6 +100,10 @@ UBehaviorTree* ASOS_BOSS_Character::GetBehaviorTree()
 	return Tree;
 }
 
+
+
+
+/*
 void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
 {
 	CurrentHP -= DamageAmount;
@@ -111,10 +125,12 @@ void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
         
 		SetBBEnumState(1);
 		
-		
 	}
 
 }
+*/
+
+
 
 void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -123,15 +139,52 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 		return;
 	if(OtherComp)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Boss overlapped with %s"), *OtherActor->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("Boss overlapped with %s"), *OtherActor->GetName());
 		
 	}
 
 	// 데미지 처리 (예: 10의 고정 데미지)
-	TakeDamage(10.0f);
+	//TakeDamage(10.0f);
 }
 
 
+void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
+{
+	// 체력 감소
+	CurrentHP -= DamageAmount;
+
+	//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f"), CurrentHP);
+
+	if( CurrentHP <= (MaxHP*0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
+	{ // 더 작으면 최대 HP에서
+		//UE_LOG(LogTemp, Warning, TEXT("Boss is Burst!"));
+		//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f , MaxHP %f"), CurrentHP, MaxHP);
+		
+		SetBBEnumState(2);
+		// 중복 처리
+		Brust = false;
+		
+	} // 체력이 0 이하라면 사망 처리
+	else if(CurrentHP <= 0.0f)
+	{
+		CurrentHP = 0.0f;
+		SetBBEnumState(1);
+		//UE_LOG(LogTemp, Warning, TEXT("Boss is Dead!"));
+		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
+	}
+}
+
+// ApplyDamage 시스템이 호출될 때 실행
+float ASOS_BOSS_Character::TakeDamage(
+	float DamageAmount,
+	struct FDamageEvent const& DamageEvent,
+	class AController* EventInstigator,
+	AActor* DamageCauser
+)
+{
+	TakeDamage(DamageAmount);
+	return DamageAmount;
+}
 
 void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 {

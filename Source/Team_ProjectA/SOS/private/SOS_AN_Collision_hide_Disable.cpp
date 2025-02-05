@@ -1,7 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
-
 #include "Team_ProjectA/SOS/public/SOS_AN_Collision_hide_Disable.h"
 #include "GameFramework/Actor.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -22,21 +18,34 @@ void USOS_AN_Collision_hide_Disable::Notify(USkeletalMeshComponent* MeshComp, UA
 
 	if (BossCharacter)
 	{
-		// LeftHandCollision과 RightHandCollision 비활성화
-		if (BossCharacter->LeftHandCollision)
+		// 설정된 CollisionName에 따라 특정 충돌 컴포넌트를 비활성화
+		if (CollisionName == FName("LeftHandCollision") && BossCharacter->LeftHandCollision)
 		{
 			BossCharacter->LeftHandCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			// UE_LOG(LogTemp, Log, TEXT("Left hand collision disabled."));
+			//UE_LOG(LogTemp, Log, TEXT("Left hand collision disabled."));
 		}
-
-		if (BossCharacter->RightHandCollision)
+		else if (CollisionName == FName("RightHandCollision") && BossCharacter->RightHandCollision)
 		{
 			BossCharacter->RightHandCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			// UE_LOG(LogTemp, Log, TEXT("Right hand collision disabled."));
+			//UE_LOG(LogTemp, Log, TEXT("Right hand collision disabled."));
 		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("SOS_AN_Collision_Hide_Disable: Owner is not a SOS_HIDE_BOSS_Char."));
+		else if(CollisionName == FName("BodyCollision") && BossCharacter->BodyCollision)
+		{
+			BossCharacter->BodyCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			//UE_LOG(LogTemp, Log, TEXT("Body collision disabled."));
+		}
+		/*
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("SOS_AN_Collision_Hide_Disable: CollisionName '%s' is invalid or component not found."),
+					*CollisionName.ToString());
+			}
+		}
+		
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("SOS_AN_Collision_Hide_Disable: Owner is not a SOS_HIDE_BOSS_Char."));
+		}
+		*/
 	}
 }

@@ -3,6 +3,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "Components/SceneComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Team_ProjectA/SOS/public/SOS_Hide_SphereComp.h"
 #include "UObject/ConstructorHelpers.h"
 
 // Sets default values
@@ -27,15 +28,20 @@ ASOS_Hide_baby::ASOS_Hide_baby()
 
 	// 메시 크기 조정
 	Mesh->SetRelativeScale3D(Hide_Baby_Scale);
-
+	
+	
 	// 충돌 초기화
 	Mesh->SetCollisionProfileName(TEXT("Projectile"));
 
 	// 메시 기본 회전
 	Mesh->SetRelativeRotation(Hide_Baby_Rotate);
 
+	// Collision 컴포넌트 생성
+	BabyCollision = CreateDefaultSubobject<USOS_Hide_SphereComp>(TEXT("BabyCollision"));
+	BabyCollision->SetupAttachment(Mesh);  // Mesh에 부착
+	
 	// Overlap 이벤트 설정
-	Mesh->OnComponentBeginOverlap.AddDynamic(this, &ASOS_Hide_baby::OnOverlapBegin);
+	BabyCollision->OnComponentBeginOverlap.AddDynamic(this, &ASOS_Hide_baby::OnOverlapBegin);
 }
 
 // Called when the game starts or when spawned
@@ -61,11 +67,13 @@ void ASOS_Hide_baby::Tick(float DeltaTime)
 void ASOS_Hide_baby::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	/*
 	if (!OtherActor || OtherActor == this)
 	{
 		return;
 	}
-
+	*/
+	
 	// 나이아가라 효과 재생
 	if (NiagaraEffect)
 	{
@@ -78,10 +86,25 @@ void ASOS_Hide_baby::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 		UE_LOG(LogTemp, Warning, TEXT("Niagara effect played at %s"), *GetActorLocation().ToString());
 	}
 
-	// 데미지 처리
-	UGameplayStatics::ApplyDamage(OtherActor, Damage, GetInstigatorController(), this, nullptr);
-	UE_LOG(LogTemp, Warning, TEXT("Applied %f damage to %s"), Damage, *OtherActor->GetName());
+	// 🔹 랜덤 사운드 재생
+	if (ImpactSounds.Num() > 0)  // 배열이 비어있지 않은지 확인
+	{
+		int32 RandomIndex = FMath::RandRange(0, ImpactSounds.Num() - 1); // 랜덤 인덱스 선택
+		USoundBase* RandomSound = ImpactSounds[RandomIndex];
 
+		if (RandomSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, RandomSound, GetActorLocation());
+			UE_LOG(LogTemp, Warning, TEXT("Impact sound played: %s"), *RandomSound->GetName());
+		}
+	}
+
+	
+	
+	// 데미지 처리
+	UGameplayStatics::ApplyDamage(OtherActor, Baby_Damage, GetInstigatorController(), this, nullptr);
+	UE_LOG(LogTemp, Warning, TEXT("Applied %f damage to %s"), Baby_Damage, *OtherActor->GetName());
+	
 	// 투사체 삭제
 	Destroy();
 }

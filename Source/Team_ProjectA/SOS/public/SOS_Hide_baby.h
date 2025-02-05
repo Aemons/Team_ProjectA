@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NiagaraSystem.h"
+#include "SOS_Hide_SphereComp.h"
 #include "GameFramework/Actor.h"
 #include "SOS_Hide_baby.generated.h"
 
@@ -23,6 +24,10 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Collision Component
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_SphereComp* BabyCollision;
 
 	// 투사체의 이동 속도
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
@@ -46,8 +51,11 @@ public:
 
 	// 데미지 값
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
-	float Damage = 10.0f;
+	float Baby_Damage = 10.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	TArray<USoundBase*> ImpactSounds;
+	
 private:
 	// 루트 컴포넌트
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -59,6 +67,7 @@ private:
 
 	// 현재 속도
 	FVector Velocity;
+
 
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,

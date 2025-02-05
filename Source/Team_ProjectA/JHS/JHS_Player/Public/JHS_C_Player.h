@@ -70,6 +70,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Dodge Montage")
 	float DodgeMontage_PlayRate = 1.0f;
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hitted Montage")
+	TArray<class UAnimMontage*> HittedMontages;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hitted Montage")
+	float HittedMontage_PlayRate = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hitted Montage")
+	float HitLaunchDistance = -10000.0f;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead Montage")
+	UAnimMontage* DeadMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead Montage")
+	float DeadMontage_PlayRate = 1.0f;
+
 public: //Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USpringArmComponent* SpringArmComp;
@@ -87,9 +104,10 @@ public://Mesh Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USkeletalMeshComponent* EQ_HandsComp;
 
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USkeletalMeshComponent* EQ_PantsComp;
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USkeletalMeshComponent* EQ_BootsComp;
 
@@ -169,8 +187,13 @@ private:
 	void Player_OffRun();
 	void Player_OnDodge();
 	void Player_OffDodge();
+	void Player_Dead();
 
 	void PlayerBrakingWalkingValue();
+
+private:
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 
 public:
 	FInputBindDelegate OnInputBindDelegate;
