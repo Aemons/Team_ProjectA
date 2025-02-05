@@ -271,7 +271,7 @@ void AJHS_C_Player::Player_OffRun()
 {
 	bIsPlayerRun = false;
 
-	PlayerBrakingWalkingValue();
+	//PlayerBrakingWalkingValue();
 
 	if (WeaponComp->GetHasWeapon() == false)
 		MoveComp->SetWalk();
@@ -281,12 +281,12 @@ void AJHS_C_Player::Player_OffRun()
 
 	bIsPlayerRun = false;
 
-	GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
+	//GetWorld()->GetTimerManager().SetTimer(BrakingWalkingHandle, this, &AJHS_C_Player::PlayerBrakingWalkingValue, 0.8f, false);
 }
 
 void AJHS_C_Player::Player_OnDodge()
 { 
-	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsActionMode() == false && bIsPlayerDodge == false)
+	if (WeaponComp->GetHasWeapon() == true && GetVelocity().Length() > 5.0f && StateComp->IsIdleMode() == true && bIsPlayerDodge == false)
 	{
 		StopAnimMontage();
 		
@@ -416,7 +416,7 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 	{
 		FVector Direction = (DamageCauser->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 		FRotator TargetRot = FRotationMatrix::MakeFromX(Direction).Rotator();
-		SetActorRotation(TargetRot);
+		SetActorRotation(FRotator(0, TargetRot.Yaw, TargetRot.Roll));
 	}
 
 	//HitMontager 출력
@@ -427,13 +427,12 @@ float AJHS_C_Player::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 	
 		if (!!HitMontage)
 		{
-			LaunchCharacter((FVector(GetActorForwardVector().X, GetActorForwardVector().Y, 0) * HitLaunchDistance), true, true);
+			LaunchCharacter((FVector(GetActorForwardVector().X, GetActorForwardVector().Y, 0) * -HitLaunchDistance), true, true);
 
 			PlayAnimMontage(HitMontage, HittedMontage_PlayRate);
 		}
 	}
 	
-
 	//HHR PlayerHP Delegate 연결
 	//--------------------------------------------------------
 	if (OnDecreaseHealthBar.IsBound())

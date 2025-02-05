@@ -185,6 +185,16 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 		SetBBEnumState(1);
 
 		bIsDead = true;
+
+		// HHR
+		// ----------------------------------------------------------------------------
+		// UI 끄기
+		if (BossHPWidget)
+		{
+			BossHPWidget->RemoveFromParent();
+		}
+		// ----------------------------------------------------------------------------
+		
 		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
 	}
 	else if (CurrentHP <= (MaxHP * 0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
@@ -225,14 +235,7 @@ void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
             
 	}
 
-	// HHR
-	// ----------------------------------------------------------------------------
-	// UI 끄기
-	if(BossHPWidget)
-	{
-		BossHPWidget->RemoveFromParent();
-	}
-	// ----------------------------------------------------------------------------
+
 }
 
 
