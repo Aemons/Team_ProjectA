@@ -40,7 +40,9 @@ public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값�
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	int32 ItemMenuIdx;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
-	FItemData ItemData;
+	FItemData EqItemData;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
+	EArmorType EqArmorType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	bool bIsSelected = false;
@@ -82,6 +84,10 @@ public:
 	void Unselected();
 	// *Data 업뎃*
 	void UpdateData();
+
+private:
+	// *내부 함수*
+	void LoadPlayerArmorData();
 	
 
 //////////////////////////////////////////////////////////////////////////////

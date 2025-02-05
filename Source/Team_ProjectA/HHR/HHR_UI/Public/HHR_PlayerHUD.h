@@ -35,6 +35,7 @@ protected:	// *Widgets*
 	UBorder* BorderStat;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UProgressBar* StatminaBar;
+	
 	// Health 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UBorder* BorderHP;
@@ -46,6 +47,7 @@ protected:	// *Widgets*
 	UProgressBar* HPBar;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UImage* StatueIMG;
+	
 	// item slot comp widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UHorizontalBox* ItemSlot;
@@ -53,6 +55,7 @@ protected:	// *Widgets*
 	UHHR_QuickSlotBase* ItemSlotComp_Slot1;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UHHR_QuickSlotBase* ItemSlotComp_Slot2;
+	
 	// Interact widget
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category = "Widgets")
 	UHHR_InteractDialog* InteractUIComp;

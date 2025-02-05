@@ -16,6 +16,7 @@ void UHHR_HeaderMenu::NativeConstruct()
 	MenuBtnList.Add(PantsBtn);
 	MenuBtnList.Add(HandsBtn);
 	MenuBtnList.Add(BootsBtn);
+	MenuBtnList.Add(AllBtn);
 
 	//
 	for(UHHR_HeaderButton* headerBtn : MenuBtnList)

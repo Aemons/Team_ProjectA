@@ -31,6 +31,8 @@ public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값�
 
 protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
+	UHHR_HeaderButton* AllBtn;
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UHHR_HeaderButton* HelmetBtn;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UHHR_HeaderButton* ChestBtn;

@@ -6,17 +6,21 @@
 #include "JHS_C_Player.h"
 #include "Components/Border.h"
 #include "Components/Button.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
 #include "Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h"
 
 void UHHR_ItemSlotTest::NativePreConstruct()
 {
 	Super::NativePreConstruct();
+	
+	LoadPlayerSelected();
 
 	UpdateItemData(&ItemData);
 	if(bIsSelected)
 	{
 		Selected();
 	}
+
 
 }
 
@@ -62,7 +66,7 @@ void UHHR_ItemSlotTest::OnClicked()
 {
 	//Selected();
 
-	// TODO: click시 옷 교환 + click 내용 반영
+	// TODO: click시 옷 교환(InventoryComp) + click 내용 반영(Page)
 	if(OnItemChanged.IsBound())
 	{
 		OnItemChanged.Broadcast(this);
@@ -96,3 +100,55 @@ void UHHR_ItemSlotTest::UnSelected()
 	bIsSelected = false;
 	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
 }
+
+void UHHR_ItemSlotTest::LoadPlayerSelected()
+{
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+	if(!GI) return;
+
+	// GameInstance의 장착되어 있는 아이템이랑 비교해서 장착된 거 click set
+	switch(ItemData.ArmorType)
+	{
+	case EArmorType::Helmet:
+		if(GI->GetEqHelmetData()->ItemID ==  ItemData.ItemID)
+		{
+			bIsSelected = true;
+		}
+		break;
+	case EArmorType::Chest:
+		if(GI->GetEqChestData()->ItemID ==  ItemData.ItemID)
+		{
+			bIsSelected = true;
+		}
+		break;
+	case EArmorType::Pants:
+		if(GI->GetEqPantsData()->ItemID ==  ItemData.ItemID)
+		{
+			bIsSelected = true;
+		}
+		break;
+	case EArmorType::Boots:
+		if(GI->GetEqBootsData()->ItemID ==  ItemData.ItemID)
+		{
+			bIsSelected = true;
+		}
+		break;
+	default:
+		break;
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

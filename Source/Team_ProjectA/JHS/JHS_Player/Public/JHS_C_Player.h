@@ -197,6 +197,14 @@ private:
 	float CurrentStatmina = 100.0f;
 	float MaxStatmina = 100.f;
 
+	TObjectPtr<UUserWidget> PlayerHUD; 
+// Temporary..
+public:
+	UFUNCTION(BlueprintCallable)
+	void HideHUD();
+	UFUNCTION(BlueprintCallable)
+	void ShowHUD();
+
 // ----------------------------------------------------------------------------
 	
 

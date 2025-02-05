@@ -71,6 +71,9 @@ public:
 	void Selected();
 	void UnSelected();
 
+private:
+	void LoadPlayerSelected();
+
 //////////////////////////////////////////////////////////////////////////////
 // **내부 멤버 변수 **
 

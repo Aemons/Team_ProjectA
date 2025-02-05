@@ -140,8 +140,8 @@ void AJHS_C_Player::BeginPlay()
 	//UIManager->Init(GetWorld());
 	//UIManager->CreatePlayerHUD();
 	// *Temporary
-	UUserWidget* playerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
-	playerHUD->AddToViewport();
+	PlayerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
+	PlayerHUD->AddToViewport();
 	// ----------------------------------------------------------------------------
 	
 }
@@ -362,3 +362,17 @@ void AJHS_C_Player::PlayerBrakingWalkingValue()
 		GetCharacterMovement()->GroundFriction = 8.0f;
 	}
 }
+
+// HHR
+// ----------------------------------------------------------------------------
+void AJHS_C_Player::HideHUD()
+{
+	PlayerHUD->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void AJHS_C_Player::ShowHUD()
+{
+	PlayerHUD->SetVisibility(ESlateVisibility::Visible);
+}
+// ----------------------------------------------------------------------------
+	

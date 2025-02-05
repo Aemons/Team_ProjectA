@@ -9,6 +9,7 @@
 #include "Components/SceneCaptureComponent2D.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h"
 
@@ -39,6 +40,8 @@ UHHR_InventoryComponent::UHHR_InventoryComponent()
 void UHHR_InventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	LoadArmor();
 
 	// ...
 	if(Wardrobe)
@@ -108,24 +111,32 @@ void UHHR_InventoryComponent::InitializeComponent()
 
 void UHHR_InventoryComponent::ChangeArmor(UHHR_ItemSlotTest* Armor)
 {
+
+	// 옷 바꿀때 Item도 같이 넣어줌
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+	if(!GI) return;
 	
 	switch (Armor->ItemData.ArmorType)
 	{
 	case EArmorType::Helmet:
 		OwnerCharacter->GetHelmetSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeHelemtSlot(&Armor->ItemData);
+		GI->SetEqHelmetData(&Armor->ItemData);
 		break;
 	case EArmorType::Chest:
 		OwnerCharacter->GetChestSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeChestSlot(&Armor->ItemData);
+		GI->SetEqChestData(&Armor->ItemData);
 		break;
 	case EArmorType::Pants:
 		OwnerCharacter->GetPantsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangePantsSlot(&Armor->ItemData);
+		GI->SetEqPantsData(&Armor->ItemData);
 		break;
 	case EArmorType::Boots:
 		OwnerCharacter->GetBootsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeBootsSlot(&Armor->ItemData);
+		GI->SetEqBootsData(&Armor->ItemData);
 		break;
 	default:
 		break;
@@ -149,18 +160,54 @@ void UHHR_InventoryComponent::OpenInventory()
 		// TODO: widget 생성 나중에 ui mananger로 옮겨야 함
 		InventoryWidget = CreateWidget<UHHR_Inventory>(GetWorld(), InventoryWidgetClass);
 		InventoryWidget->AddToViewport();
-		GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
-		// 움직임 입력 막기 
-		GetWorld()->GetFirstPlayerController()->SetIgnoreMoveInput(true);
+		
+		APlayerController* PC = GetWorld()->GetFirstPlayerController();
+		PC->bShowMouseCursor = true;
+		PC->SetIgnoreLookInput(true);
+		PC->SetIgnoreMoveInput(true);
+
+		FInputModeUIOnly InputMode;
+		PC->SetInputMode(InputMode);
 	}
 	else
 	{
 		// 닫기
 		bIsOpen = false;
 		InventoryWidget->RemoveFromParent();
-		GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
-		// 움직임 입력 허용
-		GetWorld()->GetFirstPlayerController()->SetIgnoreMoveInput(false);
+
+		APlayerController* PC = GetWorld()->GetFirstPlayerController();
+		PC->bShowMouseCursor = false;
+		PC->SetIgnoreLookInput(false);
+		PC->SetIgnoreMoveInput(false);
+
+		/*FInputModeGameOnly InputMode;
+		PC->SetInputMode(InputMode);*/
+
 	}
 }
+
+void UHHR_InventoryComponent::LoadArmor()
+{
+
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+	if(GI)
+	{
+		OwnerCharacter->GetHelmetSMComp()->SetSkeletalMesh(GI->GetEqHelmetData()->SkeletalMesh);
+		OwnerCharacter->GetChestSMComp()->SetSkeletalMesh(GI->GetEqChestData()->SkeletalMesh);
+		OwnerCharacter->GetPantsSMComp()->SetSkeletalMesh(GI->GetEqPantsData()->SkeletalMesh);
+		OwnerCharacter->GetBootsSMComp()->SetSkeletalMesh(GI->GetEqBootsData()->SkeletalMesh);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
 

@@ -5,12 +5,15 @@
 
 #include "Components/Border.h"
 #include "Components/Button.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
 
 void UHHR_ItemEquipedSlotBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
+	LoadPlayerArmorData();
 	UpdateData();
+	
 	if(bIsSelected)
 	{
 		Selected();
@@ -66,12 +69,39 @@ void UHHR_ItemEquipedSlotBase::Unselected()
 
 void UHHR_ItemEquipedSlotBase::UpdateData()
 {
-	if(ItemData.ItemImage)
+	if(EqItemData.ItemImage)
 	{
 		FSlateBrush newBrush;
-		newBrush.SetResourceObject(ItemData.ItemImage);
+		newBrush.SetResourceObject(EqItemData.ItemImage);
 
 		ItemIcon->SetBrush(newBrush);
 	}
 
+}
+
+void UHHR_ItemEquipedSlotBase::LoadPlayerArmorData()
+{
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+	if(GI)
+	{
+		// GameInstance에 저장된 장착된 장비 가져오기
+		switch(EqArmorType)
+		{
+		case EArmorType::Helmet:
+			EqItemData = *GI->GetEqHelmetData();
+			break;
+		case EArmorType::Chest:
+			EqItemData = *GI->GetEqChestData();
+			break;
+		case EArmorType::Pants:
+			EqItemData = *GI->GetEqPantsData();
+			break;
+		case EArmorType::Boots:
+			EqItemData = *GI->GetEqBootsData();
+			break;
+		default:
+			break;
+		}
+		
+	}
 }
