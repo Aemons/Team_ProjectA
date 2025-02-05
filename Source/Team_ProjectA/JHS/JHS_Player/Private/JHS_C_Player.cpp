@@ -55,7 +55,6 @@ AJHS_C_Player::AJHS_C_Player()
 		EQ_BootsComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Eq_Boots"));
 	}
 
-
 	//Attach Component
 	{
 		SpringArmComp->SetupAttachment(GetMesh());
@@ -176,9 +175,10 @@ void AJHS_C_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedInputComp->BindAction(IA_Player_Look, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_Look);
 
 		//Player Run BindAction
-		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnRun);
+		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Triggered, this, &AJHS_C_Player::Player_OnRun);
+
 		//Player Move KeyUp BindAction
-		EnhancedInputComp->BindAction(IA_Player_Move, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
+		EnhancedInputComp->BindAction(IA_Player_Run, ETriggerEvent::Completed, this, &AJHS_C_Player::Player_OffRun);
 
 		//Player Dodge BindAction
 		EnhancedInputComp->BindAction(IA_Player_Dodge, ETriggerEvent::Started, this, &AJHS_C_Player::Player_OnDodge);
@@ -237,7 +237,7 @@ void AJHS_C_Player::Player_Look(const FInputActionValue& InValue)
 void AJHS_C_Player::Player_OnRun()
 {
 	//Toggle Input
-	bIsPlayerRun = !bIsPlayerRun;
+	bIsPlayerRun = true;
 
 	if (WeaponComp->GetHasWeapon() == false)
 	{
@@ -267,6 +267,8 @@ void AJHS_C_Player::Player_OnRun()
 
 void AJHS_C_Player::Player_OffRun()
 {
+	bIsPlayerRun = false;
+
 	PlayerBrakingWalkingValue();
 
 	if (WeaponComp->GetHasWeapon() == false)
