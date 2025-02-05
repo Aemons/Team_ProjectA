@@ -112,5 +112,20 @@ public:
 private:
 	// 현재 재생 속도
 	float CurrentMontagePlayRate = 1.0f; // 기본값 1.0
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="UI")
+	TSubclassOf<UUserWidget> BossHPClass;
+private:
+	TObjectPtr<UUserWidget> BossHPWidget;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void CreateBossHP();
+// ----------------------------------------------------------------------------
+
+	
 };
 

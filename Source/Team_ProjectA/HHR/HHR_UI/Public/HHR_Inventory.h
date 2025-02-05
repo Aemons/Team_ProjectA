@@ -14,6 +14,10 @@
 struct FItemData;
 class UHHR_ItemEquipedSlotBase;
 class UHHR_InventoryDrawer;
+class UHHR_ButtonBase;
+
+
+DECLARE_DELEGATE(FOnInventoryClose);
 
 UCLASS()
 class TEAM_PROJECTA_API UHHR_Inventory : public UUserWidget
@@ -46,8 +50,9 @@ protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
 	UHHR_ItemEquipedSlotBase* BootsSlot;
 
-	
-	
+	// Temp
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Category="Widgets")
+	UHHR_ButtonBase* CloseBtn;
 	
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 생성 함수
@@ -66,6 +71,10 @@ private:
 	UFUNCTION()
 	void OnUpdateEquipedSlot(int32 ItemMenuIdx);
 
+private:
+	UFUNCTION()
+	void Close();
+
 //////////////////////////////////////////////////////////////////////////////
 // ** 일반 함수 **
 public:
@@ -77,6 +86,9 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////
 // ** 내부 멤버 변수 **
+
+public:
+	FOnInventoryClose OnInventoryClose;
 
 private:
 	// Btn 쉽게 관리하기 위한

@@ -63,4 +63,16 @@ protected:
 	void DisablePlayerControl();
 	UFUNCTION()
 	void EnablePlayerControl();
+
+
+// HHR
+// ----------------------------------------------------------------------------
+// UI 
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void CreateHP();
+// ----------------------------------------------------------------------------
+
+
+	
 };
