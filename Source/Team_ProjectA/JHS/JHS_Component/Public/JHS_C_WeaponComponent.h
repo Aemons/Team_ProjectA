@@ -24,8 +24,8 @@ public:
 	FORCEINLINE bool IsKatanaMode() { return Type == EWeaponType::Katana; }
 
 public://InputAction Value
-	UPROPERTY(EditAnywhere, Category = "Weapon Input")
-	class UInputAction* IA_Weapon_Equip;
+	//UPROPERTY(EditAnywhere, Category = "Weapon Input")
+	//class UInputAction* IA_Weapon_Equip;
 
 	UPROPERTY(EditAnywhere, Category = "Weapon Input")
 	class UInputAction* IA_Weapon_AttackAction;
