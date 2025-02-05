@@ -82,6 +82,14 @@ void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8
     FVector CurrentLocation = Character->GetActorLocation();
     float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
 
+    // 목표 위치에 도달하면 작업 종료
+    if (DistanceToTarget < DistanceTarget)  // 목표 위치 근처로 간주
+    {
+        bIsMoving = false;
+        AIController->StopMovement();
+        FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+        UE_LOG(LogTemp, Warning, TEXT("EBTNodeResult::Succeeded"));
+    }
     
     
     // 목표를 바라보도록 회전 조정 (천천히 회전)
@@ -113,13 +121,6 @@ void USOS_BTTask_LookAtMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8
         }
     }
 
-    // 목표 위치에 도달하면 작업 종료
-    if (DistanceToTarget < DistanceTarget)  // 목표 위치 근처로 간주
-    {
-        bIsMoving = false;
-        AIController->StopMovement();
-        FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
-        UE_LOG(LogTemp, Warning, TEXT("EBTNodeResult::Succeeded"));
-    }
+   
 }
 

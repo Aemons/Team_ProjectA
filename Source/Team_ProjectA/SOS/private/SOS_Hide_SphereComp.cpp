@@ -8,6 +8,7 @@
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
+#include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
 
 // 생성자
 USOS_Hide_SphereComp::USOS_Hide_SphereComp()
@@ -63,6 +64,8 @@ void USOS_Hide_SphereComp::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 		// AJHS_C_Player 클래스의 액터인지 확인
 		if (OtherActor->IsA(AJHS_C_Player::StaticClass()))
 		{
+			UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), SphereDamage, *OtherActor->GetName());
+			
 			// 데미지 적용
 			UGameplayStatics::ApplyDamage(
 				OtherActor,          // 피해를 받는 액터
@@ -72,10 +75,24 @@ void USOS_Hide_SphereComp::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 				UDamageType::StaticClass() // 데미지 타입
 			);
 
+			
+			
+			// 🔹 랜덤 사운드 재생
+			if (ImpactSounds.Num() > 0)  // 배열이 비어있지 않은지 확인
+			{
+				int32 RandomIndex = FMath::RandRange(0, ImpactSounds.Num() - 1); // 랜덤 인덱스 선택
+				USoundBase* RandomSound = ImpactSounds[RandomIndex];
+
+				if (RandomSound)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, RandomSound, GetOwner()->GetActorLocation());
+					UE_LOG(LogTemp, Warning, TEXT("Impact sound played: %s"), *RandomSound->GetName());
+				}
+			}
+			
 			DisableCollision();
 
 			// 로그 출력
-			//UE_LOG(LogTemp, Log, TEXT("USOS_Hide_Box_Comp: Applied %f damage to %s"), SphereDamage, *OtherActor->GetName());
 		}
 		else
 		{

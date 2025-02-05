@@ -2,6 +2,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "AIController.h"
+#include "JHS_C_Player.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "LevelSequenceActor.h"
 #include "LevelSequencePlayer.h"
@@ -11,6 +12,7 @@
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/AudioComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ASOS_Boss_PlayTriggerBox::ASOS_Boss_PlayTriggerBox()
@@ -58,10 +60,52 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
         }
     }
 
-    
+    // Player 컨트롤을 제한
+    DisablePlayerControl();
     // Actor 자체를 삭제하려면 아래 코드 사용
     // this->Destroy();
 }
+
+void ASOS_Boss_PlayTriggerBox::EnablePlayerControl()
+{
+    // 플레이어 캐릭터 가져오기
+    AJHS_C_Player* PlayerCharacter = Cast<AJHS_C_Player>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+    if (PlayerCharacter)
+    {
+        // 플레이어 컨트롤러 가져오기
+        APlayerController* PlayerController = Cast<APlayerController>(PlayerCharacter->GetController());
+        if (PlayerController)
+        {
+            PlayerController->EnableInput(PlayerController);
+            PlayerController->SetIgnoreMoveInput(false); // 이동 입력 다시 활성화
+            PlayerCharacter->GetCharacterMovement()->SetMovementMode(MOVE_Walking); // 이동 다시 활성화
+            UE_LOG(LogTemp, Warning, TEXT("Player Input & Movement Enabled!"));
+        }
+    }
+}
+
+
+
+void ASOS_Boss_PlayTriggerBox::DisablePlayerControl()
+{
+    // 플레이어 캐릭터 가져오기
+    AJHS_C_Player* PlayerCharacter = Cast<AJHS_C_Player>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+    if (PlayerCharacter)
+    {
+        // 플레이어 컨트롤러 가져오기
+        APlayerController* PlayerController = Cast<APlayerController>(PlayerCharacter->GetController());
+        if (PlayerController)
+        {
+            PlayerController->DisableInput(PlayerController);
+            PlayerController->SetIgnoreMoveInput(true); // 이동 입력 무시
+            PlayerCharacter->GetCharacterMovement()->DisableMovement(); // 이동 자체를 막음
+            UE_LOG(LogTemp, Warning, TEXT("Player Input & Movement Disabled!"));
+        }
+    }
+}
+
+
+
 
 // Sequencer가 종료 된 후 발생 시킬 함수
 // BlackBoardKey의 EnumState Attack으로 변경
@@ -94,6 +138,10 @@ void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
         }
     }
 
+    // 재활성
+    EnablePlayerControl();
+    
+    
     // TriggerBox 파괴
     Destroy();
 }

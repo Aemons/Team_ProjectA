@@ -83,9 +83,24 @@ void ASOS_Hide_baby::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 			GetActorLocation(),
 			FRotator::ZeroRotator
 		);
-		// UE_LOG(LogTemp, Warning, TEXT("Niagara effect played at %s"), *GetActorLocation().ToString());
+		UE_LOG(LogTemp, Warning, TEXT("Niagara effect played at %s"), *GetActorLocation().ToString());
 	}
 
+	// 🔹 랜덤 사운드 재생
+	if (ImpactSounds.Num() > 0)  // 배열이 비어있지 않은지 확인
+	{
+		int32 RandomIndex = FMath::RandRange(0, ImpactSounds.Num() - 1); // 랜덤 인덱스 선택
+		USoundBase* RandomSound = ImpactSounds[RandomIndex];
+
+		if (RandomSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, RandomSound, GetActorLocation());
+			UE_LOG(LogTemp, Warning, TEXT("Impact sound played: %s"), *RandomSound->GetName());
+		}
+	}
+
+	
+	
 	// 데미지 처리
 	UGameplayStatics::ApplyDamage(OtherActor, Baby_Damage, GetInstigatorController(), this, nullptr);
 	UE_LOG(LogTemp, Warning, TEXT("Applied %f damage to %s"), Baby_Damage, *OtherActor->GetName());

@@ -53,6 +53,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage")
 	float Baby_Damage = 10.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	TArray<USoundBase*> ImpactSounds;
+	
 private:
 	// 루트 컴포넌트
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -64,6 +67,7 @@ private:
 
 	// 현재 속도
 	FVector Velocity;
+
 
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,

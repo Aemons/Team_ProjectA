@@ -87,6 +87,20 @@ void ASOS_NiagaraActor::OnBoxComponentBeginOverlap(
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("ASOS_NiagaraActor: Ignored collision with another NiagaraActor."));
 	}
+
+	// 🔹 랜덤 사운드 재생
+	if (ImpactSounds.Num() > 0)  // 배열이 비어있지 않은지 확인
+	{
+		int32 RandomIndex = FMath::RandRange(0, ImpactSounds.Num() - 1); // 랜덤 인덱스 선택
+		USoundBase* RandomSound = ImpactSounds[RandomIndex];
+
+		if (RandomSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, RandomSound, GetOwner()->GetActorLocation());
+			UE_LOG(LogTemp, Warning, TEXT("Impact sound played: %s"), *RandomSound->GetName());
+		}
+	}
+	
 }
 
 // Niagara System 종료 시 호출

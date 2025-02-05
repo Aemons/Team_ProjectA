@@ -66,6 +66,19 @@ void USOS_Hide_Box_Comp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent
 				UDamageType::StaticClass() // 데미지 타입
 			);
 
+			// 🔹 랜덤 사운드 재생
+			if (ImpactSounds.Num() > 0)  // 배열이 비어있지 않은지 확인
+			{
+				int32 RandomIndex = FMath::RandRange(0, ImpactSounds.Num() - 1); // 랜덤 인덱스 선택
+				USoundBase* RandomSound = ImpactSounds[RandomIndex];
+
+				if (RandomSound)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, RandomSound, GetOwner()->GetActorLocation());
+					UE_LOG(LogTemp, Warning, TEXT("Impact sound played: %s"), *RandomSound->GetName());
+				}
+			}
+
 			DisableCollision();
 			
 			// 로그 출력
@@ -74,7 +87,7 @@ void USOS_Hide_Box_Comp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent
 		else
 		{
 			// 예외 처리: 플레이어가 아닌 액터에 대해 로그 출력
-			UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("USOS_Hide_Box_Comp: Skipped damage for non-player actor %s"), *OtherActor->GetName());
 		}
 	}
 

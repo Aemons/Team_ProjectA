@@ -94,6 +94,7 @@ public:
 	// 0 Attack , 1 Death, 2 Burst, 3 stun, 4 Wait
 	UFUNCTION()
 	void SetBBEnumState(int32 EnumNumber);
+		
 	
 	
 private:

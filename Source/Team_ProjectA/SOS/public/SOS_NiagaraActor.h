@@ -58,6 +58,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	float CollisionActivationDelay = 0.5f; // 기본값 1.5초
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	TArray<USoundBase*> ImpactSounds;
+    
+	
 private:
 	/**  콜리전 활성화 타이머 핸들 */
 	FTimerHandle CollisionTimerHandle;
