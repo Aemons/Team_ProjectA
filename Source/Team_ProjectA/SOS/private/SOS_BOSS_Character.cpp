@@ -2,6 +2,7 @@
 
 
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
+#include "JHS_Global.h"
 
 #include "AIController.h"
 #include "Components/SphereComponent.h"
@@ -78,7 +79,6 @@ void ASOS_BOSS_Character::BeginPlay()
 		*/
 		
 	}
-	
 }
 
 // Called every frame
@@ -99,9 +99,6 @@ UBehaviorTree* ASOS_BOSS_Character::GetBehaviorTree()
 {
 	return Tree;
 }
-
-
-
 
 /*
 void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
@@ -130,8 +127,6 @@ void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
 }
 */
 
-
-
 void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
@@ -148,42 +143,58 @@ void ASOS_BOSS_Character::OnMeshOverlapBegin(UPrimitiveComponent* OverlappedComp
 }
 
 
-void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
+//void ASOS_BOSS_Character::TakeDamage(float DamageAmount)
+//{
+//	// 체력 감소
+//	CurrentHP -= DamageAmount;
+//
+//	if( CurrentHP <= (MaxHP*0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
+//	{ // 더 작으면 최대 HP에서
+//		
+//		SetBBEnumState(2);
+//		// 중복 처리
+//		Brust = false;
+//		
+//	} // 체력이 0 이하라면 사망 처리
+//	else if(CurrentHP <= 0.0f)
+//	{
+//		CurrentHP = 0.0f;
+//		SetBBEnumState(1);
+//
+//		bIsDead = true;
+//
+//		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
+//	}
+//}
+
+// ApplyDamage 시스템이 호출될 때 실행
+float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser
+)
 {
+	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
 	// 체력 감소
-	CurrentHP -= DamageAmount;
+	//CurrentHP -= DamageAmount;
 
-	//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f"), CurrentHP);
-
-	if( CurrentHP <= (MaxHP*0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
+	if (CurrentHP <= (MaxHP * 0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
 	{ // 더 작으면 최대 HP에서
-		//UE_LOG(LogTemp, Warning, TEXT("Boss is Burst!"));
-		//UE_LOG(LogTemp, Warning, TEXT("Boss took damage! Current HP: %f , MaxHP %f"), CurrentHP, MaxHP);
-		
+
 		SetBBEnumState(2);
 		// 중복 처리
 		Brust = false;
-		
+
 	} // 체력이 0 이하라면 사망 처리
-	else if(CurrentHP <= 0.0f)
+	else if (CurrentHP <= 0.0f)
 	{
 		CurrentHP = 0.0f;
 		SetBBEnumState(1);
-		//UE_LOG(LogTemp, Warning, TEXT("Boss is Dead!"));
+
+		bIsDead = true;
+
 		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
 	}
-}
 
-// ApplyDamage 시스템이 호출될 때 실행
-float ASOS_BOSS_Character::TakeDamage(
-	float DamageAmount,
-	struct FDamageEvent const& DamageEvent,
-	class AController* EventInstigator,
-	AActor* DamageCauser
-)
-{
-	TakeDamage(DamageAmount);
-	return DamageAmount;
+	return	CurrentHP -= DamageAmount;
 }
 
 void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
@@ -196,7 +207,7 @@ void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 	{
 		// Set Blackboard Key Value
 		BossAIController->GetBlackboardComponent()->SetValueAsEnum("SOS_State", EnumNumber);
-		UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumNumber);
+		//UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumNumber);
 
 		// 현재 실행중인 Task를 실패로 판단
 		UBehaviorTreeComponent* BehaviorTreeComponent = Cast<UBehaviorTreeComponent>(BossAIController->GetBrainComponent());
@@ -207,7 +218,7 @@ void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 			BehaviorTreeComponent->RestartTree(); // 트리를 다시 평가
 
 
-			UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
+			//UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
 		}
             
 	}
@@ -219,7 +230,7 @@ void ASOS_BOSS_Character::SetMontagePlayRate(float NewPlayRate)
 	// 유효한 PlayRate인지 확인
 	if (NewPlayRate <= 0.0f)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Invalid PlayRate: %f. PlayRate must be greater than 0."), NewPlayRate);
+		//UE_LOG(LogTemp, Error, TEXT("Invalid PlayRate: %f. PlayRate must be greater than 0."), NewPlayRate);
 		return;
 	}
 
@@ -227,7 +238,7 @@ void ASOS_BOSS_Character::SetMontagePlayRate(float NewPlayRate)
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	if (!AnimInstance)
 	{
-		UE_LOG(LogTemp, Error, TEXT("AnimInstance is nullptr for character %s"), *GetName());
+		//UE_LOG(LogTemp, Error, TEXT("AnimInstance is nullptr for character %s"), *GetName());
 		return;
 	}
 
@@ -243,7 +254,7 @@ void ASOS_BOSS_Character::SetMontagePlayRate(float NewPlayRate)
 	// 현재 재생 속도를 저장
 	CurrentMontagePlayRate = NewPlayRate;
 
-	UE_LOG(LogTemp, Warning, TEXT("Montage PlayRate set to %f for character %s"), NewPlayRate, *GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("Montage PlayRate set to %f for character %s"), NewPlayRate, *GetName());
 }
 	
 
