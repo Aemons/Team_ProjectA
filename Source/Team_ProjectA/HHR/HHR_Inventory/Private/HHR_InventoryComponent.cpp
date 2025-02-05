@@ -166,8 +166,8 @@ void UHHR_InventoryComponent::OpenInventory()
 		PC->SetIgnoreLookInput(true);
 		PC->SetIgnoreMoveInput(true);
 
-		FInputModeUIOnly InputMode;
-		PC->SetInputMode(InputMode);
+		//FInputModeUIOnly InputMode;
+		//PC->SetInputMode(InputMode);
 	}
 	else
 	{
