@@ -35,8 +35,6 @@ void UHHR_MapSelect::OnClickCloseBtn()
 	// 현재 UI 닫기 && mouse 없애기 
 	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(false);
 	RemoveFromParent();
-
-	
 }
 
 void UHHR_MapSelect::OnClickMapSelectBtn()
