@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SOS_Hide_Box_Comp.h"
 #include "SOS_Hide_SphereComp.h"
 #include "Components/SphereComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
@@ -13,6 +14,10 @@ UCLASS()
 class TEAM_PROJECTA_API ASOS_BOSS_Character : public ACharacter
 {
 	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead")
+	bool bIsDead = false;
 
 public:
 	// Sets default values for this character's properties
@@ -44,6 +49,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	USOS_Hide_SphereComp* LeftHandCollision;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USOS_Hide_Box_Comp* BodyCollision;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName RightHandSoketName = FName("Hideoplast_-R-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName LeftHandSoketName = FName("Hideoplast_-L-Finger01Socket");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	FName BodySoketName = FName("Hideoplast_-L-Finger01Socket");
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Boss Stats")
@@ -54,10 +71,20 @@ public:
 	float CurrentHP = MaxHP;
 	
 	// 데미지 처리 함수
+	/*
 	UFUNCTION(BlueprintCallable, Category = "Boss Stats")
 	void TakeDamage(float DamageAmount);
+	*/
+	
+//public:
+	// ApplyDamage로 호출될 함수
+	//UFUNCTION()
+	//void TakeDamage(float DamageAmount);
 
+	// 데미지를 받을 때 호출되는 함수 (ApplyDamage 사용)
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+public:
 	// Name of the Blackboard Key to modify
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
 	FName BlackboardKeyName = "SOS_State";
@@ -67,6 +94,7 @@ public:
 	// 0 Attack , 1 Death, 2 Burst, 3 stun, 4 Wait
 	UFUNCTION()
 	void SetBBEnumState(int32 EnumNumber);
+		
 	
 	
 private:
@@ -84,5 +112,20 @@ public:
 private:
 	// 현재 재생 속도
 	float CurrentMontagePlayRate = 1.0f; // 기본값 1.0
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="UI")
+	TSubclassOf<UUserWidget> BossHPClass;
+private:
+	TObjectPtr<UUserWidget> BossHPWidget;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void CreateBossHP();
+// ----------------------------------------------------------------------------
+
+	
 };
 

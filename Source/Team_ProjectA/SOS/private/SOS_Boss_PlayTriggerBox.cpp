@@ -2,12 +2,18 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "AIController.h"
+#include "JHS_C_Player.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "LevelSequenceActor.h"
 #include "LevelSequencePlayer.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/AudioComponent.h"
 #include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
 #include "Team_ProjectA/SOS/public/SOS_BOSS_Character.h"
+#include "Kismet/GameplayStatics.h"
+#include "Components/AudioComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ASOS_Boss_PlayTriggerBox::ASOS_Boss_PlayTriggerBox()
@@ -44,60 +50,125 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
             ULevelSequencePlayer* SequencePlayer = SequenceActor->SequencePlayer;
             if (SequencePlayer)
             {
+                // HHR
+                // ----------------------------------------------------------------------------
+                // Player HUD 숨김 처리
+                AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+                if(player)
+                {
+                    player->HideHUD();
+                }
+                // ----------------------------------------------------------------------------
+                
                 // 시퀀스 재생
                 SequencePlayer->Play();
 
                 // OnFinished 델리게이트에 함수 바인딩
                 SequencePlayer->OnFinished.AddDynamic(this, &ASOS_Boss_PlayTriggerBox::OnSequenceFinished);
 
-                UE_LOG(LogTemp, Warning, TEXT("Sequence Played and waiting for finish."));
+                // UE_LOG(LogTemp, Warning, TEXT("Sequence Played and waiting for finish."));
             }
         }
     }
 
-    
+    // Player 컨트롤을 제한
+    DisablePlayerControl();
     // Actor 자체를 삭제하려면 아래 코드 사용
     // this->Destroy();
 }
+
+void ASOS_Boss_PlayTriggerBox::EnablePlayerControl()
+{
+    // 플레이어 캐릭터 가져오기
+    AJHS_C_Player* PlayerCharacter = Cast<AJHS_C_Player>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+    if (PlayerCharacter)
+    {
+        // 플레이어 컨트롤러 가져오기
+        APlayerController* PlayerController = Cast<APlayerController>(PlayerCharacter->GetController());
+        if (PlayerController)
+        {
+            PlayerController->EnableInput(PlayerController);
+            PlayerController->SetIgnoreMoveInput(false); // 이동 입력 다시 활성화
+            PlayerCharacter->GetCharacterMovement()->SetMovementMode(MOVE_Walking); // 이동 다시 활성화
+            UE_LOG(LogTemp, Warning, TEXT("Player Input & Movement Enabled!"));
+        }
+    }
+}
+
+
+
+void ASOS_Boss_PlayTriggerBox::DisablePlayerControl()
+{
+    // 플레이어 캐릭터 가져오기
+    AJHS_C_Player* PlayerCharacter = Cast<AJHS_C_Player>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+    if (PlayerCharacter)
+    {
+        // 플레이어 컨트롤러 가져오기
+        APlayerController* PlayerController = Cast<APlayerController>(PlayerCharacter->GetController());
+        if (PlayerController)
+        {
+            PlayerController->DisableInput(PlayerController);
+            PlayerController->SetIgnoreMoveInput(true); // 이동 입력 무시
+            PlayerCharacter->GetCharacterMovement()->DisableMovement(); // 이동 자체를 막음
+            UE_LOG(LogTemp, Warning, TEXT("Player Input & Movement Disabled!"));
+        }
+    }
+}
+
+
+
 
 // Sequencer가 종료 된 후 발생 시킬 함수
 // BlackBoardKey의 EnumState Attack으로 변경
 void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
 {
-    UE_LOG(LogTemp, Warning, TEXT("Sequence finished! Performing post-sequence actions."));
 
-    // Find Boss Character in the level
-    ACharacter* BossCharacter = Cast<ACharacter>(UGameplayStatics::GetActorOfClass(this, ASOS_BOSS_Character::StaticClass()));
+    // HHR
+    // ----------------------------------------------------------------------------
+    // Player HUD show
+    AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+    if(player)
+    {
+        player->ShowHUD();
+    }
+    // SOS Boss HP Bar 생성해줘야 함 
+    CreateHP();
+    // ----------------------------------------------------------------------------
     
+    // 사운드 큐 재생 (월드에 독립적으로 생성)
+    if (SoundCue)
+    {
+        UAudioComponent* AudioComponent = UGameplayStatics::CreateSound2D(GetWorld(), SoundCue, SoundVolume);
+        if (AudioComponent)
+        {
+            AudioComponent->Play();  // 재생
+        }
+    }
+
+    // BossCharacter와 관련된 코드
+    ACharacter* BossCharacter = Cast<ACharacter>(UGameplayStatics::GetActorOfClass(this, ASOS_BOSS_Character::StaticClass()));
     if (BossCharacter)
     {
-        // Get AI Controller of Boss Character
         AAIController* BossAIController = Cast<AAIController>(BossCharacter->GetController());
         if (BossAIController && BossAIController->GetBlackboardComponent())
         {
-            // Set Blackboard Key Value
             BossAIController->GetBlackboardComponent()->SetValueAsEnum(BlackboardKeyName, EnumValueToSet);
-            UE_LOG(LogTemp, Warning, TEXT("Blackboard Key '%s' updated to Enum Value '%d'."), *BlackboardKeyName.ToString(), EnumValueToSet);
 
-            // 현재 실행중인 Task를 실패로 판단
             UBehaviorTreeComponent* BehaviorTreeComponent = Cast<UBehaviorTreeComponent>(BossAIController->GetBrainComponent());
             if (BehaviorTreeComponent)
             {
                 BehaviorTreeComponent->RequestExecution(EBTNodeResult::Failed);
-                UE_LOG(LogTemp, Warning, TEXT("Behavior Tree Task marked as failed."));
             }
-            
-        }
-        else
-        {
-            UE_LOG(LogTemp, Error, TEXT("Failed to access AI Controller or Blackboard Component."));
         }
     }
-    else
-    {
-        UE_LOG(LogTemp, Error, TEXT("Boss Character not found in the level."));
-    }
+
+    // 재활성
+    EnablePlayerControl();
     
-    // 원하는 행동 수행 (예: TriggerBox 삭제)
-    Destroy(); // TriggerBox 삭제
+    // TriggerBox 파괴
+    Destroy();
 }
+
+
+
+

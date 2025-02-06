@@ -25,7 +25,7 @@ bool USOS_BTD_IsLeftCheck::CalculateRawConditionValue(UBehaviorTreeComponent& Ow
 	// 현재 조건 확인
 	bool bIsLeft = BlackboardComp->GetValueAsBool(BlackboardKey.SelectedKeyName);
 
-	UE_LOG(LogTemp, Warning, TEXT("IsLeft: %s"), (bIsLeft ? TEXT("True") : TEXT("False")));
+	//UE_LOG(LogTemp, Warning, TEXT("IsLeft: %s"), (bIsLeft ? TEXT("True") : TEXT("False")));
 
 	return bIsLeft; // true면 Left, false면 Right
 	

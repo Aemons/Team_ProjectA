@@ -32,8 +32,13 @@ public:
 	// HHR
 	// ----------------------------------------------------------------------------
 	FORCEINLINE float GetStatmina() const {return CurrentStatmina;}
-	// - Temporary
-	FORCEINLINE class UHHR_InteractComponent* GetInteractComp() const {return InteractComp;};
+	
+	// * Inventory
+	FORCEINLINE class UHHR_InventoryComponent* GetInventoryComp() const {return InventoryComp;}
+	FORCEINLINE USkeletalMeshComponent* GetHelmetSMComp() const {return EQ_HelmsComp;}
+	FORCEINLINE USkeletalMeshComponent* GetChestSMComp() const {return EQ_ChestComp;}
+	FORCEINLINE USkeletalMeshComponent* GetBootsSMComp() const {return EQ_BootsComp;}
+	FORCEINLINE USkeletalMeshComponent* GetPantsSMComp() const {return EQ_PantsComp;}
 	// ----------------------------------------------------------------------------
 
 public:
@@ -98,6 +103,7 @@ public://Mesh Component
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USkeletalMeshComponent* EQ_HandsComp;
+
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class USkeletalMeshComponent* EQ_PantsComp;
@@ -120,6 +126,9 @@ public://Actor Component
 	// * Interact Component
 	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
 	class UHHR_InteractComponent* InteractComp;
+	// * Inventory Component
+	UPROPERTY(VisibleAnywhere, Category = "Actor Component")
+	class UHHR_InventoryComponent* InventoryComp;
 	// ----------------------------------------------------------------------------
 	
 
@@ -210,6 +219,14 @@ private:
 	// *Statmina*
 	float CurrentStatmina = 100.0f;
 	float MaxStatmina = 100.f;
+
+	TObjectPtr<UUserWidget> PlayerHUD; 
+// Temporary..
+public:
+	UFUNCTION(BlueprintCallable)
+	void HideHUD();
+	UFUNCTION(BlueprintCallable)
+	void ShowHUD();
 
 // ----------------------------------------------------------------------------
 	

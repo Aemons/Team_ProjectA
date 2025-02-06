@@ -42,13 +42,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	USpacer* Spacer1;
 	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
-	UTextBlock* GameTitle;
-	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	USpacer* Spacer2;
 	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UHHR_ButtonBase* BtnComp_GameStart;
-	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
-	UHHR_ButtonBase* BtnComp_Setting;
 	UPROPERTY(BlueprintReadWrite, Category = "Widgets", meta = (BindWidget))
 	UHHR_ButtonBase* BtnComp_GameEnd;
 
