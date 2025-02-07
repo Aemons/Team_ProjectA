@@ -37,6 +37,9 @@ struct FItemData : public FTableRowBase
 	int32 ItemID;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	FText ArmorName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	EItemType ItemType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")

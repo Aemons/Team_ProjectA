@@ -66,6 +66,7 @@ private:	//*Button 이벤트에 바인딩 될 함수들*
 // **일반 함수**
 public:
 	void UpdateItemData(FItemData* Data);
+	// Data Set
 
 	// visible 업뎃 함수
 	void Selected();

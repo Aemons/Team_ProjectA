@@ -15,7 +15,6 @@ void UHHR_ItemSlotTest::NativePreConstruct()
 	
 	LoadPlayerSelected();
 
-	UpdateItemData(&ItemData);
 	if(bIsSelected)
 	{
 		Selected();
@@ -29,9 +28,13 @@ void UHHR_ItemSlotTest::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 바인딩
-	ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemSlotTest::OnClicked);
-	ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemSlotTest::OnHovered);
-	ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemSlotTest::OnUnHovered);
+	if(ItemButton)
+	{
+		ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemSlotTest::OnClicked);
+		ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemSlotTest::OnHovered);
+		ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemSlotTest::OnUnHovered);
+	}
+
 
 	// 
 	AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
@@ -77,6 +80,7 @@ void UHHR_ItemSlotTest::OnClicked()
 
 void UHHR_ItemSlotTest::UpdateItemData(FItemData* Data)
 {
+	ItemData = *Data;
 	if(Data->ItemImage)
 	{
 		FSlateBrush newBrush;
@@ -92,13 +96,19 @@ void UHHR_ItemSlotTest::UpdateItemData(FItemData* Data)
 void UHHR_ItemSlotTest::Selected()
 {
 	bIsSelected = true;
-	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+	if(SelectedBorder)
+	{
+		SelectedBorder->SetVisibility(ESlateVisibility::Visible);
+	}
 }
 
 void UHHR_ItemSlotTest::UnSelected()
 {
 	bIsSelected = false;
-	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
+	if(SelectedBorder)
+	{
+		SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
+	}
 }
 
 void UHHR_ItemSlotTest::LoadPlayerSelected()

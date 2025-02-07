@@ -6,6 +6,7 @@
 #include "Components/TextBlock.h"
 #include "Components/UniformGridPanel.h"
 #include "Components/UniformGridSlot.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotBase.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h"
 
@@ -14,43 +15,8 @@ void UHHR_InventoryPageBase::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
-
-	// ItemSlot들 생성
-	/*for(int32 i = 0; i < RowNum ; ++i)
-	{
-		for(int32 j = 0; j < ColumNum; ++j)
-		{
-			if(!ItemSlotClass) continue;
-
-			UHHR_ItemSlotTest* itemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
-			GridPanel->AddChild(itemSlot);
-			itemSlot->SetVisibility(ESlateVisibility::Hidden);
-
-			if(UUniformGridSlot* gridSlot = Cast<UUniformGridSlot>(itemSlot->Slot))
-			{
-				gridSlot->SetRow(i);
-				gridSlot->SetColumn(j);
-			}
-
-			ItemSlotList.Add(itemSlot);
-		}
-	}
-
-	// ItemSlotList를 통해서 visible 설정 & ItemData 적용
-	for(int32 i = 0; i < HaveItemSlotList.Num(); ++i)
-	{
-		if(i < ItemSlotList.Num())
-		{
-			ItemSlotList[i]->SetVisibility(ESlateVisibility::Visible);
-
-			// ItemData 적용
-			if(i < ItemDataList.Num())
-			{
-				HaveItemSlotList[i]->UpdateItemData(&ItemDataList[i]);
-			}
-		}
-	}*/
-
+	GetInventoryData();
+	LoadItemData();
 
 
 	
@@ -61,18 +27,7 @@ void UHHR_InventoryPageBase::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 임시
-	ItemSlotList.Add(ItemSlot1);
-	ItemSlotList.Add(ItemSlot2);
-	ItemSlotList.Add(ItemSlot3);
-	ItemSlotList.Add(ItemSlot4);
-	ItemSlotList.Add(ItemSlot5);
-	ItemSlotList.Add(ItemSlot6);
-	ItemSlotList.Add(ItemSlot7);
-	ItemSlotList.Add(ItemSlot8);
-	ItemSlotList.Add(ItemSlot9);
-	ItemSlotList.Add(ItemSlot10);
-	ItemSlotList.Add(ItemSlot11);
-	ItemSlotList.Add(ItemSlot12);
+
 	// 바인딩
 	for(UHHR_ItemSlotTest* itemSlot : ItemSlotList)
 	{
@@ -99,6 +54,63 @@ void UHHR_InventoryPageBase::UpdateSlotClick(UHHR_ItemSlotTest* ClickItem)
 	ClickItem->Selected();
 	
 }
+
+void UHHR_InventoryPageBase::GetInventoryData()
+{
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetGameInstance());
+	if(!GI) return;
+
+	switch (PageType)
+	{
+	case EPageType::AllPage:
+		{
+			InventoryData = GI->GetAllItemList();
+			break;
+		}
+	case EPageType::HelmetPage:
+		{
+			InventoryData = GI->GetHelmetsList();
+			break;
+		}
+	case EPageType::ChestPage:
+		{
+			InventoryData = GI->GetChestsList();
+			break;
+		}
+	case EPageType::PantsPage:
+		{
+			InventoryData = GI->GetPantsList();
+			break;
+		}
+	case EPageType::BootsPage:
+		{
+			InventoryData = GI->GetBootsList();
+			break;
+		}
+	case EPageType::HandsPage:
+		break;
+	default:
+		break;
+	}
+	
+}
+
+void UHHR_InventoryPageBase::LoadItemData()
+{
+	
+	for(FItemData* data : InventoryData)
+	{
+		UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+		if(newItemSlot)
+		{
+			newItemSlot->UpdateItemData(data);
+			ItemSlotList.Add(newItemSlot);
+			GridPanel->AddChild(newItemSlot);
+		}
+	}
+
+}
+
 
 
 
