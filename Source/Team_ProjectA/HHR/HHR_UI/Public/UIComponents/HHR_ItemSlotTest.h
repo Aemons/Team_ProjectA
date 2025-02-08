@@ -25,12 +25,13 @@ class TEAM_PROJECTA_API UHHR_ItemSlotTest : public UUserWidget
 {
 	GENERATED_BODY()
 
-	//////////////////////////////////////////////////////////////////////////////
-	// ** UPROPERTY 변수 **
+//////////////////////////////////////////////////////////////////////////////
+// ** UPROPERTY 변수 **
 public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값들)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	FItemData ItemData;
 
+	// Default 값이 hidden
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	bool bIsSelected;
 	
@@ -65,12 +66,15 @@ private:	//*Button 이벤트에 바인딩 될 함수들*
 //////////////////////////////////////////////////////////////////////////////
 // **일반 함수**
 public:
-	void UpdateItemData(FItemData* Data);
 	// Data Set
+	void SetData(FItemData* Data);
+	// 가지고 있는 Data Rendering
+	void RenderData();
+	
 
 	// visible 업뎃 함수
-	void Selected();
-	void UnSelected();
+	void ChangeSelected();
+	void ChangeUnSelected();
 
 private:
 	void LoadPlayerSelected();
@@ -80,7 +84,8 @@ private:
 
 public:	//*Delegate*
 	FOnItemChanged OnItemChanged;
-	
+
+
 
 	
 	

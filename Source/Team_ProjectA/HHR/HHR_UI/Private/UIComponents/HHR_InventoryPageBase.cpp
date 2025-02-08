@@ -3,6 +3,7 @@
 
 #include "Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h"
 
+#include "Components/GridSlot.h"
 #include "Components/TextBlock.h"
 #include "Components/UniformGridPanel.h"
 #include "Components/UniformGridSlot.h"
@@ -18,7 +19,6 @@ void UHHR_InventoryPageBase::NativePreConstruct()
 	GetInventoryData();
 	LoadItemData();
 
-
 	
 }
 
@@ -26,7 +26,6 @@ void UHHR_InventoryPageBase::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// 임시
 
 	// 바인딩
 	for(UHHR_ItemSlotTest* itemSlot : ItemSlotList)
@@ -46,12 +45,12 @@ void UHHR_InventoryPageBase::UpdateSlotClick(UHHR_ItemSlotTest* ClickItem)
 		{
 			if(slot->bIsSelected)
 			{
-				slot->UnSelected();
+				slot->ChangeUnSelected();
 			}
 		}
 	}
 
-	ClickItem->Selected();
+	ClickItem->ChangeSelected();
 	
 }
 
@@ -98,14 +97,20 @@ void UHHR_InventoryPageBase::GetInventoryData()
 void UHHR_InventoryPageBase::LoadItemData()
 {
 	
-	for(FItemData* data : InventoryData)
+	for(int32 i = 0; i < InventoryData.Num(); i++)
 	{
 		UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
 		if(newItemSlot)
 		{
-			newItemSlot->UpdateItemData(data);
+			newItemSlot->SetData(InventoryData[i]);
 			ItemSlotList.Add(newItemSlot);
-			GridPanel->AddChild(newItemSlot);
+
+			// Slot Setting
+			UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+			int r = i / ColumNum;
+			int c = i % ColumNum;
+			slot->SetRow(r);
+			slot->SetColumn(c);
 		}
 	}
 

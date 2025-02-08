@@ -25,8 +25,8 @@ class TEAM_PROJECTA_API UHHR_GameInstance : public UGameInstance
 	// !가지고 있는 장비 추가 (삭제), get
 
 
-	//////////////////////////////////////////////////////////////////////////////
-	// ** FORCEINLINE 함수 **
+//////////////////////////////////////////////////////////////////////////////
+// ** FORCEINLINE 함수 **
 public:
 	// * Eq Item *
 	FORCEINLINE FItemData* GetEqHelmetData() { return &EqHelmetData; }
@@ -51,6 +51,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 protected:
+	// 그냥 Id로만 입력받고 로드해줘도 될듯 
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
 	FItemData EqHelmetData;
 	UPROPERTY(EditDefaultsOnly, Category = "Data")

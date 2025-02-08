@@ -16,7 +16,7 @@ void UHHR_InventoryDrawer::NativeConstruct()
 	{
 		if(headerBtn)
 		{
-			headerBtn->OnClickMessage.AddDynamic(this, &UHHR_InventoryDrawer::OnSwitchPage);
+			headerBtn->OnMenuBtnClick.AddDynamic(this, &UHHR_InventoryDrawer::OnSwitchPage);
 		}
 	}
 
@@ -26,7 +26,7 @@ void UHHR_InventoryDrawer::NativeConstruct()
 void UHHR_InventoryDrawer::OnSwitchPage(int32 PageIdx)
 {
 
-	// Header 업뎃 -> 이러면 Header Menu에서 바인딩 안해줘도 됨
+	// Header 업뎃
 	UpdateDrawer(PageIdx);
 
 	// TODO : Inventory도 업뎃

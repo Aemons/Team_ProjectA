@@ -71,6 +71,8 @@ void UHHR_GameInstance::LoadDataTable(class UDataTable* DataTable)
 			// 전체 list에도 넣어줌
 			AllItemsList.Add(Data);	
 		}
+
+		;;
 	}
 	
 }

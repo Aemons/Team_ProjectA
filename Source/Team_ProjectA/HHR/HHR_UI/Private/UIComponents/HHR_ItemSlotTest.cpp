@@ -12,14 +12,10 @@
 void UHHR_ItemSlotTest::NativePreConstruct()
 {
 	Super::NativePreConstruct();
-	
+
+	// Player가 장착하고 있느 아이템 확인
 	LoadPlayerSelected();
-
-	if(bIsSelected)
-	{
-		Selected();
-	}
-
+	RenderData();
 
 }
 
@@ -78,66 +74,72 @@ void UHHR_ItemSlotTest::OnClicked()
 
 }
 
-void UHHR_ItemSlotTest::UpdateItemData(FItemData* Data)
+void UHHR_ItemSlotTest::SetData(FItemData* Data)
 {
 	ItemData = *Data;
-	if(Data->ItemImage)
+}
+
+void UHHR_ItemSlotTest::RenderData()
+{
+	if(ItemData.ItemImage)
 	{
 		FSlateBrush newBrush;
-		newBrush.SetResourceObject(Data->ItemImage);
+		newBrush.SetResourceObject(ItemData.ItemImage);
 
-		if(ItemImage)
-		{
-			ItemImage->SetBrush(newBrush);
-		}
+		ItemImage->SetBrush(newBrush);
 	}
+
+	if(bIsSelected)
+	{
+		ChangeSelected();
+	}
+
 }
 
-void UHHR_ItemSlotTest::Selected()
+void UHHR_ItemSlotTest::ChangeSelected()
 {
 	bIsSelected = true;
-	if(SelectedBorder)
-	{
-		SelectedBorder->SetVisibility(ESlateVisibility::Visible);
-	}
+	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
 }
 
-void UHHR_ItemSlotTest::UnSelected()
+void UHHR_ItemSlotTest::ChangeUnSelected()
 {
 	bIsSelected = false;
-	if(SelectedBorder)
-	{
-		SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
-	}
+	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UHHR_ItemSlotTest::LoadPlayerSelected()
 {
 	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
 	if(!GI) return;
-
+	
 	// GameInstance의 장착되어 있는 아이템이랑 비교해서 장착된 거 click set
+	int id = 0;
 	switch(ItemData.ArmorType)
 	{
 	case EArmorType::Helmet:
+		id = GI->GetEqHelmetData()->ItemID;
 		if(GI->GetEqHelmetData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Chest:
+		id = GI->GetEqChestData()->ItemID;
 		if(GI->GetEqChestData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Pants:
+		id = GI->GetEqPantsData()->ItemID;
 		if(GI->GetEqPantsData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Boots:
+		id = GI->GetEqBootsData()->ItemID;
 		if(GI->GetEqBootsData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
