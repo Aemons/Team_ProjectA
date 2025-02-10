@@ -58,7 +58,7 @@ void UJHS_C_WeaponComponent::SetupInputBinding(UEnhancedInputComponent* Input)
 		Input->BindAction(IA_Weapon_AttackAction, ETriggerEvent::Started, this, &UJHS_C_WeaponComponent::AttackAction);
 
 		//Weapon Equip Test Input
-		Input->BindAction(IA_Weapon_Equip, ETriggerEvent::Started, this, &UJHS_C_WeaponComponent::SetKatanaMode);
+		//Input->BindAction(IA_Weapon_Equip, ETriggerEvent::Started, this, &UJHS_C_WeaponComponent::SetKatanaMode);
 	}
 }
 

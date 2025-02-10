@@ -3,6 +3,8 @@
 
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h"
 
+#include "Components/Button.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_ButtonBase.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_InventoryDrawer.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_ItemEquipedSlotBase.h"
 
@@ -23,6 +25,8 @@ void UHHR_Inventory::NativeConstruct()
 		itemSlot->OnBtnClickMessage.AddDynamic(this, &UHHR_Inventory::OnUpdateEquipedSlot);
 	}
 	InventoryDrawer->OnPageSwitch.AddDynamic(this, &UHHR_Inventory::UpdateItemEqSlot);
+
+	CloseBtn->GetButton()->OnClicked.AddDynamic(this, &UHHR_Inventory::Close);
 	
 }
 
@@ -50,6 +54,14 @@ void UHHR_Inventory::OnUpdateEquipedSlot(int32 ItemMenuIdx)
 
 	// TODO : Drawer 업뎃 
 	InventoryDrawer->UpdateDrawer(ItemMenuIdx);
+}
+
+void UHHR_Inventory::Close()
+{
+	if(OnInventoryClose.IsBound())
+	{
+		OnInventoryClose.Execute();
+	}
 }
 
 void UHHR_Inventory::ChangeHelemtSlot(FItemData* Data)

@@ -11,6 +11,7 @@
 #include "ClassViewerModule.h"
 #include "Animation/AnimInstance.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "Blueprint/UserWidget.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Team_ProjectA/SOS/public/SOS_Hide_Box_Comp.h"
@@ -79,6 +80,8 @@ void ASOS_BOSS_Character::BeginPlay()
 		*/
 		
 	}
+
+	CurrentHP = MaxHP;
 }
 
 // Called every frame
@@ -174,9 +177,27 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 
 	// 체력 감소
-	//CurrentHP -= DamageAmount;
+	CurrentHP -= DamageAmount;
 
-	if (CurrentHP <= (MaxHP * 0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
+	if (CurrentHP <= 0.0f)
+	{
+		//CurrentHP = 0.0f;
+		SetBBEnumState(1);
+
+		bIsDead = true;
+
+		// HHR
+		// ----------------------------------------------------------------------------
+		// UI 끄기
+		if (BossHPWidget)
+		{
+			BossHPWidget->RemoveFromParent();
+		}
+		// ----------------------------------------------------------------------------
+		
+		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
+	}
+	else if (CurrentHP <= (MaxHP * 0.3) && Brust) // 30% 이하일 시 Burst 상태 변경
 	{ // 더 작으면 최대 HP에서
 
 		SetBBEnumState(2);
@@ -184,17 +205,8 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 		Brust = false;
 
 	} // 체력이 0 이하라면 사망 처리
-	else if (CurrentHP <= 0.0f)
-	{
-		CurrentHP = 0.0f;
-		SetBBEnumState(1);
-
-		bIsDead = true;
-
-		// 여기에 사망 처리 로직 추가 (예: 애니메이션 재생)
-	}
-
-	return	CurrentHP -= DamageAmount;
+	
+	return	CurrentHP;
 }
 
 void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
@@ -222,6 +234,8 @@ void ASOS_BOSS_Character::SetBBEnumState(int32 EnumNumber)
 		}
             
 	}
+
+
 }
 
 
@@ -255,6 +269,15 @@ void ASOS_BOSS_Character::SetMontagePlayRate(float NewPlayRate)
 	CurrentMontagePlayRate = NewPlayRate;
 
 	//UE_LOG(LogTemp, Warning, TEXT("Montage PlayRate set to %f for character %s"), NewPlayRate, *GetName());
+}
+
+void ASOS_BOSS_Character::CreateBossHP()
+{
+	if(BossHPClass)
+	{
+		BossHPWidget = CreateWidget<UUserWidget>(GetWorld(), BossHPClass);
+		BossHPWidget->AddToViewport();
+	}
 }
 	
 

@@ -6,6 +6,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "LevelSequenceActor.h"
 #include "LevelSequencePlayer.h"
+#include "Blueprint/UserWidget.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
@@ -49,6 +50,16 @@ void ASOS_Boss_PlayTriggerBox::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
             ULevelSequencePlayer* SequencePlayer = SequenceActor->SequencePlayer;
             if (SequencePlayer)
             {
+                // HHR
+                // ----------------------------------------------------------------------------
+                // Player HUD 숨김 처리
+                AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+                if(player)
+                {
+                    player->HideHUD();
+                }
+                // ----------------------------------------------------------------------------
+                
                 // 시퀀스 재생
                 SequencePlayer->Play();
 
@@ -111,6 +122,19 @@ void ASOS_Boss_PlayTriggerBox::DisablePlayerControl()
 // BlackBoardKey의 EnumState Attack으로 변경
 void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
 {
+
+    // HHR
+    // ----------------------------------------------------------------------------
+    // Player HUD show
+    AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+    if(player)
+    {
+        player->ShowHUD();
+    }
+    // SOS Boss HP Bar 생성해줘야 함 
+    CreateHP();
+    // ----------------------------------------------------------------------------
+    
     // 사운드 큐 재생 (월드에 독립적으로 생성)
     if (SoundCue)
     {
@@ -140,7 +164,6 @@ void ASOS_Boss_PlayTriggerBox::OnSequenceFinished()
 
     // 재활성
     EnablePlayerControl();
-    
     
     // TriggerBox 파괴
     Destroy();
