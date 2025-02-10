@@ -16,6 +16,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_ChildTest.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_ChildTest.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_AI/LYM_BP_Boss.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_Boss_Phase2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_Boss_Phase2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_Boss_Start.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_Boss_Start.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_DeathBoss.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sequence/LYM_LS_DeathBoss.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sound/LYM_Makai_Symphony_-_Endless_Storm.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_Sound/LYM_Makai_Symphony_-_Endless_Storm.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,20 +66,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Team_ProjectA.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "SOS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Team_ProjectA.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Develop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.Team_ProjectA">
     <configuration name="Team_ProjectA" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -564,6 +571,8 @@
       <workItem from="1738555877584" duration="3365000" />
       <workItem from="1738634233980" duration="5021000" />
       <workItem from="1738733267234" duration="145000" />
+      <workItem from="1738913553084" duration="1535000" />
+      <workItem from="1739164581363" duration="936000" />
     </task>
     <servers />
   </component>
