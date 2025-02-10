@@ -13,17 +13,18 @@ void UHHR_Inventory::NativeConstruct()
 	Super::NativeConstruct();
 
 	// List에 넣기
-	ItemSlotList.Add(HelmetSlot);
-	ItemSlotList.Add(ChestSlot);
-	ItemSlotList.Add(PantsSlot);
-	ItemSlotList.Add(HandsSlot);
-	ItemSlotList.Add(BootsSlot);
+	ItemSlotMap.Add(1, HelmetSlot);
+	ItemSlotMap.Add(2, ChestSlot);
+	ItemSlotMap.Add(3, PantsSlot);
+	ItemSlotMap.Add(4, HandsSlot);
+	ItemSlotMap.Add(5, BootsSlot);
 
 	// 델리게이트에 바인딩
-	for(UHHR_ItemEquipedSlotBase* itemSlot: ItemSlotList)
+	for(TPair<int32, UHHR_ItemEquipedSlotBase*> itemSlot: ItemSlotMap)
 	{
-		itemSlot->OnBtnClickMessage.AddDynamic(this, &UHHR_Inventory::OnUpdateEquipedSlot);
+		(itemSlot.Value)->OnBtnClickMessage.AddDynamic(this, &UHHR_Inventory::OnUpdateEquipedSlot);
 	}
+	
 	InventoryDrawer->OnPageSwitch.AddDynamic(this, &UHHR_Inventory::UpdateItemEqSlot);
 
 	CloseBtn->GetButton()->OnClicked.AddDynamic(this, &UHHR_Inventory::Close);
@@ -33,18 +34,19 @@ void UHHR_Inventory::NativeConstruct()
 void UHHR_Inventory::UpdateItemEqSlot(int32 ItemMenuIdx)
 {
 	// click 되어있는지 확인
-	if(SelectedSlotIdx >= 0 && SelectedSlotIdx < ItemSlotList.Num())
+	if(ItemSlotMap.Contains(SelectedSlotIdx))
 	{
 		// 선택되어 있으면 해제
-		ItemSlotList[SelectedSlotIdx]->Unselected();
+		ItemSlotMap[SelectedSlotIdx]->Unselected();
 	}
-	
+
 	// 현재꺼 선택
-	if(ItemMenuIdx >= 0 && ItemMenuIdx < ItemSlotList.Num())
+	if(ItemSlotMap.Contains(ItemMenuIdx))
 	{
-		ItemSlotList[ItemMenuIdx]->Selected();
+		ItemSlotMap[ItemMenuIdx]->Selected();
 		SelectedSlotIdx = ItemMenuIdx;
 	}
+	
 }
 
 void UHHR_Inventory::OnUpdateEquipedSlot(int32 ItemMenuIdx)

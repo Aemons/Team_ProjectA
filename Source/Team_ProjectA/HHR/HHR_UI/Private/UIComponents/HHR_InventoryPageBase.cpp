@@ -107,8 +107,8 @@ void UHHR_InventoryPageBase::LoadItemData()
 
 			// Slot Setting
 			UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
-			int r = i / ColumNum;
-			int c = i % ColumNum;
+			int32 r = i / ColumNum;
+			int32 c = i % ColumNum;
 			slot->SetRow(r);
 			slot->SetColumn(c);
 		}

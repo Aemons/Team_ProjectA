@@ -51,7 +51,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 protected:
-	// 그냥 Id로만 입력받고 로드해줘도 될듯 
+	// TODO : 그냥 Id로만 입력받고 로드해줘도 될듯 
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
 	FItemData EqHelmetData;
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
@@ -61,11 +61,23 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
 	FItemData EqBootsData;
 
+	// TODO : 나중에 분할시켜줘야 할듯
+	UPROPERTY(EditDefaultsOnly, Category = "ItemClass")
+	TSubclassOf<class AHHR_ItemBase> ItemClass;
+
 
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 이벤트 함수 **
 protected:
 	virtual void Init() override;
+
+	
+//////////////////////////////////////////////////////////////////////////////
+// ** UFUCNTION 함수 **
+public:
+	// Monster가 죽을때 호출해서 -> 아이템 drop
+	UFUNCTION(BlueprintCallable)
+	void DropItems(FVector Location);
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -78,18 +90,27 @@ public:
 private:
 	// *Data Table 관련 함수*
 	void LoadDataTable(class UDataTable* DataTable);
+	// Item 찾는 함수
+	FItemData* FindItem(int32 ID);
 	
 	
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 내부 변수 **
 private:
-	// *Invenotry List* (Data Table에서 로드)
+	// *실제 캐릭터가 소유하는 Inventory List*
 	TArray<FItemData*> HelmetsList;
 	TArray<FItemData*> ChestsList;
 	TArray<FItemData*> PantsList;
 	TArray<FItemData*> BootsList;
 	// 전체
 	TArray<FItemData*> AllItemsList;
+
+	// *Data Table 로드한 List
+	TArray<FItemData*> DTAllItemsList;
+
+
+	// *Random 생성을 위한 Shuffle 함수*
+	void ShuffleIdx(TArray<int32> &OutRandIdx, int32 ArrayMaxNum, int32 RandomNum);
 
 	
 	

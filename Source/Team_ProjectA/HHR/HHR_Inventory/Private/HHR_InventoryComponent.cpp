@@ -7,6 +7,7 @@
 #include "JHS_C_Player.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/SceneCaptureComponent2D.h"
+#include "Components/SpotLightComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h"
 #include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
@@ -93,11 +94,18 @@ void UHHR_InventoryComponent::InitializeComponent()
 		// 블루프린트에 등록
 		OwnerCharacter->AddInstanceComponent(CaptureComp);
 	}
+	SpotLightComp = NewObject<USpotLightComponent>(OwnerCharacter);
+	if(SpotLightComp)
+	{
+		SpotLightComp->RegisterComponent();
+		SpotLightComp->AttachToComponent(OwnerCharacter->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+		OwnerCharacter->AddInstanceComponent(SpotLightComp);
+	}
 	
 	// Setting
 	if(SpringArmComp && CaptureComp)
 	{
-		// Sprint Arm Compㅈㅈ
+		// Sprint Arm Comp
 		SpringArmComp->SetRelativeRotation(FRotator(-10, 180, 0));
 		SpringArmComp->SetRelativeLocation(FVector(0, 0, 50));
 		SpringArmComp->TargetArmLength = 250;
@@ -105,6 +113,15 @@ void UHHR_InventoryComponent::InitializeComponent()
 		// Scene Capture Comp
 		CaptureComp->ShowOnlyActorComponents(OwnerCharacter);
 		CaptureComp->FOVAngle = 65.f;
+
+		// Spot Light Comp
+		SpotLightComp->SetRelativeLocation(FVector(290, 0, 190));
+		SpotLightComp->SetRelativeRotation(FRotator(-35, 180, 180));
+		SpotLightComp->SetIntensity(8000.f);
+		SpotLightComp->SetAttenuationRadius(500.f);
+		SpotLightComp->SetOuterConeAngle(20.0f);
+		// default : 끄기 -> inven 열때 닫을 때 켜주기
+		SpotLightComp->SetVisibility(false);
 	}
 
 	
@@ -147,6 +164,7 @@ void UHHR_InventoryComponent::ChangeArmor(UHHR_ItemSlotTest* Armor)
 
 void UHHR_InventoryComponent::CloseInventory()
 {
+
 	// 닫기
 	bIsOpen = false;
 	InventoryWidget->RemoveFromParent();
@@ -158,6 +176,12 @@ void UHHR_InventoryComponent::CloseInventory()
 
 	FInputModeGameOnly InputMode;
 	PC->SetInputMode(InputMode);
+
+	// SpotLight 꺼주기
+	// TODO : SpotLight 꺼주는 게 느린 문제
+	SpotLightComp->SetVisibility(false);
+
+
 }
 
 void UHHR_InventoryComponent::SetUpInputBinding(UEnhancedInputComponent* Input)
@@ -189,6 +213,9 @@ void UHHR_InventoryComponent::OpenInventory()
 
 		FInputModeUIOnly InputMode;
 		PC->SetInputMode(InputMode);
+
+		// Spot Light 켜주기
+		SpotLightComp->SetVisibility(true);
 	}
 	else
 	{
@@ -204,6 +231,16 @@ void UHHR_InventoryComponent::OpenInventory()
 		FInputModeGameOnly InputMode;
 		PC->SetInputMode(InputMode);
 
+	}
+}
+
+void UHHR_InventoryComponent::GetItem(FItemData* ItemData)
+{
+	// Item 받으면 GI에 추가
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+	if(GI)
+	{
+		GI->AddItem(ItemData);
 	}
 }
 
