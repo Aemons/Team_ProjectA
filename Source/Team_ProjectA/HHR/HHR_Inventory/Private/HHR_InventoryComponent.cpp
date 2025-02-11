@@ -106,7 +106,7 @@ void UHHR_InventoryComponent::InitializeComponent()
 	if(SpringArmComp && CaptureComp)
 	{
 		// Sprint Arm Comp
-		SpringArmComp->SetRelativeRotation(FRotator(-10, 180, 0));
+		SpringArmComp->SetRelativeRotation(FRotator(-25, 180, 0));
 		SpringArmComp->SetRelativeLocation(FVector(0, 0, 50));
 		SpringArmComp->TargetArmLength = 250;
 
@@ -115,9 +115,9 @@ void UHHR_InventoryComponent::InitializeComponent()
 		CaptureComp->FOVAngle = 65.f;
 
 		// Spot Light Comp
-		SpotLightComp->SetRelativeLocation(FVector(290, 0, 190));
+		SpotLightComp->SetRelativeLocation(FVector(300, 0, 185));
 		SpotLightComp->SetRelativeRotation(FRotator(-35, 180, 180));
-		SpotLightComp->SetIntensity(8000.f);
+		SpotLightComp->SetIntensity(9900.f);
 		SpotLightComp->SetAttenuationRadius(500.f);
 		SpotLightComp->SetOuterConeAngle(20.0f);
 		// default : 끄기 -> inven 열때 닫을 때 켜주기

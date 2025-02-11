@@ -82,12 +82,15 @@ void UHHR_ItemSlotTest::SetData(FItemData Data)
 
 void UHHR_ItemSlotTest::RenderData()
 {
-	if(ItemData.ItemImage)
+	if(ItemData.ItemImage && IsValid(ItemData.ItemImage))
 	{
 		FSlateBrush newBrush;
 		newBrush.SetResourceObject(ItemData.ItemImage);
 
-		ItemImage->SetBrush(newBrush);
+		if(ItemImage && IsValid(ItemImage))
+		{
+			ItemImage->SetBrush(newBrush);
+		}
 	}
 
 	if(bIsSelected)
