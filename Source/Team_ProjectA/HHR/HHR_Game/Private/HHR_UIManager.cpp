@@ -89,9 +89,18 @@ void UHHR_UIManager::CreatePlayerHUD()
 	}
 }
 
+void UHHR_UIManager::SetGameOnlyMode()
+{
+	PlayerController->bShowMouseCursor = false;
+	PlayerController->SetIgnoreLookInput(false);
+	PlayerController->SetIgnoreMoveInput(false);
+
+	FInputModeGameOnly InputMode;
+	PlayerController->SetInputMode(InputMode);
+}
+
 void UHHR_UIManager::SetUIOnlyMode()
 {
-	if(!PlayerHUDWidget) return;
 	
 	PlayerController->bShowMouseCursor = true;
 	PlayerController->SetIgnoreLookInput(true);

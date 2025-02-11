@@ -62,6 +62,10 @@ public:
 	void CreatePlayerHUD();
 
 
+public:
+	// Game ui mode로 세팅
+	void SetGameOnlyMode();
+	
 private:
 	// UIOnly mode로 세팅
 	void SetUIOnlyMode();

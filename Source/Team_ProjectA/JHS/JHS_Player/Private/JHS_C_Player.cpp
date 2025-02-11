@@ -374,6 +374,12 @@ void AJHS_C_Player::Player_Dead()
 
 		PlayAnimMontage(DeadMontage, DeadMontage_PlayRate);
 	}
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	// * Gameover UI 띄우기
+	UHHR_UIManager::GetUIManager()->CreateGameover();
+	// ----------------------------------------------------------------------------
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

@@ -15,32 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_ItemBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_ItemBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Gameover.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Gameover.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_Dummy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/GI_HHR_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/GI_HHR_GameInstance.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_MapNPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/BP_HHR_MapNPC.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Map/Lev_UITest.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/Components/WBP_HHR_InventoryPage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_ChildTest.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/JHS/JHS_Player/JHS_Player_Parent/JHS_Player_Child/JHS_BP_Player_Moduler_ChildTest.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_GameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_GameInstance.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_PlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_PlayerController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_UIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_UIManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_UIManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_UIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_UIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_UIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_UIManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Gameover.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Gameover.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/JHS/JHS_Player/Private/JHS_C_Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/Team_ProjectAGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,20 +416,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Team_ProjectA.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "10-inventory-fix-item-drop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Team_ProjectA.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;10-inventory-fix-item-drop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.Team_ProjectA">
     <configuration name="Team_ProjectA" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -941,7 +924,8 @@
       <workItem from="1738746494011" duration="8022000" />
       <workItem from="1738905416392" duration="11812000" />
       <workItem from="1739007493705" duration="8174000" />
-      <workItem from="1739154138536" duration="29536000" />
+      <workItem from="1739154138536" duration="29631000" />
+      <workItem from="1739246417511" duration="2091000" />
     </task>
     <servers />
   </component>
