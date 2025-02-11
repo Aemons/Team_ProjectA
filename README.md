@@ -63,6 +63,7 @@ https://youtu.be/fEApt1lO5iM
 상태에 따른 패턴
 
 ![SmartAI_Gif](https://github.com/user-attachments/assets/77805e76-8750-4e85-b2b0-88b97baebd3c)
+
 왼쪽 오른쪽 판별 및 거리 판별
 
 
