@@ -31,6 +31,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
 	TSubclassOf<class UUserWidget> GameoverUIWidget;
 
+	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
+	TSubclassOf<class UUserWidget> MapClearUIWidget;
+
 // ** 기본 생성 함수 **
 //////////////////////////////////////////////////////////////////////////////
 private:
@@ -48,6 +51,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CreateGameover();
 
+	// Map Clear(Game Clear UI 생성)
+	UFUNCTION(BlueprintCallable)
+	void CreateMapClear();
+
 // ** 일반 함수 **
 //////////////////////////////////////////////////////////////////////////////
 public:
@@ -64,10 +71,11 @@ public:
 
 public:
 	// Game ui mode로 세팅
+	UFUNCTION(BlueprintCallable)
 	void SetGameOnlyMode();
 	
-private:
 	// UIOnly mode로 세팅
+	UFUNCTION(BlueprintCallable)
 	void SetUIOnlyMode();
 
 

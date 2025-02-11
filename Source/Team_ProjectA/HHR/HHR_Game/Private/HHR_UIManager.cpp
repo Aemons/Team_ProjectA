@@ -5,6 +5,7 @@
 
 #include "Blueprint/UserWidget.h"
 #include "Team_ProjectA/HHR/HHR_UI/Public/HHR_Gameover.h"
+#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_MapClear.h"
 
 TObjectPtr<UHHR_UIManager> UHHR_UIManager::Instance = nullptr;
 
@@ -16,6 +17,12 @@ UHHR_UIManager::UHHR_UIManager()
 	if(gameoverWidget.Succeeded())
 	{
 		GameoverUIWidget = gameoverWidget.Class;
+	}
+
+	static ConstructorHelpers::FClassFinder<UUserWidget> mapclearWidget(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapClear_Test.WBP_HHR_MapClear_Test_C'"));
+	if(mapclearWidget.Succeeded())
+	{
+		MapClearUIWidget = mapclearWidget.Class;
 	}
 	
 }
@@ -45,6 +52,17 @@ void UHHR_UIManager::CreateGameover()
 		SetUIOnlyMode();
 	}
 	
+}
+
+void UHHR_UIManager::CreateMapClear()
+{
+	if(WorldContext && MapClearUIWidget)
+	{
+		UHHR_MapClear* MapClear = CreateWidget<UHHR_MapClear>(WorldContext, MapClearUIWidget);
+		MapClear->AddToViewport();
+
+		//SetUIOnlyMode();
+	}
 }
 
 void UHHR_UIManager::Init()
