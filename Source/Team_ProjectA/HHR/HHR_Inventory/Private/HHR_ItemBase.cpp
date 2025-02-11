@@ -58,7 +58,7 @@ void AHHR_ItemBase::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedCompo
 		{
 			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Collision!");
 
-			inventory->GetItem(&ItemData);
+			inventory->GetItem(ItemData);
 		}
 
 		Destroy();

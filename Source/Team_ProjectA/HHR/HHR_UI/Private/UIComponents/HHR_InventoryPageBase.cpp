@@ -63,7 +63,41 @@ void UHHR_InventoryPageBase::GetInventoryData()
 	{
 	case EPageType::AllPage:
 		{
+			InventoryData = GI->AllItemsList;
+			break;
+		}
+	case EPageType::HelmetPage:
+		{
+			InventoryData = GI->HelmetsList;
+			break;
+		}
+	case EPageType::ChestPage:
+		{
+			InventoryData = GI->ChestsList;
+			break;
+		}
+	case EPageType::PantsPage:
+		{
+			InventoryData = GI->PantsList;
+			break;
+		}
+	case EPageType::BootsPage:
+		{
+			InventoryData = GI->BootsList;
+			break;
+		}
+	case EPageType::HandsPage:
+		break;
+	default:
+		break;
+	}
+
+	/*switch (PageType)
+	{
+	case EPageType::AllPage:
+		{
 			InventoryData = GI->GetAllItemList();
+			GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Red, "InventoryData");
 			break;
 		}
 	case EPageType::HelmetPage:
@@ -90,14 +124,14 @@ void UHHR_InventoryPageBase::GetInventoryData()
 		break;
 	default:
 		break;
-	}
+	}*/
 	
 }
 
 void UHHR_InventoryPageBase::LoadItemData()
 {
 	
-	for(int32 i = 0; i < InventoryData.Num(); i++)
+	/*for(int32 i = 0; i < InventoryData.Num(); i++)
 	{
 		UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
 		if(newItemSlot)
@@ -112,6 +146,119 @@ void UHHR_InventoryPageBase::LoadItemData()
 			slot->SetRow(r);
 			slot->SetColumn(c);
 		}
+	}*/
+
+	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetGameInstance());
+	if(!GI) return;
+
+	switch (PageType)
+	{
+	case EPageType::AllPage:
+		{
+			for(int32 i = 0; i < GI->AllItemsList.Num(); i++)
+			{
+				if(!ItemSlotClass) break;
+				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+				if(newItemSlot)
+				{
+					FItemData test = GI->AllItemsList[i];
+					newItemSlot->SetData(GI->AllItemsList[i]);
+					ItemSlotList.Add(newItemSlot);
+
+					// Slot Setting
+					UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+					int32 r = i / ColumNum;
+					int32 c = i % ColumNum;
+					slot->SetRow(r);
+					slot->SetColumn(c);
+				}
+			}
+			break;
+		}
+	case EPageType::HelmetPage:
+		{
+			for(int32 i = 0; i < GI->HelmetsList.Num(); i++)
+			{
+				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+				if(newItemSlot)
+				{
+					newItemSlot->SetData(GI->HelmetsList[i]);
+					ItemSlotList.Add(newItemSlot);
+
+					// Slot Setting
+					UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+					int32 r = i / ColumNum;
+					int32 c = i % ColumNum;
+					slot->SetRow(r);
+					slot->SetColumn(c);
+				}
+			}
+			break;
+		}
+	case EPageType::ChestPage:
+		{
+			for(int32 i = 0; i < GI->ChestsList.Num(); i++)
+			{
+				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+				if(newItemSlot)
+				{
+					newItemSlot->SetData(GI->ChestsList[i]);
+					ItemSlotList.Add(newItemSlot);
+
+					// Slot Setting
+					UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+					int32 r = i / ColumNum;
+					int32 c = i % ColumNum;
+					slot->SetRow(r);
+					slot->SetColumn(c);
+				}
+			}
+			break;
+		}
+	case EPageType::PantsPage:
+		{
+			for(int32 i = 0; i < GI->PantsList.Num(); i++)
+			{
+				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+				if(newItemSlot)
+				{
+					newItemSlot->SetData(GI->PantsList[i]);
+					ItemSlotList.Add(newItemSlot);
+
+					// Slot Setting
+					UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+					int32 r = i / ColumNum;
+					int32 c = i % ColumNum;
+					slot->SetRow(r);
+					slot->SetColumn(c);
+				}
+			}
+			break;
+		}
+	case EPageType::BootsPage:
+		{
+			for(int32 i = 0; i < GI->BootsList.Num(); i++)
+			{
+				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
+				if(newItemSlot)
+				{
+					newItemSlot->SetData(GI->PantsList[i]);
+					ItemSlotList.Add(newItemSlot);
+
+					// Slot Setting
+					UUniformGridSlot* slot = GridPanel->AddChildToUniformGrid(newItemSlot);
+					int32 r = i / ColumNum;
+					int32 c = i % ColumNum;
+					slot->SetRow(r);
+					slot->SetColumn(c);
+				}
+			}
+			break;
+		}
+	case EPageType::HandsPage:
+		break;
+	default:
+		break;
 	}
 
 }

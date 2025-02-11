@@ -79,7 +79,7 @@ public:
 	// *Item Get*
 	// ??????? 왜 구조체가 포인터 타입으로 전달이 안되는가.. 다른 클래스에서는 됐던 것 같은데 ㅇㅅㅇ... 언리얼 저주...
 	// => UFUNCTION()으로 되어 있으면 구조체를 포인터 형식으로 전달 못하나?
-	void GetItem(FItemData* ItemData);
+	void GetItem(FItemData ItemData);
 
 private:
 	// 아이템 로드

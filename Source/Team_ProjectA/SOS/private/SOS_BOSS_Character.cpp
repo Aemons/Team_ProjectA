@@ -206,9 +206,9 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 		if(GI)
 		{
 			FVector Loc = GetActorLocation();
-			Loc.X += 300.f;
-			Loc.Y += 300.f;
-			Loc.Z -= 150.f;
+			Loc.X += 400.f;
+			Loc.Y += 400.f;
+			Loc.Z -= 200.f;
 
 			// delay
 			FTimerHandle TimerHandle;

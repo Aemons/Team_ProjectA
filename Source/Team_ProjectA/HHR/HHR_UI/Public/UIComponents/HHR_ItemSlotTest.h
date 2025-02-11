@@ -67,7 +67,7 @@ private:	//*Button 이벤트에 바인딩 될 함수들*
 // **일반 함수**
 public:
 	// Data Set
-	void SetData(FItemData* Data);
+	void SetData(FItemData Data);
 	// 가지고 있는 Data Rendering
 	void RenderData();
 	

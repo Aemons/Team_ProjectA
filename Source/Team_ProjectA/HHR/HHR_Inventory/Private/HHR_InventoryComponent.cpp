@@ -137,24 +137,24 @@ void UHHR_InventoryComponent::ChangeArmor(UHHR_ItemSlotTest* Armor)
 	switch (Armor->ItemData.ArmorType)
 	{
 	case EArmorType::Helmet:
-		OwnerCharacter->GetHelmetSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeHelemtSlot(&Armor->ItemData);
 		GI->SetEqHelmetData(&Armor->ItemData);
+		OwnerCharacter->GetHelmetSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		break;
 	case EArmorType::Chest:
-		OwnerCharacter->GetChestSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeChestSlot(&Armor->ItemData);
 		GI->SetEqChestData(&Armor->ItemData);
+		OwnerCharacter->GetChestSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		break;
 	case EArmorType::Pants:
-		OwnerCharacter->GetPantsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangePantsSlot(&Armor->ItemData);
 		GI->SetEqPantsData(&Armor->ItemData);
+		OwnerCharacter->GetPantsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		break;
 	case EArmorType::Boots:
-		OwnerCharacter->GetBootsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		InventoryWidget->ChangeBootsSlot(&Armor->ItemData);
 		GI->SetEqBootsData(&Armor->ItemData);
+		OwnerCharacter->GetBootsSMComp()->SetSkeletalMesh(Armor->ItemData.SkeletalMesh);
 		break;
 	default:
 		break;
@@ -234,7 +234,7 @@ void UHHR_InventoryComponent::OpenInventory()
 	}
 }
 
-void UHHR_InventoryComponent::GetItem(FItemData* ItemData)
+void UHHR_InventoryComponent::GetItem(FItemData ItemData)
 {
 	// Item 받으면 GI에 추가
 	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());

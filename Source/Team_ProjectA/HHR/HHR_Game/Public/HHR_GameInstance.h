@@ -41,11 +41,11 @@ public:
 
 	// * Have Item *
 	// 읽기 전용 리스트 반환 
-	FORCEINLINE TArray<FItemData*>& GetHelmetsList() { return HelmetsList;}
-	FORCEINLINE TArray<FItemData*>& GetChestsList() { return ChestsList; }
-	FORCEINLINE TArray<FItemData*>& GetPantsList() { return PantsList;}
-	FORCEINLINE TArray<FItemData*>& GetBootsList() { return BootsList;}
-	FORCEINLINE TArray<FItemData*>& GetAllItemList() { return AllItemsList;}
+	FORCEINLINE TArray<FItemData>& GetHelmetsList() { return HelmetsList;}
+	FORCEINLINE TArray<FItemData>& GetChestsList() { return ChestsList; }
+	FORCEINLINE TArray<FItemData>& GetPantsList() { return PantsList;}
+	FORCEINLINE TArray<FItemData>& GetBootsList() { return BootsList;}
+	FORCEINLINE TArray<FItemData>& GetAllItemList() { return AllItemsList;}
 	
 
 //////////////////////////////////////////////////////////////////////////////
@@ -84,21 +84,21 @@ public:
 // ** 일반 함수 **
 public:
 	// Item Iventory에 추가 하는 함수
-	void AddItem(FItemData* Data);
+	void AddItem(FItemData Data);
 	
 
 private:
 	// *Data Table 관련 함수*
 	void LoadDataTable(class UDataTable* DataTable);
 	// Item 찾는 함수
-	FItemData* FindItem(int32 ID);
+	FItemData FindItem(int32 ID);
 	
 	
 //////////////////////////////////////////////////////////////////////////////
 // ** 기본 내부 변수 **
-private:
+public:
 	// *실제 캐릭터가 소유하는 Inventory List*
-	TArray<FItemData*> HelmetsList;
+	/*TArray<FItemData*> HelmetsList;
 	TArray<FItemData*> ChestsList;
 	TArray<FItemData*> PantsList;
 	TArray<FItemData*> BootsList;
@@ -106,7 +106,17 @@ private:
 	TArray<FItemData*> AllItemsList;
 
 	// *Data Table 로드한 List
-	TArray<FItemData*> DTAllItemsList;
+	TArray<FItemData*> DTAllItemsList;*/
+
+	TArray<FItemData> HelmetsList;
+	TArray<FItemData> ChestsList;
+	TArray<FItemData> PantsList;
+	TArray<FItemData> BootsList;
+	// 전체
+	TArray<FItemData> AllItemsList;
+
+	// *Data Table 로드한 List
+	TArray<FItemData> DTAllItemsList;
 
 
 	// *Random 생성을 위한 Shuffle 함수*

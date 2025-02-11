@@ -19,14 +19,27 @@ void UHHR_GameInstance::Init()
 	}
 
 	// Eq Item data list에 연결
-	HelmetsList.Add(&EqHelmetData);
-	AllItemsList.Add(&EqHelmetData);
-	ChestsList.Add(&EqChestData);
-	AllItemsList.Add(&EqChestData);
-	PantsList.Add(&EqPantsData);
-	AllItemsList.Add(&EqPantsData);
-	BootsList.Add(&EqBootsData);
-	AllItemsList.Add(&EqBootsData);
+	FItemData helmet = FItemData(EqHelmetData);
+	FItemData chest = FItemData(EqChestData);
+	FItemData pants = FItemData(EqPantsData);
+	FItemData boots = FItemData(EqBootsData);
+	HelmetsList.Add(helmet);
+	AllItemsList.Add(helmet);
+	ChestsList.Add(chest);
+	AllItemsList.Add(chest);
+	PantsList.Add(pants);
+	AllItemsList.Add(pants);
+	BootsList.Add(boots);
+	AllItemsList.Add(boots);
+	
+	/*HelmetsList.Add(&EqHelmetData);
+    AllItemsList.Add(&EqHelmetData);
+    ChestsList.Add(&EqChestData);
+    AllItemsList.Add(&EqChestData);
+    PantsList.Add(&EqPantsData);
+    AllItemsList.Add(&EqPantsData);
+    BootsList.Add(&EqBootsData);
+    AllItemsList.Add(&EqBootsData);*/
 	
 }
 
@@ -63,14 +76,14 @@ void UHHR_GameInstance::DropItems(FVector Location)
 
 }
 
-void UHHR_GameInstance::AddItem(FItemData* Data)
+void UHHR_GameInstance::AddItem(FItemData Data)
 {
 	// 아이템 추가
 	
 	// 이미 보유하고 있으면 pass
-	if(FindItem(Data->ItemID)) return;
+	//if((FindItem(Data.ItemID)).ItemID < 0) return;
 	
-	switch (Data->ArmorType)
+	switch (Data.ArmorType)
 	{
 	case EArmorType::Helmet:
 		HelmetsList.Add(Data);
@@ -130,21 +143,23 @@ void UHHR_GameInstance::LoadDataTable(class UDataTable* DataTable)
 	for(FItemData* Data : Rows)
 	{
 		// 전체 list에도 넣어줌
-		DTAllItemsList.Add(Data);
+		DTAllItemsList.Add(*Data);
 	}
 	
 }
 
-FItemData* UHHR_GameInstance::FindItem(int32 ID)
+FItemData UHHR_GameInstance::FindItem(int32 ID)
 {
-	for(FItemData* Data : AllItemsList)
+	for(FItemData Data : AllItemsList)
 	{
-		if(Data->ItemID == ID)
+		if(Data.ItemID == ID)
 		{
 			return Data;
 		}
 	}
-	return nullptr;
+	FItemData Item = FItemData();
+	Item.ItemID = -1;
+	return Item;
 }
 
 void UHHR_GameInstance::ShuffleIdx(TArray<int32>& OutRandIdx, int32 ArrayMaxNum, int32 RandomNum)

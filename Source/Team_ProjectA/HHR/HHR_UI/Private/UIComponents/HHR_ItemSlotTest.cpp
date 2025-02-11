@@ -74,9 +74,10 @@ void UHHR_ItemSlotTest::OnClicked()
 
 }
 
-void UHHR_ItemSlotTest::SetData(FItemData* Data)
+void UHHR_ItemSlotTest::SetData(FItemData Data)
 {
-	ItemData = *Data;
+	//ItemData = *Data;
+	ItemData = FItemData(Data);
 }
 
 void UHHR_ItemSlotTest::RenderData()

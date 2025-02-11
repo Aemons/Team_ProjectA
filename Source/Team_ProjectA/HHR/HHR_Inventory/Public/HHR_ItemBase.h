@@ -20,7 +20,7 @@ class TEAM_PROJECTA_API AHHR_ItemBase : public AActor
 //////////////////////////////////////////////////////////////////////////////
 // ** FORCEINLINE 함수 **
 public:
-	void SetItemData(FItemData* Data){ItemData = *Data;}
+	void SetItemData(FItemData Data){ItemData = Data;}
 	FItemData* GetItemData() {return &ItemData;}
 
 

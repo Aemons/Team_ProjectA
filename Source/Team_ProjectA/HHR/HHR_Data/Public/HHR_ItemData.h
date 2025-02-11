@@ -10,6 +10,9 @@
  * 
  */
 
+class UTexture2D;
+class USkeletalMesh;
+
 UENUM(BlueprintType)
 enum class EArmorType : uint8
 {
@@ -46,10 +49,21 @@ struct FItemData : public FTableRowBase
 	EArmorType ArmorType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
-	class UTexture2D* ItemImage;
+	UTexture2D* ItemImage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
-	class USkeletalMesh* SkeletalMesh;
+	USkeletalMesh* SkeletalMesh;
+
+	FItemData(){}
+	FItemData(const FItemData& other)
+	{
+		ItemID = other.ItemID;
+		ArmorName = other.ArmorName;
+		ItemType = other.ItemType;
+		ArmorType = other.ArmorType;
+		ItemImage = other.ItemImage;
+		SkeletalMesh = other.SkeletalMesh;
+	}
 
 };
 

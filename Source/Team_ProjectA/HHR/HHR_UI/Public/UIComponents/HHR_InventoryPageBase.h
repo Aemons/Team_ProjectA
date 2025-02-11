@@ -85,7 +85,7 @@ private:
 	int32 ColumNum = 5;
 
 	// GameInstance로부터 받아오는 Data list
-	TArray<FItemData*> InventoryData;
+	TArray<FItemData> InventoryData;
 	// 전체 ItemSlot
 	TArray<UHHR_ItemSlotTest*> ItemSlotList;
 	
