@@ -81,7 +81,7 @@ void UHHR_GameInstance::AddItem(FItemData Data)
 	// 아이템 추가
 	
 	// 이미 보유하고 있으면 pass
-	//if((FindItem(Data.ItemID)).ItemID < 0) return;
+	if((FindItem(Data.ItemID)).ItemID != -1) return;
 	
 	switch (Data.ArmorType)
 	{
