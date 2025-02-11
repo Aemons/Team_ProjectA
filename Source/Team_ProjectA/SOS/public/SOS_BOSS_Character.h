@@ -16,6 +16,10 @@ class TEAM_PROJECTA_API ASOS_BOSS_Character : public ACharacter
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dead")
+	bool bIsDead = false;
+
+public:
 	// Sets default values for this character's properties
 	ASOS_BOSS_Character();
 
@@ -72,19 +76,15 @@ public:
 	void TakeDamage(float DamageAmount);
 	*/
 	
+//public:
 	// ApplyDamage로 호출될 함수
-	UFUNCTION()
-	void TakeDamage(float DamageAmount);
+	//UFUNCTION()
+	//void TakeDamage(float DamageAmount);
 
 	// 데미지를 받을 때 호출되는 함수 (ApplyDamage 사용)
-	virtual float TakeDamage(
-		float DamageAmount,
-		struct FDamageEvent const& DamageEvent,
-		class AController* EventInstigator,
-		AActor* DamageCauser
-	) override;
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
-
+public:
 	// Name of the Blackboard Key to modify
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
 	FName BlackboardKeyName = "SOS_State";
@@ -112,5 +112,20 @@ public:
 private:
 	// 현재 재생 속도
 	float CurrentMontagePlayRate = 1.0f; // 기본값 1.0
+
+// HHR
+// ----------------------------------------------------------------------------
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="UI")
+	TSubclassOf<UUserWidget> BossHPClass;
+private:
+	TObjectPtr<UUserWidget> BossHPWidget;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void CreateBossHP();
+// ----------------------------------------------------------------------------
+
+	
 };
 

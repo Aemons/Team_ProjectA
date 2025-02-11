@@ -27,7 +27,7 @@ void UHHR_MapSelect::NativeConstruct()
 	{
 		slot->OnMapSlotClicked.BindUObject(this, &UHHR_MapSelect::MapClick);
 	}
-	
+
 }
 
 void UHHR_MapSelect::OnClickCloseBtn()
@@ -35,6 +35,8 @@ void UHHR_MapSelect::OnClickCloseBtn()
 	// 현재 UI 닫기 && mouse 없애기 
 	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(false);
 	RemoveFromParent();
+
+	
 }
 
 void UHHR_MapSelect::OnClickMapSelectBtn()

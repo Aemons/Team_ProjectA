@@ -6,17 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "HHR_InteractComponent.generated.h"
 
-// 입력 바인딩
-
-// ** Interact Comp **
-// ActorComp + object channel (Interact : NPC)
-// (LineTrace or collision)
-// * LineTrace : (0.2s 혹은 몇초) 동안 계속해서 앞에 interact할 actor 있는지 체크
-//  - 있으면 UI 띄우고 -> flag 세팅
-//		- flag 있는 상태에서 입력 받으면 InteractInterface의 Interact() 실행
-// * Collision
-// - 부모의 Capsule collision에 beginoverlap end overlap 시 flag setting 
-
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TEAM_PROJECTA_API UHHR_InteractComponent : public UActorComponent

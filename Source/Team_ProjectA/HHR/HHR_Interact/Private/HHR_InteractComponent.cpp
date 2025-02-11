@@ -43,7 +43,6 @@ void UHHR_InteractComponent::InitializeComponent()
 {
 	Super::InitializeComponent();
 
-	// TODO : 실제 IMC와 Playercharacter에 할당해줘야함 (playerCharacter에서 interactcomp생성)
 	// Player Character의 InputBinde Delegate에 바인딩
 	OwnerCharacter = Cast<AJHS_C_Player>(GetOwner());
 	if(OwnerCharacter)
