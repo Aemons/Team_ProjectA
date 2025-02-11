@@ -43,6 +43,8 @@ void UHHR_ItemSlotTest::NativeConstruct()
 		}
 	}
 
+
+
 }
 
 void UHHR_ItemSlotTest::OnHovered()
@@ -82,12 +84,12 @@ void UHHR_ItemSlotTest::SetData(FItemData Data)
 
 void UHHR_ItemSlotTest::RenderData()
 {
-	if(ItemData.ItemImage && IsValid(ItemData.ItemImage))
+	if(IsValid(ItemData.ItemImage) && ItemData.ItemImage)
 	{
 		FSlateBrush newBrush;
 		newBrush.SetResourceObject(ItemData.ItemImage);
 
-		if(ItemImage && IsValid(ItemImage))
+		if(IsValid(ItemImage) && ItemImage)
 		{
 			ItemImage->SetBrush(newBrush);
 		}

@@ -54,7 +54,16 @@ struct FItemData : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	USkeletalMesh* SkeletalMesh;
 
-	FItemData(){}
+	FItemData()
+		: ItemID(-1) // 기본값 설정
+		, ArmorName(FText::FromString(TEXT(""))) // 빈 텍스트 초기화
+		, ItemType(EItemType::ArmorItem) // 기본값 (Enum이므로 None 같은 값이 필요)
+		, ArmorType(EArmorType::Helmet) // 기본값 (Enum이므로 None 같은 값이 필요)
+		, ItemImage(nullptr) // UTexture2D* 초기화
+		, SkeletalMesh(nullptr) // USkeletalMesh* 초기화
+	{
+	}
+
 	FItemData(const FItemData& other)
 	{
 		ItemID = other.ItemID;
