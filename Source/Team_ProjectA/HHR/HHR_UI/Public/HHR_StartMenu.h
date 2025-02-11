@@ -51,6 +51,13 @@ protected:
 
 	
 	// 기본 생성 함수
+protected:
+	virtual void NativeConstruct() override;
+
+protected:
+	UFUNCTION()
+	void OnQuitGame();
+	
 
 	// UFUNCTION 함수
 
