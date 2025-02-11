@@ -26,11 +26,26 @@ void UHHR_Gameover::NativeConstruct()
 void UHHR_Gameover::OnGameEnd()
 {
 	//UHHR_UIManager::GetUIManager()->SetGameOnlyMode();
-	UKismetSystemLibrary::QuitGame(GetWorld(), GetWorld()->GetFirstPlayerController(), EQuitPreference::Quit, false);
+	//UKismetSystemLibrary::QuitGame(GetWorld(), GetWorld()->GetFirstPlayerController(), EQuitPreference::Quit, false);
+
+	// 마을로 가기 
+	UHHR_UIManager::GetUIManager()->SetGameOnlyMode();
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("ConceptMap"));
+
 }
 
 void UHHR_Gameover::OnRestart()
 {
+	/*UHHR_UIManager::GetUIManager()->SetGameOnlyMode();
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("ConceptMap"));*/
+
+	// 다시 도전 -> 맵 다시 로드
 	UHHR_UIManager::GetUIManager()->SetGameOnlyMode();
-	UGameplayStatics::OpenLevel(GetWorld(), TEXT("ConceptMap"));
+
+	FName CurrentLevel = FName(GetWorld()->GetMapName());
+	CurrentLevel = *CurrentLevel.ToString().RightChop(GetWorld()->StreamingLevelsPrefix.Len());
+
+	UGameplayStatics::OpenLevel(GetWorld(), CurrentLevel);
+
+	
 }
