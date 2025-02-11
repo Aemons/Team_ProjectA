@@ -17,21 +17,21 @@
     <list default="true" id="9902629f-a1c5-4b6e-8f79-33cfc1b71e9f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team_ProjectA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_UI/WBP/WBP_HHR_MapSelect.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/LYM_BP_GameState_Dummy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/HHR/HHR_Blueprints/LYM_BP_GameState_Dummy.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_BP/LYM_BP_GameState.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_UI/LYM_WBP_HP_Bar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/LYM/LYM_UI/LYM_WBP_HP_Bar.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_HIDE_BOSS_Char.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_Boss_PlayTriggerBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_Blueprint/BP_SOS_Hide_Boss_PlayTriggerBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_UI/SOS_WBP_HP_Bar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/00_Project/SOS/SOS_UI/SOS_WBP_HP_Bar.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Data/Public/HHR_ItemData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_GameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Private/HHR_GameInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_InventoryComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_ItemBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Private/HHR_ItemBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/HHR_Inventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/HHR_Inventory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_ItemBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Inventory/Public/HHR_ItemBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_InventoryPageBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Private/UIComponents/HHR_ItemSlotTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_InventoryPageBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_UI/Public/UIComponents/HHR_ItemSlotTest.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_BOSS_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/private/SOS_Boss_PlayTriggerBox.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_BOSS_Character.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Boss_PlayTriggerBox.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Team_ProjectA/SOS/public/SOS_Boss_PlayTriggerBox.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Team_ProjectA.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,9 +91,129 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/UObject/ScriptDelegates.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://22" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/Math/MathFwd.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/Math/Vector.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/Templates/RefCounting.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/Components/MeshComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/GameInstance.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/World.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_InteractComponent.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Team_ProjectA/HHR/HHR_Interact/Private/HHR_InteractInterface.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -629,6 +749,11 @@
       <workItem from="1738634233980" duration="5021000" />
       <workItem from="1738733267234" duration="145000" />
       <workItem from="1738746494011" duration="8022000" />
+      <workItem from="1738905416392" duration="11812000" />
+      <workItem from="1739007493705" duration="8174000" />
+      <workItem from="1739154138536" duration="29631000" />
+      <workItem from="1739246417511" duration="6981000" />
+      <workItem from="1739256533375" duration="5532000" />
     </task>
     <servers />
   </component>
@@ -637,6 +762,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

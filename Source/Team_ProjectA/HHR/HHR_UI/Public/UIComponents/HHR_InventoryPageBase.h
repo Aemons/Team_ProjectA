@@ -15,6 +15,20 @@ class UUniformGridPanel;
 class UHHR_ItemSlotBase;
 class UHHR_ItemSlotTest;
 
+
+UENUM(BlueprintType)
+enum class EPageType : uint8
+{
+	AllPage,
+	HelmetPage,
+	ChestPage,
+	PantsPage,
+	BootsPage,
+	HandsPage,
+};
+
+
+
 UCLASS()
 class TEAM_PROJECTA_API UHHR_InventoryPageBase : public UUserWidget
 {
@@ -24,39 +38,15 @@ class TEAM_PROJECTA_API UHHR_InventoryPageBase : public UUserWidget
 // ** UPROPERTY 변수 **
 public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값들)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
-	TArray<UHHR_ItemSlotTest*> HaveItemSlotList;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
-	TArray<FItemData> ItemDataList;
+	EPageType PageType;
+
+	// ??? 외부에서 List를 추가하면 문제 발생 
 	
 protected:	// *Widgets*
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
 	UUniformGridPanel* GridPanel;
 
-	// 임시 노가다
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot1;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot2;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot3;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot4;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot5;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot6;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot7;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot8;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot9;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot10;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot11;
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget), Transient, Category="Widgets")
-	UHHR_ItemSlotTest* ItemSlot12;
+
 	
 
 private:
@@ -79,6 +69,14 @@ private:
 	UFUNCTION()
 	void UpdateSlotClick(UHHR_ItemSlotTest* ClickItem);
 
+/////////////////////////////////////////////////////////////////////////
+// ** 기본 함수 **
+private:
+	// GameInstance로부터 List 가져오기
+	void GetInventoryData();
+	// 가져온 list로부터 Data load
+	void LoadItemData();
+	
 
 //////////////////////////////////////////////////////////////////////////////
 // ** 내부 멤버 변수 **
@@ -86,6 +84,8 @@ private:
 	int32 RowNum = 4;
 	int32 ColumNum = 5;
 
+	// GameInstance로부터 받아오는 Data list
+	TArray<FItemData> InventoryData;
 	// 전체 ItemSlot
 	TArray<UHHR_ItemSlotTest*> ItemSlotList;
 	

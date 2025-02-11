@@ -44,7 +44,6 @@ public:     // *동적 변수* (상위 위젯에서 할당해줘야 하는 값�
 	bool bIsSelected = false;
 
 	
-	// 일단 안사용
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Editable")
 	int32 MenuIndex;
 
@@ -82,7 +81,7 @@ private:
 //////////////////////////////////////////////////////////////////////////////
 // ** 내부 멤버 변수 **
 public:		// *델리게이트 변수*
-	FOnBtnClickMessage OnClickMessage;
+	FOnBtnClickMessage OnMenuBtnClick;
 	
 
 	

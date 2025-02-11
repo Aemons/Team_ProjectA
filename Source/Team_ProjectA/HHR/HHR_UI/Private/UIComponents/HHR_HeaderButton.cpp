@@ -36,13 +36,10 @@ void UHHR_HeaderButton::NativeConstruct()
 
 void UHHR_HeaderButton::OnClicked()
 {
-	
 	// click 메세지 전송
-	if(OnClickMessage.IsBound())
+	if(OnMenuBtnClick.IsBound())
 	{
-		OnClickMessage.Broadcast(MenuIndex);
+		OnMenuBtnClick.Broadcast(MenuIndex);
 	}
-
-
 	
 }

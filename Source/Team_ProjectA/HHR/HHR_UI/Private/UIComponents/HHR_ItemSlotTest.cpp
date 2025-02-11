@@ -12,15 +12,10 @@
 void UHHR_ItemSlotTest::NativePreConstruct()
 {
 	Super::NativePreConstruct();
-	
+
+	// Player가 장착하고 있느 아이템 확인
 	LoadPlayerSelected();
-
-	UpdateItemData(&ItemData);
-	if(bIsSelected)
-	{
-		Selected();
-	}
-
+	RenderData();
 
 }
 
@@ -29,9 +24,13 @@ void UHHR_ItemSlotTest::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 바인딩
-	ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemSlotTest::OnClicked);
-	ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemSlotTest::OnHovered);
-	ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemSlotTest::OnUnHovered);
+	if(ItemButton)
+	{
+		ItemButton->OnClicked.AddDynamic(this, &UHHR_ItemSlotTest::OnClicked);
+		ItemButton->OnHovered.AddDynamic(this, &UHHR_ItemSlotTest::OnHovered);
+		ItemButton->OnUnhovered.AddDynamic(this, &UHHR_ItemSlotTest::OnUnHovered);
+	}
+
 
 	// 
 	AJHS_C_Player* player = Cast<AJHS_C_Player>(GetWorld()->GetFirstPlayerController()->GetCharacter());
@@ -75,27 +74,36 @@ void UHHR_ItemSlotTest::OnClicked()
 
 }
 
-void UHHR_ItemSlotTest::UpdateItemData(FItemData* Data)
+void UHHR_ItemSlotTest::SetData(FItemData Data)
 {
-	if(Data->ItemImage)
-	{
-		FSlateBrush newBrush;
-		newBrush.SetResourceObject(Data->ItemImage);
-
-		if(ItemImage)
-		{
-			ItemImage->SetBrush(newBrush);
-		}
-	}
+	//ItemData = *Data;
+	ItemData = FItemData(Data);
 }
 
-void UHHR_ItemSlotTest::Selected()
+void UHHR_ItemSlotTest::RenderData()
+{
+	if(ItemData.ItemImage)
+	{
+		FSlateBrush newBrush;
+		newBrush.SetResourceObject(ItemData.ItemImage);
+
+		ItemImage->SetBrush(newBrush);
+	}
+
+	if(bIsSelected)
+	{
+		ChangeSelected();
+	}
+
+}
+
+void UHHR_ItemSlotTest::ChangeSelected()
 {
 	bIsSelected = true;
 	SelectedBorder->SetVisibility(ESlateVisibility::Visible);
 }
 
-void UHHR_ItemSlotTest::UnSelected()
+void UHHR_ItemSlotTest::ChangeUnSelected()
 {
 	bIsSelected = false;
 	SelectedBorder->SetVisibility(ESlateVisibility::Hidden);
@@ -105,29 +113,34 @@ void UHHR_ItemSlotTest::LoadPlayerSelected()
 {
 	UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
 	if(!GI) return;
-
+	
 	// GameInstance의 장착되어 있는 아이템이랑 비교해서 장착된 거 click set
+	int id = 0;
 	switch(ItemData.ArmorType)
 	{
 	case EArmorType::Helmet:
+		id = GI->GetEqHelmetData()->ItemID;
 		if(GI->GetEqHelmetData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Chest:
+		id = GI->GetEqChestData()->ItemID;
 		if(GI->GetEqChestData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Pants:
+		id = GI->GetEqPantsData()->ItemID;
 		if(GI->GetEqPantsData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;
 		}
 		break;
 	case EArmorType::Boots:
+		id = GI->GetEqBootsData()->ItemID;
 		if(GI->GetEqBootsData()->ItemID ==  ItemData.ItemID)
 		{
 			bIsSelected = true;

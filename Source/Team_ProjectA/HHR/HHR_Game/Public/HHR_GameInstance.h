@@ -11,6 +11,10 @@
  * 전역 데이터 관리 
  * 
  */
+
+
+struct FItemData;
+
 UCLASS()
 class TEAM_PROJECTA_API UHHR_GameInstance : public UGameInstance
 {
@@ -18,13 +22,13 @@ class TEAM_PROJECTA_API UHHR_GameInstance : public UGameInstance
 
 	// 내가 장착하고 있는 장비, 가지고 있는 장비 저장
 
-	// !장착 데이터 로드, set
 	// !가지고 있는 장비 추가 (삭제), get
 
 
 //////////////////////////////////////////////////////////////////////////////
 // ** FORCEINLINE 함수 **
 public:
+	// * Eq Item *
 	FORCEINLINE FItemData* GetEqHelmetData() { return &EqHelmetData; }
 	FORCEINLINE FItemData* GetEqChestData() { return &EqChestData; }
 	FORCEINLINE FItemData* GetEqPantsData() { return &EqPantsData; }
@@ -34,11 +38,20 @@ public:
 	FORCEINLINE void SetEqChestData(const FItemData* Data) { EqChestData = *Data; }
 	FORCEINLINE void SetEqPantsData(const FItemData* Data) { EqPantsData = *Data; }
 	FORCEINLINE void SetEqBootsData(const FItemData* Data) { EqBootsData = *Data; }
+
+	// * Have Item *
+	// 읽기 전용 리스트 반환 
+	FORCEINLINE TArray<FItemData>& GetHelmetsList() { return HelmetsList;}
+	FORCEINLINE TArray<FItemData>& GetChestsList() { return ChestsList; }
+	FORCEINLINE TArray<FItemData>& GetPantsList() { return PantsList;}
+	FORCEINLINE TArray<FItemData>& GetBootsList() { return BootsList;}
+	FORCEINLINE TArray<FItemData>& GetAllItemList() { return AllItemsList;}
 	
 
 //////////////////////////////////////////////////////////////////////////////
 // ** UPROPERTY 변수 **
 protected:
+	// TODO : 그냥 Id로만 입력받고 로드해줘도 될듯 
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
 	FItemData EqHelmetData;
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
@@ -47,9 +60,67 @@ protected:
 	FItemData EqPantsData;
 	UPROPERTY(EditDefaultsOnly, Category = "Data")
 	FItemData EqBootsData;
+
+	// TODO : 나중에 분할시켜줘야 할듯
+	UPROPERTY(EditDefaultsOnly, Category = "ItemClass")
+	TSubclassOf<class AHHR_ItemBase> ItemClass;
+
+
+//////////////////////////////////////////////////////////////////////////////
+// ** 기본 이벤트 함수 **
+protected:
+	virtual void Init() override;
+
+	
+//////////////////////////////////////////////////////////////////////////////
+// ** UFUCNTION 함수 **
+public:
+	// Monster가 죽을때 호출해서 -> 아이템 drop
+	UFUNCTION(BlueprintCallable)
+	void DropItems(FVector Location);
+
+
+//////////////////////////////////////////////////////////////////////////////
+// ** 일반 함수 **
+public:
+	// Item Iventory에 추가 하는 함수
+	void AddItem(FItemData Data);
 	
 
+private:
+	// *Data Table 관련 함수*
+	void LoadDataTable(class UDataTable* DataTable);
+	// Item 찾는 함수
+	FItemData FindItem(int32 ID);
+	
+	
+//////////////////////////////////////////////////////////////////////////////
+// ** 기본 내부 변수 **
+public:
+	// *실제 캐릭터가 소유하는 Inventory List*
+	/*TArray<FItemData*> HelmetsList;
+	TArray<FItemData*> ChestsList;
+	TArray<FItemData*> PantsList;
+	TArray<FItemData*> BootsList;
+	// 전체
+	TArray<FItemData*> AllItemsList;
 
+	// *Data Table 로드한 List
+	TArray<FItemData*> DTAllItemsList;*/
+
+	TArray<FItemData> HelmetsList;
+	TArray<FItemData> ChestsList;
+	TArray<FItemData> PantsList;
+	TArray<FItemData> BootsList;
+	// 전체
+	TArray<FItemData> AllItemsList;
+
+	// *Data Table 로드한 List
+	TArray<FItemData> DTAllItemsList;
+
+
+	// *Random 생성을 위한 Shuffle 함수*
+	void ShuffleIdx(TArray<int32> &OutRandIdx, int32 ArrayMaxNum, int32 RandomNum);
 
 	
 	
