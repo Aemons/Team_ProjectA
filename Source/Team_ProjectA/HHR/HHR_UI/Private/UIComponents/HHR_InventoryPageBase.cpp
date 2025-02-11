@@ -242,7 +242,7 @@ void UHHR_InventoryPageBase::LoadItemData()
 				UHHR_ItemSlotTest* newItemSlot = NewObject<UHHR_ItemSlotTest>(this, ItemSlotClass);
 				if(newItemSlot)
 				{
-					newItemSlot->SetData(GI->PantsList[i]);
+					newItemSlot->SetData(GI->BootsList[i]);
 					ItemSlotList.Add(newItemSlot);
 
 					// Slot Setting

@@ -46,7 +46,6 @@ void UHHR_MapSelect::OnClickMapSelectBtn()
 	if(SelectedMap && !SelectedMap->LoadLevelName.IsEmpty())
 	{
 		FString Map = SelectedMap->LoadLevelName.ToString();
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, (TEXT("Map Open : %s"), *Map));
 		UGameplayStatics::OpenLevel(GetWorld(), FName(*Map));
 		
 		// TODO : 마우스 설정 나중에 수정 

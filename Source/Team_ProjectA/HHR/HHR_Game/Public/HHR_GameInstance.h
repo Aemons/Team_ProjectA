@@ -108,14 +108,20 @@ public:
 	// *Data Table 로드한 List
 	TArray<FItemData*> DTAllItemsList;*/
 
+	UPROPERTY()
 	TArray<FItemData> HelmetsList;
+	UPROPERTY()
 	TArray<FItemData> ChestsList;
+	UPROPERTY()
 	TArray<FItemData> PantsList;
+	UPROPERTY()
 	TArray<FItemData> BootsList;
 	// 전체
+	UPROPERTY()
 	TArray<FItemData> AllItemsList;
 
 	// *Data Table 로드한 List
+	UPROPERTY()
 	TArray<FItemData> DTAllItemsList;
 
 
