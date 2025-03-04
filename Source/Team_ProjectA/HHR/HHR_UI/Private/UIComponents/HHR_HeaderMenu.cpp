@@ -11,12 +11,12 @@ void UHHR_HeaderMenu::NativeConstruct()
 
 
 	// Button들 버튼 리스트에 넣기
+	MenuBtnList.Add(AllBtn);
 	MenuBtnList.Add(HelmetBtn);
 	MenuBtnList.Add(ChestBtn);
 	MenuBtnList.Add(PantsBtn);
 	MenuBtnList.Add(HandsBtn);
 	MenuBtnList.Add(BootsBtn);
-	MenuBtnList.Add(AllBtn);
 
 	//
 	for(UHHR_HeaderButton* headerBtn : MenuBtnList)
@@ -34,7 +34,6 @@ void UHHR_HeaderMenu::OnMenuUpdate(int MenuIdx)
 	if(findIdx >= 0 && findIdx < MenuBtnList.Num())
 	{
 		// 선택되어 있는 거 찾으면 그거 선택 해제
-		//MenuBtnList[findIdx]->SetIsSelected(false);
 		MenuBtnList[findIdx]->bIsSelected = false;
 		MenuBtnList[findIdx]->OnUnSelected();
 	}

@@ -23,7 +23,7 @@
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractComponent.h"
 #include "Team_ProjectA/HHR/HHR_Inventory/Public/HHR_InventoryComponent.h"
 #include "Team_ProjectA/HHR/HHR_Interact/Public/HHR_InteractInterface.h"
-#include "Team_ProjectA/HHR/HHR_UI/Public/HHR_UIManager.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_UIManager.h"
 // ----------------------------------------------------------------------------
 
 AJHS_C_Player::AJHS_C_Player()
@@ -45,6 +45,10 @@ AJHS_C_Player::AJHS_C_Player()
 		// ----------------------------------------------------------------------------
 		InteractComp = CreateDefaultSubobject<UHHR_InteractComponent>(TEXT("InteractComp"));
 		InventoryComp = CreateDefaultSubobject<UHHR_InventoryComponent>(TEXT("InventoryComp"));
+
+		// 임시
+		UHHR_UIManager* UIManager =  UHHR_UIManager::GetUIManager();
+		UIManager->Init(GetWorld());
 		// ----------------------------------------------------------------------------
 	}
 
@@ -147,6 +151,8 @@ void AJHS_C_Player::BeginPlay()
 	// *Temporary
 	PlayerHUD = CreateWidget<UUserWidget>(GetWorld(), PlayerHUDClass);
 	PlayerHUD->AddToViewport();
+	UHHR_UIManager* UIManager =  UHHR_UIManager::GetUIManager();
+	UIManager->Init(GetWorld());
 	// ----------------------------------------------------------------------------
 	
 }
@@ -373,6 +379,12 @@ void AJHS_C_Player::Player_Dead()
 
 		PlayAnimMontage(DeadMontage, DeadMontage_PlayRate);
 	}
+
+	// HHR
+	// ----------------------------------------------------------------------------
+	// * Gameover UI 띄우기
+	UHHR_UIManager::GetUIManager()->CreateGameover();
+	// ----------------------------------------------------------------------------
 }
 
 void AJHS_C_Player::PlayerBrakingWalkingValue()

@@ -14,6 +14,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Team_ProjectA/HHR/HHR_Game/Public/HHR_GameInstance.h"
 #include "Team_ProjectA/SOS/public/SOS_Hide_Box_Comp.h"
 
 // Sets default values
@@ -181,6 +182,12 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 
 	if (CurrentHP <= 0.0f)
 	{
+		// HHR
+		// ----------------------------------------------------------------------------
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+		// ----------------------------------------------------------------------------
+		
 		//CurrentHP = 0.0f;
 		SetBBEnumState(1);
 
@@ -192,6 +199,23 @@ float ASOS_BOSS_Character::TakeDamage(float DamageAmount, FDamageEvent const& Da
 		if (BossHPWidget)
 		{
 			BossHPWidget->RemoveFromParent();
+
+		}
+		// 사망 처리 -> 아이템 떨구기
+		UHHR_GameInstance* GI = Cast<UHHR_GameInstance>(GetWorld()->GetGameInstance());
+		if(GI)
+		{
+			FVector Loc = GetActorLocation();
+			Loc.X += 400.f;
+			Loc.Y += 400.f;
+			Loc.Z -= 200.f;
+
+			// delay
+			FTimerHandle TimerHandle;
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([GI, Loc]()
+			{
+				GI->DropItems(Loc);
+			}), 3.0f, false);
 		}
 		// ----------------------------------------------------------------------------
 		

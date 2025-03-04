@@ -20,12 +20,6 @@ class TEAM_PROJECTA_API UHHR_UIManager : public UObject
 {
 	GENERATED_BODY()
 
-// inline 함수
-// UPROPERTY
-// 기본 함수
-// UFUNCTION
-// 일반
-// 클래스 내부에서 사용하는 일반 멤버 변수
 
 
 // ** UPROPERTY 변수 **
@@ -34,17 +28,38 @@ private:
 	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
 	TSubclassOf<class UUserWidget> PlayerHUDWidget;
 
+	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
+	TSubclassOf<class UUserWidget> GameoverUIWidget;
+
+	UPROPERTY(EditAnywhere, Category = "WidgetBlueprint")
+	TSubclassOf<class UUserWidget> MapClearUIWidget;
+
 // ** 기본 생성 함수 **
 //////////////////////////////////////////////////////////////////////////////
-public:
+private:
+	// 생성자 비공개 처리
 	UHHR_UIManager();
+
+// ** UFUNCTION 함수 **
+//////////////////////////////////////////////////////////////////////////////
+public:
+	// 어디서든 접근 가능
+	UFUNCTION(BlueprintCallable) 
+	static UHHR_UIManager* GetUIManager();
+
+	// Gameover UI 생성
+	UFUNCTION(BlueprintCallable)
+	void CreateGameover();
+
+	// Map Clear(Game Clear UI 생성)
+	UFUNCTION(BlueprintCallable)
+	void CreateMapClear();
 
 // ** 일반 함수 **
 //////////////////////////////////////////////////////////////////////////////
 public:
-	// 어디서든 접근 가능
-	static UHHR_UIManager* GetUIManager();
 
+	void Init();
 	void Init(UWorld* World);
 
 	// UI 생성 widget
@@ -54,15 +69,29 @@ public:
 	void CreatePlayerHUD();
 
 
+public:
+	// Game ui mode로 세팅
+	UFUNCTION(BlueprintCallable)
+	void SetGameOnlyMode();
+	
+	// UIOnly mode로 세팅
+	UFUNCTION(BlueprintCallable)
+	void SetUIOnlyMode();
+
+
 // ** 내부에서만 사용하는 멤버 변수 **
 //////////////////////////////////////////////////////////////////////////////
 private:
 	// 인스턴스
-	static UHHR_UIManager* Instance;
+	static TObjectPtr<UHHR_UIManager> Instance;
 
 	// World
 	UPROPERTY()
 	TObjectPtr<UWorld> WorldContext = nullptr;
+
+	// Controller
+	UPROPERTY()
+	TObjectPtr<APlayerController> PlayerController = nullptr;
 
 	//UPROPERTY(EditDefaultsOnly, Category = "UI Widget")
 	//TSubclassOf<class UHHR_StartMenu> StartMenuClass; 

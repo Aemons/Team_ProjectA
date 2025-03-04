@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "Team_ProjectAGameMode.h"
-#include "HHR/HHR_UI/Public/HHR_UIManager.h"
+#include "HHR/HHR_Game/Public/HHR_UIManager.h"
 #include "UObject/ConstructorHelpers.h"
 
 ATeam_ProjectAGameMode::ATeam_ProjectAGameMode()

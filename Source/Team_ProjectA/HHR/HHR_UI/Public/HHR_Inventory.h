@@ -92,7 +92,8 @@ public:
 
 private:
 	// Btn 쉽게 관리하기 위한
-	TArray<UHHR_ItemEquipedSlotBase*> ItemSlotList;
+	// key : Page index , Value : Btn
+	TMap<int32, UHHR_ItemEquipedSlotBase*> ItemSlotMap;
 
 	int32 SelectedSlotIdx = 0;
 	
